@@ -6,8 +6,24 @@
 import asyncio, json, os, struct, sys, uuid
 import websockets
 
-# 从环境变量读取，避免把密钥写进代码库:
-#   set VOLC_APP_ID=...    set VOLC_API_KEY=...    set VOLC_SPEAKER=S_xxx
+
+def _load_dotenv():
+    """从仓库根目录的 .env 读取密钥（该文件已 gitignore，不入库）。"""
+    here = os.path.dirname(os.path.abspath(__file__))
+    for path in (".env", os.path.join(here, "..", ".env")):
+        if os.path.exists(path):
+            for line in open(path, encoding="utf-8"):
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+            break
+
+
+_load_dotenv()
+
+# 密钥来源优先级：环境变量 > 仓库根 .env（见 .env.example）
+#   VOLC_APP_ID / VOLC_API_KEY / VOLC_SPEAKER
 APP_ID = os.environ.get("VOLC_APP_ID", "")
 API_KEY = os.environ.get("VOLC_API_KEY", "")
 RESOURCE_ID = os.environ.get("VOLC_RESOURCE_ID", "seed-icl-2.0")
