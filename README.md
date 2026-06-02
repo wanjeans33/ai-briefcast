@@ -36,6 +36,41 @@
  (fetch)      (clean)            (script)        (synthesize)     (publish)
 ```
 
+## 快速开始
+
+**职责分工**：抓取与解析用 Python（`requests` + `BeautifulSoup`），把新闻**改写成播报稿**交给 LLM（OpenAI 兼容接口，可接 Qwen / DeepSeek / 豆包 / OpenAI 等）。
+
+```bash
+pip install -r requirements.txt
+
+# 1) 配置 LLM（OpenAI 兼容接口，以 Qwen/DashScope 为例）
+export LLM_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode/v1"
+export LLM_API_KEY="sk-..."
+export LLM_MODEL="qwen-plus"
+
+# 2) 抓取「今天」最新一期，用 LLM 生成简洁版 + 完整版到 samples/
+python scripts/generate_broadcast.py
+
+# 也可指定日期 / 只生成某个版本
+python scripts/generate_broadcast.py --date 2026-06-02 --modes concise
+
+# 只抓取+解析、导出原始素材（不调用 LLM，便于调试或离线查看）
+python scripts/generate_broadcast.py --dump-raw
+```
+
+`scripts/generate_broadcast.py` 的流程：
+
+1. 从两个来源首页定位当日新闻**详情子页面**，解析出干净的原始素材（头条全文 / 快讯 / 论文 / 观察）；
+2. 把原始素材交给 LLM，按提示词改写成自然、口语化、TTS 友好的播报稿（数字/日期口语化、保留英文术语、加开场与收尾）。
+
+输出：
+
+- `samples/source-<日期>.md` —— `--dump-raw` 导出的原始素材（LLM 的输入）。
+- `samples/broadcast-<日期>-concise.md` —— **简洁版**：约 3 分钟，覆盖头条与论文要点。
+- `samples/broadcast-<日期>-full.md` —— **完整版**：头条全文 + 快讯 + 论文逐篇 + 延伸阅读 + 今日观察。
+
+> LLM 配置走环境变量：`LLM_BASE_URL`、`LLM_API_KEY`（缺省回退 `OPENAI_API_KEY`）、`LLM_MODEL`。
+
 ## 技术选型
 
 - **TTS 引擎（评估中）**：在以下方案之间选择 ——
@@ -45,13 +80,13 @@
 
 ## 项目状态
 
-🚧 **早期开发中。** 目前仓库处于初始化阶段，本 README 描述的是项目目标与规划，功能尚未实现。
+🚧 **早期开发中。** 抓取 → 解析 → 播报稿生成已跑通（见 `scripts/generate_broadcast.py`），TTS 合成与分发仍在建设中。
 
 ## 路线图
 
-- [ ] 来源抓取（ai-digest / ai-brief）
-- [ ] 内容解析与结构化
-- [ ] 播报稿生成
+- [x] 来源抓取（ai-digest / ai-brief 详情子页面）
+- [x] 内容解析与结构化
+- [x] LLM 改写生成播报稿（简洁版 + 完整版，OpenAI 兼容）
 - [ ] TTS 引擎选型（Qwen3 TTS vs. Doubao Seed TTS 2.0）
 - [ ] TTS 音频合成
 - [ ] 自动化定时任务
@@ -92,7 +127,42 @@ Content is drawn from two high-quality, primary-source-first, no-hype Chinese AI
 - **Speech synthesis**: produce a daily audio broadcast via TTS.
 - **Multiple distribution channels** (planned): RSS podcast feed, audio files, transcripts.
 
-## Pipeline (planned)
+## Quick Start
+
+**Separation of concerns**: fetching & parsing use Python (`requests` + `BeautifulSoup`); rewriting raw news into broadcast scripts is delegated to an **LLM** via an OpenAI-compatible API (works with Qwen / DeepSeek / Doubao / OpenAI, etc.).
+
+```bash
+pip install -r requirements.txt
+
+# 1) Configure the LLM (OpenAI-compatible endpoint; Qwen/DashScope shown)
+export LLM_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode/v1"
+export LLM_API_KEY="sk-..."
+export LLM_MODEL="qwen-plus"
+
+# 2) Fetch today's latest issue and let the LLM generate concise + full scripts
+python scripts/generate_broadcast.py
+
+# Target a date / only one version
+python scripts/generate_broadcast.py --date 2026-06-02 --modes concise
+
+# Fetch + parse only, dump the raw material (no LLM call)
+python scripts/generate_broadcast.py --dump-raw
+```
+
+How `scripts/generate_broadcast.py` works:
+
+1. Locate the day's **article detail pages** from each source's homepage and parse them into clean raw material (full stories / quick briefs / papers / observation).
+2. Hand the raw material to the LLM, which rewrites it into natural, conversational, TTS-friendly scripts (spoken-form numbers/dates, English tech terms preserved, intro & outro added).
+
+Outputs:
+
+- `samples/source-<date>.md` — raw material from `--dump-raw` (the LLM input).
+- `samples/broadcast-<date>-concise.md` — **concise** (~3 min): headlines + paper highlights.
+- `samples/broadcast-<date>-full.md` — **full**: full stories + quick briefs + per-paper detail + further reading + daily observation.
+
+> LLM config via env vars: `LLM_BASE_URL`, `LLM_API_KEY` (falls back to `OPENAI_API_KEY`), `LLM_MODEL`.
+
+## Pipeline
 
 ```
  fetch  →  clean / dedupe  →  script  →  TTS synthesize  →  publish / subscribe
@@ -107,13 +177,13 @@ Content is drawn from two high-quality, primary-source-first, no-hype Chinese AI
 
 ## Status
 
-🚧 **Early development.** The repo is at an initialization stage; this README describes goals and plans — features are not yet implemented.
+🚧 **Early development.** Fetch → parse → script generation works (see `scripts/generate_broadcast.py`); TTS synthesis and distribution are still being built.
 
 ## Roadmap
 
-- [ ] Source fetching (ai-digest / ai-brief)
-- [ ] Content parsing & structuring
-- [ ] Broadcast script generation
+- [x] Source fetching (ai-digest / ai-brief detail pages)
+- [x] Content parsing & structuring
+- [x] LLM-based script rewriting (concise + full, OpenAI-compatible)
 - [ ] TTS engine selection (Qwen3 TTS vs. Doubao Seed TTS 2.0)
 - [ ] TTS audio synthesis
 - [ ] Scheduled automation
