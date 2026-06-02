@@ -1,0 +1,15 @@
+# 音频产物 / 样本（体积大、含个人声音，不入库）
+audio_output/
+*.mp3
+*.wav
+
+# 调试用的接口响应
+*.jsonl
+
+# 密钥
+key.txt
+.env
+
+# Python
+__pycache__/
+*.pyc
