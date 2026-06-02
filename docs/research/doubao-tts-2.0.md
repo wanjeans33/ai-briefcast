@@ -74,6 +74,34 @@ X-Api-Resource-Id: <见下表>
 - [ ] 实测情感指令对播报语气的可控程度与延迟
 - [ ] 对比当前 `audio_output` 链路的成本/音质
 
+## 5b. 实测打通记录（2026-06-02）
+
+用一个 API Key（`x-api-key` 鉴权）+ appid 实测，**已成功用复刻音色合成中文**。关键踩坑与结论：
+
+### 复刻训练
+- 端点 `POST /api/v1/mega_tts/audio/upload`，header `x-api-key` + `Resource-Id`
+- **`x-api-key` 鉴权会自动带出 appid**，body 里**不需要** appid（用 `Authorization: Bearer` 反而要 appid）
+- body：`{speaker_id, audios:[{audio_bytes(base64), audio_format}], source:2, language:0, model_type}`
+- **`model_type` 决定引擎版本**：实测 `0→V3`、`1→V2`、`4→V5`。要走 `seed-icl-2.0` 合成，训练时用 **`model_type=4` + `Resource-Id: seed-icl-2.0`**（两边产品线必须一致，否则合成报 `InvalidModelType`）
+- 训练异步，用 `POST /api/v1/mega_tts/status` 查 `status`（2=成功），返回里带 `demo_audio` 可试听
+
+### 合成（关键：必须走 WebSocket 双向流式）
+- ❌ `POST /api/v3/tts/unidirectional`（HTTP）：鉴权过、文本能解析，但**始终返回空音频**，不可用
+- ❌ `POST /api/v1/tts`（老接口 `volcano_icl`）：V2/V3 音色中文报 `unsupported language`
+- ✅ **`wss://openspeech.bytedance.com/api/v3/tts/bidirection`** ← 注意是 `bidirection`（无 `al`），`/bidirectional` 会 404
+  - 握手 header：`x-api-key` + `X-Api-App-Id`(appid) + `X-Api-Resource-Id: seed-icl-2.0` + `X-Api-Connect-Id`
+  - （`X-Api-Access-Key` 那套对这个 API Key 会 401，必须用 `x-api-key`）
+
+### v3 二进制协议（事件流）
+4 字节头 `[0x11][0x14][0x10][0x00]` + `event(int32)` + `[len+sessionId]` + `[len+payload(JSON)]`。
+流程：`StartConnection(1)→收 ConnectionStarted(50)→StartSession(100, req_params)→收 SessionStarted(150)→TaskRequest(200, text)→FinishSession(102)→收 TTSSentenceStart(350)/音频帧(msg_type 0xb, event 352)/TTSSentenceEnd(351)/SessionFinished(152)→FinishConnection(2)`。
+
+可用脚本见 [`scripts/doubao_tts_ws.py`](../../scripts/doubao_tts_ws.py)，密钥从环境变量读：
+```
+set VOLC_APP_ID=...   set VOLC_API_KEY=...   set VOLC_SPEAKER=S_xxx
+python scripts/doubao_tts_ws.py "要合成的文本" out.mp3
+```
+
 ## 来源
 - [火山引擎发布豆包语音模型2.0（品玩）](https://www.pingwest.com/w/308310)
 - [豆包语音2.0 模型介绍（AI工具集）](https://ai-bot.cn/doubao-seed-tts-2-0/)
