@@ -71,6 +71,50 @@ python scripts/generate_broadcast.py --dump-raw
 
 > LLM 配置走环境变量：`LLM_BASE_URL`、`LLM_API_KEY`（缺省回退 `OPENAI_API_KEY`）、`LLM_MODEL`。
 
+## 每日自动化（固定流程）
+
+`scripts/run_daily.py` 把整条链路**固定成一条命令**，可由定时任务每天自动跑：
+
+```
+抓取/解析(Python) → pi agent + DeepSeek 改写 → 豆包 TTS 合成 MP3
+```
+
+**1. 准备凭据**：复制 `.env.example` 为 `.env`，填入：
+
+```dotenv
+DEEPSEEK_API_KEY=sk-...                 # pi 的 DeepSeek provider
+VOLC_APP_ID=... / VOLC_API_KEY=... / VOLC_SPEAKER=S_...   # 豆包 TTS
+```
+
+**2. 安装 pi 并注册 DeepSeek provider**（[pi.dev](https://pi.dev)，一次性）：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\setup_pi.ps1
+```
+
+该脚本会 `npm i -g @earendil-works/pi-coding-agent`，并把 `automation/pi-extensions/deepseek-provider.mjs` 安装到 `~/.pi/extensions/`。pi 在 `automation/.pi/settings.json` 里默认选用 `deepseek` / `deepseek-chat`。
+
+**3. 跑一次 / 排错**：
+
+```bash
+python scripts/run_daily.py --dry-run     # 只抓取并打印计划，不调用 pi/TTS
+python scripts/run_daily.py               # 完整跑：默认 pi 改写 + 豆包 TTS
+python scripts/run_daily.py --llm api      # 改用 OpenAI 兼容直连（用 DEEPSEEK_API_KEY）
+python scripts/run_daily.py --tts none     # 只出文稿，不合成音频
+```
+
+产物：`samples/source-<日期>.md`、`samples/broadcast-<日期>-{concise,full}.md`、`audio_output/broadcast-<日期>-{concise,full}.mp3`（音频与 `logs/` 均已 gitignore）。前置条件缺失时会**优雅降级**：仅产出能产出的部分并在 `logs/run-<日期>.log` 记录原因。
+
+**4. 注册每日定时任务**（Windows 计划任务）：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\register_daily_task.ps1 -Time 08:00
+# 手动触发测试： schtasks /run /tn AI-Briefcast-Daily
+# 删除：        powershell -File scripts\register_daily_task.ps1 -Remove
+```
+
+> Linux/macOS 可改用 cron 直接调度 `python scripts/run_daily.py`。
+
 ## 技术选型
 
 - **TTS 引擎（评估中）**：在以下方案之间选择 ——
@@ -80,16 +124,15 @@ python scripts/generate_broadcast.py --dump-raw
 
 ## 项目状态
 
-🚧 **早期开发中。** 抓取 → 解析 → 播报稿生成已跑通（见 `scripts/generate_broadcast.py`），TTS 合成与分发仍在建设中。
+🚧 **早期开发中。** 抓取 → 改写 → TTS → 定时任务的端到端流程已固定（见 `scripts/run_daily.py`），分发仍在建设中。
 
 ## 路线图
 
 - [x] 来源抓取（ai-digest / ai-brief 详情子页面）
 - [x] 内容解析与结构化
-- [x] LLM 改写生成播报稿（简洁版 + 完整版，OpenAI 兼容）
-- [ ] TTS 引擎选型（Qwen3 TTS vs. Doubao Seed TTS 2.0）
-- [ ] TTS 音频合成
-- [ ] 自动化定时任务
+- [x] LLM 改写生成播报稿（pi agent + DeepSeek；亦支持 OpenAI 兼容直连）
+- [x] TTS 音频合成（豆包 Seed TTS 2.0 / Qwen3 TTS 两套方案）
+- [x] 端到端编排 + 每日定时任务（`run_daily.py` + 计划任务）
 - [ ] RSS / 播客分发
 
 ## 许可证
@@ -162,6 +205,45 @@ Outputs:
 
 > LLM config via env vars: `LLM_BASE_URL`, `LLM_API_KEY` (falls back to `OPENAI_API_KEY`), `LLM_MODEL`.
 
+## Daily Automation (fixed pipeline)
+
+`scripts/run_daily.py` wires the whole chain into **one command**, ready to be scheduled:
+
+```
+fetch/parse (Python) → rewrite (pi agent + DeepSeek) → TTS (Doubao) → MP3
+```
+
+**1. Credentials** — copy `.env.example` to `.env` and fill in `DEEPSEEK_API_KEY` (for pi's DeepSeek provider) and `VOLC_APP_ID` / `VOLC_API_KEY` / `VOLC_SPEAKER` (Doubao TTS).
+
+**2. Install pi + DeepSeek provider** ([pi.dev](https://pi.dev), one-time):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\setup_pi.ps1
+```
+
+Installs `@earendil-works/pi-coding-agent` and the provider extension into `~/.pi/extensions/`; pi defaults to `deepseek` / `deepseek-chat` via `automation/.pi/settings.json`.
+
+**3. Run / debug**:
+
+```bash
+python scripts/run_daily.py --dry-run    # fetch + print plan only
+python scripts/run_daily.py              # full run: pi rewrite + Doubao TTS
+python scripts/run_daily.py --llm api     # OpenAI-compatible direct (uses DEEPSEEK_API_KEY)
+python scripts/run_daily.py --tts none    # scripts only, no audio
+```
+
+Outputs: `samples/source-<date>.md`, `samples/broadcast-<date>-{concise,full}.md`, `audio_output/broadcast-<date>-{concise,full}.mp3` (audio and `logs/` are gitignored). Missing prerequisites degrade gracefully and are logged to `logs/run-<date>.log`.
+
+**4. Schedule it** (Windows Task Scheduler):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\register_daily_task.ps1 -Time 08:00
+# test now: schtasks /run /tn AI-Briefcast-Daily
+# remove:   powershell -File scripts\register_daily_task.ps1 -Remove
+```
+
+> On Linux/macOS, schedule `python scripts/run_daily.py` with cron instead.
+
 ## Pipeline
 
 ```
@@ -177,16 +259,15 @@ Outputs:
 
 ## Status
 
-🚧 **Early development.** Fetch → parse → script generation works (see `scripts/generate_broadcast.py`); TTS synthesis and distribution are still being built.
+🚧 **Early development.** The fetch → rewrite → TTS → schedule pipeline is wired end to end (see `scripts/run_daily.py`); distribution is still being built.
 
 ## Roadmap
 
 - [x] Source fetching (ai-digest / ai-brief detail pages)
 - [x] Content parsing & structuring
-- [x] LLM-based script rewriting (concise + full, OpenAI-compatible)
-- [ ] TTS engine selection (Qwen3 TTS vs. Doubao Seed TTS 2.0)
-- [ ] TTS audio synthesis
-- [ ] Scheduled automation
+- [x] LLM-based script rewriting (pi agent + DeepSeek; OpenAI-compatible direct also supported)
+- [x] TTS audio synthesis (Doubao Seed TTS 2.0 / Qwen3 TTS)
+- [x] End-to-end orchestration + daily scheduled task (`run_daily.py` + Task Scheduler)
 - [ ] RSS / podcast distribution
 
 ## License

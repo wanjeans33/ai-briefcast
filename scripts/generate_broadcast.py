@@ -32,6 +32,8 @@ from __future__ import annotations
 import argparse
 import os
 import re
+import shutil
+import subprocess
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -306,6 +308,19 @@ FULL_INSTRUCTION = (
 )
 
 
+def build_user_prompt(source_text: str, mode: str) -> str:
+    instruction = CONCISE_INSTRUCTION if mode == "concise" else FULL_INSTRUCTION
+    return f"{instruction}\n\n以下是今天的原始新闻素材：\n\n{source_text}"
+
+
+def rewrite(source_text: str, mode: str, *, backend: str = "api",
+            model: str | None = None) -> str:
+    """改写分发：backend = 'pi'（pi agent + DeepSeek）或 'api'（OpenAI 兼容直连）。"""
+    if backend == "pi":
+        return rewrite_via_pi(source_text, mode)
+    return rewrite_with_llm(source_text, mode, model=model)
+
+
 def rewrite_with_llm(source_text: str, mode: str, *, model: str | None = None) -> str:
     """调用 OpenAI 兼容接口，把原始素材改写成播报稿。"""
     try:
@@ -322,25 +337,55 @@ def rewrite_with_llm(source_text: str, mode: str, *, model: str | None = None) -
         raise SystemExit("未设置 LLM_MODEL，例如 qwen-plus / deepseek-chat / gpt-4o-mini。")
 
     client = OpenAI(base_url=base_url, api_key=api_key)  # base_url=None 时走官方 OpenAI
-    instruction = CONCISE_INSTRUCTION if mode == "concise" else FULL_INSTRUCTION
-    user_prompt = f"{instruction}\n\n以下是今天的原始新闻素材：\n\n{source_text}"
-
     resp = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
+            {"role": "user", "content": build_user_prompt(source_text, mode)},
         ],
         temperature=0.6,
     )
     return resp.choices[0].message.content.strip()
 
 
-def wrap_header(kind: str, date: str, model: str | None) -> str:
-    model_note = f"，模型 {model}" if model else ""
+# pi agent 的工作目录：含 .pi/settings.json（默认 provider/model 指向 deepseek）
+PI_WORKSPACE = Path(__file__).resolve().parent.parent / "automation"
+
+
+def rewrite_via_pi(source_text: str, mode: str, *, workspace: Path | None = None) -> str:
+    """通过 pi（https://pi.dev）+ DeepSeek 改写。
+
+    需要：已安装 pi（npm i -g @earendil-works/pi-coding-agent）、已安装 deepseek
+    provider 扩展、且环境变量含 DEEPSEEK_API_KEY。模型在 automation/.pi/settings.json
+    里通过 defaultProvider/defaultModel 选定。
+    """
+    pi_bin = shutil.which("pi")
+    if not pi_bin:
+        raise SystemExit("未找到 pi 命令，请先安装：npm i -g @earendil-works/pi-coding-agent "
+                         "（或运行 scripts/setup_pi.ps1）。")
+    if not os.getenv("DEEPSEEK_API_KEY"):
+        raise SystemExit("未设置 DEEPSEEK_API_KEY（pi 的 deepseek provider 需要它）。")
+
+    ws = workspace or PI_WORKSPACE
+    # 一次性、纯文本改写任务：系统说明 + 指令 + 素材，全部塞进单条 prompt。
+    prompt = (f"{SYSTEM_PROMPT}\n\n{build_user_prompt(source_text, mode)}\n\n"
+              "（只输出可朗读的播报稿正文本身，不要任何解释、前后缀或 Markdown 代码块。）")
+    proc = subprocess.run(
+        [pi_bin, "-p", prompt],
+        cwd=str(ws), capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc.returncode != 0:
+        raise SystemExit(f"pi 调用失败（exit {proc.returncode}）：\n{proc.stderr[-800:]}")
+    out = (proc.stdout or "").strip()
+    if not out:
+        raise SystemExit(f"pi 没有返回内容。stderr：\n{proc.stderr[-800:]}")
+    return out
+
+
+def wrap_header(kind: str, date: str, rewriter: str) -> str:
     return (
         f"# AI Briefcast 播报稿（{kind}）· {date}\n\n"
-        f"> 抓取：Python + BeautifulSoup；改写：LLM{model_note}。\n"
+        f"> 抓取：Python + BeautifulSoup；改写：{rewriter}。\n"
         f"> 来源：AI 资讯速览 <{DIGEST_HOME}>，AI 论文简报 <{BRIEF_HOME}>。\n"
         f"> 文稿为 TTS 输入草稿，建议合成前人工快速校对。\n\n---\n\n"
     )
@@ -355,7 +400,9 @@ def main() -> int:
     ap.add_argument("--outdir", default="samples", help="输出目录（默认 samples）")
     ap.add_argument("--modes", default="concise,full",
                     help="要生成的版本，逗号分隔：concise,full（默认两者）")
-    ap.add_argument("--model", help="覆盖 LLM_MODEL")
+    ap.add_argument("--llm", choices=["pi", "api"], default="api",
+                    help="改写后端：pi（pi agent + DeepSeek）或 api（OpenAI 兼容直连）")
+    ap.add_argument("--model", help="覆盖 LLM_MODEL（仅 --llm api 生效）")
     ap.add_argument("--dump-raw", action="store_true",
                     help="只抓取+解析，输出原始素材（不调用 LLM）")
     args = ap.parse_args()
@@ -383,15 +430,17 @@ def main() -> int:
         return 0
 
     model = args.model or os.getenv("LLM_MODEL")
+    rewriter = ("pi agent + DeepSeek" if args.llm == "pi"
+                else f"LLM（OpenAI 兼容{('，模型 ' + model) if model else ''}）")
     modes = [m.strip() for m in args.modes.split(",") if m.strip()]
     for mode in modes:
         if mode not in ("concise", "full"):
             print(f"[skip] 未知版本：{mode}")
             continue
-        print(f"[llm ] 生成{mode}版 …")
-        script = rewrite_with_llm(source_text, mode, model=model)
+        print(f"[llm ] 生成{mode}版（{args.llm}）…")
+        script = rewrite(source_text, mode, backend=args.llm, model=model)
         kind = "简洁版" if mode == "concise" else "完整版"
-        content = wrap_header(kind, date, model) + script + "\n"
+        content = wrap_header(kind, date, rewriter) + script + "\n"
         path = outdir / f"broadcast-{date}-{mode}.md"
         path.write_text(content, encoding="utf-8")
         print(f"[write] {path}  ({len(content)} chars)")
