@@ -352,6 +352,24 @@ def rewrite_with_llm(source_text: str, mode: str, *, model: str | None = None) -
 PI_WORKSPACE = Path(__file__).resolve().parent.parent / "automation"
 
 
+def _pi_command() -> list[str]:
+    """返回调用 pi 的命令前缀。
+
+    优先直接用 `node dist/cli.js` 绕过 Windows 的 pi.cmd 批处理封装——经由 cmd.exe
+    传多行参数会在第一个换行处被截断，导致 pi 收不到完整 prompt。
+    """
+    pi_bin = shutil.which("pi")
+    if not pi_bin:
+        raise SystemExit("未找到 pi 命令，请先安装：npm i -g @earendil-works/pi-coding-agent "
+                         "（或运行 scripts/setup_pi.ps1）。")
+    node = shutil.which("node")
+    cli = (Path(pi_bin).resolve().parent / "node_modules" / "@earendil-works"
+           / "pi-coding-agent" / "dist" / "cli.js")
+    if node and cli.exists():
+        return [node, str(cli)]
+    return [pi_bin]  # 退化：直接用 shim（注意多行 prompt 在 Windows 上可能被截断）
+
+
 def rewrite_via_pi(source_text: str, mode: str, *, workspace: Path | None = None) -> str:
     """通过 pi（https://pi.dev）+ DeepSeek 改写。
 
@@ -359,10 +377,6 @@ def rewrite_via_pi(source_text: str, mode: str, *, workspace: Path | None = None
     provider 扩展、且环境变量含 DEEPSEEK_API_KEY。模型在 automation/.pi/settings.json
     里通过 defaultProvider/defaultModel 选定。
     """
-    pi_bin = shutil.which("pi")
-    if not pi_bin:
-        raise SystemExit("未找到 pi 命令，请先安装：npm i -g @earendil-works/pi-coding-agent "
-                         "（或运行 scripts/setup_pi.ps1）。")
     if not os.getenv("DEEPSEEK_API_KEY"):
         raise SystemExit("未设置 DEEPSEEK_API_KEY（pi 的 deepseek provider 需要它）。")
 
@@ -371,7 +385,7 @@ def rewrite_via_pi(source_text: str, mode: str, *, workspace: Path | None = None
     prompt = (f"{SYSTEM_PROMPT}\n\n{build_user_prompt(source_text, mode)}\n\n"
               "（只输出可朗读的播报稿正文本身，不要任何解释、前后缀或 Markdown 代码块。）")
     proc = subprocess.run(
-        [pi_bin, "-p", prompt],
+        _pi_command() + ["-p", prompt],
         cwd=str(ws), capture_output=True, text=True, encoding="utf-8",
     )
     if proc.returncode != 0:
