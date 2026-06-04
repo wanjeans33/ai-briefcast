@@ -101,7 +101,10 @@ python scripts/run_daily.py --dry-run     # 只抓取并打印计划，不调用
 python scripts/run_daily.py               # 完整跑：默认 pi 改写 + 豆包 TTS
 python scripts/run_daily.py --llm api      # 改用 OpenAI 兼容直连（用 DEEPSEEK_API_KEY）
 python scripts/run_daily.py --tts none     # 只出文稿，不合成音频
+python scripts/run_daily.py --tts-only "--audio-suffix=-myvoice"  # 不重写，仅对已有稿重合成音频
 ```
+
+**音色**：豆包合成默认优先用 `VOLC_SPEAKER2`（你的克隆音色 / 声音复刻），没有才回退 `VOLC_SPEAKER`——所以每日播报就是你的声音。也可临时 `--doubao-speaker S_xxxx`。`--audio-suffix` 另存对比版（如 `-myvoice`），不覆盖原文件（以 `-` 开头的值需用 `=` 形式传入）。
 
 产物：`samples/source-<日期>.md`、`samples/broadcast-<日期>-{concise,full}.md`、`audio_output/broadcast-<日期>-{concise,full}.mp3`（音频与 `logs/` 均已 gitignore）。前置条件缺失时会**优雅降级**：仅产出能产出的部分并在 `logs/run-<日期>.log` 记录原因。
 
@@ -230,7 +233,10 @@ python scripts/run_daily.py --dry-run    # fetch + print plan only
 python scripts/run_daily.py              # full run: pi rewrite + Doubao TTS
 python scripts/run_daily.py --llm api     # OpenAI-compatible direct (uses DEEPSEEK_API_KEY)
 python scripts/run_daily.py --tts none    # scripts only, no audio
+python scripts/run_daily.py --tts-only "--audio-suffix=-myvoice"  # re-synthesize existing scripts only
 ```
+
+**Voice**: Doubao synthesis prefers `VOLC_SPEAKER2` (your cloned voice) and falls back to `VOLC_SPEAKER`, so the daily broadcast is in your own voice. Override per-run with `--doubao-speaker S_xxxx`. Use `--audio-suffix` (e.g. `-myvoice`) to save a comparison copy without overwriting (pass `-`-leading values with the `=` form).
 
 Outputs: `samples/source-<date>.md`, `samples/broadcast-<date>-{concise,full}.md`, `audio_output/broadcast-<date>-{concise,full}.mp3` (audio and `logs/` are gitignored). Missing prerequisites degrade gracefully and are logged to `logs/run-<date>.log`.
 

@@ -73,11 +73,14 @@ def strip_header(md: str) -> str:
     return md.split(marker, 1)[1].strip() if marker in md else md.strip()
 
 
-def run_tts(text: str, out_path: Path, log: Logger) -> bool:
+def run_tts(text: str, out_path: Path, log: Logger, speaker: str | None = None) -> bool:
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    env = os.environ.copy()
+    if speaker:
+        env["VOLC_SPEAKER"] = speaker  # 用所选音色覆盖 doubao 脚本读取的 speaker
     proc = subprocess.run(
         [sys.executable, str(DOUBAO), text, str(out_path)],
-        cwd=str(REPO_ROOT), capture_output=True, text=True, encoding="utf-8",
+        cwd=str(REPO_ROOT), capture_output=True, text=True, encoding="utf-8", env=env,
     )
     tail = (proc.stdout or "").strip().splitlines()[-1:] or [""]
     if proc.returncode == 0 and out_path.exists() and out_path.stat().st_size > 0:
@@ -95,6 +98,12 @@ def main() -> int:
                     help="改写后端：pi（pi agent + DeepSeek，默认）或 api（OpenAI 兼容直连）")
     ap.add_argument("--tts", choices=["doubao", "none"], default="doubao",
                     help="TTS 后端：doubao（默认）或 none（只出文稿）")
+    ap.add_argument("--doubao-speaker",
+                    help="豆包音色 ID；缺省优先用 VOLC_SPEAKER2（你的克隆音色），再回退 VOLC_SPEAKER")
+    ap.add_argument("--audio-suffix", default="",
+                    help="音频文件名后缀，如 -myvoice（便于和其他音色对比，不覆盖）")
+    ap.add_argument("--tts-only", action="store_true",
+                    help="跳过改写，直接对已存在的 broadcast-<日期>-<mode>.md 重新合成音频")
     ap.add_argument("--outdir", default="samples", help="文稿输出目录")
     ap.add_argument("--audio-dir", default="audio_output", help="音频输出目录")
     ap.add_argument("--dry-run", action="store_true", help="只打印计划，不调用 pi/TTS")
@@ -107,6 +116,9 @@ def main() -> int:
         os.environ.setdefault("LLM_BASE_URL", "https://api.deepseek.com")
         os.environ.setdefault("LLM_MODEL", "deepseek-chat")
         os.environ.setdefault("LLM_API_KEY", os.environ["DEEPSEEK_API_KEY"])
+
+    # 音色：优先命令行，其次 VOLC_SPEAKER2（你的克隆音色），最后回退 VOLC_SPEAKER
+    speaker = args.doubao_speaker or os.getenv("VOLC_SPEAKER2") or os.getenv("VOLC_SPEAKER")
 
     modes = [m.strip() for m in args.modes.split(",") if m.strip() in ("concise", "full")]
     outdir = REPO_ROOT / args.outdir
@@ -122,6 +134,7 @@ def main() -> int:
 
     log = Logger(REPO_ROOT / "logs" / f"run-{date}.log")
     log(f"==== AI Briefcast 每日流程 · {date} | llm={args.llm} tts={args.tts}"
+        f" voice={speaker or '-'}{' tts-only' if args.tts_only else ''}"
         f"{' (dry-run)' if args.dry_run else ''} ====")
     log(f"[fetch] digest: {digest_url}")
     log(f"[fetch] brief : {brief_url}")
@@ -136,7 +149,7 @@ def main() -> int:
 
     # ---- 预检 ---------------------------------------------------------------
     import shutil
-    if args.llm == "pi":
+    if args.llm == "pi" and not args.tts_only:
         miss = []
         if not shutil.which("pi"):
             miss.append("pi 命令（npm i -g @earendil-works/pi-coding-agent / setup_pi.ps1）")
@@ -148,9 +161,9 @@ def main() -> int:
                 log("[warn] 已仅产出原始素材后退出（请运行 setup_pi.ps1 并配置 .env）。")
                 log.close()
                 return 2
-    if args.tts == "doubao" and not all(os.getenv(k) for k in
-                                        ("VOLC_APP_ID", "VOLC_API_KEY", "VOLC_SPEAKER")):
-        log("[warn] 豆包 TTS 凭据缺失（VOLC_*）：实际运行时将跳过音频合成、只产出文稿。")
+    if args.tts == "doubao" and not (os.getenv("VOLC_APP_ID")
+                                     and os.getenv("VOLC_API_KEY") and speaker):
+        log("[warn] 豆包 TTS 凭据/音色缺失（VOLC_APP_ID/VOLC_API_KEY/音色）：将跳过音频合成。")
         if not args.dry_run:
             args.tts = "none"
 
@@ -160,25 +173,33 @@ def main() -> int:
     for mode in modes:
         kind = "简洁版" if mode == "concise" else "完整版"
         md_path = outdir / f"broadcast-{date}-{mode}.md"
-        mp3_path = audio_dir / f"broadcast-{date}-{mode}.mp3"
+        mp3_path = audio_dir / f"broadcast-{date}-{mode}{args.audio_suffix}.mp3"
 
         if args.dry_run:
-            log(f"[plan] {kind}: rewrite({args.llm}) → {md_path}"
-                + ("" if args.tts == "none" else f"  →  tts({args.tts}) → {mp3_path}"))
+            action = "tts-only(已有稿)" if args.tts_only else f"rewrite({args.llm})"
+            log(f"[plan] {kind}: {action} → {md_path}"
+                + ("" if args.tts == "none" else f"  →  tts({args.tts},{speaker}) → {mp3_path}"))
             continue
 
-        log(f"[llm ] 生成{kind}（{args.llm}）…")
-        try:
-            script = gb.rewrite(source_text, mode, backend=args.llm)
-        except SystemExit as e:
-            log(f"[err ] {kind}改写失败：{e}")
-            continue
-        content = gb.wrap_header(kind, date, rewriter) + script + "\n"
-        md_path.write_text(content, encoding="utf-8")
-        log(f"[write] {md_path}（正文 {len(script)} chars）")
+        if args.tts_only:
+            if not md_path.exists():
+                log(f"[err ] {kind}：未找到已有文稿 {md_path}，跳过。")
+                continue
+            content = md_path.read_text(encoding="utf-8")
+            log(f"[skip] {kind}：复用已有文稿 {md_path}")
+        else:
+            log(f"[llm ] 生成{kind}（{args.llm}）…")
+            try:
+                script = gb.rewrite(source_text, mode, backend=args.llm)
+            except SystemExit as e:
+                log(f"[err ] {kind}改写失败：{e}")
+                continue
+            content = gb.wrap_header(kind, date, rewriter) + script + "\n"
+            md_path.write_text(content, encoding="utf-8")
+            log(f"[write] {md_path}（正文 {len(script)} chars）")
 
         if args.tts == "doubao":
-            run_tts(strip_header(content), mp3_path, log)
+            run_tts(strip_header(content), mp3_path, log, speaker=speaker)
 
     log("==== 完成 ====")
     log.close()
