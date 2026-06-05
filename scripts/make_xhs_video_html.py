@@ -54,7 +54,7 @@ CARDS = [
      "hero": '工具不在多，<br/><span class="hl">每天看一条</span><br/>才跟得上。',
      "tags": ["关注", "收藏", "分享"]},
 ]
-DURS = [7, 28, 27, 28, 11, 7]   # 显示时长（秒），最后一张会按音频长度微调
+WEIGHTS = [7, 28, 27, 28, 11, 5]   # 各卡相对旁白时长（权重），按音频总长等比缩放
 XFADE = 0.7
 
 CSS = """
@@ -167,8 +167,9 @@ def main():
     args = ap.parse_args()
 
     a = av.open(args.audio); alen = a.duration / 1e6; a.close()
-    durs = list(DURS)
-    durs[-1] = max(2.0, alen + (len(CARDS) - 1) * XFADE - sum(durs[:-1]))
+    total = alen + (len(CARDS) - 1) * XFADE   # xfade 会吃掉重叠，补回来让成片≈音频
+    s = sum(WEIGHTS)
+    durs = [w / s * total for w in WEIGHTS]
     print(f"[plan] 音频 {alen:.1f}s, xfade {XFADE}s, 时长 {['%.1f'%d for d in durs]}")
 
     pngs = render_cards(Path("assets/xhs_cards_html"))
