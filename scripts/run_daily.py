@@ -37,6 +37,8 @@ import generate_broadcast as gb  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOUBAO = REPO_ROOT / "scripts" / "doubao_tts_ws.py"
+QWEN = REPO_ROOT / "scripts" / "qwen_tts" / "broadcast_tts.py"
+QWEN_REF = REPO_ROOT / "scripts" / "qwen_tts" / "my_voice3.wav"
 
 
 def load_dotenv(repo_root: Path) -> None:
@@ -90,14 +92,28 @@ def run_tts(text: str, out_path: Path, log: Logger, speaker: str | None = None) 
     return False
 
 
+def run_qwen(md_path: Path, out_path: Path, suffix: str, log: Logger) -> bool:
+    """用 qwen_tts/broadcast_tts.py（本地 GPU，克隆音色 my_voice3）合成。"""
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    proc = subprocess.run(
+        [sys.executable, str(QWEN), str(md_path), suffix or "-myvoice"],
+        cwd=str(REPO_ROOT), capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc.returncode == 0 and out_path.exists() and out_path.stat().st_size > 0:
+        log(f"[tts ] qwen 合成成功 → {out_path}（{out_path.stat().st_size} bytes）")
+        return True
+    log(f"[tts ] qwen 合成失败：stderr: {(proc.stderr or '')[-300:]}")
+    return False
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="AI Briefcast 每日全流程编排")
     ap.add_argument("--date", help="指定日期 YYYY-MM-DD（默认取各站最新一期）")
     ap.add_argument("--modes", default="concise,full", help="逗号分隔：concise,full")
     ap.add_argument("--llm", choices=["pi", "api"], default="pi",
                     help="改写后端：pi（pi agent + DeepSeek，默认）或 api（OpenAI 兼容直连）")
-    ap.add_argument("--tts", choices=["doubao", "none"], default="doubao",
-                    help="TTS 后端：doubao（默认）或 none（只出文稿）")
+    ap.add_argument("--tts", choices=["doubao", "qwen", "none"], default="doubao",
+                    help="TTS 后端：doubao（默认，网络）/ qwen（本地 GPU 克隆音色）/ none")
     ap.add_argument("--doubao-speaker",
                     help="豆包音色 ID；缺省优先用 VOLC_SPEAKER2（你的克隆音色），再回退 VOLC_SPEAKER")
     ap.add_argument("--audio-suffix", default="",
@@ -134,7 +150,7 @@ def main() -> int:
 
     log = Logger(REPO_ROOT / "logs" / f"run-{date}.log")
     log(f"==== AI Briefcast 每日流程 · {date} | llm={args.llm} tts={args.tts}"
-        f" voice={speaker or '-'}{' tts-only' if args.tts_only else ''}"
+        f"{' tts-only' if args.tts_only else ''}"
         f"{' (dry-run)' if args.dry_run else ''} ====")
     log(f"[fetch] digest: {digest_url}")
     log(f"[fetch] brief : {brief_url}")
@@ -166,19 +182,27 @@ def main() -> int:
         log("[warn] 豆包 TTS 凭据/音色缺失（VOLC_APP_ID/VOLC_API_KEY/音色）：将跳过音频合成。")
         if not args.dry_run:
             args.tts = "none"
+    if args.tts == "qwen" and not QWEN_REF.exists():
+        log(f"[warn] qwen 参考音色缺失：{QWEN_REF}（用 qwen_tts/make_ref.py 生成）：将跳过音频合成。")
+        if not args.dry_run:
+            args.tts = "none"
 
     rewriter = "pi agent + DeepSeek" if args.llm == "pi" else "LLM（OpenAI 兼容）"
+    # qwen 默认带 -myvoice 后缀（克隆音色），doubao 用命令行后缀（默认无）
+    eff_suffix = (args.audio_suffix or "-myvoice") if args.tts == "qwen" else args.audio_suffix
+    voice_label = ("qwen:my_voice3" if args.tts == "qwen"
+                   else (speaker or "-") if args.tts == "doubao" else "-")
 
     # ---- 3) 改写 + 4) TTS ---------------------------------------------------
     for mode in modes:
         kind = "简洁版" if mode == "concise" else "完整版"
         md_path = outdir / f"broadcast-{date}-{mode}.md"
-        mp3_path = audio_dir / f"broadcast-{date}-{mode}{args.audio_suffix}.mp3"
+        mp3_path = audio_dir / f"broadcast-{date}-{mode}{eff_suffix}.mp3"
 
         if args.dry_run:
             action = "tts-only(已有稿)" if args.tts_only else f"rewrite({args.llm})"
             log(f"[plan] {kind}: {action} → {md_path}"
-                + ("" if args.tts == "none" else f"  →  tts({args.tts},{speaker}) → {mp3_path}"))
+                + ("" if args.tts == "none" else f"  →  tts({args.tts},{voice_label}) → {mp3_path}"))
             continue
 
         if args.tts_only:
@@ -200,6 +224,8 @@ def main() -> int:
 
         if args.tts == "doubao":
             run_tts(strip_header(content), mp3_path, log, speaker=speaker)
+        elif args.tts == "qwen":
+            run_qwen(md_path, mp3_path, eff_suffix, log)
 
     log("==== 完成 ====")
     log.close()

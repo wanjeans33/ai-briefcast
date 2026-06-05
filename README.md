@@ -106,6 +106,8 @@ python scripts/run_daily.py --tts-only "--audio-suffix=-myvoice"  # 不重写，
 
 **音色**：豆包合成默认优先用 `VOLC_SPEAKER2`（你的克隆音色 / 声音复刻），没有才回退 `VOLC_SPEAKER`——所以每日播报就是你的声音。也可临时 `--doubao-speaker S_xxxx`。`--audio-suffix` 另存对比版（如 `-myvoice`），不覆盖原文件（以 `-` 开头的值需用 `=` 形式传入）。
 
+另有 `--tts qwen`：用本地 GPU 的 [Qwen3‑TTS](https://github.com/QwenLM/Qwen3-TTS) 克隆音色合成（参考音 `scripts/qwen_tts/my_voice3.wav`，可用 `scripts/qwen_tts/make_ref.py` 从你的录音生成），产物带 `-myvoice` 后缀。豆包走网络、快且无需显卡；qwen 本地跑、需 GPU。
+
 产物：`samples/source-<日期>.md`、`samples/broadcast-<日期>-{concise,full}.md`、`audio_output/broadcast-<日期>-{concise,full}.mp3`（音频与 `logs/` 均已 gitignore）。前置条件缺失时会**优雅降级**：仅产出能产出的部分并在 `logs/run-<日期>.log` 记录原因。
 
 **4. 注册每日定时任务**（Windows 计划任务）：
@@ -237,6 +239,8 @@ python scripts/run_daily.py --tts-only "--audio-suffix=-myvoice"  # re-synthesiz
 ```
 
 **Voice**: Doubao synthesis prefers `VOLC_SPEAKER2` (your cloned voice) and falls back to `VOLC_SPEAKER`, so the daily broadcast is in your own voice. Override per-run with `--doubao-speaker S_xxxx`. Use `--audio-suffix` (e.g. `-myvoice`) to save a comparison copy without overwriting (pass `-`-leading values with the `=` form).
+
+There's also `--tts qwen`: synthesize with a local-GPU [Qwen3‑TTS](https://github.com/QwenLM/Qwen3-TTS) cloned voice (reference `scripts/qwen_tts/my_voice3.wav`, generate it from your recording via `scripts/qwen_tts/make_ref.py`); output gets a `-myvoice` suffix. Doubao is network-based and fast (no GPU); qwen runs locally and needs a GPU.
 
 Outputs: `samples/source-<date>.md`, `samples/broadcast-<date>-{concise,full}.md`, `audio_output/broadcast-<date>-{concise,full}.mp3` (audio and `logs/` are gitignored). Missing prerequisites degrade gracefully and are logged to `logs/run-<date>.log`.
 
