@@ -396,6 +396,65 @@ def rewrite_via_pi(source_text: str, mode: str, *, workspace: Path | None = None
     return out
 
 
+# --------------------------------------------------------------------------- #
+# 小红书卡片文案（供 make_xhs_video 用）
+# --------------------------------------------------------------------------- #
+CARDS_SYSTEM = (
+    "你是小红书图文卡片文案。把当天的 AI 播报素材改写成一组用于制作 9:16 竖屏卡片的内容，"
+    "严格只输出 JSON（不要任何解释、不要 Markdown 代码块）。"
+)
+CARDS_INSTRUCTION = (
+    "输出 JSON，结构为 {\"cards\":[...]}，共 6 张卡，顺序为：\n"
+    "1 张 cover + 4 张 point（对应 3 条行业头条 + 1 条论文）+ 1 张 cta。\n"
+    "字段：\n"
+    "- cover: {\"kind\":\"cover\",\"badge\":\"如 建议收藏 · 每日AI速览\",\"title\":\"≤10字主标题\",\"subtitle\":\"如 6月X日 · 3条头条+论文\"}\n"
+    "- point: {\"kind\":\"point\",\"tag\":\"如 头条 01 · 行业 / 论文 · 搜索Agent\",\"title\":\"≤10字\",\"body\":\"≤60字，口语化，用 **加粗** 标出关键数字/词\"}\n"
+    "- cta:  {\"kind\":\"cta\",\"title\":\"如 明天见\",\"subtitle\":\"一句话\",\"tags\":[\"关注\",\"收藏\",\"分享\"]}\n"
+    "要求：只用素材中的事实，不杜撰；公司/产品/模型等英文专有名词保留英文；"
+    "卡片是用来看的，数字可用阿拉伯数字；语言精炼、有网感。"
+)
+
+
+def _extract_json(text: str) -> dict:
+    import json
+    m = re.search(r"\{.*\}", text, re.S)
+    if not m:
+        raise ValueError(f"未从模型输出解析出 JSON：{text[:200]}")
+    return json.loads(m.group(0))
+
+
+def make_cards(source_text: str, *, backend: str = "api", model: str | None = None) -> list[dict]:
+    """用 LLM 把当天素材转成小红书卡片内容列表。"""
+    user = f"{CARDS_INSTRUCTION}\n\n以下是今天的原始新闻素材：\n\n{source_text}"
+    if backend == "pi":
+        prompt = f"{CARDS_SYSTEM}\n\n{user}"
+        proc = subprocess.run(_pi_command() + ["-p", prompt],
+                              cwd=str(PI_WORKSPACE), capture_output=True,
+                              text=True, encoding="utf-8")
+        if proc.returncode != 0:
+            raise SystemExit(f"pi 调用失败：{proc.stderr[-600:]}")
+        out = (proc.stdout or "").strip()
+    else:
+        try:
+            from openai import OpenAI
+        except ImportError as e:
+            raise SystemExit("缺少依赖 openai") from e
+        api_key = os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY")
+        model = model or os.getenv("LLM_MODEL")
+        if not (api_key and model):
+            raise SystemExit("未设置 LLM_API_KEY / LLM_MODEL")
+        client = OpenAI(base_url=os.getenv("LLM_BASE_URL"), api_key=api_key)
+        r = client.chat.completions.create(
+            model=model, temperature=0.5,
+            messages=[{"role": "system", "content": CARDS_SYSTEM},
+                      {"role": "user", "content": user}])
+        out = r.choices[0].message.content.strip()
+    cards = _extract_json(out).get("cards", [])
+    if not cards:
+        raise SystemExit("make_cards: 模型没有返回 cards")
+    return cards
+
+
 def wrap_header(kind: str, date: str, rewriter: str) -> str:
     return (
         f"# AI Briefcast 播报稿（{kind}）· {date}\n\n"

@@ -9,4 +9,4 @@ set "PYTHONIOENCODING=utf-8"
 set "REPO=%~dp0.."
 cd /d "%REPO%"
 if not exist "logs" mkdir "logs"
-python "%REPO%\scripts\run_daily.py" --modes concise %* >> "%REPO%\logs\task.log" 2>&1
+python "%REPO%\scripts\run_daily.py" --modes concise --video %* >> "%REPO%\logs\task.log" 2>&1

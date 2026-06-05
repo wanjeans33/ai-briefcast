@@ -120,6 +120,8 @@ def main() -> int:
                     help="音频文件名后缀，如 -myvoice（便于和其他音色对比，不覆盖）")
     ap.add_argument("--tts-only", action="store_true",
                     help="跳过改写，直接对已存在的 broadcast-<日期>-<mode>.md 重新合成音频")
+    ap.add_argument("--video", action="store_true",
+                    help="基于 concise 音频额外生成一支小红书竖屏视频（需 playwright + ffmpeg）")
     ap.add_argument("--outdir", default="samples", help="文稿输出目录")
     ap.add_argument("--audio-dir", default="audio_output", help="音频输出目录")
     ap.add_argument("--dry-run", action="store_true", help="只打印计划，不调用 pi/TTS")
@@ -194,6 +196,7 @@ def main() -> int:
                    else (speaker or "-") if args.tts == "doubao" else "-")
 
     # ---- 3) 改写 + 4) TTS ---------------------------------------------------
+    concise_audio = None
     for mode in modes:
         kind = "简洁版" if mode == "concise" else "完整版"
         md_path = outdir / f"broadcast-{date}-{mode}.md"
@@ -222,10 +225,34 @@ def main() -> int:
             md_path.write_text(content, encoding="utf-8")
             log(f"[write] {md_path}（正文 {len(script)} chars）")
 
+        ok = False
         if args.tts == "doubao":
-            run_tts(strip_header(content), mp3_path, log, speaker=speaker)
+            ok = run_tts(strip_header(content), mp3_path, log, speaker=speaker)
         elif args.tts == "qwen":
-            run_qwen(md_path, mp3_path, eff_suffix, log)
+            ok = run_qwen(md_path, mp3_path, eff_suffix, log)
+        if ok and mode == "concise":
+            concise_audio = mp3_path
+
+    # ---- 5) 小红书竖屏视频（基于 concise 音频）------------------------------
+    if concise_audio is None:  # tts=none 时回退到已存在的 concise 音频
+        cand = audio_dir / f"broadcast-{date}-concise{eff_suffix}.mp3"
+        concise_audio = cand if cand.exists() else None
+    if args.video and not args.dry_run and concise_audio and concise_audio.exists():
+        try:
+            import make_xhs_video_html as xhs
+            if not Path(xhs.FFMPEG).exists():
+                raise RuntimeError(f"未找到 ffmpeg：{xhs.FFMPEG}")
+            log("[video] 生成小红书卡片文案（LLM）…")
+            cards = gb.make_cards(source_text, backend=args.llm)
+            mp4 = audio_dir / f"xhs-{date}-concise{eff_suffix}.mp4"
+            log(f"[video] 渲染 {len(cards)} 张卡 + 合成 → {mp4}")
+            xhs.build_xhs_video(cards, concise_audio, mp4, date=date)
+            log(f"[video] 完成 → {mp4}（{mp4.stat().st_size/1e6:.2f} MB）")
+        except Exception as e:  # noqa: BLE001
+            log(f"[warn] 小红书视频生成失败（跳过）：{str(e)[:300]}")
+    elif args.video and args.dry_run:
+        log(f"[plan] video: make_cards({args.llm}) → 渲染卡片 → ffmpeg → "
+            f"{audio_dir / f'xhs-{date}-concise{eff_suffix}.mp4'}")
 
     log("==== 完成 ====")
     log.close()
