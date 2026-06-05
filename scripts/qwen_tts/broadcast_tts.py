@@ -7,12 +7,12 @@ import torch
 import lameenc
 
 HERE = os.path.dirname(__file__)
-REF = os.path.join(HERE, "ref_clip.wav")
+REF = os.path.join(HERE, "my_voice3.wav")   # 基准参考声:第三段录音(Olof-Palme-Straße 5)
 MODEL_DIR = os.path.join(HERE, "models", "Qwen3-TTS-1.7B-Base")
 
-MD = r"E:\Github_project\ai-briefcast\.claude\worktrees\upbeat-poincare-c12c19\samples\broadcast-2026-06-02-concise.md"
+MD = r"E:\Github_project\ai-briefcast\samples\broadcast-2026-06-03-concise.md"
 OUTDIR = r"E:\Github_project\ai-briefcast\audio_output"
-SUFFIX = "-qwen"   # 区别于豆包(豆包用 -doubao 或无后缀)
+SUFFIX = "-myvoice"   # 我自己的克隆声(基准)
 OUT = os.path.join(OUTDIR, os.path.splitext(os.path.basename(MD))[0] + SUFFIX + ".mp3")
 
 LANG = "Chinese"
@@ -68,14 +68,43 @@ from qwen_tts import Qwen3TTSModel
 model = Qwen3TTSModel.from_pretrained(MODEL_DIR, device_map="cuda:0", dtype=torch.bfloat16)
 clone_prompt = model.create_voice_clone_prompt(ref_audio=REF, ref_text=ref_text)
 
-# ---------- 5. 逐块合成 ----------
-print("[3/4] 逐块克隆合成 ...")
+# ---------- 5. 逐块合成(带防跑飞保险) ----------
+# ICL 偶发"生成跑飞"(某块重复/拖长到上限)。对策:
+#   1) 按字数估算合理时长,实际时长超过 2.5 倍则判为跑飞;
+#   2) 用更低 temperature 重试,取最短的一次;
+#   3) 仍超长则按预期上限硬截断。
+print("[3/4] 逐块克隆合成(带防跑飞保险) ...")
+CHARS_PER_SEC = 4.5          # 中文播报约 4-5 字/秒
+RUNAWAY_RATIO = 2.5          # 超过预期这么多倍判为跑飞
+RETRY_TEMPS = [0.6, 0.4]     # 跑飞后依次降温重试
+
+def expected_sec(text):
+    return max(1.0, len(text) / CHARS_PER_SEC)
+
 sr = 24000
 pieces = []
 for i, c in enumerate(chunks):
+    exp = expected_sec(c)
     w, sr = model.generate_voice_clone(text=c, language=LANG, voice_clone_prompt=clone_prompt)
-    pieces.append(w[0].astype(np.float32))
-    print(f"      [{i+1}/{len(chunks)}] {len(w[0])/sr:5.1f}s  {c[:24]}")
+    best = w[0]
+    dur = len(best) / sr
+    attempt = 0
+    while dur > exp * RUNAWAY_RATIO and attempt < len(RETRY_TEMPS):
+        t = RETRY_TEMPS[attempt]
+        attempt += 1
+        print(f"      [{i+1}/{len(chunks)}] 过长 {dur:.1f}s(预期~{exp:.1f}s),降温 {t} 重试 ...")
+        w2, sr = model.generate_voice_clone(text=c, language=LANG,
+                                            voice_clone_prompt=clone_prompt, temperature=t)
+        if len(w2[0]) < len(best):
+            best = w2[0]
+        dur = len(best) / sr
+    # 兜底硬截断
+    max_len = int(exp * RUNAWAY_RATIO * sr)
+    if len(best) > max_len:
+        best = best[:max_len]
+        print(f"      [{i+1}/{len(chunks)}] 仍超长,硬截断到 {len(best)/sr:.1f}s")
+    pieces.append(best.astype(np.float32))
+    print(f"      [{i+1}/{len(chunks)}] {len(best)/sr:5.1f}s  {c[:24]}")
 
 # ---------- 6. 拼接(块间 0.35 秒停顿) ----------
 gap = np.zeros(int(0.35 * sr), dtype=np.float32)

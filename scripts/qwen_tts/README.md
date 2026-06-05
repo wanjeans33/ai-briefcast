@@ -45,6 +45,17 @@ python -c "from modelscope import snapshot_download; snapshot_download('Qwen/Qwe
 2. 在脚本里把参考音频路径指向你的录音,文字稿用录制稿原文(ICL 高保真)。
 3. 长稿播报跑 `broadcast_tts.py`,输出 MP3 到 `audio_output/`(已 gitignore,不入库)。
 
+> **基准参考声**:`broadcast_tts.py` 的默认 `REF` 指向第三段录音(`my_voice3.wav`)。
+> 换声音只需改 `REF`,换稿件改 `MD`,输出后缀由 `SUFFIX` 控制。
+
+## 防跑飞保险
+
+ICL 模式偶发"生成跑飞"(某块陷入重复,一路拖到 `max_new_tokens`,几分钟的稿子可能合出十几分钟)。
+`broadcast_tts.py` 内置三道保险:
+1. 按字数估算合理时长,实际超过 `RUNAWAY_RATIO`(默认 2.5)倍即判为跑飞;
+2. 自动降温重试(`RETRY_TEMPS = [0.6, 0.4]`),取最短的一次;
+3. 仍超长则按预期上限硬截断。
+
 ## 注意
 
 - 脚本中的路径目前为作者本机绝对路径,使用前按需调整 `MD` / `OUTDIR` / `MODEL_DIR`。
