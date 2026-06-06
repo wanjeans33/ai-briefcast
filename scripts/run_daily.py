@@ -106,6 +106,55 @@ def run_qwen(md_path: Path, out_path: Path, suffix: str, log: Logger) -> bool:
     return False
 
 
+def _audio_seconds(path: Path) -> float:
+    import av
+    a = av.open(str(path))
+    d = a.duration / 1e6
+    a.close()
+    return d
+
+
+def concat_audio(seg_paths: list[Path], out_path: Path) -> None:
+    """用 ffmpeg 把多段 mp3 顺序拼成一个 mp3（重编码，兼容不同参数）。"""
+    import make_xhs_video_html as xhs
+    cmd = [xhs.FFMPEG, "-y"]
+    for p in seg_paths:
+        cmd += ["-i", str(p)]
+    n = len(seg_paths)
+    filt = "".join(f"[{i}:a]" for i in range(n)) + f"concat=n={n}:v=0:a=1[a]"
+    cmd += ["-filter_complex", filt, "-map", "[a]",
+            "-c:a", "libmp3lame", "-b:a", "128k", str(out_path)]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode != 0:
+        raise RuntimeError("ffmpeg concat 失败:\n" + r.stderr[-800:])
+
+
+def synth_segmented(segments: list[str], out_mp3: Path, log: Logger,
+                    speaker: str | None) -> list[float] | None:
+    """逐段豆包合成 → 测每段真实时长 → 拼成整段 mp3。返回每段时长列表。
+
+    用于精确卡点：卡片切换正好落在每段旁白结束处。失败返回 None（调用方回退）。
+    """
+    seg_dir = out_mp3.parent / "segs"
+    seg_dir.mkdir(parents=True, exist_ok=True)
+    seg_paths, durs = [], []
+    for i, seg in enumerate(segments):
+        sp = seg_dir / f"{out_mp3.stem}-seg{i:02d}.mp3"
+        if not run_tts(seg, sp, log, speaker=speaker):
+            log(f"[tts ] 第 {i+1}/{len(segments)} 段合成失败，放弃卡点路径。")
+            return None
+        seg_paths.append(sp)
+        durs.append(_audio_seconds(sp))
+    try:
+        concat_audio(seg_paths, out_mp3)
+    except Exception as e:  # noqa: BLE001
+        log(f"[tts ] 分段拼接失败：{str(e)[:200]}")
+        return None
+    log(f"[tts ] 分段合成 {len(segments)} 段 → {out_mp3}"
+        f"（总长 {sum(durs):.1f}s）")
+    return durs
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="AI Briefcast 每日全流程编排")
     ap.add_argument("--date", help="指定日期 YYYY-MM-DD（默认取各站最新一期）")
@@ -197,6 +246,10 @@ def main() -> int:
 
     # ---- 3) 改写 + 4) TTS ---------------------------------------------------
     concise_audio = None
+    sync_segments: list[str] | None = None   # 卡点用：concise 正文分段
+    sync_durs: list[float] | None = None     # 卡点用：各段真实时长
+    # 是否对 concise 走「分段合成→精确卡点」路径
+    want_sync = args.video and args.tts == "doubao" and "concise" in modes
     for mode in modes:
         kind = "简洁版" if mode == "concise" else "完整版"
         md_path = outdir / f"broadcast-{date}-{mode}.md"
@@ -226,7 +279,16 @@ def main() -> int:
             log(f"[write] {md_path}（正文 {len(script)} chars）")
 
         ok = False
-        if args.tts == "doubao":
+        if args.tts == "doubao" and mode == "concise" and want_sync:
+            segs = gb.split_segments(strip_header(content))
+            log(f"[tts ] 卡点模式：concise 切成 {len(segs)} 段逐段合成…")
+            durs = synth_segmented(segs, mp3_path, log, speaker)
+            if durs:
+                ok = True
+                sync_segments, sync_durs = segs, durs
+            else:  # 分段失败 → 回退整段合成
+                ok = run_tts(strip_header(content), mp3_path, log, speaker=speaker)
+        elif args.tts == "doubao":
             ok = run_tts(strip_header(content), mp3_path, log, speaker=speaker)
         elif args.tts == "qwen":
             ok = run_qwen(md_path, mp3_path, eff_suffix, log)
@@ -242,11 +304,18 @@ def main() -> int:
             import make_xhs_video_html as xhs
             if not Path(xhs.FFMPEG).exists():
                 raise RuntimeError(f"未找到 ffmpeg：{xhs.FFMPEG}")
-            log("[video] 生成小红书卡片文案（LLM）…")
-            cards = gb.make_cards(source_text, backend=args.llm)
             mp4 = audio_dir / f"xhs-{date}-concise{eff_suffix}.mp4"
-            log(f"[video] 渲染 {len(cards)} 张卡 + 合成 → {mp4}")
-            xhs.build_xhs_video(cards, concise_audio, mp4, date=date)
+            if sync_segments and sync_durs:
+                log(f"[video] 卡点模式：按 {len(sync_segments)} 段生成同款卡片（LLM）…")
+                cards = gb.make_cards_synced(sync_segments, backend=args.llm)
+                log(f"[video] 渲染 {len(cards)} 张卡 + 精确卡点合成 → {mp4}")
+                xhs.build_xhs_video(cards, concise_audio, mp4, date=date,
+                                    seg_durations=sync_durs)
+            else:
+                log("[video] 生成小红书卡片文案（LLM）…")
+                cards = gb.make_cards(source_text, backend=args.llm)
+                log(f"[video] 渲染 {len(cards)} 张卡 + 合成 → {mp4}")
+                xhs.build_xhs_video(cards, concise_audio, mp4, date=date)
             log(f"[video] 完成 → {mp4}（{mp4.stat().st_size/1e6:.2f} MB）")
         except Exception as e:  # noqa: BLE001
             log(f"[warn] 小红书视频生成失败（跳过）：{str(e)[:300]}")

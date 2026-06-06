@@ -159,18 +159,26 @@ def composite(pngs, durs, audio, out):
         raise SystemExit("ffmpeg failed:\n" + r.stderr[-1500:])
 
 
-def build_xhs_video(cards, audio_path, out_path, date=None, cards_dir="assets/xhs_cards_html"):
-    """渲染卡片 + 合成视频。cards 为 dict 列表。返回输出路径。"""
+def build_xhs_video(cards, audio_path, out_path, date=None,
+                    cards_dir="assets/xhs_cards_html", seg_durations=None):
+    """渲染卡片 + 合成视频。cards 为 dict 列表。返回输出路径。
+
+    seg_durations: 每张卡对应那段旁白的真实时长（秒）。给定时按它精确卡点——
+    每张卡停留 = 该段旁白时长，交叉淡变恰好从该段结束处开始；否则按 WEIGHTS 估算。
+    """
     wm = "@AI Briefcast"
     if date:
         m = re.match(r"\d{4}-(\d{2})-(\d{2})", date)
         if m:
             wm = f"@AI Briefcast · {int(m.group(1))}/{int(m.group(2))}"
-    a = av.open(str(audio_path)); alen = a.duration / 1e6; a.close()
     n = len(cards)
-    weights = (WEIGHTS if n == len(WEIGHTS) else [1] * n)
-    total = alen + (n - 1) * XFADE
-    durs = [w / sum(weights) * total for w in weights]
+    if seg_durations and len(seg_durations) == n:
+        durs = [d + XFADE for d in seg_durations]   # 卡点：每次淡变从该段结束处起
+    else:
+        a = av.open(str(audio_path)); alen = a.duration / 1e6; a.close()
+        weights = (WEIGHTS if n == len(WEIGHTS) else [1] * n)
+        total = alen + (n - 1) * XFADE
+        durs = [w / sum(weights) * total for w in weights]
     pngs = render_cards(cards, Path(cards_dir), wm)
     composite(pngs, durs, audio_path, out_path)
     return out_path
