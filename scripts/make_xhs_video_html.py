@@ -26,6 +26,7 @@ import av
 from playwright.sync_api import sync_playwright
 
 FFMPEG = r"C:\Users\WANG-\ffmpeg\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe"
+OUT_W, OUT_H = 2160, 3840   # 输出 4K 竖屏 9:16（卡片本就 2160×3840，零放大）
 XFADE = 0.7
 WEIGHTS = [7, 28, 27, 28, 11, 5]   # 各卡相对旁白时长（权重），按音频总长等比缩放
 GRADS = ["c1", "c2", "c3", "c4", "c5"]   # 莫兰迪渐变循环；cta 固定用暗色 c7
@@ -142,7 +143,7 @@ def composite(pngs, durs, audio, out):
     for p, d in zip(pngs, durs):
         cmd += ["-loop", "1", "-t", f"{d}", "-i", str(p)]
     cmd += ["-i", str(audio)]
-    parts = [f"[{i}:v]scale=1080:1920,setsar=1,fps=30,format=yuv420p[v{i}]" for i in range(n)]
+    parts = [f"[{i}:v]scale={OUT_W}:{OUT_H},setsar=1,fps=30,format=yuv420p[v{i}]" for i in range(n)]
     chain, prev, cum = "", "[v0]", 0.0
     for j in range(1, n):
         cum += durs[j - 1]
