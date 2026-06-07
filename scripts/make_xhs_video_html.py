@@ -34,39 +34,89 @@ GRADS = ["c1", "c2", "c3", "c4", "c5"]   # 莫兰迪渐变循环；cta 固定用
 CSS = """
 *{margin:0;box-sizing:border-box}
 body{font-family:'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif;-webkit-font-smoothing:antialiased}
-.card{width:1080px;height:1920px;position:relative;padding:120px 88px;display:flex;flex-direction:column}
-.c1{background:linear-gradient(160deg,#f7d2c2 0%,#f3a98a 100%);color:#3a1d10}
-.c2{background:linear-gradient(160deg,#fff7e6 0%,#ffe4b8 100%);color:#3a2e10}
-.c3{background:linear-gradient(160deg,#e8f0e3 0%,#bcd6b3 100%);color:#1f3a1f}
-.c4{background:linear-gradient(160deg,#e7e8f5 0%,#bec1e8 100%);color:#1d1f4a}
-.c5{background:linear-gradient(160deg,#fce7f0 0%,#f5b3ce 100%);color:#4a1b34}
-.c7{background:linear-gradient(160deg,#15140f 0%,#3a2620 100%);color:#fafaf7}
-.badge{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;
-       background:rgba(255,255,255,0.55);font-size:30px;font-weight:600;align-self:flex-start}
-.kicker{display:inline-flex;padding:12px 26px;border-radius:999px;background:rgba(0,0,0,0.10);
-        font-size:30px;font-weight:700;align-self:flex-start;margin-bottom:40px}
-h2{font-size:96px;font-weight:900;line-height:1.08;letter-spacing:-0.01em;margin:0 0 40px}
-.body{font-size:46px;font-weight:500;line-height:1.62;opacity:0.88;max-width:23ch}
-.body strong{font-weight:800}
-.hero{font-size:128px;font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin:0}
-.hl{color:#c0392b}
-.c7 .hl{color:#e9b94a}
-.label{font-size:38px;font-weight:600;opacity:0.7;margin-bottom:28px}
-.c7 .label{color:#e9b94a;opacity:1}
-.foot{font-size:36px;opacity:0.62;font-weight:500}
-.mid{margin:auto 0}
-.tags{display:flex;gap:20px;font-size:38px;font-weight:600}
-.tags span{padding:18px 40px;border-radius:999px}
-.tags .pri{background:#e9b94a;color:#15140f}
-.tags .sec{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22)}
-.watermark{position:absolute;bottom:60px;right:72px;font-size:28px;opacity:0.55;font-weight:500}
-.pageno{position:absolute;top:64px;right:80px;font-size:30px;font-weight:600;opacity:0.45;letter-spacing:0.08em}
+.card{width:1080px;height:1920px;position:relative;padding:104px 84px 96px;display:flex;
+      flex-direction:column;overflow:hidden;
+      background:linear-gradient(160deg,var(--g1) 0%,var(--g2) 100%);color:var(--fg)}
+.c1{--g1:#f7d2c2;--g2:#f3a98a;--fg:#3a1d10;--acc:#d6431f}
+.c2{--g1:#fff7e6;--g2:#ffe2b0;--fg:#3a2e10;--acc:#c07d00}
+.c3{--g1:#e8f0e3;--g2:#b7d3ad;--fg:#1f3a1f;--acc:#2c8a48}
+.c4{--g1:#e7e8f5;--g2:#bbbfe8;--fg:#1d1f4a;--acc:#4147c4}
+.c5{--g1:#fce7f0;--g2:#f3aecb;--fg:#4a1b34;--acc:#c0397a}
+.c7{--g1:#15140f;--g2:#3a2620;--fg:#fafaf7;--acc:#e9b94a}
+.bignum{position:absolute;top:-78px;right:-18px;font-size:580px;font-weight:900;line-height:1;
+        color:var(--acc);opacity:0.12;letter-spacing:-0.05em;z-index:0;font-style:italic}
+.dots{display:flex;gap:14px;z-index:2}
+.dots i{width:20px;height:20px;border-radius:999px;background:var(--fg);opacity:0.2}
+.dots i.on{opacity:1;background:var(--acc);width:56px}
+.head{display:flex;align-items:center;gap:26px;margin-top:62px;z-index:2}
+.ico{width:108px;height:108px;border-radius:30px;display:flex;align-items:center;justify-content:center;
+     font-size:60px;background:rgba(255,255,255,0.6);box-shadow:0 10px 28px rgba(0,0,0,0.10)}
+.kicker{font-size:34px;font-weight:800;letter-spacing:0.02em;padding:16px 34px;border-radius:999px;
+        background:var(--acc);color:#fff}
+h2{font-size:104px;font-weight:900;line-height:1.06;letter-spacing:-0.01em;margin:50px 0 44px;z-index:2}
+.body{font-size:50px;font-weight:500;line-height:1.58;z-index:2;padding-left:38px;
+      border-left:10px solid var(--acc);max-width:25ch}
+.hl{font-weight:800;background:var(--acc);color:#fff;padding:3px 16px;border-radius:14px;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.punch{margin-top:auto;font-size:58px;font-weight:800;line-height:1.32;z-index:2;
+       padding-top:46px;border-top:4px solid rgba(0,0,0,0.14)}
+.punch .q{color:var(--acc);font-weight:900}
+.watermark{position:absolute;bottom:52px;right:72px;font-size:28px;opacity:0.5;font-weight:600;z-index:2}
+/* 封面（目录钩子） */
+.brand{align-self:flex-start;padding:18px 38px;border-radius:999px;background:var(--acc);color:#fff;
+       font-size:32px;font-weight:800;margin-top:44px;z-index:2}
+.coverhead{margin-top:104px;z-index:2}
+.coverhead .sub{font-size:42px;font-weight:700;opacity:0.7}
+.coverhead .big{font-size:142px;font-weight:900;line-height:1.0;margin-top:16px;letter-spacing:-0.02em}
+.coverhead .big em{color:var(--acc);font-style:normal}
+.toc{margin-top:78px;display:flex;flex-direction:column;gap:36px;z-index:2}
+.toc .row{display:flex;align-items:flex-start;gap:28px;font-size:48px;font-weight:600;line-height:1.25}
+.toc .num{flex:none;width:66px;height:66px;border-radius:18px;background:var(--acc);color:#fff;
+          font-size:36px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.swipe{margin-top:auto;font-size:40px;font-weight:700;opacity:0.65;z-index:2}
+/* 结尾 CTA */
+.cta-wrap{margin:auto 0;z-index:2}
+.cta-kick{font-size:42px;font-weight:800;color:var(--acc);margin-bottom:28px}
+.cta-title{font-size:152px;font-weight:900;line-height:1.0;letter-spacing:-0.02em}
+.cta-sub{font-size:48px;font-weight:600;opacity:0.85;margin-top:38px}
+.tags{display:flex;gap:22px;font-size:40px;font-weight:700;z-index:2;margin-top:64px}
+.tags span{padding:22px 46px;border-radius:999px}
+.tags .pri{background:var(--acc);color:#15140f}
+.tags .sec{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.28)}
 """
 
+# 分类大图标（C）：先看显式 icon 字段，否则按关键词推断
+ICON_MAP = [
+    (("安全", "防", "注入", "隐私", "对齐", "攻击"), "🛡️"),
+    (("资本", "股", "上市", "IPO", "标普", "投资", "估值", "融资"), "📈"),
+    (("机器人", "具身", "Robot"), "🤖"),
+    (("芯片", "算力", "显存", "GPU", "加速", "量化"), "⚡"),
+    (("论文", "模型", "架构", "推理", "全模态", "训练", "研究"), "🧪"),
+    (("苹果", "Apple", "Siri", "手机", "硬件", "产品"), "📱"),
+    (("行业", "发布", "公司"), "🏢"),
+]
 
-def _bold(t: str) -> str:
+
+def _icon(c) -> str:
+    if c.get("icon"):
+        return c["icon"]
+    s = (c.get("tag", "") + c.get("title", "") + c.get("body", ""))
+    for keys, ic in ICON_MAP:
+        if any(k in s for k in keys):
+            return ic
+    return "📰"
+
+
+def _hl(t: str) -> str:
+    """**关键词** → 高亮色块（B）。"""
     t = (t or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    return re.sub(r"\*\*(.+?)\*\*", r'<span class="hl">\1</span>', t)
+
+
+def _idx(c, fallback: int) -> str:
+    """从 tag 里取序号（头条 02 → 02），无则用 fallback。"""
+    m = re.search(r"\d+", c.get("tag", ""))
+    return f"{int(m.group(0)) if m else fallback:02d}"
 
 
 def _wrap(t: str, n: int) -> str:
@@ -92,28 +142,46 @@ def _cls(i: int, n: int, kind: str) -> str:
 
 def card_html(c, i, n, wm):
     kind = c.get("kind", "point")
-    page = f'<div class="pageno">{i+1:02d} / {n:02d}</div>'
     water = f'<div class="watermark">{wm}</div>'
+    dots = ('<div class="dots">'
+            + "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
+            + "</div>")
     cls = _cls(i, n, kind)
+
     if kind == "cover":
-        inner = (f'<div class="badge">{c.get("badge","")}</div>'
-                 f'<div class="mid"><div class="label">{c.get("subtitle","")}</div>'
-                 f'<h2 class="hero">{_wrap(c.get("title",""), 6)}</h2></div>'
-                 f'<div class="foot">滑动看 →</div>')
-    elif kind == "cta":
+        toc = c.get("toc") or []
+        rows = "".join(
+            f'<div class="row"><span class="num">{k+1}</span>'
+            f'<span>{_wrap(t, 13)}</span></div>' for k, t in enumerate(toc))
+        cnt = c.get("count") or (len(toc) if toc else 3)
+        inner = (f'<div class="brand">{c.get("badge","每日AI速览")}</div>'
+                 f'<div class="coverhead"><div class="sub">{c.get("subtitle","")}</div>'
+                 f'<div class="big">今日 <em>{cnt}</em> 条要闻</div></div>'
+                 f'<div class="toc">{rows}</div>'
+                 f'<div class="swipe">滑动看全部 →</div>')
+        return f'<div class="card {cls}" id="card{i}">{dots}{inner}{water}</div>'
+
+    if kind == "cta":
         tags = c.get("tags", ["关注", "收藏", "分享"])
-        tagsdiv = ('<div class="tags">'
-                   + "".join(f'<span class="{"pri" if k==0 else "sec"}">{t}</span>'
-                             for k, t in enumerate(tags)) + "</div>")
-        inner = (f'<div class="mid"><div class="label">看完别走 ✨</div>'
-                 f'<h2 class="hero">{_wrap(c.get("title","明天见"), 6)}</h2>'
-                 f'<div class="label" style="margin-top:32px;opacity:.8">{c.get("subtitle","")}</div></div>'
-                 f'{tagsdiv}')
-    else:
-        inner = (f'<div class="kicker">{c.get("tag","")}</div>'
-                 f'<h2>{_wrap(c.get("title",""), 8)}</h2>'
-                 f'<p class="body">{_bold(c.get("body",""))}</p>')
-    return f'<div class="card {cls}" id="card{i}">{page}{inner}{water}</div>'
+        tg = ('<div class="tags">'
+              + "".join(f'<span class="{"pri" if k==0 else "sec"}">{t}</span>'
+                        for k, t in enumerate(tags)) + "</div>")
+        inner = (f'<div class="cta-wrap"><div class="cta-kick">看完别走 ✨</div>'
+                 f'<div class="cta-title">{_wrap(c.get("title","明天见"), 6)}</div>'
+                 f'<div class="cta-sub">{c.get("subtitle","")}</div></div>{tg}')
+        return f'<div class="card {cls}" id="card{i}">{dots}{inner}{water}</div>'
+
+    # point
+    big = f'<div class="bignum">{_idx(c, i)}</div>'
+    punch = c.get("punch", "")
+    punchdiv = (f'<div class="punch"><span class="q">「</span>{_hl(punch)}'
+                f'<span class="q">」</span></div>') if punch else ""
+    inner = (f'<div class="head"><div class="ico">{_icon(c)}</div>'
+             f'<div class="kicker">{c.get("tag","")}</div></div>'
+             f'<h2>{_wrap(c.get("title",""), 8)}</h2>'
+             f'<div class="body">{_hl(c.get("body",""))}</div>'
+             f'{punchdiv}')
+    return f'<div class="card {cls}" id="card{i}">{dots}{big}{inner}{water}</div>'
 
 
 def render_cards(cards, outdir: Path, wm: str):
