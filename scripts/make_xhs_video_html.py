@@ -168,7 +168,7 @@ def card_html(c, i, n, wm):
         rel = c.get("rel", "")
         reltag = f'<div class="reltag">↑ 关联：{rel}</div>' if rel else ""
         inner = (f'<div class="expmid">'
-                 f'<div class="kicker out">名词解释 · 高中生也能懂</div>'
+                 f'<div class="kicker out">信息补充</div>'
                  f'<h2 class="exptitle">{_wrap(c.get("title",""), 9)}</h2>'
                  f'<div class="body soft">{_hl(c.get("body",""))}</div>'
                  f'{reltag}</div>')
