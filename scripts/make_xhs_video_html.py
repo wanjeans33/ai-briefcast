@@ -228,12 +228,41 @@ def composite(pngs, durs, audio, out):
         raise SystemExit("ffmpeg failed:\n" + r.stderr[-1500:])
 
 
+def prepend_intro(intro_path, main_path, out_path):
+    """把片头视频拼到主视频前面，统一到 OUT_W×OUT_H / 30fps / 44100 立体声。
+
+    片头若非 9:16（如 1:1），用「模糊放大铺底 + 居中原图」适配竖屏，不留死黑边。
+    片头自带的音频（背景音乐）原样保留，主视频旁白接在其后。
+    """
+    filt = (
+        f"[0:v]split=2[i0][i1];"
+        f"[i0]scale={OUT_W}:{OUT_H}:force_original_aspect_ratio=increase,"
+        f"crop={OUT_W}:{OUT_H},boxblur=42:1[bg];"
+        f"[i1]scale={OUT_W}:-2[fg];"
+        f"[bg][fg]overlay=(W-w)/2:(H-h)/2,setsar=1,fps=30,format=yuv420p[iv];"
+        f"[0:a]aresample=44100,aformat=channel_layouts=stereo[ia];"
+        f"[1:v]scale={OUT_W}:{OUT_H},setsar=1,fps=30,format=yuv420p[mv];"
+        f"[1:a]aresample=44100,aformat=channel_layouts=stereo[ma];"
+        f"[iv][ia][mv][ma]concat=n=2:v=1:a=1[v][a]"
+    )
+    cmd = [FFMPEG, "-y", "-i", str(intro_path), "-i", str(main_path),
+           "-filter_complex", filt, "-map", "[v]", "-map", "[a]",
+           "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20",
+           "-c:a", "aac", "-b:a", "128k", str(out_path)]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode != 0:
+        raise SystemExit("ffmpeg intro concat failed:\n" + r.stderr[-1500:])
+    return out_path
+
+
 def build_xhs_video(cards, audio_path, out_path, date=None,
-                    cards_dir="assets/xhs_cards_html", seg_durations=None):
+                    cards_dir="assets/xhs_cards_html", seg_durations=None,
+                    intro_path=None):
     """渲染卡片 + 合成视频。cards 为 dict 列表。返回输出路径。
 
     seg_durations: 每张卡对应那段旁白的真实时长（秒）。给定时按它精确卡点——
     每张卡停留 = 该段旁白时长，交叉淡变恰好从该段结束处开始；否则按 WEIGHTS 估算。
+    intro_path: 片头视频路径。给定时先合成主视频，再把片头拼到最前面。
     """
     wm = "@AI Briefcast"
     if date:
@@ -249,7 +278,13 @@ def build_xhs_video(cards, audio_path, out_path, date=None,
         total = alen + (n - 1) * XFADE
         durs = [w / sum(weights) * total for w in weights]
     pngs = render_cards(cards, Path(cards_dir), wm)
-    composite(pngs, durs, audio_path, out_path)
+    if intro_path and Path(intro_path).exists():
+        tmp = Path(out_path).with_name(Path(out_path).stem + "_body.mp4")
+        composite(pngs, durs, audio_path, tmp)
+        prepend_intro(intro_path, tmp, out_path)
+        tmp.unlink(missing_ok=True)
+    else:
+        composite(pngs, durs, audio_path, out_path)
     return out_path
 
 

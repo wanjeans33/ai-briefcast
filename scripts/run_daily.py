@@ -137,11 +137,19 @@ def synth_segmented(segments: list[str], out_mp3: Path, log: Logger,
     """
     seg_dir = out_mp3.parent / "segs"
     seg_dir.mkdir(parents=True, exist_ok=True)
+    import time
     seg_paths, durs = [], []
     for i, seg in enumerate(segments):
         sp = seg_dir / f"{out_mp3.stem}-seg{i:02d}.mp3"
-        if not run_tts(seg, sp, log, speaker=speaker):
-            log(f"[tts ] 第 {i+1}/{len(segments)} 段合成失败，放弃卡点路径。")
+        ok = False
+        for attempt in range(3):  # 豆包偶发 NO AUDIO / 限流，自动重试
+            if run_tts(seg, sp, log, speaker=speaker):
+                ok = True
+                break
+            log(f"[tts ] 第 {i+1}/{len(segments)} 段失败，重试 {attempt+1}/3…")
+            time.sleep(3 + 3 * attempt)
+        if not ok:
+            log(f"[tts ] 第 {i+1}/{len(segments)} 段三次仍失败，放弃卡点路径。")
             return None
         seg_paths.append(sp)
         durs.append(_audio_seconds(sp))
