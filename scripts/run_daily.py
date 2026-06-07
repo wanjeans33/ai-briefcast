@@ -179,6 +179,9 @@ def main() -> int:
                     help="跳过改写，直接对已存在的 broadcast-<日期>-<mode>.md 重新合成音频")
     ap.add_argument("--video", action="store_true",
                     help="基于 concise 音频额外生成一支小红书竖屏视频（需 playwright + ffmpeg）")
+    ap.add_argument("--intro", default=None,
+                    help="片头视频路径；缺省自动探测 片头/小猫片头_1x1_4s.mp4（视频默认带片头）")
+    ap.add_argument("--no-intro", action="store_true", help="不加片头")
     ap.add_argument("--outdir", default="samples", help="文稿输出目录")
     ap.add_argument("--audio-dir", default="audio_output", help="音频输出目录")
     ap.add_argument("--dry-run", action="store_true", help="只打印计划，不调用 pi/TTS")
@@ -307,23 +310,31 @@ def main() -> int:
     if concise_audio is None:  # tts=none 时回退到已存在的 concise 音频
         cand = audio_dir / f"broadcast-{date}-concise{eff_suffix}.mp3"
         concise_audio = cand if cand.exists() else None
+    # 片头：默认自动探测，--no-intro 关闭
+    intro_path = None
+    if not args.no_intro:
+        cand = Path(args.intro) if args.intro else (REPO_ROOT / "片头" / "小猫片头_1x1_4s.mp4")
+        intro_path = cand if cand.exists() else None
     if args.video and not args.dry_run and concise_audio and concise_audio.exists():
         try:
             import make_xhs_video_html as xhs
             if not Path(xhs.FFMPEG).exists():
                 raise RuntimeError(f"未找到 ffmpeg：{xhs.FFMPEG}")
             mp4 = audio_dir / f"xhs-{date}-concise{eff_suffix}.mp4"
+            if intro_path:
+                log(f"[video] 片头：{intro_path}")
             if sync_segments and sync_durs:
                 log(f"[video] 卡点模式：按 {len(sync_segments)} 段生成同款卡片（LLM）…")
                 cards = gb.make_cards_synced(sync_segments, backend=args.llm)
                 log(f"[video] 渲染 {len(cards)} 张卡 + 精确卡点合成 → {mp4}")
                 xhs.build_xhs_video(cards, concise_audio, mp4, date=date,
-                                    seg_durations=sync_durs)
+                                    seg_durations=sync_durs, intro_path=intro_path)
             else:
                 log("[video] 生成小红书卡片文案（LLM）…")
                 cards = gb.make_cards(source_text, backend=args.llm)
                 log(f"[video] 渲染 {len(cards)} 张卡 + 合成 → {mp4}")
-                xhs.build_xhs_video(cards, concise_audio, mp4, date=date)
+                xhs.build_xhs_video(cards, concise_audio, mp4, date=date,
+                                    intro_path=intro_path)
             log(f"[video] 完成 → {mp4}（{mp4.stat().st_size/1e6:.2f} MB）")
         except Exception as e:  # noqa: BLE001
             log(f"[warn] 小红书视频生成失败（跳过）：{str(e)[:300]}")

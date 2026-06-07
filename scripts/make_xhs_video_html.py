@@ -62,6 +62,19 @@ h2{font-size:104px;font-weight:900;line-height:1.06;letter-spacing:-0.01em;margi
        padding-top:46px;border-top:4px solid rgba(0,0,0,0.14)}
 .punch .q{color:var(--acc);font-weight:900}
 .watermark{position:absolute;bottom:52px;right:72px;font-size:28px;opacity:0.5;font-weight:600;z-index:2}
+/* 名词解释卡（与父新闻同色分组，但更柔和、带书签角标） */
+.exp{padding-top:104px}
+.exp::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,0.34);z-index:0}
+.exp>*{position:relative}
+.bookmark{position:absolute;top:-30px;right:18px;font-size:300px;opacity:0.14;z-index:0;
+          transform:rotate(8deg)}
+.expmid{margin:auto 0;z-index:2;display:flex;flex-direction:column;align-items:flex-start}
+.kicker.out{background:transparent;color:var(--acc);border:4px solid var(--acc);
+            display:inline-flex}
+.exptitle{font-size:90px;margin:46px 0 40px}
+.body.soft{font-weight:500;line-height:1.62}
+.reltag{margin-top:48px;font-size:34px;font-weight:700;opacity:0.78;
+        padding:16px 32px;border-radius:999px;background:rgba(0,0,0,0.08)}
 /* 封面（目录钩子） */
 .brand{align-self:flex-start;padding:18px 38px;border-radius:999px;background:var(--acc);color:#fff;
        font-size:32px;font-weight:800;margin-top:44px;z-index:2}
@@ -132,7 +145,9 @@ def _wrap(t: str, n: int) -> str:
     return "<br/>".join(out) or t
 
 
-def _cls(i: int, n: int, kind: str) -> str:
+def _cls(i: int, n: int, kind: str, grad: str | None = None) -> str:
+    if grad:                      # 显式指定配色（解释卡跟父新闻同色分组）
+        return grad
     if kind == "cta":
         return "c7"
     if i == 0:
@@ -146,7 +161,18 @@ def card_html(c, i, n, wm):
     dots = ('<div class="dots">'
             + "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
             + "</div>")
-    cls = _cls(i, n, kind)
+    cls = _cls(i, n, kind, c.get("grad"))
+
+    if kind == "explainer":
+        big = f'<div class="bookmark">{c.get("icon", "📖")}</div>'
+        rel = c.get("rel", "")
+        reltag = f'<div class="reltag">↑ 关联：{rel}</div>' if rel else ""
+        inner = (f'<div class="expmid">'
+                 f'<div class="kicker out">名词解释 · 高中生也能懂</div>'
+                 f'<h2 class="exptitle">{_wrap(c.get("title",""), 9)}</h2>'
+                 f'<div class="body soft">{_hl(c.get("body",""))}</div>'
+                 f'{reltag}</div>')
+        return f'<div class="card {cls} exp" id="card{i}">{dots}{big}{inner}{water}</div>'
 
     if kind == "cover":
         toc = c.get("toc") or []
