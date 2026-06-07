@@ -183,8 +183,7 @@ def card_html(c, i, n, wm):
         inner = (f'<div class="brand">{c.get("badge","每日AI速览")}</div>'
                  f'<div class="coverhead"><div class="sub">{c.get("subtitle","")}</div>'
                  f'<div class="big">今日 <em>{cnt}</em> 条要闻</div></div>'
-                 f'<div class="toc">{rows}</div>'
-                 f'<div class="swipe">滑动看全部 →</div>')
+                 f'<div class="toc">{rows}</div>')
         return f'<div class="card {cls}" id="card{i}">{dots}{inner}{water}</div>'
 
     if kind == "cta":
