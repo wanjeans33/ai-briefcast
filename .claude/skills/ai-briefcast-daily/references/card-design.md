@@ -3,6 +3,12 @@
 竖屏 9:16，HTML 渲染（viewport 1080×1920，dsf=2 → 卡片 PNG 2160×3840），ffmpeg 交叉淡变卡点。
 渲染入口 `build_xhs_video(cards, audio, out, date, cards_dir, seg_durations, intro_path)`。
 
+## 文案要点（先记住）
+- **内容卡（point）要有干货**：短标题 + **加厚正文（2 个数字/事实）** + 金句。只有标题+金句会显单薄。
+- **补充卡（explainer）是科普**：解释新闻/论文里的概念/背景（AI 名词、金融词、旧闻），**不复述新闻**，
+  口语"高中生也能懂"，且**联网查证**后再写。标题别加"什么是"前缀，直接 `「概念」`。
+- 内容卡文案常按"3 选 1"（观点①/数字②/提问③）让用户挑；补充卡先给候选池让用户多选。
+
 ## 卡片类型与字段
 
 所有 `body`/`punch` 支持 `**关键词**` → 渲染成主题色**高亮色块**（不是只加粗）。`title` 自动按字断行。
@@ -93,3 +99,23 @@ print("[done]", OUT)
 
 运行：`PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/_tmp_make_<date>.py`
 渲染后用 Read 抽查 `assets/xhs_cards_<date>/card-*.png`；用 ffprobe 确认 2160×3840 与时长。
+
+### 变体：还没配音时（首次出片 / 跨日期精选）
+把 GROUPS 改成 `[(cards, weights), ...]`（顺序＝音频段顺序，不带 seg 名），先用
+`run_daily.synth_segmented` 现合成并拿每段真实时长，再按权重摊给组内卡片：
+```python
+import os, sys; sys.path.insert(0, "scripts")
+import run_daily as rd, generate_broadcast as gb, make_xhs_video_html as xhs
+rd.load_dotenv(rd.REPO_ROOT)
+spk = os.getenv("VOLC_SPEAKER2")
+segs = gb.split_segments(rd.strip_header(open("samples/broadcast-....md",encoding="utf-8").read()))
+log = rd.Logger(rd.REPO_ROOT/"logs"/"run-mix.log")
+durs_seg = rd.synth_segmented(segs, AUDIO, log, spk)        # 7 段 → 7 个真实时长
+assert len(GROUPS) == len(segs)
+cards, durs = [], []
+for sd, group in zip(durs_seg, GROUPS):
+    s = sum(w for _, w in group)
+    for cd, w in group: cards.append(cd); durs.append(sd*w/s)
+xhs.build_xhs_video(cards, AUDIO, OUT, seg_durations=durs, cards_dir=..., intro_path=INTRO)
+```
+要点：`len(GROUPS) == 段数`；段顺序＝ intro / 每条内容 / 收尾；补充卡放在其父内容卡同一组里。
