@@ -118,12 +118,19 @@ async def main(text, out_path):
         mt, ev, s, pl = await recv(ws)
         print(f"  <- event {ev} (expect 50 ConnectionStarted)")
         # 2. session with full req_params
+        audio_params = {"format": "mp3", "sample_rate": 24000}
+        try:
+            sr = float(os.environ.get("VOLC_SPEECH_RATE", "") or 0)
+        except ValueError:
+            sr = 0
+        if sr:
+            audio_params["speech_rate"] = sr   # 语速，正数更快（范围约 -50~100）
         await ws.send(build(EV_StartSession, {
             "event": EV_StartSession,
             "namespace": "BidirectionalTTS",
             "req_params": {
                 "speaker": SPEAKER,
-                "audio_params": {"format": "mp3", "sample_rate": 24000},
+                "audio_params": audio_params,
             },
         }, sid))
         mt, ev, s, pl = await recv(ws)

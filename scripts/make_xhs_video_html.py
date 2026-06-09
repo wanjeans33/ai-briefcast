@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -277,6 +278,87 @@ def prepend_intro(intro_path, main_path, out_path):
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0:
         raise SystemExit("ffmpeg intro concat failed:\n" + r.stderr[-1500:])
+    return out_path
+
+
+# --------------------------------------------------------------------------- #
+# 片尾：品牌圆形照片缩放消失（替代/补充片头）
+# --------------------------------------------------------------------------- #
+def circle_photo(src, diameter, cx_frac=0.30, cy_frac=0.57, r_frac=0.32):
+    """把一张照片裁成圆形 RGBA（自动按中心+半径裁方再套圆罩）。
+
+    cx_frac/cy_frac 圆心在原图的相对位置，r_frac 半径占短边比例（会自动夹到边界内）。
+    默认值适配 片头/图片_20260606072137.png 那只猫（头在左中，半径足够含住整头）。
+    """
+    from PIL import Image, ImageDraw
+    img = Image.open(src).convert("RGB")
+    W, H = img.size
+    cx, cy = int(cx_frac * W), int(cy_frac * H)
+    r = min(int(r_frac * min(W, H)), cx, W - cx, cy, H - cy)
+    crop = img.crop((cx - r, cy - r, cx + r, cy + r)).resize((diameter, diameter), Image.LANCZOS).convert("RGBA")
+    m = Image.new("L", (diameter, diameter), 0)
+    ImageDraw.Draw(m).ellipse((0, 0, diameter, diameter), fill=255)
+    crop.putalpha(m)
+    return crop
+
+
+def place_photo_on_card(card_png, photo_rgba, center):
+    """把圆形照片合到某张卡片 PNG 上（原地覆盖）。center=(x,y) 为照片中心像素。"""
+    from PIL import Image
+    base = Image.open(card_png).convert("RGBA")
+    d = photo_rgba.width
+    base.alpha_composite(photo_rgba, (center[0] - d // 2, center[1] - d // 2))
+    base.convert("RGB").save(card_png)
+
+
+def build_shrink_outro(bg_png, photo_rgba, center, out_clip, dur=1.0, fps=30):
+    """1 秒片尾：在 bg_png 背景上，圆形照片从满 → 0 原地缩小消失（静音）。"""
+    from PIL import Image
+    bg = Image.open(bg_png).convert("RGBA")
+    d = photo_rgba.width
+    n = max(2, int(dur * fps))
+    fdir = Path(out_clip).with_suffix("")
+    fdir = fdir.parent / ("_frames_" + fdir.name)
+    if fdir.exists():
+        shutil.rmtree(fdir)
+    fdir.mkdir(parents=True)
+    for i in range(n):
+        s = 1 - i / (n - 1)
+        fr = bg.copy()
+        sz = int(d * s)
+        if sz >= 2:
+            c = photo_rgba.resize((sz, sz), Image.LANCZOS)
+            fr.alpha_composite(c, (center[0] - sz // 2, center[1] - sz // 2))
+        fr.convert("RGB").save(fdir / f"f{i:03d}.png")
+    cmd = [FFMPEG, "-y", "-framerate", str(fps), "-i", str(fdir / "f%03d.png"),
+           "-f", "lavfi", "-t", str(dur), "-i", "anullsrc=r=44100:cl=stereo",
+           "-vf", f"scale={OUT_W}:{OUT_H},format=yuv420p", "-c:v", "libx264",
+           "-pix_fmt", "yuv420p", "-crf", "20", "-c:a", "aac", "-b:a", "128k",
+           "-shortest", str(out_clip)]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    shutil.rmtree(fdir)
+    if r.returncode != 0:
+        raise SystemExit("outro failed:\n" + r.stderr[-1200:])
+    return out_clip
+
+
+def concat_clips(clips, out_path):
+    """顺序拼接多个同尺寸视频（统一 30fps / 44100 立体声）。"""
+    n = len(clips)
+    cmd = [FFMPEG, "-y"]
+    for c in clips:
+        cmd += ["-i", str(c)]
+    parts = ";".join(
+        f"[{i}:v]fps=30,format=yuv420p[v{i}];"
+        f"[{i}:a]aresample=44100,aformat=channel_layouts=stereo[a{i}]" for i in range(n))
+    seq = "".join(f"[v{i}][a{i}]" for i in range(n))
+    filt = parts + ";" + seq + f"concat=n={n}:v=1:a=1[v][a]"
+    cmd += ["-filter_complex", filt, "-map", "[v]", "-map", "[a]",
+            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20",
+            "-c:a", "aac", "-b:a", "128k", str(out_path)]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode != 0:
+        raise SystemExit("concat failed:\n" + r.stderr[-1200:])
     return out_path
 
 
