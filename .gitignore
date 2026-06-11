@@ -1,9 +1,14 @@
 # 音频/视频产物 / 样本（体积大、含个人声音，不入库）
 audio_output/
 assets/xhs_cards*/
+assets/cover/
 *.mp3
 *.wav
 *.mp4
+
+# 每日产物归档 output/<date>/：只入库文本（CHANGELOG.md / scripts 文稿 / durs.json），忽略媒体
+output/**/*.png
+output/**/*.jpg
 
 # 调试用的接口响应
 *.jsonl

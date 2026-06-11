@@ -102,15 +102,16 @@ print("[done]", OUT)
 
 ### 变体：还没配音时（首次出片 / 跨日期精选）
 把 GROUPS 改成 `[(cards, weights), ...]`（顺序＝音频段顺序，不带 seg 名），先用
-`run_daily.synth_segmented` 现合成并拿每段真实时长，再按权重摊给组内卡片：
+**`run_daily.synth_single_synced`**（整段一次合成、音色统一）拿每段时长，再按权重摊给组内卡片：
 ```python
 import os, sys; sys.path.insert(0, "scripts")
 import run_daily as rd, generate_broadcast as gb, make_xhs_video_html as xhs
 rd.load_dotenv(rd.REPO_ROOT)
+os.environ["VOLC_SPEECH_RATE"] = "50"                       # ≈1.4×（默认）
 spk = os.getenv("VOLC_SPEAKER2")
-segs = gb.split_segments(rd.strip_header(open("samples/broadcast-....md",encoding="utf-8").read()))
+segs = gb.split_segments(rd.strip_header(open("output/<date>/scripts/broadcast-....md",encoding="utf-8").read()))
 log = rd.Logger(rd.REPO_ROOT/"logs"/"run-mix.log")
-durs_seg = rd.synth_segmented(segs, AUDIO, log, spk)        # 7 段 → 7 个真实时长
+durs_seg = rd.synth_single_synced(segs, AUDIO, log, spk)    # 7 段 → 7 个真实时长（音色统一）
 assert len(GROUPS) == len(segs)
 cards, durs = [], []
 for sd, group in zip(durs_seg, GROUPS):

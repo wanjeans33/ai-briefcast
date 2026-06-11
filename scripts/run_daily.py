@@ -163,6 +163,90 @@ def synth_segmented(segments: list[str], out_mp3: Path, log: Logger,
     return durs
 
 
+def _detect_silences(path: Path, noise: str = "-30dB",
+                     dmin: float = 0.22) -> list[tuple[float, float]]:
+    """用 ffmpeg silencedetect 返回 [(start,end), ...] 静音区间。"""
+    import re as _re
+    import make_xhs_video_html as xhs
+    cmd = [xhs.FFMPEG, "-i", str(path), "-af",
+           f"silencedetect=noise={noise}:d={dmin}", "-f", "null", "-"]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    sils, cur = [], None
+    for m in _re.finditer(r"silence_(start|end):\s*([0-9.]+)", r.stderr or ""):
+        kind, val = m.group(1), float(m.group(2))
+        if kind == "start":
+            cur = val
+        elif cur is not None:
+            sils.append((cur, val))
+            cur = None
+    return sils
+
+
+def _proportional(segments: list[str], total: float) -> list[float]:
+    """按每段「可朗读字符数」把总时长比例切分（卡点兜底）。"""
+    lens = [max(1, len(s.strip())) for s in segments]
+    s = sum(lens)
+    return [total * x / s for x in lens]
+
+
+def _speech_seconds(path: Path) -> float:
+    """音频「有声部分」时长（总长减去末尾静音），用于排除 pad_tail 尾音偏差。"""
+    total = _audio_seconds(path)
+    sils = _detect_silences(path, noise="-35dB", dmin=0.15)
+    if sils:
+        last_start, last_end = sils[-1]
+        if last_end >= total - 0.05:        # 末尾确有静音 → 减去
+            return max(0.1, last_start)
+    return total
+
+
+def synth_single_synced(segments: list[str], out_mp3: Path, log: Logger,
+                        speaker: str | None) -> list[float] | None:
+    """整段一次合成（音色全程统一）+ 分段测时等比缩放卡点。
+
+    1) 整段一次合成 → 真实音频（避免段间克隆音色漂移）。
+    2) 逐段临时合成，量「有声时长」拿到各段时长比例（不入最终音频）。
+    3) 把比例等比缩放到整段总长，得到精确卡点。
+    分段测时失败则回退「按字数比例」。失败返回 None。
+    """
+    import time
+    import shutil as _sh
+    n = len(segments)
+    # 1) 整段一次合成
+    full = "。。".join(s.strip().rstrip("。！？!?…，,") for s in segments)
+    ok = False
+    for attempt in range(3):
+        if run_tts(full, out_mp3, log, speaker=speaker):
+            ok = True
+            break
+        log(f"[tts ] 整段合成失败，重试 {attempt+1}/3…")
+        time.sleep(3 + 3 * attempt)
+    if not ok:
+        log("[tts ] 整段三次仍失败。")
+        return None
+    total = _audio_seconds(out_mp3)
+    # 2) 分段测时（临时，仅取有声时长比例）
+    tdir = out_mp3.parent / "_timing"
+    tdir.mkdir(parents=True, exist_ok=True)
+    raw = []
+    try:
+        for i, seg in enumerate(segments):
+            sp = tdir / f"t{i:02d}.mp3"
+            if not run_tts(seg, sp, log, speaker=speaker):
+                raise RuntimeError(f"测时段 {i} 失败")
+            raw.append(_speech_seconds(sp))
+    except Exception as e:  # noqa: BLE001
+        log(f"[tts ] 分段测时失败（{str(e)[:80]}），回退按字数比例。")
+        _sh.rmtree(tdir, ignore_errors=True)
+        return _proportional(segments, total)
+    _sh.rmtree(tdir, ignore_errors=True)
+    # 3) 等比缩放到整段总长
+    k = total / sum(raw)
+    durs = [r * k for r in raw]
+    log(f"[tts ] 整段合成 → {out_mp3}（总长 {total:.1f}s，{n} 段卡点，分段测时×{k:.3f}）")
+    return durs
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="AI Briefcast 每日全流程编排")
     ap.add_argument("--date", help="指定日期 YYYY-MM-DD（默认取各站最新一期）")
