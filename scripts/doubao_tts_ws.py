@@ -99,7 +99,8 @@ def pad_tail(t: str) -> str:
         return t
     if t[-1] not in "。！？!?…":
         t += "。"
-    return t + "。"
+    # 末字偶发被流式解码截掉；补一段「逗号停顿 + 多句号」给解码器留足余量
+    return t + "，。。。"
 
 
 async def main(text, out_path):
