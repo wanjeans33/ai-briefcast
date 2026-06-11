@@ -88,7 +88,23 @@ async def recv(ws):
     return parse(msg)
 
 
+def pad_tail(t: str) -> str:
+    """末尾补一个停顿缓冲，避免双向流式 TTS 把最后一个字截掉。
+
+    服务端在收到 FinishSession 后停止生成，末 token 有时来不及解码完整，
+    导致「最后一个字」被吞。补一句末标点（纯停顿、不发音）给解码器留出余量。
+    """
+    t = (t or "").rstrip()
+    if not t:
+        return t
+    if t[-1] not in "。！？!?…":
+        t += "。"
+    # 末字偶发被流式解码截掉；补一段「逗号停顿 + 多句号」给解码器留足余量
+    return t + "，。。。"
+
+
 async def main(text, out_path):
+    text = pad_tail(text)
     headers = {
         "x-api-key": API_KEY,
         "X-Api-App-Id": APP_ID,
@@ -103,12 +119,19 @@ async def main(text, out_path):
         mt, ev, s, pl = await recv(ws)
         print(f"  <- event {ev} (expect 50 ConnectionStarted)")
         # 2. session with full req_params
+        audio_params = {"format": "mp3", "sample_rate": 24000}
+        try:
+            sr = float(os.environ.get("VOLC_SPEECH_RATE", "") or 0)
+        except ValueError:
+            sr = 0
+        if sr:
+            audio_params["speech_rate"] = sr   # 语速，正数更快（范围约 -50~100）
         await ws.send(build(EV_StartSession, {
             "event": EV_StartSession,
             "namespace": "BidirectionalTTS",
             "req_params": {
                 "speaker": SPEAKER,
-                "audio_params": {"format": "mp3", "sample_rate": 24000},
+                "audio_params": audio_params,
             },
         }, sid))
         mt, ev, s, pl = await recv(ws)

@@ -287,9 +287,42 @@ SYSTEM_PROMPT = (
     "（如「二零二六年六月二号」「百分之四十一点九」）；\n"
     "4. 公司名、产品名、模型名、论文等专有名词可保留英文原文（如 Anthropic、MoE、"
     "RTX Spark），其余尽量中文；\n"
-    "5. 开头有简短开场白，结尾有简短收尾语；\n"
+    "5. 不要写开场白／自我介绍／日期问候（这部分由固定模板提供），"
+    "直接从第一条要闻讲起；结尾保留一句简短收尾语；\n"
     "6. 直接输出可朗读的正文纯文本，不要使用 Markdown 标题、列表符号或表格。"
 )
+
+# 固定开场白：每天自动套用，仅替换日期（{date_cn} 为口语化中文日期）。
+FIXED_INTRO = (
+    "大家好，这里是柿子树下的猫wanjeans，三分钟带你了解AI圈的新鲜事。"
+    "今天是{date_cn}，欢迎收听《AI Briefcast》。来看今天的 AI 要闻。"
+)
+
+_CN_DIGITS = "零一二三四五六七八九"
+
+
+def _cn_num(n: int) -> str:
+    """1–99 的口语化中文（如 6→六，16→十六，26→二十六）。"""
+    if n < 10:
+        return _CN_DIGITS[n]
+    if n < 20:
+        return "十" + (_CN_DIGITS[n % 10] if n % 10 else "")
+    tens, ones = divmod(n, 10)
+    return _CN_DIGITS[tens] + "十" + (_CN_DIGITS[ones] if ones else "")
+
+
+def spoken_date(date: str) -> str:
+    """'2026-06-06' → '二零二六年六月六号'。"""
+    try:
+        y, m, d = date.split("-")
+        ynum = "".join(_CN_DIGITS[int(c)] for c in y)
+        return f"{ynum}年{_cn_num(int(m))}月{_cn_num(int(d))}号"
+    except Exception:  # noqa: BLE001
+        return date
+
+
+def fixed_intro(date: str) -> str:
+    return FIXED_INTRO.format(date_cn=spoken_date(date))
 
 CONCISE_INSTRUCTION = (
     "请生成【简洁版】播报稿，控制在大约 400–600 字、朗读约 3 分钟：\n"
@@ -396,6 +429,127 @@ def rewrite_via_pi(source_text: str, mode: str, *, workspace: Path | None = None
     return out
 
 
+# --------------------------------------------------------------------------- #
+# 小红书卡片文案（供 make_xhs_video 用）
+# --------------------------------------------------------------------------- #
+CARDS_SYSTEM = (
+    "你是小红书图文卡片文案。把当天的 AI 播报素材改写成一组用于制作 9:16 竖屏卡片的内容，"
+    "严格只输出 JSON（不要任何解释、不要 Markdown 代码块）。"
+)
+CARDS_INSTRUCTION = (
+    "输出 JSON，结构为 {\"cards\":[...]}，共 6 张卡，顺序为：\n"
+    "1 张 cover + 4 张 point（对应 3 条行业头条 + 1 条论文）+ 1 张 cta。\n"
+    "字段：\n"
+    "- cover: {\"kind\":\"cover\",\"badge\":\"如 建议收藏 · 每日AI速览\",\"subtitle\":\"如 6月X日 · AI Briefcast\","
+    "\"count\":4,\"toc\":[\"逐条列出 4 张 point 的一句话标题，≤14字\"]}\n"
+    "- point: {\"kind\":\"point\",\"tag\":\"如 头条 01 · 行业 / 论文 · 搜索Agent\","
+    "\"icon\":\"贴切 emoji 如 📱📈🛡️🧪\",\"title\":\"≤10字\","
+    "\"body\":\"≤55字，口语化，用 **加粗** 标出关键数字/词\","
+    "\"punch\":\"≤16字金句/一句话观点，可 **加粗**\"}\n"
+    "- cta:  {\"kind\":\"cta\",\"title\":\"如 明天见\",\"subtitle\":\"一句话\",\"tags\":[\"关注\",\"收藏\",\"分享\"]}\n"
+    "要求：只用素材中的事实，不杜撰；公司/产品/模型等英文专有名词保留英文；"
+    "卡片是用来看的，数字可用阿拉伯数字；语言精炼、有网感。"
+)
+
+
+def _extract_json(text: str) -> dict:
+    import json
+    m = re.search(r"\{.*\}", text, re.S)
+    if not m:
+        raise ValueError(f"未从模型输出解析出 JSON：{text[:200]}")
+    return json.loads(m.group(0))
+
+
+def split_segments(script: str) -> list[str]:
+    """把播报正文按空行切成段落（用于卡点：一段 ↔ 一张卡 ↔ 一段音频）。"""
+    return [p.strip() for p in re.split(r"\n\s*\n", script.strip()) if p.strip()]
+
+
+def _llm_json(prompt_or_msgs, *, backend: str, model: str | None) -> str:
+    """统一调用：backend='pi' 走 pi agent，否则走 OpenAI 兼容。返回原始文本。"""
+    if backend == "pi":
+        proc = subprocess.run(_pi_command() + ["-p", prompt_or_msgs],
+                              cwd=str(PI_WORKSPACE), capture_output=True,
+                              text=True, encoding="utf-8")
+        if proc.returncode != 0:
+            raise SystemExit(f"pi 调用失败：{proc.stderr[-600:]}")
+        return (proc.stdout or "").strip()
+    from openai import OpenAI
+    api_key = os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY")
+    model = model or os.getenv("LLM_MODEL")
+    if not (api_key and model):
+        raise SystemExit("未设置 LLM_API_KEY / LLM_MODEL")
+    client = OpenAI(base_url=os.getenv("LLM_BASE_URL"), api_key=api_key)
+    r = client.chat.completions.create(
+        model=model, temperature=0.5,
+        messages=[{"role": "system", "content": CARDS_SYSTEM},
+                  {"role": "user", "content": prompt_or_msgs}])
+    return r.choices[0].message.content.strip()
+
+
+CARDS_SYNCED_INSTRUCTION = (
+    "下面是一篇 AI 播报稿，已按播读顺序切成若干段落（编号从 1 开始）。"
+    "请为【每一段】生成恰好一张竖屏卡片，输出 JSON：{\"cards\":[...]}，"
+    "卡片数量必须与段落数量完全相同、顺序一致。\n"
+    "- 第 1 段（开场白）→ cover：{\"kind\":\"cover\",\"badge\":\"建议收藏 · 每日AI速览\","
+    "\"subtitle\":\"如 6月X日 · AI Briefcast\",\"count\":中间内容卡的数量(整数),"
+    "\"toc\":[\"逐条列出每张中间卡的一句话标题，≤14字\"]}\n"
+    "- 最后一段（收尾）→ cta：{\"kind\":\"cta\",\"title\":\"如 明天见\",\"subtitle\":\"一句话\",\"tags\":[\"关注\",\"收藏\",\"分享\"]}\n"
+    "- 中间每段 → point：{\"kind\":\"point\",\"tag\":\"如 头条 01 · 行业 / 论文 · 全模态\","
+    "\"icon\":\"一个贴切的 emoji，如 📱📈🛡️🧪🤖⚡\",\"title\":\"≤10字\","
+    "\"body\":\"≤55字，口语化，用 **加粗** 标出 1–2 个关键数字/词\","
+    "\"punch\":\"≤16字的金句/一句话观点，可用 **加粗** 强调，放在卡片底部\"}\n"
+    "要求：每张卡只浓缩它对应那一段的内容，不要跨段；cover 的 toc 要与中间各卡标题对应；"
+    "只用稿中事实不杜撰；公司/产品/模型等英文专有名词保留英文；数字可用阿拉伯数字；语言精炼有网感。"
+)
+
+
+def make_cards_synced(segments: list[str], *, backend: str = "api",
+                      model: str | None = None) -> list[dict]:
+    """按段落一一对应生成卡片（数量 == 段落数），用于精确卡点。"""
+    numbered = "\n\n".join(f"【第{i+1}段】{s}" for i, s in enumerate(segments))
+    user = f"{CARDS_SYNCED_INSTRUCTION}\n\n以下是分段后的播报稿：\n\n{numbered}"
+    prompt = f"{CARDS_SYSTEM}\n\n{user}" if backend == "pi" else user
+    out = _llm_json(prompt, backend=backend, model=model)
+    cards = _extract_json(out).get("cards", [])
+    if len(cards) != len(segments):
+        raise SystemExit(
+            f"make_cards_synced: 卡片数({len(cards)}) != 段落数({len(segments)})")
+    return cards
+
+
+def make_cards(source_text: str, *, backend: str = "api", model: str | None = None) -> list[dict]:
+    """用 LLM 把当天素材转成小红书卡片内容列表。"""
+    user = f"{CARDS_INSTRUCTION}\n\n以下是今天的原始新闻素材：\n\n{source_text}"
+    if backend == "pi":
+        prompt = f"{CARDS_SYSTEM}\n\n{user}"
+        proc = subprocess.run(_pi_command() + ["-p", prompt],
+                              cwd=str(PI_WORKSPACE), capture_output=True,
+                              text=True, encoding="utf-8")
+        if proc.returncode != 0:
+            raise SystemExit(f"pi 调用失败：{proc.stderr[-600:]}")
+        out = (proc.stdout or "").strip()
+    else:
+        try:
+            from openai import OpenAI
+        except ImportError as e:
+            raise SystemExit("缺少依赖 openai") from e
+        api_key = os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY")
+        model = model or os.getenv("LLM_MODEL")
+        if not (api_key and model):
+            raise SystemExit("未设置 LLM_API_KEY / LLM_MODEL")
+        client = OpenAI(base_url=os.getenv("LLM_BASE_URL"), api_key=api_key)
+        r = client.chat.completions.create(
+            model=model, temperature=0.5,
+            messages=[{"role": "system", "content": CARDS_SYSTEM},
+                      {"role": "user", "content": user}])
+        out = r.choices[0].message.content.strip()
+    cards = _extract_json(out).get("cards", [])
+    if not cards:
+        raise SystemExit("make_cards: 模型没有返回 cards")
+    return cards
+
+
 def wrap_header(kind: str, date: str, rewriter: str) -> str:
     return (
         f"# AI Briefcast 播报稿（{kind}）· {date}\n\n"
@@ -453,6 +607,7 @@ def main() -> int:
             continue
         print(f"[llm ] 生成{mode}版（{args.llm}）…")
         script = rewrite(source_text, mode, backend=args.llm, model=model)
+        script = fixed_intro(date) + "\n\n" + script.lstrip()
         kind = "简洁版" if mode == "concise" else "完整版"
         content = wrap_header(kind, date, rewriter) + script + "\n"
         path = outdir / f"broadcast-{date}-{mode}.md"

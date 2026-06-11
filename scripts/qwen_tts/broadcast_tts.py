@@ -2,17 +2,21 @@
 """长稿播报 TTS:把 markdown 播报稿用克隆主播声合成,按句切块拼接,输出 MP3。"""
 import os
 import re
+import sys
 import numpy as np
 import torch
 import lameenc
 
 HERE = os.path.dirname(__file__)
 REF = os.path.join(HERE, "my_voice3.wav")   # 基准参考声:第三段录音(Olof-Palme-Straße 5)
-MODEL_DIR = os.path.join(HERE, "models", "Qwen3-TTS-1.7B-Base")
+# 本地 models/ 目录优先；没有就用 HF 仓库 id（走本地缓存，不重复下载）
+_LOCAL_MODEL = os.path.join(HERE, "models", "Qwen3-TTS-1.7B-Base")
+MODEL_DIR = _LOCAL_MODEL if os.path.isdir(_LOCAL_MODEL) else "Qwen/Qwen3-TTS-12Hz-1.7B-Base"
 
-MD = r"E:\Github_project\ai-briefcast\samples\broadcast-2026-06-03-concise.md"
+# 可命令行覆盖： python broadcast_tts.py [稿件.md] [后缀]
+MD = sys.argv[1] if len(sys.argv) > 1 else r"E:\Github_project\ai-briefcast\samples\broadcast-2026-06-03-concise.md"
 OUTDIR = r"E:\Github_project\ai-briefcast\audio_output"
-SUFFIX = "-myvoice"   # 我自己的克隆声(基准)
+SUFFIX = sys.argv[2] if len(sys.argv) > 2 else "-myvoice"   # 我自己的克隆声(基准)
 OUT = os.path.join(OUTDIR, os.path.splitext(os.path.basename(MD))[0] + SUFFIX + ".mp3")
 
 LANG = "Chinese"
