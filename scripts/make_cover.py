@@ -18,18 +18,19 @@ body{{font-family:'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif;-web
 .cover{{width:{W}px;height:{H}px;position:relative;overflow:hidden;display:flex;flex-direction:column;
        padding:76px 72px 64px;color:#3a1d10;
        background:linear-gradient(155deg,#fbe3d3 0%,#f3a98a 100%)}}
-.deco{{position:absolute;right:-90px;top:-70px;font-size:520px;opacity:0.16;transform:rotate(12deg);z-index:0}}
+.deco{{position:absolute;right:-155px;top:-125px;font-size:520px;opacity:0.11;transform:rotate(12deg);z-index:0}}
 .deco2{{position:absolute;right:60px;bottom:30px;font-size:230px;opacity:0.22;z-index:0}}
 .brand{{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;z-index:2;
        padding:16px 32px;border-radius:999px;background:rgba(255,255,255,0.6);
        font-size:30px;font-weight:800}}
-.hook{{z-index:2;margin-top:54px}}
-.hook .k{{font-size:40px;font-weight:800;opacity:0.66}}
-.hook .big{{font-size:150px;font-weight:900;line-height:0.98;letter-spacing:-0.02em;margin-top:8px}}
+.hook{{z-index:2;margin-top:64px}}
+.hook .k{{font-size:40px;font-weight:800;opacity:0.66;letter-spacing:0.01em}}
+.hook .big{{font-size:150px;font-weight:900;line-height:0.98;letter-spacing:-0.02em;margin-top:8px;
+           text-shadow:0 2px 0 rgba(255,255,255,0.5),0 0 28px rgba(251,227,211,0.85)}}
 .hook .big em{{color:{ACC};font-style:normal}}
-.list{{z-index:2;margin-top:60px;display:flex;flex-direction:column;gap:30px}}
+.list{{z-index:2;margin-top:70px;display:flex;flex-direction:column;gap:40px}}
 .row{{display:flex;align-items:flex-start;gap:24px;font-size:46px;font-weight:700;line-height:1.26}}
-.row .n{{flex:none;width:62px;height:62px;border-radius:16px;background:{ACC};color:#fff;
+.row .n{{flex:none;width:62px;height:62px;border-radius:16px;background:#4a2718;color:#fff;
         font-size:34px;font-weight:900;display:flex;align-items:center;justify-content:center}}
 .row b{{background:{ACC};color:#fff;padding:2px 14px;border-radius:12px;
        -webkit-box-decoration-break:clone;box-decoration-break:clone}}
@@ -45,18 +46,18 @@ def hl(t: str) -> str:
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
 
 
-# —— 6/11 封面内容 ——
+# —— 7/5 封面内容 ——
 BRAND = "🍊 柿子树下的猫 ｜ AI 速览"
-KICKER = "6月11日 · 1分钟追上AI圈"
-BIG = '今日 AI<br><em>5</em> 件大事'
+KICKER = "7月5日 · 1分钟追上AI圈"
+BIG = '阿里<em>封杀</em><br>Claude'
 ROWS = [
-    "马斯克把**数据中心搬上天**，散热遭质疑",
-    "双方律师**AI代笔没审**，法官取消庭审",
-    "苹果**云端AI免费**，圈住中小开发者",
-    "视频多点编辑，**一上强度就翻车**",
-    "记忆更新**也能学**，冻结模型拿高分",
+    "**阿里** 全面封杀 Claude",
+    "**扎克伯格** 认怂 agent",
+    "**OpenAI** 送政府 5% 股权",
+    "教 **AI** 说“我不知道”",
+    "简单办法 **打赢**花哨监督",
 ]
-DATE = "@AI Briefcast · 6/11"
+DATE = "@AI Briefcast · 7/5"
 
 
 def build_html():
