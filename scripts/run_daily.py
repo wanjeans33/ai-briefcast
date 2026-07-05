@@ -212,8 +212,9 @@ def synth_single_synced(segments: list[str], out_mp3: Path, log: Logger,
     import time
     import shutil as _sh
     n = len(segments)
-    # 1) 整段一次合成
-    full = "。。".join(s.strip().rstrip("。！？!?…，,") for s in segments)
+    # 1) 整段一次合成。段间用「，。。」：逗号让上一段末字以连续语气读完（不被截尾），
+    #    再用句号制造段落停顿（卡点靠下方分段测时，不依赖这里的停顿）。
+    full = "，。。".join(s.strip().rstrip("。！？!?…，,") for s in segments)
     ok = False
     for attempt in range(3):
         if run_tts(full, out_mp3, log, speaker=speaker):

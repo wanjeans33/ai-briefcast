@@ -181,9 +181,16 @@ def card_html(c, i, n, wm):
             f'<div class="row"><span class="num">{k+1}</span>'
             f'<span>{_wrap(t, 13)}</span></div>' for k, t in enumerate(toc))
         cnt = c.get("count") or (len(toc) if toc else 3)
+        hook = c.get("hook")  # 头条大字钩子；给定时大字＝钩子，「今日N条要闻」降为副行
+        sub = c.get("subtitle", "")
+        if hook:
+            sub = (sub + " · 今日 " + str(cnt) + " 条要闻").strip(" ·")
+            bigline = f'<div class="big">{hook}</div>'
+        else:
+            bigline = f'<div class="big">今日 <em>{cnt}</em> 条要闻</div>'
         inner = (f'<div class="brand">{c.get("badge","每日AI速览")}</div>'
-                 f'<div class="coverhead"><div class="sub">{c.get("subtitle","")}</div>'
-                 f'<div class="big">今日 <em>{cnt}</em> 条要闻</div></div>'
+                 f'<div class="coverhead"><div class="sub">{sub}</div>'
+                 f'{bigline}</div>'
                  f'<div class="toc">{rows}</div>')
         return f'<div class="card {cls}" id="card{i}">{dots}{inner}{water}</div>'
 
@@ -360,6 +367,209 @@ def concat_clips(clips, out_path):
     if r.returncode != 0:
         raise SystemExit("concat failed:\n" + r.stderr[-1200:])
     return out_path
+
+
+# --------------------------------------------------------------------------- #
+# 字幕：脚本原文 + faster-whisper 词级时间戳强制对齐 → ASS → 烧进视频
+# 用脚本原文（不用 ASR 文本），避免 Nex/Qwen/CODA-BENCH 等专有名词被转错。
+# --------------------------------------------------------------------------- #
+SUB_FONT = "Microsoft YaHei"
+SUB_FONTSIZE = 96            # 字幕字号（2160 宽空间内）；6/19 起放大 78→96 更醒目
+SUB_MARGINV = 820            # 字幕条距底边像素（约 78% 高度，落在正文与金句之间的空白带）
+SUB_MAXLEN = 18            # 每行最多“全宽字”（英文/数字/空格按半宽计），在标点处断，绝不切词；放大字号后 22→18 防溢出
+SUB_STRONG = set("。！？")  # 句末：必收行
+SUB_BREAK_AFTER = set("的了地得和与及或在把对为到从让被并而且也就还又再，、；：")  # 长子句兜底断点
+
+
+def _sub_spoken(s):
+    """只数会被读出的字符（中日韩 + 字母数字），忽略标点空格。"""
+    return [c for c in s if c.isalnum()]
+
+
+def _sub_w(s):
+    """显示宽度：全宽中文＝1，英文/数字/空格＝0.5。按视觉宽度而非字数断行。"""
+    return sum(0.5 if c.isascii() else 1.0 for c in s)
+
+
+def _wrap_clause(s, maxlen):
+    """单个超宽子句（无内部标点可断）在自然处折：优先助词/连词后，绝不切开英文/数字 token。"""
+    out = []
+    while _sub_w(s) > maxlen:
+        cum, idx = 0.0, len(s)
+        for i, ch in enumerate(s):                       # 找累计宽度刚超 maxlen 的位置
+            cum += 0.5 if ch.isascii() else 1.0
+            if cum > maxlen:
+                idx = i
+                break
+        found = None
+        for i in range(idx, max(1, idx - 8) - 1, -1):    # 向左找“可断点之后”
+            if i < len(s) and s[i - 1] in SUB_BREAK_AFTER:
+                found = i
+                break
+        if found is None:                                # 没好断点：退到 idx，但别切断英数 token
+            cut = idx
+            while 1 < cut < len(s) and s[cut - 1].isascii() and s[cut - 1].isalnum() \
+                    and s[cut].isascii() and s[cut].isalnum():
+                cut -= 1
+            found = max(1, cut)
+        out.append(s[:found].strip())
+        s = s[found:].strip()
+    if s:
+        out.append(s)
+    return out
+
+
+def subtitle_lines(segments, maxlen=SUB_MAXLEN):
+    """切字幕行：只在标点（逗号/顿号/分句）处断，绝不在词或数字中间切；按视觉宽度合并到 ≤maxlen；
+    句末（。！？）强制收行；单个子句超宽才在自然处折。返回 [{text,n,seg}]（n＝有声字数，供对齐）。"""
+    out = []
+    for si, seg in enumerate(segments):
+        for q in "「」『』":
+            seg = seg.replace(q, "")
+        parts = re.split(r"(?<=[。！？；，、：])", seg)
+        cur = ""
+
+        def flush():
+            nonlocal cur
+            core = cur.strip().rstrip("。，、；：！？ ")
+            if core:
+                for piece in _wrap_clause(core, maxlen):
+                    piece = piece.strip()
+                    n = len(_sub_spoken(piece))
+                    if n:
+                        out.append({"text": piece, "n": n, "seg": si})
+            cur = ""
+
+        for p in parts:
+            p = p.strip()
+            if not p:
+                continue
+            if cur and _sub_w(cur) + _sub_w(p) > maxlen:   # 放不下 → 先在上一个标点处收行
+                flush()
+            cur += p
+            if p[-1] in SUB_STRONG:                        # 句末必收行，不跨句合并
+                flush()
+        flush()
+    return out
+
+
+def _align_whisper(lines, audio_path, log=print):
+    """faster-whisper 词级时间戳 → 按有声字比例映射到字幕行。不可用/失败返回 None。"""
+    try:
+        from faster_whisper import WhisperModel
+    except Exception as e:  # noqa: BLE001
+        log(f"[subs] 无 faster-whisper（{e}）"); return None
+    try:
+        model = WhisperModel("base", device="cpu", compute_type="int8")
+        wsegs, _ = model.transcribe(str(audio_path), language="zh", word_timestamps=True)
+        cs, ce = [], []
+        for ws in wsegs:
+            for w in (ws.words or []):
+                wc = _sub_spoken(w.word)
+                if not wc:
+                    continue
+                a, b = float(w.start), float(w.end)
+                for k in range(len(wc)):
+                    cs.append(a + (b - a) * k / len(wc))
+                    ce.append(a + (b - a) * (k + 1) / len(wc))
+        Nw = len(cs)
+        Nm = sum(l["n"] for l in lines)
+        if Nw < 10 or Nm == 0:
+            return None
+        times, cum, prev = [], 0, 0.0
+        for l in lines:
+            a = cum; b = cum + l["n"]; cum = b
+            ia = min(Nw - 1, max(0, round(a * Nw / Nm)))
+            ib = min(Nw - 1, max(0, round((b - 1) * Nw / Nm)))
+            st = max(prev, cs[ia]); en = max(st + 0.4, ce[ib])
+            times.append((st, en)); prev = en
+        log(f"[subs] faster-whisper 对齐：whisper {Nw} 字 ↔ 脚本 {Nm} 字")
+        return times
+    except Exception as e:  # noqa: BLE001
+        log(f"[subs] whisper 对齐失败（{str(e)[:80]}）"); return None
+
+
+def _align_durs(lines, durs):
+    """回退：按每段时长 durs、行内有声字比例分配（有段间停顿漂移，精度略低）。"""
+    starts = [sum(durs[:i]) for i in range(len(durs))]
+    by_seg = {}
+    for i, l in enumerate(lines):
+        by_seg.setdefault(l["seg"], []).append((i, l))
+    times = [None] * len(lines)
+    for si, group in by_seg.items():
+        tot = sum(g["n"] for _, g in group) or 1
+        t0 = starts[si] if si < len(starts) else 0.0
+        acc = 0.0
+        for i, g in group:
+            d = (durs[si] if si < len(durs) else 2.0) * g["n"] / tot
+            times[i] = (t0 + acc, t0 + acc + d); acc += d
+    return times
+
+
+def _ass_ts(x):
+    cs_ = int(round(x * 100)); h = cs_ // 360000; m = (cs_ // 6000) % 60
+    s = (cs_ // 100) % 60; c = cs_ % 100
+    return f"{h}:{m:02d}:{s:02d}.{c:02d}"
+
+
+def write_ass(lines, times, ass_path, marginv=SUB_MARGINV, fontsize=SUB_FONTSIZE, font=SUB_FONT):
+    """写 ASS：微软雅黑、半透明黑底(BorderStyle=3)、底部居中、MarginV 控制高度。"""
+    head = (
+        "[Script Info]\nScriptType: v4.00+\n"
+        f"PlayResX: {OUT_W}\nPlayResY: {OUT_H}\nWrapStyle: 2\nScaledBorderAndShadow: yes\n\n"
+        "[V4+ Styles]\n"
+        "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, "
+        "BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, "
+        "BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
+        f"Style: Default,{font},{fontsize},&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,"
+        f"1,0,0,0,100,100,0,0,3,8,0,2,150,150,{marginv},1\n\n"
+        "[Events]\n"
+        "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
+    )
+    ev = "".join(
+        f"Dialogue: 0,{_ass_ts(st)},{_ass_ts(en)},Default,,0,0,0,,{l['text']}\n"
+        for l, (st, en) in zip(lines, times)
+    )
+    Path(ass_path).write_text(head + ev, encoding="utf-8")
+    return ass_path
+
+
+def burn_subtitles(video_in, ass_path, video_out):
+    """ffmpeg 把 ASS 烧进视频。用 cwd 下相对路径避开 Windows 盘符冒号转义。"""
+    ass_path, video_in, video_out = Path(ass_path), Path(video_in), Path(video_out)
+    tmp = Path.cwd() / ("_burn_" + ass_path.name)
+    shutil.copy(ass_path, tmp)
+    try:
+        cmd = [FFMPEG, "-y", "-i", str(video_in), "-vf", f"ass={tmp.name}",
+               "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20",
+               "-c:a", "copy", str(video_out)]
+        r = subprocess.run(cmd, cwd=str(Path.cwd()), capture_output=True, text=True)
+    finally:
+        tmp.unlink(missing_ok=True)
+    if r.returncode != 0:
+        raise SystemExit("subtitle burn failed:\n" + r.stderr[-1500:])
+    return video_out
+
+
+def add_subtitles(segments, durs, audio_path, video_in, video_out,
+                  ass_path=None, marginv=SUB_MARGINV, log=print):
+    """一站式字幕：脚本段 → 字幕行 →（whisper 对齐｜durs 回退）→ ASS → 烧进视频。
+
+    segments: 与 durs 等长的「每段旁白文本」（= gb.split_segments(strip_header(md))）。
+    durs    : 每段秒数（与卡点同一份 durs.json）。
+    """
+    lines = subtitle_lines(segments)
+    times = _align_whisper(lines, audio_path, log)
+    if times is None:
+        log("[subs] 回退 durs 按段比例分配")
+        times = _align_durs(lines, durs)
+    if ass_path is None:
+        ass_path = Path(video_out).with_name("subs.ass")
+    write_ass(lines, times, ass_path, marginv=marginv)
+    log(f"[subs] {len(lines)} 行 → {ass_path}")
+    burn_subtitles(video_in, ass_path, video_out)
+    log(f"[subs] 烧字幕 → {video_out}")
+    return video_out
 
 
 def build_xhs_video(cards, audio_path, out_path, date=None,
