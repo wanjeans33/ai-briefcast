@@ -1,0 +1,69 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.88,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.36,0:00:03.60,Default,,0,0,0,,先说两位大牛跳槽
+Dialogue: 0,0:00:03.88,0:00:04.92,Default,,0,0,0,,一位是 John Jumper
+Dialogue: 0,0:00:04.92,0:00:07.20,Default,,0,0,0,,他在 Google DeepMind 待了快九年
+Dialogue: 0,0:00:07.20,0:00:08.64,Default,,0,0,0,,是 AlphaFold 的共同作者
+Dialogue: 0,0:00:08.64,0:00:10.46,Default,,0,0,0,,用 AI 算出了蛋白质的结构
+Dialogue: 0,0:00:10.46,0:00:12.78,Default,,0,0,0,,还靠这个拿了 2024 年的诺贝尔化学奖
+Dialogue: 0,0:00:12.78,0:00:14.14,Default,,0,0,0,,这回他跳去了对手 Anthropic
+Dialogue: 0,0:00:14.66,0:00:16.32,Default,,0,0,0,,另一位是 Noam Shazeer
+Dialogue: 0,0:00:16.32,0:00:18.08,Default,,0,0,0,,他是 Transformer 论文的作者之一
+Dialogue: 0,0:00:18.08,0:00:19.74,Default,,0,0,0,,上周离开谷歌去了 OpenAI
+Dialogue: 0,0:00:19.74,0:00:21.76,Default,,0,0,0,,Transformer 是今天几乎所有大模型的地
+Dialogue: 0,0:00:21.76,0:00:22.28,Default,,0,0,0,,基
+Dialogue: 0,0:00:22.28,0:00:23.36,Default,,0,0,0,,随着 Shazeer 离开
+Dialogue: 0,0:00:23.36,0:00:24.72,Default,,0,0,0,,写这篇论文的八位作者
+Dialogue: 0,0:00:24.72,0:00:26.30,Default,,0,0,0,,如今全都离开了谷歌
+Dialogue: 0,0:00:26.30,0:00:27.88,Default,,0,0,0,,AI数据中心特别费电
+Dialogue: 0,0:00:27.88,0:00:29.90,Default,,0,0,0,,想接入电网常常要排很久的队
+Dialogue: 0,0:00:29.90,0:00:32.48,Default,,0,0,0,,美国能源监管机构 FERC 给六大电网下了
+Dialogue: 0,0:00:32.48,0:00:33.02,Default,,0,0,0,,命令
+Dialogue: 0,0:00:33.02,0:00:35.50,Default,,0,0,0,,要电网讲清为什么不让数据中心更快接入
+Dialogue: 0,0:00:35.50,0:00:38.22,Default,,0,0,0,,否则就修改并网规则、给数据中心让路
+Dialogue: 0,0:00:38.22,0:00:39.83,Default,,0,0,0,,“保证数据中心尽快通电”成了
+Dialogue: 0,0:00:39.83,0:00:41.36,Default,,0,0,0,,国家级优先的事情
+Dialogue: 0,0:00:41.36,0:00:44.10,Default,,0,0,0,,说到底，电正在变成 AI 的新瓶颈
+Dialogue: 0,0:00:44.10,0:00:45.78,Default,,0,0,0,,欧盟近期办了一个前沿 AI 大挑战
+Dialogue: 0,0:00:45.78,0:00:47.98,Default,,0,0,0,,最后选中一支意大利公司牵头的团队
+Dialogue: 0,0:00:47.98,0:00:50.06,Default,,0,0,0,,要造一个超过四千亿参数的开源大模型
+Dialogue: 0,0:00:50.06,0:00:52.62,Default,,0,0,0,,而且这个模型原生就会说二十四种欧盟官
+Dialogue: 0,0:00:52.62,0:00:53.02,Default,,0,0,0,,方语言
+Dialogue: 0,0:00:53.02,0:00:54.46,Default,,0,0,0,,欧盟肯自己出钱造
+Dialogue: 0,0:00:54.46,0:00:56.40,Default,,0,0,0,,说明欧洲不想一直依赖美国的 AI
+Dialogue: 0,0:00:56.40,0:00:58.20,Default,,0,0,0,,想要一个完全由自己掌控的模型
+Dialogue: 0,0:00:58.20,0:01:00.58,Default,,0,0,0,,有一篇论文研究怎么用 AI 更划算
+Dialogue: 0,0:01:00.58,0:01:02.32,Default,,0,0,0,,大家常让 AI 多想一会儿
+Dialogue: 0,0:01:02.32,0:01:04.04,Default,,0,0,0,,答完再检查一遍，听着稳妥
+Dialogue: 0,0:01:04.04,0:01:05.40,Default,,0,0,0,,可有时候是白烧算力
+Dialogue: 0,0:01:05.40,0:01:06.94,Default,,0,0,0,,甚至会把本来对的答案改错
+Dialogue: 0,0:01:06.94,0:01:09.54,Default,,0,0,0,,这篇论文提出一套叫 SEVRA 的方法
+Dialogue: 0,0:01:09.54,0:01:11.44,Default,,0,0,0,,一道题一道题地判断到底要不要再
+Dialogue: 0,0:01:11.44,0:01:12.34,Default,,0,0,0,,花算力验算一遍
+Dialogue: 0,0:01:12.34,0:01:14.84,Default,,0,0,0,,它的结论很实在：与其等答完了再补救
+Dialogue: 0,0:01:14.84,0:01:16.86,Default,,0,0,0,,不如一开始就把 AI 思考的预算给足
+Dialogue: 0,0:01:16.86,0:01:17.68,Default,,0,0,0,,反而更省钱
+Dialogue: 0,0:01:17.68,0:01:20.45,Default,,0,0,0,,另一篇论文旨在解决数据不够用的问题
+Dialogue: 0,0:01:20.45,0:01:22.96,Default,,0,0,0,,干净的成对样本是训练一个既能学画风
+Dialogue: 0,0:01:22.96,0:01:24.40,Default,,0,0,0,,又能学内容的模型的关键
+Dialogue: 0,0:01:24.40,0:01:25.70,Default,,0,0,0,,但这种样本很难找
+Dialogue: 0,0:01:25.70,0:01:27.60,Default,,0,0,0,,这篇论文提出了FreeStyle方法
+Dialogue: 0,0:01:27.60,0:01:30.38,Default,,0,0,0,,可以利用和拼接开源社区中网友随手训练
+Dialogue: 0,0:01:30.38,0:01:31.16,Default,,0,0,0,,的几万个小插件
+Dialogue: 0,0:01:31.16,0:01:32.40,Default,,0,0,0,,生成大量训练样本
+Dialogue: 0,0:01:32.40,0:01:34.26,Default,,0,0,0,,开源社区这些年攒下的东西
+Dialogue: 0,0:01:34.26,0:01:35.84,Default,,0,0,0,,反倒成了一座现成的数据矿
+Dialogue: 0,0:01:35.84,0:01:37.96,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:37.96,0:01:38.70,Default,,0,0,0,,我们明天见

@@ -1,0 +1,60 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.36,0:00:02.26,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.70,0:00:03.86,Default,,0,0,0,,先说一笔被坐实的账
+Dialogue: 0,0:00:04.18,0:00:05.92,Default,,0,0,0,,一份审计过的财务文件流了出来
+Dialogue: 0,0:00:05.92,0:00:07.40,Default,,0,0,0,,金融时报又独立核对过
+Dialogue: 0,0:00:07.40,0:00:10.58,Default,,0,0,0,,OpenAI 去年净亏三百八十五亿美元
+Dialogue: 0,0:00:10.58,0:00:12.24,Default,,0,0,0,,这是头一次有了审计版本
+Dialogue: 0,0:00:12.24,0:00:14.40,Default,,0,0,0,,更扎眼的是，这还是调轻过的数字
+Dialogue: 0,0:00:14.40,0:00:16.62,Default,,0,0,0,,原始的总净亏其实有六百零三亿
+Dialogue: 0,0:00:16.62,0:00:19.48,Default,,0,0,0,,不是营收没涨，是算力和研发烧得更快
+Dialogue: 0,0:00:19.48,0:00:21.00,Default,,0,0,0,,人心这边的账更难看
+Dialogue: 0,0:00:21.00,0:00:22.00,Default,,0,0,0,,皮尤最新调查发现
+Dialogue: 0,0:00:22.00,0:00:24.43,Default,,0,0,0,,只有百分之十六的美国人相信 AI 会让
+Dialogue: 0,0:00:24.43,0:00:25.14,Default,,0,0,0,,社会变好
+Dialogue: 0,0:00:25.14,0:00:27.20,Default,,0,0,0,,还有约四成觉得它带来的是负面影响
+Dialogue: 0,0:00:27.20,0:00:29.20,Default,,0,0,0,,六成七的人不指望政府能管住它
+Dialogue: 0,0:00:29.20,0:00:31.03,Default,,0,0,0,,可嘴上不信，手却很诚实
+Dialogue: 0,0:00:31.03,0:00:33.28,Default,,0,0,0,,近一半美国人已经在用 AI 聊天机器人
+Dialogue: 0,0:00:33.28,0:00:34.77,Default,,0,0,0,,两年前才三成三
+Dialogue: 0,0:00:34.77,0:00:36.22,Default,,0,0,0,,依赖也开始让人不安
+Dialogue: 0,0:00:36.22,0:00:38.40,Default,,0,0,0,,在 G7 峰会上，马克龙和莫迪都警告
+Dialogue: 0,0:00:38.40,0:00:41.00,Default,,0,0,0,,美国可能一夜之间就切断各国对它 AI 的
+Dialogue: 0,0:00:41.00,0:00:41.40,Default,,0,0,0,,访问
+Dialogue: 0,0:00:41.40,0:00:42.21,Default,,0,0,0,,这不是空穴来风
+Dialogue: 0,0:00:42.21,0:00:43.74,Default,,0,0,0,,Anthropic 此前的一次封停
+Dialogue: 0,0:00:43.74,0:00:46.08,Default,,0,0,0,,已经让一键关停从假设变成了真事
+Dialogue: 0,0:00:46.08,0:00:48.34,Default,,0,0,0,,各国突然发现，自己最关键的 AI 能力
+Dialogue: 0,0:00:48.34,0:00:49.78,Default,,0,0,0,,开关握在别人手里
+Dialogue: 0,0:00:49.78,0:00:51.40,Default,,0,0,0,,论文这边有个反直觉的发现
+Dialogue: 0,0:00:51.40,0:00:52.88,Default,,0,0,0,,长会话的 agent 为了省钱
+Dialogue: 0,0:00:52.88,0:00:54.28,Default,,0,0,0,,习惯删掉旧的上下文
+Dialogue: 0,0:00:54.28,0:00:56.36,Default,,0,0,0,,可 TokenPilot 这篇论文发现
+Dialogue: 0,0:00:56.36,0:00:57.80,Default,,0,0,0,,乱删会触发缓存失效
+Dialogue: 0,0:00:57.80,0:01:00.14,Default,,0,0,0,,被重算的缓存钱反而把省下的又吃了回去
+Dialogue: 0,0:01:00.14,0:01:02.18,Default,,0,0,0,,所以删文本，可能比不删还贵
+Dialogue: 0,0:01:02.18,0:01:04.62,Default,,0,0,0,,它改成只在内容真正过期时才谨慎卸载
+Dialogue: 0,0:01:04.62,0:01:06.54,Default,,0,0,0,,成本反而降了五成到八成多
+Dialogue: 0,0:01:06.54,0:01:08.58,Default,,0,0,0,,另一篇论文把优中选优也证伪了
+Dialogue: 0,0:01:08.58,0:01:09.72,Default,,0,0,0,,教小模型做数学
+Dialogue: 0,0:01:09.72,0:01:11.80,Default,,0,0,0,,业界默认挑奖励分最高的数据来喂
+Dialogue: 0,0:01:11.80,0:01:12.88,Default,,0,0,0,,可这篇论文发现
+Dialogue: 0,0:01:12.88,0:01:14.62,Default,,0,0,0,,用更强模型精修出的高分数据
+Dialogue: 0,0:01:14.62,0:01:16.16,Default,,0,0,0,,喂给小模型反而更差
+Dialogue: 0,0:01:16.16,0:01:17.16,Default,,0,0,0,,问题不在对错
+Dialogue: 0,0:01:17.16,0:01:19.42,Default,,0,0,0,,而在它把表达风格推离了小模型的母语
+Dialogue: 0,0:01:19.42,0:01:21.24,Default,,0,0,0,,风格一漂移，学习成本就盖过了收益
+Dialogue: 0,0:01:21.58,0:01:22.90,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:22.90,0:01:23.78,Default,,0,0,0,,我们明天见

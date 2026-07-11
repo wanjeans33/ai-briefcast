@@ -1,0 +1,67 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.94,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.44,0:00:03.78,Default,,0,0,0,,先说一件少见的事
+Dialogue: 0,0:00:03.78,0:00:05.60,Default,,0,0,0,,Anthropic 这周刚在首尔挂牌
+Dialogue: 0,0:00:05.60,0:00:06.94,Default,,0,0,0,,和韩国多家伙伴合作
+Dialogue: 0,0:00:06.94,0:00:08.64,Default,,0,0,0,,白宫却同时下了道相反的命令
+Dialogue: 0,0:00:08.64,0:00:10.88,Default,,0,0,0,,要它撤销韩国电信巨头 SK Telecom 对
+Dialogue: 0,0:00:10.88,0:00:12.74,Default,,0,0,0,,最强模型 Claude Mythos 的访问权
+Dialogue: 0,0:00:12.74,0:00:14.62,Default,,0,0,0,,理由是对方涉嫌和中国走得太近
+Dialogue: 0,0:00:15.00,0:00:15.76,Default,,0,0,0,,关键在形式
+Dialogue: 0,0:00:15.76,0:00:17.28,Default,,0,0,0,,这不是企业自己的安全评估
+Dialogue: 0,0:00:17.28,0:00:18.62,Default,,0,0,0,,而是一纸出口管制令
+Dialogue: 0,0:00:18.94,0:00:19.97,Default,,0,0,0,,开源这边放了个大的
+Dialogue: 0,0:00:19.97,0:00:22.44,Default,,0,0,0,,中国的 Z.ai 用最宽松的 MIT 许可
+Dialogue: 0,0:00:22.44,0:00:25.98,Default,,0,0,0,,开源了 GLM-5.2，七千五百三十亿参数
+Dialogue: 0,0:00:25.98,0:00:27.08,Default,,0,0,0,,每次只激活四百亿
+Dialogue: 0,0:00:27.08,0:00:28.36,Default,,0,0,0,,还支持一百万 token 的上下文
+Dialogue: 0,0:00:28.70,0:00:29.42,Default,,0,0,0,,有开发者说
+Dialogue: 0,0:00:29.42,0:00:31.82,Default,,0,0,0,,这可能是目前最强的纯文本开源权重大模
+Dialogue: 0,0:00:31.82,0:00:32.22,Default,,0,0,0,,型
+Dialogue: 0,0:00:32.26,0:00:32.92,Default,,0,0,0,,最强这一档
+Dialogue: 0,0:00:32.92,0:00:34.46,Default,,0,0,0,,开源正贴着闭源的脚后跟追
+Dialogue: 0,0:00:34.46,0:00:37.78,Default,,0,0,0,,Adobe 把对话式 AI 铺满了整条产品线
+Dialogue: 0,0:00:37.78,0:00:39.54,Default,,0,0,0,,公测版 Photoshop 里多了个能对话的
+Dialogue: 0,0:00:39.54,0:00:40.00,Default,,0,0,0,,助手
+Dialogue: 0,0:00:40.00,0:00:40.49,Default,,0,0,0,,Premiere
+Dialogue: 0,0:00:40.49,0:00:43.10,Default,,0,0,0,,Illustrator 也都装上了量身定制的助手
+Dialogue: 0,0:00:43.10,0:00:44.54,Default,,0,0,0,,过去藏在层层菜单里的功能
+Dialogue: 0,0:00:44.54,0:00:46.00,Default,,0,0,0,,现在一句话就能让它做
+Dialogue: 0,0:00:46.00,0:00:47.82,Default,,0,0,0,,它还把 Firefly 工作室重做了一遍
+Dialogue: 0,0:00:47.82,0:00:49.56,Default,,0,0,0,,能记住你的配色和风格
+Dialogue: 0,0:00:49.56,0:00:52.31,Default,,0,0,0,,对话框，正在成为创意软件的默认入口
+Dialogue: 0,0:00:52.31,0:00:54.14,Default,,0,0,0,,论文这边有个反直觉的结果
+Dialogue: 0,0:00:54.14,0:00:56.66,Default,,0,0,0,,循环架构想把加深计算做成一个可调旋钮
+Dialogue: 0,0:00:56.66,0:00:58.05,Default,,0,0,0,,让同一组层多跑几遍
+Dialogue: 0,0:00:58.05,0:00:59.44,Default,,0,0,0,,LoopCoder-v2 实测
+Dialogue: 0,0:00:59.44,0:01:01.10,Default,,0,0,0,,循环两次编程能力大涨
+Dialogue: 0,0:01:01.10,0:01:03.90,Default,,0,0,0,,SWE-bench 从四十三分提到六十四分
+Dialogue: 0,0:01:03.90,0:01:05.82,Default,,0,0,0,,可循环三次以上反而退化
+Dialogue: 0,0:01:05.82,0:01:07.74,Default,,0,0,0,,有效精炼几乎都集中在第二遍
+Dialogue: 0,0:01:07.74,0:01:10.54,Default,,0,0,0,,再往后收益越来越小、成本却照样涨
+Dialogue: 0,0:01:10.54,0:01:13.00,Default,,0,0,0,,加深计算这条路，在很浅处就到头了
+Dialogue: 0,0:01:13.00,0:01:15.18,Default,,0,0,0,,另一篇研究老师该在哪一步介入
+Dialogue: 0,0:01:15.18,0:01:16.96,Default,,0,0,0,,教小模型时硬逼它模仿大老师
+Dialogue: 0,0:01:16.96,0:01:18.64,Default,,0,0,0,,容易学崩；让它自己试
+Dialogue: 0,0:01:18.64,0:01:21.06,Default,,0,0,0,,又会卡在全做错、学不到东西的难题上
+Dialogue: 0,0:01:21.06,0:01:23.25,Default,,0,0,0,,ZPPO 的办法是把老师放进提示里
+Dialogue: 0,0:01:23.25,0:01:24.56,Default,,0,0,0,,而不是放进梯度里
+Dialogue: 0,0:01:24.56,0:01:26.74,Default,,0,0,0,,它把老师的对解和学生的错解混在一起让
+Dialogue: 0,0:01:26.74,0:01:27.52,Default,,0,0,0,,它分辨
+Dialogue: 0,0:01:27.52,0:01:29.08,Default,,0,0,0,,反复回炉直到过半做对
+Dialogue: 0,0:01:29.08,0:01:31.04,Default,,0,0,0,,结果在四个规模上都超过蒸馏
+Dialogue: 0,0:01:31.04,0:01:32.78,Default,,0,0,0,,越小的模型收益越大
+Dialogue: 0,0:01:32.78,0:01:34.08,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:34.08,0:01:34.82,Default,,0,0,0,,我们明天见

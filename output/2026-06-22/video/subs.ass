@@ -1,0 +1,62 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.22,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.60,0:00:04.06,Default,,0,0,0,,先说件让人捏把汗的事
+Dialogue: 0,0:00:04.06,0:00:06.66,Default,,0,0,0,,ChatGPT 把健康问答交给了新版 GPT-5.5
+Dialogue: 0,0:00:06.78,0:00:09.34,Default,,0,0,0,,OpenAI 说它答得更准、请医生评估过
+Dialogue: 0,0:00:09.34,0:00:11.04,Default,,0,0,0,,可一篇独立测试泼冷水
+Dialogue: 0,0:00:11.04,0:00:12.74,Default,,0,0,0,,说它在健康问题上的瞎编
+Dialogue: 0,0:00:12.74,0:00:14.80,Default,,0,0,0,,是开源模型 GLM-5.2 的三倍
+Dialogue: 0,0:00:14.80,0:00:17.32,Default,,0,0,0,,模型不是越大越靠谱，事实喂太多
+Dialogue: 0,0:00:17.32,0:00:18.72,Default,,0,0,0,,它反而学会不懂装懂
+Dialogue: 0,0:00:18.72,0:00:20.69,Default,,0,0,0,,宁可编个像样答案也不说不知道
+Dialogue: 0,0:00:20.69,0:00:22.04,Default,,0,0,0,,再说个跟孩子有关的
+Dialogue: 0,0:00:22.04,0:00:23.16,Default,,0,0,0,,挪威出了规定
+Dialogue: 0,0:00:23.16,0:00:25.02,Default,,0,0,0,,几乎全面禁止小学课堂用 AI
+Dialogue: 0,0:00:25.02,0:00:27.06,Default,,0,0,0,,别处还在抢着把 AI 塞进课堂
+Dialogue: 0,0:00:27.06,0:00:27.94,Default,,0,0,0,,挪威反着来
+Dialogue: 0,0:00:27.94,0:00:29.98,Default,,0,0,0,,理由不难猜，孩子正打基础
+Dialogue: 0,0:00:29.98,0:00:31.50,Default,,0,0,0,,太早靠 AI 替自己想
+Dialogue: 0,0:00:31.50,0:00:33.32,Default,,0,0,0,,可能把最该练的动脑筋给省掉了
+Dialogue: 0,0:00:33.32,0:00:34.80,Default,,0,0,0,,垄断这边起了反弹
+Dialogue: 0,0:00:34.80,0:00:36.42,Default,,0,0,0,,AI 的算力、数据和钱
+Dialogue: 0,0:00:36.42,0:00:38.50,Default,,0,0,0,,越来越往少数几家大公司手里堆
+Dialogue: 0,0:00:38.50,0:00:40.64,Default,,0,0,0,,三名亚马逊工程师在市议会作证
+Dialogue: 0,0:00:40.64,0:00:42.46,Default,,0,0,0,,说数据中心不能再这么扩下去
+Dialogue: 0,0:00:42.46,0:00:44.56,Default,,0,0,0,,结果一周后公司就要拿他们开刀
+Dialogue: 0,0:00:44.56,0:00:46.70,Default,,0,0,0,,正因为几家巨头把 AI 攥得太紧
+Dialogue: 0,0:00:46.70,0:00:47.68,Default,,0,0,0,,大家越来越不满
+Dialogue: 0,0:00:47.68,0:00:49.96,Default,,0,0,0,,华盛顿那边有参议员 Sanders 提出一个
+Dialogue: 0,0:00:49.96,0:00:50.82,Default,,0,0,0,,七万亿美元的方案
+Dialogue: 0,0:00:50.82,0:00:52.80,Default,,0,0,0,,想把 AI 赚的钱分一块给普通人
+Dialogue: 0,0:00:52.80,0:00:54.14,Default,,0,0,0,,论文这边有个提醒
+Dialogue: 0,0:00:54.14,0:00:56.10,Default,,0,0,0,,挑 AI 模型大家都爱看排行榜
+Dialogue: 0,0:00:56.10,0:00:56.94,Default,,0,0,0,,谁第一用谁
+Dialogue: 0,0:00:56.94,0:00:58.08,Default,,0,0,0,,可一篇研究说
+Dialogue: 0,0:00:58.08,0:01:00.00,Default,,0,0,0,,榜单第一名换个场景可能就垫底
+Dialogue: 0,0:01:00.00,0:01:01.40,Default,,0,0,0,,因为榜单的题目固定
+Dialogue: 0,0:01:01.40,0:01:02.90,Default,,0,0,0,,换到你自己的真实活儿上
+Dialogue: 0,0:01:02.90,0:01:03.70,Default,,0,0,0,,名次说翻就翻
+Dialogue: 0,0:01:03.70,0:01:06.22,Default,,0,0,0,,说白了，考试第一，不等于干活第一
+Dialogue: 0,0:01:06.22,0:01:07.66,Default,,0,0,0,,最后一篇更带劲
+Dialogue: 0,0:01:07.66,0:01:09.32,Default,,0,0,0,,过去机器人学个新动作
+Dialogue: 0,0:01:09.32,0:01:10.98,Default,,0,0,0,,得工程师在旁一遍遍盯着调
+Dialogue: 0,0:01:10.98,0:01:12.80,Default,,0,0,0,,ENPIRE 把这事交给 AI 自己
+Dialogue: 0,0:01:12.80,0:01:15.15,Default,,0,0,0,,让它反复试、自己打分、自己改下一轮
+Dialogue: 0,0:01:15.15,0:01:17.72,Default,,0,0,0,,结果像整理插针、扎扎带这种精细活
+Dialogue: 0,0:01:17.72,0:01:19.42,Default,,0,0,0,,自己就练到九成九的成功率
+Dialogue: 0,0:01:19.42,0:01:20.76,Default,,0,0,0,,从前师傅手把手教
+Dialogue: 0,0:01:20.76,0:01:22.29,Default,,0,0,0,,现在徒弟自己关门苦练
+Dialogue: 0,0:01:22.29,0:01:24.78,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:24.78,0:01:25.52,Default,,0,0,0,,我们明天见

@@ -1,0 +1,74 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.78,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.22,0:00:03.56,Default,,0,0,0,,先说OpenAI风光的一面
+Dialogue: 0,0:00:03.56,0:00:06.24,Default,,0,0,0,,新模型GPT-5.6面向公众发布了
+Dialogue: 0,0:00:06.24,0:00:07.94,Default,,0,0,0,,之前美国政府要求先审
+Dialogue: 0,0:00:07.94,0:00:09.52,Default,,0,0,0,,只开放给一小批过审机构
+Dialogue: 0,0:00:09.52,0:00:10.72,Default,,0,0,0,,审了两周才放行
+Dialogue: 0,0:00:10.72,0:00:12.42,Default,,0,0,0,,这回一口气放出三个型号
+Dialogue: 0,0:00:12.42,0:00:15.30,Default,,0,0,0,,Altman说这是他们迄今最好的模型
+Dialogue: 0,0:00:15.30,0:00:17.20,Default,,0,0,0,,干编程活能省一半左右的字
+Dialogue: 0,0:00:17.20,0:00:18.88,Default,,0,0,0,,同一天还推出了能连干几小时长活的
+Dialogue: 0,0:00:18.88,0:00:19.54,Default,,0,0,0,,企业版助手
+Dialogue: 0,0:00:19.54,0:00:20.44,Default,,0,0,0,,不过同一周
+Dialogue: 0,0:00:20.44,0:00:22.24,Default,,0,0,0,,它也关掉了上线不到一年的AI浏览器
+Dialogue: 0,0:00:22.24,0:00:23.78,Default,,0,0,0,,摊子铺得快，收得也快
+Dialogue: 0,0:00:23.78,0:00:25.26,Default,,0,0,0,,再看它挨告的一面
+Dialogue: 0,0:00:25.26,0:00:26.80,Default,,0,0,0,,纽约时报牵头的一批媒体
+Dialogue: 0,0:00:26.80,0:00:28.44,Default,,0,0,0,,在版权官司里递了份新动议
+Dialogue: 0,0:00:28.44,0:00:31.76,Default,,0,0,0,,指控OpenAI隐瞒证据
+Dialogue: 0,0:00:31.76,0:00:32.36,Default,,0,0,0,,媒体一方说
+Dialogue: 0,0:00:32.36,0:00:34.88,Default,,0,0,0,,OpenAI两年多来声称技术上没法搜索自己
+Dialogue: 0,0:00:34.88,0:00:35.46,Default,,0,0,0,,的训练数据
+Dialogue: 0,0:00:35.46,0:00:37.82,Default,,0,0,0,,后来它自家工程师作证，其实搜得到
+Dialogue: 0,0:00:37.82,0:00:39.86,Default,,0,0,0,,媒体还指控它删了数十亿条聊天记录
+Dialogue: 0,0:00:39.86,0:00:41.96,Default,,0,0,0,,而那正是核对抄袭的关键证据
+Dialogue: 0,0:00:41.96,0:00:44.46,Default,,0,0,0,,官司焦点从抄没抄，挪到了毁没毁证据
+Dialogue: 0,0:00:44.46,0:00:45.10,Default,,0,0,0,,一旦坐实
+Dialogue: 0,0:00:45.10,0:00:46.80,Default,,0,0,0,,不用论证侵权法官就能直接罚
+Dialogue: 0,0:00:46.80,0:00:48.90,Default,,0,0,0,,OpenAI回应说指控完全不实
+Dialogue: 0,0:00:48.90,0:00:51.38,Default,,0,0,0,,官司打到第三年，打的已经是诚信
+Dialogue: 0,0:00:51.38,0:00:52.86,Default,,0,0,0,,安全圈这边又敲了一次警钟
+Dialogue: 0,0:00:52.86,0:00:54.54,Default,,0,0,0,,GitHub新上的AI自动化功能被
+Dialogue: 0,0:00:54.54,0:00:55.58,Default,,0,0,0,,发现一个大窟窿
+Dialogue: 0,0:00:55.58,0:00:57.26,Default,,0,0,0,,攻击者不需要任何账号权限
+Dialogue: 0,0:00:57.26,0:00:59.44,Default,,0,0,0,,只要在一个组织的公开仓库里发一条帖子
+Dialogue: 0,0:00:59.44,0:01:01.88,Default,,0,0,0,,把指令藏在里面，AI管家读到就照办
+Dialogue: 0,0:01:01.88,0:01:03.98,Default,,0,0,0,,把同组织的私有代码贴到公开评论区
+Dialogue: 0,0:01:03.98,0:01:05.70,Default,,0,0,0,,研究者给它起名GitLost
+Dialogue: 0,0:01:05.70,0:01:06.90,Default,,0,0,0,,AI管家权限有多大
+Dialogue: 0,0:01:06.90,0:01:08.52,Default,,0,0,0,,一条帖子的破坏就有多大
+Dialogue: 0,0:01:08.52,0:01:10.82,Default,,0,0,0,,论文这边，先说明两篇都是预印本
+Dialogue: 0,0:01:10.82,0:01:12.70,Default,,0,0,0,,第一篇把游戏世界的造法翻了个面
+Dialogue: 0,0:01:12.70,0:01:15.10,Default,,0,0,0,,以前的游戏世界靠美术和策划一块块搭好
+Dialogue: 0,0:01:15.10,0:01:16.10,Default,,0,0,0,,玩家来了照着走
+Dialogue: 0,0:01:16.10,0:01:17.99,Default,,0,0,0,,这篇让AI当场画，你按一下键
+Dialogue: 0,0:01:17.99,0:01:20.38,Default,,0,0,0,,下一秒的画面就照着操作一帧帧长出来
+Dialogue: 0,0:01:20.38,0:01:22.52,Default,,0,0,0,,战斗施法全是现场生成，整套代码开源
+Dialogue: 0,0:01:22.84,0:01:23.88,Default,,0,0,0,,要紧的考验有两条
+Dialogue: 0,0:01:23.88,0:01:25.56,Default,,0,0,0,,走远了回头场景还在不在
+Dialogue: 0,0:01:25.56,0:01:26.92,Default,,0,0,0,,按键到画面反应快不快
+Dialogue: 0,0:01:26.92,0:01:29.46,Default,,0,0,0,,另一篇给训练模型这行泼了盆清醒水
+Dialogue: 0,0:01:29.46,0:01:30.74,Default,,0,0,0,,训AI要选优化器
+Dialogue: 0,0:01:30.74,0:01:32.64,Default,,0,0,0,,就是决定模型每一步怎么改进的算法
+Dialogue: 0,0:01:32.64,0:01:34.62,Default,,0,0,0,,新方法年年出，个个自称更强
+Dialogue: 0,0:01:34.62,0:01:36.64,Default,,0,0,0,,作者把一百多个方法拆开对齐了看
+Dialogue: 0,0:01:36.64,0:01:38.84,Default,,0,0,0,,发现大多数所谓新方法只改了流程里的
+Dialogue: 0,0:01:38.84,0:01:39.24,Default,,0,0,0,,一两步
+Dialogue: 0,0:01:39.24,0:01:40.38,Default,,0,0,0,,差别远没有标题吹得大
+Dialogue: 0,0:01:40.38,0:01:42.28,Default,,0,0,0,,他们把这些整理成一张能查的地图
+Dialogue: 0,0:01:42.28,0:01:44.32,Default,,0,0,0,,选工具，先查地图，再追新款
+Dialogue: 0,0:01:44.32,0:01:46.74,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:46.74,0:01:47.40,Default,,0,0,0,,我们明天见

@@ -1,0 +1,83 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.00,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.54,0:00:04.64,Default,,0,0,0,,先说今天的头条，AI 涨价的账
+Dialogue: 0,0:00:04.64,0:00:06.00,Default,,0,0,0,,落到了买苹果的人头上
+Dialogue: 0,0:00:06.46,0:00:08.14,Default,,0,0,0,,苹果几乎把全线产品都提了价
+Dialogue: 0,0:00:08.14,0:00:10.16,Default,,0,0,0,,十六寸 MacBook Pro 一下涨三百美元
+Dialogue: 0,0:00:10.16,0:00:11.65,Default,,0,0,0,,iPad Air 涨一百五
+Dialogue: 0,0:00:11.65,0:00:13.81,Default,,0,0,0,,连最便宜的 HomePod Mini 都加了三十块
+Dialogue: 0,0:00:13.81,0:00:15.28,Default,,0,0,0,,库克前阵子就放话
+Dialogue: 0,0:00:15.28,0:00:17.20,Default,,0,0,0,,说成本压力大到苹果一家扛不住
+Dialogue: 0,0:00:17.20,0:00:18.86,Default,,0,0,0,,涨价的根子在内存芯片
+Dialogue: 0,0:00:18.86,0:00:20.80,Default,,0,0,0,,AI 数据中心疯狂抢购内存
+Dialogue: 0,0:00:20.80,0:00:22.24,Default,,0,0,0,,把芯片买到缺货涨价
+Dialogue: 0,0:00:22.24,0:00:23.84,Default,,0,0,0,,这笔账最后摊到了买电脑
+Dialogue: 0,0:00:23.84,0:00:25.06,Default,,0,0,0,,买平板的普通人头上
+Dialogue: 0,0:00:25.06,0:00:26.84,Default,,0,0,0,,再说一道挡住 AI 的墙，电
+Dialogue: 0,0:00:26.84,0:00:29.82,Default,,0,0,0,,AI 想做大，真正卡脖子的早就是电
+Dialogue: 0,0:00:29.82,0:00:31.66,Default,,0,0,0,,眼下有两条方向完全相反的路
+Dialogue: 0,0:00:31.66,0:00:32.76,Default,,0,0,0,,一条是马斯克的
+Dialogue: 0,0:00:32.76,0:00:34.22,Default,,0,0,0,,他想把数据中心送上太空
+Dialogue: 0,0:00:34.22,0:00:35.74,Default,,0,0,0,,靠太阳能供电、真空散热
+Dialogue: 0,0:00:35.74,0:00:38.42,Default,,0,0,0,,绕开地面电网，可连软银 CEO 都不信
+Dialogue: 0,0:00:38.42,0:00:40.66,Default,,0,0,0,,发射、维护、散热怎么解决全没谱
+Dialogue: 0,0:00:40.66,0:00:42.00,Default,,0,0,0,,另一条更激进
+Dialogue: 0,0:00:42.00,0:00:43.46,Default,,0,0,0,,一位从 Databricks 出来的
+Dialogue: 0,0:00:43.46,0:00:45.58,Default,,0,0,0,,创业者号称能把 AI 电费砍到千分之一
+Dialogue: 0,0:00:45.58,0:00:47.24,Default,,0,0,0,,但这一千倍也还是他自己说的
+Dialogue: 0,0:00:47.24,0:00:47.68,Default,,0,0,0,,没人验证
+Dialogue: 0,0:00:47.68,0:00:49.52,Default,,0,0,0,,体育这边有个新鲜事
+Dialogue: 0,0:00:49.52,0:00:51.32,Default,,0,0,0,,FIFA 给二零二六年世界杯的
+Dialogue: 0,0:00:51.32,0:00:51.98,Default,,0,0,0,,四十八支球队
+Dialogue: 0,0:00:51.98,0:00:53.64,Default,,0,0,0,,每队都配了同一个 AI 助手
+Dialogue: 0,0:00:53.64,0:00:54.74,Default,,0,0,0,,叫 Football AI Pro
+Dialogue: 0,0:00:54.74,0:00:56.36,Default,,0,0,0,,教练打字问对手怎么踢
+Dialogue: 0,0:00:56.36,0:00:57.96,Default,,0,0,0,,它就给出量化的答案，传球路线
+Dialogue: 0,0:00:57.96,0:00:59.68,Default,,0,0,0,,逼抢时机、定位球套路
+Dialogue: 0,0:00:59.68,0:01:01.68,Default,,0,0,0,,还能把比赛在三维里重建出来
+Dialogue: 0,0:01:01.68,0:01:03.06,Default,,0,0,0,,看到转播给不了的角度
+Dialogue: 0,0:01:03.06,0:01:04.60,Default,,0,0,0,,不过它只能在赛前赛后用
+Dialogue: 0,0:01:04.60,0:01:05.92,Default,,0,0,0,,场边和中场休息不许碰
+Dialogue: 0,0:01:05.92,0:01:08.34,Default,,0,0,0,,所有队伍工具都一样，能不能用出花样
+Dialogue: 0,0:01:08.34,0:01:09.24,Default,,0,0,0,,就看各家本事了
+Dialogue: 0,0:01:09.24,0:01:11.93,Default,,0,0,0,,论文这边，先看一个让 AI 答得更快的
+Dialogue: 0,0:01:11.93,0:01:13.68,Default,,0,0,0,,大模型一个字一个字往外蹦
+Dialogue: 0,0:01:13.68,0:01:14.78,Default,,0,0,0,,速度一直是老问题
+Dialogue: 0,0:01:14.78,0:01:17.06,Default,,0,0,0,,DeepSeek 开源了一套叫 DSpark 的办法
+Dialogue: 0,0:01:17.06,0:01:18.34,Default,,0,0,0,,找个又快又小的模型先把
+Dialogue: 0,0:01:18.34,0:01:19.60,Default,,0,0,0,,后面几个字抢着猜出来
+Dialogue: 0,0:01:19.60,0:01:21.22,Default,,0,0,0,,再让大模型一次回头验一遍
+Dialogue: 0,0:01:21.22,0:01:21.82,Default,,0,0,0,,对的直接用
+Dialogue: 0,0:01:21.82,0:01:23.66,Default,,0,0,0,,省下慢慢一个个生成的工夫
+Dialogue: 0,0:01:23.66,0:01:25.86,Default,,0,0,0,,实测单个用户的生成速度快了六成到
+Dialogue: 0,0:01:25.86,0:01:26.26,Default,,0,0,0,,八成五
+Dialogue: 0,0:01:26.26,0:01:28.34,Default,,0,0,0,,而且本身不改模型、给现有的直接提速
+Dialogue: 0,0:01:28.34,0:01:30.36,Default,,0,0,0,,连 Gemma、Qwen 都能用
+Dialogue: 0,0:01:30.36,0:01:32.72,Default,,0,0,0,,另一篇论文想解决训练里的一个老大难
+Dialogue: 0,0:01:32.72,0:01:34.90,Default,,0,0,0,,用结果给 AI 智能体打分有个毛病
+Dialogue: 0,0:01:34.90,0:01:35.60,Default,,0,0,0,,信号太稀
+Dialogue: 0,0:01:35.60,0:01:37.56,Default,,0,0,0,,一整段任务跑完才给一个成败分
+Dialogue: 0,0:01:37.56,0:01:38.63,Default,,0,0,0,,它知道自己输赢
+Dialogue: 0,0:01:38.63,0:01:40.04,Default,,0,0,0,,却不知道中间哪一步走对了
+Dialogue: 0,0:01:40.04,0:01:40.70,Default,,0,0,0,,哪一步该改
+Dialogue: 0,0:01:40.70,0:01:42.10,Default,,0,0,0,,这篇论文叫 OPID
+Dialogue: 0,0:01:42.10,0:01:44.40,Default,,0,0,0,,办法是从它自己跑过的轨迹里反推经验
+Dialogue: 0,0:01:44.40,0:01:45.98,Default,,0,0,0,,哪些是全局该守的规矩
+Dialogue: 0,0:01:45.98,0:01:47.64,Default,,0,0,0,,哪些是关键时刻的临场判断
+Dialogue: 0,0:01:47.64,0:01:50.10,Default,,0,0,0,,再拿这些经验给每一步补上细到字的指导
+Dialogue: 0,0:01:50.10,0:01:51.12,Default,,0,0,0,,在好几个任务上
+Dialogue: 0,0:01:51.12,0:01:53.14,Default,,0,0,0,,它都比只看结果训得更省样本、也更稳
+Dialogue: 0,0:01:53.14,0:01:55.50,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:55.50,0:01:56.12,Default,,0,0,0,,我们明天见

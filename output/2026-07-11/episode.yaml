@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入；本文件是首个参考样例）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0711-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月11日 · AI Briefcast
+        count: 5
+        hook: 最强模型<br><em>持证上岗</em>
+        toc: [GPT-5.6持证上岗, OpenAI被指毁证据, 一条帖子偷走私仓, 游戏世界AI现场画, 优化器有了地图]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 发布
+        icon: 🚦
+        title: 最强模型，持证上岗
+        body: 政府审了**两周**才放行，GPT-5.6一次放出**3个型号**，Altman称迄今最好、编程活省一半的字。同一周OpenAI也关停了上线不到一年的AI浏览器
+        punch: 前沿模型发布，进入审批时代
+      - kind: explainer
+        grad: c1
+        icon: 🏛️
+        rel: 头条01
+        title: 政府为什么审模型
+        body: 美国商务部设了个AI标准中心，前沿模型公开发布前要过**安全评估**，看网络攻击、生物滥用这类风险。GPT-5.6审了**两周**才放行
+      - kind: explainer
+        grad: c1
+        icon: ⏱️
+        rel: 头条01
+        title: token效率高意味着什么
+        body: AI按**字块**计费，同样的活少吃一半字，等于速度和账单一起省。按量计费的时代，省字就是省钱
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 法律
+        icon: ⚖️
+        title: 证据门，比侵权更致命
+        body: 媒体指控OpenAI隐瞒**搜得到训练数据**的能力、删**数十亿条**聊天记录；毁证一旦坐实，不用论证侵权就能罚。OpenAI称指控完全不实
+        punch: 从抄没抄，打到毁没毁证据
+      - kind: explainer
+        grad: c3
+        icon: 📜
+        rel: 头条02
+        title: 这场官司打了三年什么样
+        body: 纽约时报**2023年底**起诉OpenAI，先吵训练侵权，再吵取证范围，如今转向**指控毁证**。这案子可能给全行业立标杆
+      - kind: explainer
+        grad: c3
+        icon: 🗂️
+        rel: 头条02
+        title: 聊天记录为什么是关键证据
+        body: 要证明模型**原样吐出**报道，得拿真实对话记录来验。媒体指控这批日志被删或没法搜了，验都没法验，所以才致命
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 安全
+        icon: 📮
+        title: 一条帖子，偷走私有代码
+        body: 攻击者**无需任何权限**，在组织的公开仓库发条藏指令的帖子，AI管家读到就照办，把**私有代码**贴进公开评论区。研究者命名GitLost
+        punch: AI权限多大，破坏就多大
+      - kind: explainer
+        grad: c4
+        icon: 💉
+        rel: 头条03
+        title: 什么是提示注入
+        body: 把指令**藏进AI会读的内容**里，帖子、邮件、网页都行。AI分不清哪句是主人说的，读到就照办，是agent时代的头号安全难题
+      - kind: explainer
+        grad: c4
+        icon: 🔒
+        rel: 头条03
+        title: 用AI管家的公司怎么防
+        body: 给agent**最小权限**、把外来内容一律当不可信、限制它对外发布的能力。研究方给的三条建议，条条是常识，条条常被省
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 生成
+        icon: 🎮
+        title: 游戏世界，AI现场一帧帧画
+        body: 按一下键，下一秒画面**实时生成**，战斗施法现场长出来，**全栈开源**。考验有两条，走远了回头场景还在不在、按键到画面快不快
+        punch: 世界不再预先写死，随你长出来
+      - kind: explainer
+        grad: c5
+        icon: 🏗️
+        rel: 论文01
+        title: 传统游戏怎么造出来
+        body: 美术画场景、策划搭关卡、程序写物理，一块块**手工拼**出来。3A大作动辄几百人干几年，所以才说AI替换的是生产线
+      - kind: explainer
+        grad: c5
+        icon: 🕹️
+        rel: 论文01
+        title: 现在能玩到什么程度
+        body: 实时生成的世界目前还**糊、短、健忘**，走远了回头场景可能变样，离商业游戏还远。方向刚起步，别被demo唬住
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 训练
+        icon: 🗺️
+        title: 100个方法，一张地图
+        body: 把**100多个**优化器拆成五步流水线对齐看，大多数所谓新方法只改了**一两步**，差别被系统性高估。作者整理成一张能查的地图
+        punch: 先查地图，再追新款
+      - kind: explainer
+        grad: c2
+        icon: 🧭
+        rel: 论文02
+        title: 什么是优化器
+        body: 训练模型时决定**每一步往哪改、改多大**的算法，像登山选路的向导。选得好爬得快，选不好白烧算力
+      - kind: explainer
+        grad: c2
+        icon: 🏅
+        rel: 论文02
+        title: 论文为什么爱自称SOTA
+        body: 新方法常挑**对自己有利**的场景比，换个任务就不灵。所以横向对齐的地图，比单篇论文的自夸有用
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月11日 · 1分钟追上AI圈
+  big: 最强模型<br><em>持证上岗</em>
+  rows:
+    - "**GPT-5.6** 审两周才放行"
+    - "OpenAI被指 **毁证据** 删日志"
+    - "一条帖子 **偷走** 私有代码"
+    - "游戏世界 AI **现场一帧帧画**"
+    - "100个优化器 **一张地图**"
+  date: "@AI Briefcast · 7/11"

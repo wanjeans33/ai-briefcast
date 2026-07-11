@@ -1,0 +1,75 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.70,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.22,0:00:03.90,Default,,0,0,0,,先说阿里把 Claude 请出了门
+Dialogue: 0,0:00:04.34,0:00:05.06,Default,,0,0,0,,据多家媒体报道
+Dialogue: 0,0:00:05.06,0:00:06.78,Default,,0,0,0,,阿里巴巴七月三日发内部通知
+Dialogue: 0,0:00:06.78,0:00:08.64,Default,,0,0,0,,全面禁用 Anthropic 旗下全部产品
+Dialogue: 0,0:00:08.64,0:00:10.32,Default,,0,0,0,,包括编程工具 Claude Code
+Dialogue: 0,0:00:10.32,0:00:11.48,Default,,0,0,0,,七月十日生效，全员卸载
+Dialogue: 0,0:00:11.76,0:00:12.94,Default,,0,0,0,,这事有前情
+Dialogue: 0,0:00:12.94,0:00:14.82,Default,,0,0,0,,Anthropic 去年九月起就不让
+Dialogue: 0,0:00:14.82,0:00:16.44,Default,,0,0,0,,中资控股公司用 Claude
+Dialogue: 0,0:00:16.44,0:00:18.48,Default,,0,0,0,,上个月底它又写信给美国参议院和白宫
+Dialogue: 0,0:00:18.48,0:00:20.61,Default,,0,0,0,,指控阿里千问用两万五千个假账号蒸馏
+Dialogue: 0,0:00:20.61,0:00:21.59,Default,,0,0,0,,Claude 的数据
+Dialogue: 0,0:00:21.59,0:00:22.70,Default,,0,0,0,,但至今没拿出公开证据
+Dialogue: 0,0:00:22.70,0:00:24.56,Default,,0,0,0,,之后中国用户遭遇大面积封号
+Dialogue: 0,0:00:24.56,0:00:26.54,Default,,0,0,0,,Claude Code 里还被发现藏着检测中国用
+Dialogue: 0,0:00:26.54,0:00:27.08,Default,,0,0,0,,户的机制
+Dialogue: 0,0:00:27.08,0:00:28.76,Default,,0,0,0,,先封禁，再指控，又暗中设防
+Dialogue: 0,0:00:28.76,0:00:29.98,Default,,0,0,0,,阿里干脆不用了
+Dialogue: 0,0:00:29.98,0:00:30.94,Default,,0,0,0,,再看一个反差
+Dialogue: 0,0:00:30.94,0:00:33.50,Default,,0,0,0,,美国一家卖三明治的连锁店要上市
+Dialogue: 0,0:00:33.50,0:00:35.12,Default,,0,0,0,,招股书里都郑重写上了 AI
+Dialogue: 0,0:00:35.12,0:00:35.52,Default,,0,0,0,,可据报道
+Dialogue: 0,0:00:35.52,0:00:38.20,Default,,0,0,0,,扎克伯格在 Meta 内部会议上向员工承认
+Dialogue: 0,0:00:38.20,0:00:40.64,Default,,0,0,0,,AI agent 的进展没有他预期的那么快
+Dialogue: 0,0:00:40.64,0:00:43.06,Default,,0,0,0,,外面吹得越响，里面越清楚活还没干完
+Dialogue: 0,0:00:43.06,0:00:44.88,Default,,0,0,0,,OpenAI 这边在跟政府套近乎
+Dialogue: 0,0:00:44.88,0:00:45.96,Default,,0,0,0,,据金融时报报道
+Dialogue: 0,0:00:45.96,0:00:47.98,Default,,0,0,0,,OpenAI 提出探讨把公司百分之五的
+Dialogue: 0,0:00:47.98,0:00:49.04,Default,,0,0,0,,股权交给美国政府
+Dialogue: 0,0:00:49.04,0:00:50.80,Default,,0,0,0,,换取跟特朗普政府缓和关系
+Dialogue: 0,0:00:50.80,0:00:54.22,Default,,0,0,0,,Anthropic 也刚靠让步换来 Fable 5 重
+Dialogue: 0,0:00:54.22,0:00:54.62,Default,,0,0,0,,新上线
+Dialogue: 0,0:00:54.62,0:00:56.16,Default,,0,0,0,,不过股权这事目前只是设想
+Dialogue: 0,0:00:56.16,0:00:57.36,Default,,0,0,0,,连时间表都没有
+Dialogue: 0,0:00:57.36,0:00:59.36,Default,,0,0,0,,AI 竞争早就不只是技术竞争了
+Dialogue: 0,0:00:59.36,0:01:00.02,Default,,0,0,0,,论文这边
+Dialogue: 0,0:01:00.02,0:01:02.35,Default,,0,0,0,,耶鲁大学想让 AI 学会真心说我不知道
+Dialogue: 0,0:01:02.35,0:01:03.86,Default,,0,0,0,,对付 AI 一本正经地胡说
+Dialogue: 0,0:01:03.86,0:01:05.70,Default,,0,0,0,,常规做法是在外面加一层核查
+Dialogue: 0,0:01:05.70,0:01:06.92,Default,,0,0,0,,这篇论文换了个思路
+Dialogue: 0,0:01:06.92,0:01:09.12,Default,,0,0,0,,把知道自己不知道这件事直接当成训练目
+Dialogue: 0,0:01:09.12,0:01:09.52,Default,,0,0,0,,标
+Dialogue: 0,0:01:09.52,0:01:10.42,Default,,0,0,0,,用强化学习去训
+Dialogue: 0,0:01:10.42,0:01:11.86,Default,,0,0,0,,让模型嘴上说的我不确定
+Dialogue: 0,0:01:11.86,0:01:13.48,Default,,0,0,0,,真的对应它心里的没把握
+Dialogue: 0,0:01:13.48,0:01:15.42,Default,,0,0,0,,论文报告这个能力最多提升六成多
+Dialogue: 0,0:01:15.42,0:01:16.66,Default,,0,0,0,,还不牺牲准确率
+Dialogue: 0,0:01:16.66,0:01:18.96,Default,,0,0,0,,敢说不知道的 AI，反而更让人放心
+Dialogue: 0,0:01:18.96,0:01:20.48,Default,,0,0,0,,另一篇论文泼了盆冷水
+Dialogue: 0,0:01:20.48,0:01:21.70,Default,,0,0,0,,训练能干长活的 AI
+Dialogue: 0,0:01:21.70,0:01:23.58,Default,,0,0,0,,很多人给它的每个中间步骤打分
+Dialogue: 0,0:01:23.58,0:01:24.94,Default,,0,0,0,,方法一个比一个花哨
+Dialogue: 0,0:01:24.94,0:01:26.02,Default,,0,0,0,,作者做了一千二百多次实验
+Dialogue: 0,0:01:26.02,0:01:28.42,Default,,0,0,0,,把二十一种打分方法拉到一起体检
+Dialogue: 0,0:01:28.42,0:01:29.40,Default,,0,0,0,,结果最简单的办法
+Dialogue: 0,0:01:29.40,0:01:31.04,Default,,0,0,0,,直接拿提示词去问模型
+Dialogue: 0,0:01:31.04,0:01:32.74,Default,,0,0,0,,稳定打赢了多数复杂方法
+Dialogue: 0,0:01:32.74,0:01:34.96,Default,,0,0,0,,花哨不等于有效，动手之前先量一量
+Dialogue: 0,0:01:34.96,0:01:36.08,Default,,0,0,0,,比跟风上新招更省钱
+Dialogue: 0,0:01:36.54,0:01:37.74,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:38.02,0:01:38.72,Default,,0,0,0,,我们明天见

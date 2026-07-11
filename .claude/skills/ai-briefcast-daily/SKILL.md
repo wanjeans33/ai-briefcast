@@ -22,6 +22,21 @@ description: >
 
 ## 关键约定（记住这些，少踩坑）
 
+- **★ 出片走单一驱动（2026-07-11 起）**：每天只写一份 `output/<date>/episode.yaml`（卡片文案+封面文案，
+  样例＝`output/2026-07-11/episode.yaml`），然后
+  `python scripts/make_episode.py --date <date> [--dry-run|--force-audio]` 一条命令跑完
+  字数校验→音频(复用已有不重配)→渲染→出片(+XFADE/猫头片尾)→字幕→ffprobe断言→抽帧→3:4封面→publish.json。
+  **不要再手搓 `_tmp_audio/_tmp_video/_tmp_cover` 临时脚本**（每天重写引入过 XFADE 漏加、emoji 空框等随机错误）。
+  内置 QA 任一失败即中止：正文 ≤820 字、icon 码位 <U+1FA70、组数=段数、成片时长=旁白+1s±0.8、2160×3840。
+- **★ 正文字数硬预算 ≤820 字**（rate 36 下 ≈105-110s）：写完稿先 `make_episode.py --dry-run` 或手动 len()，
+  超了当场删，别等合成才发现（2026-07-10 曾 990 字失控到 136.9s）。
+- **★ 核查到源头**：每条入选新闻必须 WebFetch 到**原始出处页面**（当事人博客/原报道/研究方页面），
+  不许只凭搜索摘要写稿。历次事实事故（$149.25"实付"实为折算、GLM"个人在家自建"、Discord 200 实为 8000+、
+  "OpenAI 未回应"已过时）全靠这一步拦下。数字要归因到估算人；对方已回应的指控必须带上回应。
+- **★ 交互收敛为每期 3 次**（2026-07-12 起）：①选题一轮（新闻+论文合并一组 AskUserQuestion）→
+  ②审稿 → ③终审（稿子过审后，卡片文案由 Claude 按用户历史偏好直接定稿——内容卡多用观点/悬念驱动、
+  数字版只在数字本身是爆点时用；补充卡按"每条 1-2 张、科普不复述"自选——一次性给全套让用户看，改哪张说哪张）。
+  不再逐卡 3 选 1、逐条勾补充卡，除非用户主动要选项。
 - **声音**：用户自己的豆包克隆音色 `VOLC_SPEAKER2=S_HHgApOH42`（不是 liziran 的）。
 - **开场白固定**：每天用"大家好，这里是柿子树下的猫wanjeans，三分钟带你了解AI圈的新鲜事。…"。
   `generate_broadcast.fixed_intro()` 自动套用（只换日期）；跨日期精选时手写一句不带具体日期的开场即可。
@@ -83,7 +98,8 @@ description: >
 - **突发新闻可当头条**：当天有大新闻（如新模型发布）可替换掉抓取的某条头条；<24h 的发布抓取源可能没收录，
   用 deep-research / 官方页核实，必要时让用户给权威链接。
 - **ffmpeg 绝对路径**写在 `make_xhs_video_html.FFMPEG`；输出 4K = `OUT_W,OUT_H=2160,3840`。
-- **每一步产出后，先让用户审，再继续**：选稿 → 选卡文案/补充卡 → 终审卡片 → 音频确认 → 出片，逐步停。
+- **用户审核点＝3 个**（见★交互收敛）：选题 → 审稿 → 终审全套卡片文案；通过后 make_episode.py 一口气出片，
+  出完交付时附抽帧。用户要求分步（如先听音频）时再拆。
 
 ## 前置检查
 
@@ -94,9 +110,21 @@ description: >
 - 改写后端：`--llm pi`（pi agent + DeepSeek）或 `--llm api`（OpenAI 兼容直连 DeepSeek）。
   pi 在 Windows 要走 `node dist/cli.js`（已在 `_pi_command()` 处理）。
 
-## 流水线（按顺序，逐步暂停给用户审）
+## 流水线（用户审核点只有 3 个：选题 → 审稿 → 终审卡片文案）
 
 ### 1) 抓素材 + 选稿（先和用户对齐范围与风格）
+**a0. 先看数据复盘**（2026-07-12 起）：读 `output/analytics-summary.md`（由
+`python scripts/analyze_notes.py` 从后台导出的 `笔记列表明细表.xlsx` 生成，用户更新 xlsx 后重跑）。
+截至 2026-07 的数据结论，选题和封面按这个倾斜：
+- **头条优先"大主体+权力冲突+具体动作"**（白宫下令/谷歌留不住人/史上最大IPO 这类，曝光是行业观察类的 2 倍+）；
+  "AI检测器/AI写码"这类无主体抽象选题 CTR 只有爆款的 1/3。
+- **封面钩子必须带大牌主体名**（白宫/Claude/OpenAI/谷歌…），CTR 高的封面全符合此律。
+- **中国用户强相关的选题转化效率最高**（"Claude 偷藏码盯中国用户"千曝光涨粉 8.57 全场第一、
+  "阿里卸载 Claude"人均观看 94s 全场唯一近完播）。
+- **人均观看只有 15-25s**：头条放全片最强内容，时长继续压（≤820 字预算不放松）。
+- **发布建议早间 7-8 点定时**（早间 CTR 中位 0.070 vs 凌晨 0.049），别凌晨 2-4 点发。
+- 图文体裁数据显著更好（CTR 中位 0.135 vs 视频 0.048），补充卡可周攒重组图文（第二产品线）。
+
 **a. 抓取**。同日：`generate_broadcast.py --date YYYY-MM-DD --dump-raw` 出 `samples/source-<date>.md`。
 跨日期混合（某天新闻 + 另一天论文）用内联脚本分别抓：
 ```python
@@ -109,107 +137,52 @@ open("samples/source-mix.md","w",encoding="utf-8").write(gb.build_source_text(di
 读 source，确认 **N 闻 + M 论文**（如 3 头条 + 从 4 篇里挑 2 篇）。论文页常比资讯晚 1 天才更新。
 
 **b. 写稿**（2026-06-23 起：不再 A/B 两版，**直接按上面「★ 文风铁律」写一版定稿**，范本＝`output/2026-06-23/scripts/broadcast-0623-B-changed.md`）。
-写之前先借 `ai-news-podcast` 技能过一遍**事实关**：每条新闻/论文按其 `references/evidence-levels.md`
-定证据等级（公司自述/预印本/同行评审/独立复现/真实部署），核对数字的基线和来源（`references/source-verification.md`），
-论文按 `references/paper-review-guide.md` 找方法、结果、限制。**只借这套事实核验和证据分级，不套用它的
-输出模板、时间戳或"换句话说"式口播腔**——语言仍按本技能的★文风铁律写（大白话、正常语序、禁数数过场、去冒号）。
-由 Claude 直接手写（DeepSeek 可用也行，但务必按文风铁律收口）。存成 `output/<date>/scripts/broadcast-<date>-B-changed.md`，
-**先给用户审、按批注改到满意**（用户常会亲自改这份，它就是唯一源，别覆盖）。每段一空行分隔（= 一个音频段 = 一组卡）。
+写之前**正式走 `ai-news-podcast` 技能的完整流程**（2026-07-09 用户点名要求，敷衍"参照纪律"被否过）：
+读全其 4 份 references、建事实卡、按 `evidence-levels.md` 定 E1-E5 等级、按 `quality-checklist.md` 验收。
+**★ 核查到源头**：每条入选新闻 WebFetch 原始出处页面，不许只凭搜索摘要写稿（见关键约定）。
+**只借这套事实核验和证据分级，不套用它的输出模板、时间戳或"换句话说"式口播腔**——语言仍按本技能的
+★文风铁律写（大白话、正常语序、禁数数过场、去冒号）。
+存成 `output/<date>/scripts/broadcast-<date>-B-changed.md`，**写完立刻数字数（≤820），超了先删**，
+再给用户审、按批注改到满意（用户常会亲自改这份，它就是唯一源，别覆盖）。每段一空行分隔（= 一个音频段 = 一组卡）。
 开场固定 `一分钟带你了解AI圈的新鲜事。`，收尾只留 `我是柿子树下的猫wanjeans，我们明天见。`。
-⚠️ 合成前**删掉文末任何备注/footer**（`---` 之后的说明），否则 `split_segments` 会把它当正文读出来。
+⚠️ 合成前**删掉文末任何备注/footer**（`---` 之后的说明），否则 `split_segments` 会把它当正文读出来
+（`make_episode.py` 用 `strip_header` 已处理文首 `>` 备注 + `---` 分隔，文末别再加东西）。
 
-### 2) 选卡文案 + 选补充卡（文字先定，渲染前确认）
-**用 `AskUserQuestion` 工具做交互式选卡**（像 plan 的 ask 一样弹选项，别让用户打 `22231` 这种字符串）：
-- **a. 内容卡文案「3 选 1」**：每张内容卡一个 question，3 个 option——①观点/金句驱动 ②事实/数字驱动
-  ③提问/悬念驱动（option 描述里写出该版标题+金句）。逐卡问（一次最多 4 个 question，卡多就分批）。
-  正文统一**加厚**：每张塞 2 个数字/事实 + 1 句金句。用户也可在 option 里补充自定义文案。
-- **b. 补充卡「逐条候选池多选」**：**每条头条、每篇论文各一个 `multiSelect:true` 的 question**，
-  给该条 2–3 个候选概念作 options（每个一句话方向），让用户勾出 1–2 张。**别用一个全局池混选，
-  也别漏掉任何一条新闻**——每条至少配 1 张（一次最多 4 个 question，新闻多就分批问）。
-  选定后**逐个 WebSearch 查证**（概念定义、事件经过、最新数字/时间），
-  再写成"高中生也能懂"的 `body`（≤~60 字，`**关键数字/词**` 高亮）。
-- 选完**把全部卡片文字汇总成一版让用户终审**（可用纯文本列出），通过后再渲染。
+### 2) 卡片文案定稿（2026-07-12 起：Claude 直接出全套，一次终审）
+稿子过审后，**卡片文案由 Claude 按用户历史偏好直接定稿，不再逐卡 AskUserQuestion**（交互收敛，见关键约定）：
+- **内容卡**：短标题(视觉锤) + 加厚正文(塞 2 个数字/事实，`**高亮**`) + 金句。风格按历史偏好——
+  多用**观点/悬念驱动**，数字版只在数字本身是爆点时用（"从2%到45%"这类）。
+- **补充卡**：每条头条/论文配 1–2 张科普概念卡（解释概念，不复述新闻），**逐个 WebSearch 查证**
+  （概念定义、事件经过、最新数字），写成"高中生也能懂"的 `body`（≤~60 字，`**关键数字/词**` 高亮）。
+- **把全套卡片文字（含封面 hook、3:4 封面 ROWS）汇总成一版给用户终审**，改哪张说哪张，通过后写进
+  `episode.yaml`。用户主动要选项时才回到旧的 3 选 1 / 多选流程。
 
-### 3) 豆包 TTS（克隆音色）→ 整段合成 + 每段时长（卡点）
-**默认 `run_daily.synth_single_synced`**（音色优先）：整段一次合成保证全程音色统一，再逐段临时
-合成量"有声时长"等比缩放出卡点时长（临时文件用完即删，不入最终音频）：
-```python
-import os, run_daily as rd, generate_broadcast as gb
-rd.load_dotenv(rd.REPO_ROOT)
-os.environ["VOLC_SPEECH_RATE"] = "36"                # ≈1.25×（2026-07 默认）
-spk = os.getenv("VOLC_SPEAKER2")
-segs = gb.split_segments(rd.strip_header(md_text))   # 按空行切段 = 一段一组卡
-durs = rd.synth_single_synced(segs, mp3_path, log, spk)   # 整段 mp3 + 返回每段秒数
+### 3~6) 一条命令出全套（2026-07-11 起默认）：`make_episode.py`
+卡片文案终审通过后，把全套数据写进 **`output/<date>/episode.yaml`**（结构照抄
+`output/2026-07-11/episode.yaml`：`script`＝文稿文件名、`groups`＝封面卡/每组内容卡+补充卡/CTA、
+`cover3x4`＝3:4 封面文案），然后：
 ```
-- 输出整段 `output/<date>/audio/broadcast-<date>-spacex.mp3`，把 `durs` 存 `audio/durs.json` 备用。
-- **语速**：合成前设 `os.environ["VOLC_SPEECH_RATE"]`（默认 `"50"`≈1.4×）。
-- **先给音频让用户确认**（打印每段时长 + 总长），确认后再进卡片/视频。
-- 旧路径 `run_daily.synth_segmented()`（逐段独立合成再拼接）仍可用，但有段间音色漂移，仅在
-  不在意音色一致性时用。**音频一旦满意就别再动**——后面加卡片复用 `durs`，不重配音。
-
-### 4) 组卡 + 渲染（按音频段分组，逐卡卡点）
-文案已在步骤 2 定稿，这里把卡片**按音频段分组**并渲染。每个音频段（intro / 每条内容 / 收尾）
-对应一组卡：内容卡 + 它的补充卡，**同组同配色**（`grad`），组内时长权重 新闻/论文卡 1.5、补充卡 1.0。
-卡片字段、配色、卡点权重、可直接改用的 GROUPS 驱动脚本：见 `references/card-design.md`（**先读它**）。
-- 封面 `count`/`toc` 列出内容卡数与一句话标题；配色建议 5 组用 `c1/c3/c4/c5/c2` 区分。
-- **渲染后停下让用户审卡片**（抽查封面 + 每组一张 + CTA，确认无乱码/溢出/重叠）。
-
-### 5) 合成 4K 卡点视频（默认无片头 + 猫头片尾）
-**⚠️ 出片脚本别凭记忆重写**：直接复制上一日 `scripts/_tmp_video_<上一日>.py`（最新已验证＝
-`scripts/_tmp_video_0705.py`，含片尾+字幕全流程）改 DATE/GROUPS 即用。两个易错点：
-① 用裸 `composite()` 时每张卡时长必须 **`+xhs.XFADE`**（交叉淡变吃掉转场时长，漏加则视频比音频短、
-收尾被截；`build_xhs_video()` 才会自动加）；② 片尾固定参数 `circle_photo(photo, 760)` +
-`center=(1080, int(0.24*3840))`（卡片 2160×3840），别换算别自创。
-出片后必查：`ffprobe` 时长 ≈ 旁白 + 1s 片尾、2160×3840。
-
-**（备选）带片头的旧路径**：
-`make_xhs_video_html.build_xhs_video(cards, audio, out, date, seg_durations=durs, intro_path=intro)`：
-- `seg_durations` 传"每张卡的可见时长"（已按组切好），实现逐卡卡点；
-- `intro_path` 给 `片头/小猫片头_1x1_4s.mp4`，自动模糊铺底适配 + 拼到最前、保留片头音乐。
-- 输出 `output/<date>/video/xhs-<date>-spacex.mp4`，4K 2160×3840。
-- 校验：用 ffprobe 确认 `width=2160 height=3840`，视频时长 ≈ 片头(4s)+音频（或音频+1s 片尾）。
-
-**片尾做法（替代片头时）**——用 `make_xhs_video_html` 的可复用函数：
-```python
-photo = xhs.circle_photo("片头/图片_20260606072137.png", 760)   # 圆形裁切（默认参数含住猫头）
-import shutil; plain = pngs[-1] + ".plain"; shutil.copy(pngs[-1], plain)   # 留一份无照片的 CTA 背景
-xhs.place_photo_on_card(pngs[-1], photo, center=(1080, int(0.24*3840)))     # CTA 静态卡放上满圆照片
-xhs.composite(pngs, [d+xhs.XFADE for d in durs], audio, main_mp4)           # 主视频（不传 intro）
-xhs.build_shrink_outro(plain, photo, (1080, int(0.24*3840)), outro_mp4, dur=1.0)  # 1s 圆圈缩小消失
-xhs.concat_clips([main_mp4, outro_mp4], OUT)                                # 主视频 + 片尾
+PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_episode.py --date <date> --dry-run   # 先校验
+PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_episode.py --date <date>             # 出全套
 ```
-（圆心 center 用卡片像素坐标，2160×3840；`circle_photo` 的 cx/cy/r_frac 可调以适配别的照片。）
-实操时建议保存 `card-N.plain.png` 作为无照片 CTA 底图；若重复出片，先从 plain 恢复 CTA，再放圆形照片，
-避免多次叠图。最终用 ffprobe 校验 `2160x3840`、30fps、音频轨和 `音频时长+1s片尾`，并抽首帧/片尾帧 QA。
+一条命令完成：字数校验(≤820)→emoji 码位校验(<U+1FA70)→TTS(整段 rate36；**音频已存在则复用不重配**，
+`--force-audio` 才重合成)→渲染→出片(+XFADE 逐卡补偿、猫头片尾 circle_photo(photo,760)+center=(1080,0.24H))→
+字幕(whisper 强制对齐)→ffprobe 断言(2160×3840、时长=旁白+1s±0.8)→抽 5 帧到 `video/qa/`→卡片归档→
+3:4 封面→publish.json。**QA 断言任一失败即中止，不会产出坏片**。
+- 跑完读 `video/qa/` 抽帧确认画面（封面钩子、高亮块、字幕落位、CTA 猫头），再交付用户。
+- 音频想单独先给用户听：先跑一次（会合成音频），把 mp3 给用户，确认后不动音频继续。
+- 旧手工路径（逐步骤 `_tmp_*` 脚本）已废弃，仅当 make_episode.py 不能覆盖的特殊需求（如带片头）才回退；
+  片头路径见 `references/card-design.md` 与 `build_xhs_video(intro_path=...)`。
 
-### 5b) 烧字幕（默认）
-片尾 concat 出**基底视频**后，再烧字幕（基底无字幕，留作备用；发布用 `-sub.mp4`）：
-```python
-segs = gb.split_segments(rd.strip_header(md_text))   # 与卡点同一份 segments（顺序＝音频段）
-durs = json.load(open(f"output/{DATE}/audio/durs.json", encoding="utf-8"))
-xhs.add_subtitles(segs, durs, AUDIO, OUT, OUT.with_name(OUT.stem + "-sub.mp4"))
-```
-- 时间轴：`faster-whisper(base)` 词级强制对齐脚本原文（专有名词不被 ASR 改错）；无 whisper 回退 `durs` 比例。
-- 样式在 `make_xhs_video_html`：`SUB_FONT/SUB_FONTSIZE/SUB_MARGINV`（默认 微软雅黑 82 / **MarginV=820**，
-  落在正文与金句空白带；想贴底改小，想更高改大）。半透明黑底、底部居中。
-- 烧录用 cwd 下相对路径（`ass=_burn_*.ass`）避开 Windows 盘符冒号转义。
-- **抽帧 QA**：`ffmpeg -ss <t> -i out-sub.mp4 -frames:v 1 f.png` 看字体无乱码、对齐准、不压金句/关联/水印。
-
-> 全自动（无补充卡、每条新闻 1 张卡、同日期）可直接：
-> `python scripts/run_daily.py --date <date> --modes concise --video`
-> （已默认带片头；`--no-intro` 关闭）。带补充卡/跨日期/选稿/片尾的版本用 GROUPS 驱动脚本组卡。
-
-### 6) 封面（3:4）
-```
-PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_cover.py output/<date>/cover/cover-<date>.png
-```
-编辑 `make_cover.py` 顶部的 `BRAND/KICKER/BIG/ROWS/DATE` 改当天内容（关键词用 `**…**`）。
-- **`BIG` 大标题要吸睛**：别用「今日 AI N 件大事」这种平淡计数，要一句爆点钩子——头条人物/反常动作/
-  悬念/超级标题（如「马斯克送显卡上太空」「史上最疯 AI 基建」「最强 Claude 来了」）。`ROWS` 再列 5 条速览。
-- 输出 3:4 = 1080×1440（2x → 2160×2880），可单独上传为视频自定义封面。5 行也放得下。
-为避免污染其他日期，优先写 `scripts/_tmp_cover_<date>.py` 临时脚本，import `make_cover` 后覆盖 `BRAND/KICKER/BIG/ROWS/DATE`
-再调用 `make_cover.main()`；不要直接把当天文案长期写死进 `make_cover.py`。生成后用 `view_image` 检查标题、5 行摘要、
-右下角收藏贴纸是否溢出或遮挡。
+**实现细节备查**（make_episode.py 内部即这套已验证做法；手工回退时才需要）：
+- 音频＝`run_daily.synth_single_synced`（整段一次合成音色统一）；语速 `VOLC_SPEECH_RATE=36`≈1.25×。
+- 片尾＝`circle_photo(photo,760)` + `place_photo_on_card(center=(1080,int(0.24*3840)))` +
+  `composite([d+XFADE...])` + `build_shrink_outro(dur=1.0)` + `concat_clips`。
+  裸 `composite()` 逐卡必须 `+XFADE`（漏加则视频比音频短、收尾被截）。
+- 字幕＝`add_subtitles(segs, durs, ...)`，whisper(base) 词级强制对齐脚本原文，样式
+  `SUB_FONT/SUB_FONTSIZE/SUB_MARGINV`（微软雅黑 82 / MarginV=820），烧录用 cwd 相对路径避开盘符冒号。
+- 3:4 封面＝episode.yaml 的 `cover3x4`（BIG 要爆点钩子，别用"今日N件大事"；ROWS 5 行速览，`**…**` 标红）。
+- 全自动兜底（无补充卡、同日期）：`python scripts/run_daily.py --date <date> --modes concise --video`。
 
 ### 7) 标题 + 正文 + 话题标签
 **标题**（≤20 字，前 8 字定生死，数字+情绪+悬念取二，口语像爆料）。给 2~3 个选项让用户挑。
@@ -227,6 +200,10 @@ PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_cover.py output/<date>/c
 - `正文`：无编号词"第一条/第二条"，用 5 行短句覆盖 3 新闻 + 2 论文，结尾带 `@柿子树下的猫wanjeans`。
 - `Tag`：8~10 个，包含 `#人工智能 #AI #AI日报 #每日AI #AI资讯` + 当天热点 + `#柿子树下的猫`。
 默认不加 emoji，除非用户明确喜欢。
+**论文传送门给具体链接**（2026-07-11 用户要求）：查证后写 arXiv 编号（`arxiv.org/abs/26xx.xxxxx`）或
+官方仓库/项目页；查不到编号就给仓库链接，**绝不硬编编号**，也不再用"搜标题可达"兜底。
+⚠️ caption.md 的 `## 标题` 节首行就是标题本体，别写"- A（选用）：…"选项列表（make_publish 会整行当标题）；
+备选标题放文末单独一节。
 
 ### 8) 投稿（半自动 · Route B = Claude-in-Chrome 驱动创作者后台）
 **只有浏览器自动化能传自定义 3:4 封面**：社区 `xiaohongshu-mcp` 的 publish 没有封面参数（会用视频首帧，
@@ -264,6 +241,8 @@ cover（3:4 png 绝对路径）/ visibility / schedule_at`。**标题 >20 字会
 - `publish.json`（投稿数据源：标题/正文/标签 + 视频&封面绝对路径 + 可见性，`make_publish.py` 生成）
 
 ## 排错速记
+- **卡片 icon 渲染成空框**：emoji 码位 ≥U+1FA70（Unicode 12+，如 🫥🫓）渲染字体不支持——
+  make_episode.py 已内置拦截；手工路径时 icon 只用老码位常见 emoji（💔🍞📮⚖️🎮 这类）。
 - 视频比音频短 ≈ 每卡少 ~1s、收尾被截：裸 `composite()` 的时长忘了逐卡 `+xhs.XFADE`（见步骤 5 ⚠️）。
 - DeepSeek 401：先核对 `DEEPSEEK_API_KEY` 尾号（易多打字符）；pi 与 api 后端都受同一 key 影响。
 - 豆包 `NO AUDIO RECEIVED` / 403：偶发或限流，`synth_segmented` 已自动重试；仍失败就等额度恢复。

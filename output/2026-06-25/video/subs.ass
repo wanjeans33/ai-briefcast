@@ -1,0 +1,68 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.00,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.34,0:00:03.30,Default,,0,0,0,,先说今天的头条
+Dialogue: 0,0:00:03.72,0:00:05.40,Default,,0,0,0,,日本的 Sakana AI 发布了一个新模型
+Dialogue: 0,0:00:05.40,0:00:08.14,Default,,0,0,0,,名字叫 Fugu，意思是河豚
+Dialogue: 0,0:00:08.14,0:00:10.38,Default,,0,0,0,,它特别在于，你只跟一个接口对话
+Dialogue: 0,0:00:10.38,0:00:11.70,Default,,0,0,0,,它自己判断是直接回答
+Dialogue: 0,0:00:11.70,0:00:14.04,Default,,0,0,0,,还是在背后召集一队专家模型来分工
+Dialogue: 0,0:00:14.04,0:00:15.16,Default,,0,0,0,,自己当总指挥
+Dialogue: 0,0:00:15.16,0:00:17.28,Default,,0,0,0,,高配版号称能和顶尖模型掰手腕
+Dialogue: 0,0:00:17.28,0:00:19.72,Default,,0,0,0,,可上线才一天就有人实测，跑分好看
+Dialogue: 0,0:00:19.72,0:00:21.32,Default,,0,0,0,,真上手却差一截
+Dialogue: 0,0:00:21.32,0:00:22.86,Default,,0,0,0,,钱这边有人算了笔细账
+Dialogue: 0,0:00:22.86,0:00:24.52,Default,,0,0,0,,大家老争 AI 是不是泡沫
+Dialogue: 0,0:00:24.52,0:00:25.70,Default,,0,0,0,,可都在估值和故事上打转
+Dialogue: 0,0:00:25.70,0:00:26.76,Default,,0,0,0,,有人换了思路
+Dialogue: 0,0:00:26.76,0:00:28.68,Default,,0,0,0,,去算 AI 每答一次到底花多少钱
+Dialogue: 0,0:00:29.00,0:00:30.14,Default,,0,0,0,,一份独立分析估算
+Dialogue: 0,0:00:30.14,0:00:31.52,Default,,0,0,0,,平台每挣一美元收入
+Dialogue: 0,0:00:31.52,0:00:33.28,Default,,0,0,0,,背后可能要倒贴八到十四美元
+Dialogue: 0,0:00:33.28,0:00:34.92,Default,,0,0,0,,两年前红杉算这个行业的
+Dialogue: 0,0:00:34.92,0:00:35.75,Default,,0,0,0,,收入缺口是两千亿
+Dialogue: 0,0:00:35.75,0:00:37.54,Default,,0,0,0,,九个月后重算就跳到了六千亿
+Dialogue: 0,0:00:37.54,0:00:38.94,Default,,0,0,0,,再说一件跟透明度有关的事
+Dialogue: 0,0:00:38.94,0:00:40.97,Default,,0,0,0,,一名开发者翻 Claude Code 存在
+Dialogue: 0,0:00:40.97,0:00:41.56,Default,,0,0,0,,电脑上的日志
+Dialogue: 0,0:00:41.56,0:00:42.94,Default,,0,0,0,,想看看模型是怎么想的
+Dialogue: 0,0:00:42.94,0:00:45.36,Default,,0,0,0,,结果记录推理的地方只有一段六百字符的
+Dialogue: 0,0:00:45.36,0:00:45.80,Default,,0,0,0,,加密签名
+Dialogue: 0,0:00:45.80,0:00:46.30,Default,,0,0,0,,正文是空的
+Dialogue: 0,0:00:46.30,0:00:48.10,Default,,0,0,0,,原来模型把推理加密了
+Dialogue: 0,0:00:48.10,0:00:49.92,Default,,0,0,0,,钥匙握在 Anthropic 手里
+Dialogue: 0,0:00:49.92,0:00:50.72,Default,,0,0,0,,本机解不开
+Dialogue: 0,0:00:50.72,0:00:52.58,Default,,0,0,0,,想看完整原文还得签企业协议
+Dialogue: 0,0:00:52.58,0:00:55.12,Default,,0,0,0,,论文这边，先看一篇讲训练成本的
+Dialogue: 0,0:00:55.12,0:00:57.28,Default,,0,0,0,,训练多轮对话的 AI 助手特别烧钱
+Dialogue: 0,0:00:57.28,0:00:58.84,Default,,0,0,0,,大家以前都怪步数太长
+Dialogue: 0,0:00:58.84,0:01:00.64,Default,,0,0,0,,这篇 Mila 的论文重新算账
+Dialogue: 0,0:01:00.64,0:01:03.08,Default,,0,0,0,,发现真正费钱的是一整段操作里关键决策
+Dialogue: 0,0:01:03.08,0:01:03.48,Default,,0,0,0,,太少
+Dialogue: 0,0:01:03.48,0:01:06.20,Default,,0,0,0,,点网页、翻页、点确认这些动作都必要
+Dialogue: 0,0:01:06.20,0:01:07.44,Default,,0,0,0,,可对结果没区分度
+Dialogue: 0,0:01:07.44,0:01:09.12,Default,,0,0,0,,照样被算进训练里白添噪声
+Dialogue: 0,0:01:09.12,0:01:10.72,Default,,0,0,0,,作者把这叫信号稀释
+Dialogue: 0,0:01:10.72,0:01:12.34,Default,,0,0,0,,另一篇论文来自机器人训练
+Dialogue: 0,0:01:12.34,0:01:13.94,Default,,0,0,0,,教机器人模仿专家动作
+Dialogue: 0,0:01:13.94,0:01:15.56,Default,,0,0,0,,有个老办法叫对抗式模仿
+Dialogue: 0,0:01:15.56,0:01:17.40,Default,,0,0,0,,效果好但要反复试错、很烧钱
+Dialogue: 0,0:01:17.40,0:01:18.96,Default,,0,0,0,,业界早有个偷懒技巧
+Dialogue: 0,0:01:18.96,0:01:21.00,Default,,0,0,0,,先把动作粗练一遍再上对抗训练
+Dialogue: 0,0:01:21.00,0:01:23.19,Default,,0,0,0,,能省成本，可没人说得清为什么管用
+Dialogue: 0,0:01:23.19,0:01:25.32,Default,,0,0,0,,这篇论文发现，光练动作还不够
+Dialogue: 0,0:01:25.32,0:01:26.76,Default,,0,0,0,,奖励函数也得提前一起练
+Dialogue: 0,0:01:26.76,0:01:28.79,Default,,0,0,0,,还头一次从数学上证明了这样更快更省
+Dialogue: 0,0:01:28.79,0:01:31.26,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:31.26,0:01:31.94,Default,,0,0,0,,我们明天见

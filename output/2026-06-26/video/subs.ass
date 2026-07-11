@@ -1,0 +1,78 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.92,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.56,0:00:04.58,Default,,0,0,0,,先说今天的头条，一件挺新鲜的事
+Dialogue: 0,0:00:04.58,0:00:06.50,Default,,0,0,0,,AI 公司头一回为一个地
+Dialogue: 0,0:00:06.50,0:00:07.62,Default,,0,0,0,,方小选举砸下重金
+Dialogue: 0,0:00:07.62,0:00:09.31,Default,,0,0,0,,纽约有位议员叫 Alex Bores
+Dialogue: 0,0:00:09.31,0:00:11.46,Default,,0,0,0,,去年牵头写过一部专门管 AI 的法案
+Dialogue: 0,0:00:11.46,0:00:13.48,Default,,0,0,0,,两家 AI 巨头于是都盯上了他
+Dialogue: 0,0:00:13.48,0:00:14.60,Default,,0,0,0,,立场还正好相反
+Dialogue: 0,0:00:14.60,0:00:16.46,Default,,0,0,0,,OpenAI 嫌这部法管得太严
+Dialogue: 0,0:00:16.46,0:00:17.68,Default,,0,0,0,,出钱想把他选下去
+Dialogue: 0,0:00:17.68,0:00:19.28,Default,,0,0,0,,Anthropic 本来就主张严管
+Dialogue: 0,0:00:19.28,0:00:20.31,Default,,0,0,0,,反过来出钱帮他
+Dialogue: 0,0:00:20.31,0:00:22.78,Default,,0,0,0,,两边加起来砸了大约两千七百万美元
+Dialogue: 0,0:00:22.78,0:00:24.22,Default,,0,0,0,,就为争一个地方议员的席位
+Dialogue: 0,0:00:24.22,0:00:25.56,Default,,0,0,0,,可钱没换来结果
+Dialogue: 0,0:00:25.56,0:00:27.40,Default,,0,0,0,,Bores 被攻击之后人气不降反升
+Dialogue: 0,0:00:27.40,0:00:28.24,Default,,0,0,0,,最后还是惜败
+Dialogue: 0,0:00:28.60,0:00:30.14,Default,,0,0,0,,再说谷歌一个更新
+Dialogue: 0,0:00:30.14,0:00:31.88,Default,,0,0,0,,过去想让 AI 替你看屏幕
+Dialogue: 0,0:00:31.88,0:00:33.18,Default,,0,0,0,,跨网页和手机自动点按
+Dialogue: 0,0:00:33.18,0:00:34.88,Default,,0,0,0,,得单独调一个专门的模型
+Dialogue: 0,0:00:34.88,0:00:37.40,Default,,0,0,0,,这周谷歌把这套电脑操作能力直接做进了
+Dialogue: 0,0:00:37.40,0:00:38.94,Default,,0,0,0,,更便宜的 Gemini 3.5 Flash
+Dialogue: 0,0:00:38.94,0:00:40.36,Default,,0,0,0,,开发者拨个开关就能用
+Dialogue: 0,0:00:40.36,0:00:42.02,Default,,0,0,0,,操作得分追平 GPT-5.5
+Dialogue: 0,0:00:42.02,0:00:43.22,Default,,0,0,0,,价钱却只要三分之一
+Dialogue: 0,0:00:43.52,0:00:45.54,Default,,0,0,0,,不过同一周也有两份测试提醒
+Dialogue: 0,0:00:45.54,0:00:47.70,Default,,0,0,0,,这类 AI 一碰上又长又多步的任务
+Dialogue: 0,0:00:47.70,0:00:48.80,Default,,0,0,0,,可靠性还是容易掉链子
+Dialogue: 0,0:00:49.12,0:00:51.08,Default,,0,0,0,,工作这边有个跟直觉相反的发现
+Dialogue: 0,0:00:51.08,0:00:52.78,Default,,0,0,0,,都说 AI 写代码越来越强
+Dialogue: 0,0:00:52.78,0:00:53.68,Default,,0,0,0,,程序员要被取代了
+Dialogue: 0,0:00:53.68,0:00:55.86,Default,,0,0,0,,可一家叫 SignalFire 的
+Dialogue: 0,0:00:55.86,0:00:56.26,Default,,0,0,0,,机构盯着招聘数据看
+Dialogue: 0,0:00:56.26,0:00:58.36,Default,,0,0,0,,发现实情正相反，在这一波裁员潮里
+Dialogue: 0,0:00:58.36,0:01:00.48,Default,,0,0,0,,工程师反而是最扛得住的岗位
+Dialogue: 0,0:01:00.48,0:01:02.57,Default,,0,0,0,,新招的人里他们占的比重不降反升
+Dialogue: 0,0:01:02.57,0:01:03.28,Default,,0,0,0,,原因也不难想
+Dialogue: 0,0:01:03.28,0:01:05.24,Default,,0,0,0,,AI 把代码生产得更快更多
+Dialogue: 0,0:01:05.24,0:01:06.40,Default,,0,0,0,,写出来的东西却更杂
+Dialogue: 0,0:01:06.40,0:01:08.66,Default,,0,0,0,,越需要有经验的人去把关、去收尾
+Dialogue: 0,0:01:08.66,0:01:10.78,Default,,0,0,0,,论文这边，先看一篇戳穿 AI 看图的
+Dialogue: 0,0:01:10.78,0:01:12.78,Default,,0,0,0,,现在的图文大模型有个尴尬毛病
+Dialogue: 0,0:01:13.14,0:01:14.38,Default,,0,0,0,,嘴上说一步步在分析图片
+Dialogue: 0,0:01:14.38,0:01:16.84,Default,,0,0,0,,实际答题却在背训练时记住的语料
+Dialogue: 0,0:01:16.84,0:01:17.98,Default,,0,0,0,,图里的线索根本没盯住
+Dialogue: 0,0:01:17.98,0:01:19.40,Default,,0,0,0,,推理链越长越容易跑偏
+Dialogue: 0,0:01:19.40,0:01:20.76,Default,,0,0,0,,这篇论文想了个办法
+Dialogue: 0,0:01:20.76,0:01:25.78,Default,,0,0,0,,把图里的关键线索悄悄抹掉
+Dialogue: 0,0:01:25.78,0:01:27.10,Default,,0,0,0,,再看模型答案变不变
+Dialogue: 0,0:01:27.10,0:01:28.42,Default,,0,0,0,,要是抹掉图答案照旧
+Dialogue: 0,0:01:28.42,0:01:30.60,Default,,0,0,0,,那就说明它压根没在看图，是在背书
+Dialogue: 0,0:01:30.60,0:01:32.52,Default,,0,0,0,,另一篇论文走的是省钱路子
+Dialogue: 0,0:01:32.52,0:01:34.37,Default,,0,0,0,,像血管、裂缝这种又细又长的东西
+Dialogue: 0,0:01:34.37,0:01:36.70,Default,,0,0,0,,AI 分割起来特别容易出错，一处断了
+Dialogue: 0,0:01:36.70,0:01:37.90,Default,,0,0,0,,一整根就接不上
+Dialogue: 0,0:01:37.90,0:01:39.76,Default,,0,0,0,,现在的大模型底座又强又难改
+Dialogue: 0,0:01:39.98,0:01:41.40,Default,,0,0,0,,从头重训既贵又不现实
+Dialogue: 0,0:01:41.40,0:01:43.82,Default,,0,0,0,,这篇论文的思路很省事，底座原样不动
+Dialogue: 0,0:01:43.82,0:01:45.46,Default,,0,0,0,,只在它后面挂一个很小的补丁
+Dialogue: 0,0:01:45.46,0:01:47.10,Default,,0,0,0,,专门把细长结构续接起来
+Dialogue: 0,0:01:47.10,0:01:48.22,Default,,0,0,0,,代价几乎可以忽略
+Dialogue: 0,0:01:48.22,0:01:49.90,Default,,0,0,0,,连通的效果却明显变好
+Dialogue: 0,0:01:49.90,0:01:50.74,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:50.74,0:01:51.48,Default,,0,0,0,,我们明天见
