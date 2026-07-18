@@ -1,0 +1,86 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.80,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:01.80,0:00:03.24,Default,,0,0,0,,先说今天的头条
+Dialogue: 0,0:00:03.24,0:00:05.04,Default,,0,0,0,,网络服务巨头 Cloudflare 要让
+Dialogue: 0,0:00:05.04,0:00:06.80,Default,,0,0,0,,AI 公司为抓取内容掏钱了
+Dialogue: 0,0:00:06.80,0:00:09.10,Default,,0,0,0,,很多 AI 一边打着搜索的旗号爬网站
+Dialogue: 0,0:00:09.10,0:00:10.52,Default,,0,0,0,,一边把内容拿去做训练
+Dialogue: 0,0:00:10.52,0:00:11.76,Default,,0,0,0,,喂给自己的 agent
+Dialogue: 0,0:00:11.76,0:00:12.88,Default,,0,0,0,,出版商却一分钱拿不到
+Dialogue: 0,0:00:12.88,0:00:14.92,Default,,0,0,0,,Cloudflare 给这些公司下了最后通牒
+Dialogue: 0,0:00:14.92,0:00:16.28,Default,,0,0,0,,限他们在九月中之前
+Dialogue: 0,0:00:16.28,0:00:18.18,Default,,0,0,0,,把用来搜索的爬虫和用来训练的
+Dialogue: 0,0:00:18.18,0:00:18.90,Default,,0,0,0,,爬虫分清楚
+Dialogue: 0,0:00:18.90,0:00:20.76,Default,,0,0,0,,否则在大量带广告的网站上
+Dialogue: 0,0:00:20.76,0:00:22.18,Default,,0,0,0,,默认就把它们挡在门外
+Dialogue: 0,0:00:22.18,0:00:24.14,Default,,0,0,0,,它还推出一个按使用付费的机制
+Dialogue: 0,0:00:24.14,0:00:26.50,Default,,0,0,0,,让网站在自己的内容真正产生价值时就
+Dialogue: 0,0:00:26.50,0:00:27.00,Default,,0,0,0,,能收到钱
+Dialogue: 0,0:00:27.00,0:00:29.29,Default,,0,0,0,,再说 OpenAI 给欧盟的岗位画了
+Dialogue: 0,0:00:29.29,0:00:29.94,Default,,0,0,0,,张自动化地图
+Dialogue: 0,0:00:29.94,0:00:30.70,Default,,0,0,0,,它发了份报告
+Dialogue: 0,0:00:30.70,0:00:32.94,Default,,0,0,0,,把欧盟各行各业的工作分成四类
+Dialogue: 0,0:00:32.94,0:00:35.78,Default,,0,0,0,,大约百分之十八面临比较高的自动化风险
+Dialogue: 0,0:00:35.78,0:00:37.86,Default,,0,0,0,,两成多会因为 AI 重新调整流程
+Dialogue: 0,0:00:37.86,0:00:39.80,Default,,0,0,0,,还有一成二会跟着 AI 一起增长
+Dialogue: 0,0:00:39.80,0:00:41.24,Default,,0,0,0,,剩下近一半短期内变化不大
+Dialogue: 0,0:00:41.24,0:00:43.10,Default,,0,0,0,,像德国、希腊、意大利这些国家
+Dialogue: 0,0:00:43.10,0:00:44.72,Default,,0,0,0,,高风险岗位占比更大
+Dialogue: 0,0:00:44.72,0:00:46.16,Default,,0,0,0,,对还在观望的打工人
+Dialogue: 0,0:00:46.16,0:00:49.08,Default,,0,0,0,,这份地图头一回把你的岗位到底在哪一栏
+Dialogue: 0,0:00:49.08,0:00:49.80,Default,,0,0,0,,摆到了台面上
+Dialogue: 0,0:00:49.80,0:00:50.82,Default,,0,0,0,,再说一件影视圈的事
+Dialogue: 0,0:00:50.82,0:00:53.42,Default,,0,0,0,,Netflix 要办一档巧克力工厂主题的
+Dialogue: 0,0:00:53.42,0:00:53.94,Default,,0,0,0,,真人竞技秀
+Dialogue: 0,0:00:53.94,0:00:55.26,Default,,0,0,0,,节目里那位威利旺卡的旁白
+Dialogue: 0,0:00:55.26,0:00:56.68,Default,,0,0,0,,用的是 AI 合成的
+Dialogue: 0,0:00:56.68,0:00:58.13,Default,,0,0,0,,已故演员金怀尔德的声音
+Dialogue: 0,0:00:58.13,0:01:00.04,Default,,0,0,0,,这次它找了做 AI 语音的公司
+Dialogue: 0,0:01:00.04,0:01:01.68,Default,,0,0,0,,ElevenLabs
+Dialogue: 0,0:01:01.68,0:01:02.94,Default,,0,0,0,,而且事先得到了怀尔德家人的同意
+Dialogue: 0,0:01:02.94,0:01:05.12,Default,,0,0,0,,他遗孀说很高兴让这份魔法传给新一代
+Dialogue: 0,0:01:05.12,0:01:07.12,Default,,0,0,0,,这几年用 AI 复刻已故名人的
+Dialogue: 0,0:01:07.12,0:01:07.96,Default,,0,0,0,,声音越来越多
+Dialogue: 0,0:01:07.96,0:01:09.94,Default,,0,0,0,,怎么用得得体、家属同不同意
+Dialogue: 0,0:01:09.94,0:01:11.46,Default,,0,0,0,,正慢慢成为绕不开的规矩
+Dialogue: 0,0:01:11.46,0:01:12.00,Default,,0,0,0,,论文这边
+Dialogue: 0,0:01:12.00,0:01:14.02,Default,,0,0,0,,先看一个治多智能体系统的老毛病
+Dialogue: 0,0:01:14.02,0:01:17.16,Default,,0,0,0,,现在很多 AI 产品是好几个 agent 分工
+Dialogue: 0,0:01:17.16,0:01:17.56,Default,,0,0,0,,协作
+Dialogue: 0,0:01:17.56,0:01:19.00,Default,,0,0,0,,可一旦整条流水线跑砸了
+Dialogue: 0,0:01:19.00,0:01:20.02,Default,,0,0,0,,你只拿到一个最终结果
+Dialogue: 0,0:01:20.02,0:01:21.72,Default,,0,0,0,,根本不知道是分工没设计好
+Dialogue: 0,0:01:21.72,0:01:24.08,Default,,0,0,0,,还是中间某一步把上游的正确信息带偏了
+Dialogue: 0,0:01:24.08,0:01:25.30,Default,,0,0,0,,只能凭感觉改提示词
+Dialogue: 0,0:01:25.30,0:01:27.02,Default,,0,0,0,,这篇论文提出一个叫 GBC 的方法
+Dialogue: 0,0:01:27.02,0:01:29.69,Default,,0,0,0,,把整个多 agent 系统建成一张计算图
+Dialogue: 0,0:01:29.69,0:01:31.14,Default,,0,0,0,,让错误信号顺着它们的
+Dialogue: 0,0:01:31.14,0:01:31.98,Default,,0,0,0,,交互链条倒着传回去
+Dialogue: 0,0:01:31.98,0:01:34.26,Default,,0,0,0,,精确算出每个 agent 该担多少责任
+Dialogue: 0,0:01:34.26,0:01:36.88,Default,,0,0,0,,另一篇论文想给图像生成省掉一个麻烦零
+Dialogue: 0,0:01:36.88,0:01:37.28,Default,,0,0,0,,件
+Dialogue: 0,0:01:37.28,0:01:38.44,Default,,0,0,0,,现在主流的画图模型
+Dialogue: 0,0:01:38.44,0:01:39.98,Default,,0,0,0,,都要先训一个叫分词器的东西
+Dialogue: 0,0:01:39.98,0:01:41.68,Default,,0,0,0,,把图像压成一串码再来生成
+Dialogue: 0,0:01:41.68,0:01:43.10,Default,,0,0,0,,这零件得单独训练和维护
+Dialogue: 0,0:01:43.10,0:01:44.18,Default,,0,0,0,,有人干脆跳过它
+Dialogue: 0,0:01:44.18,0:01:46.76,Default,,0,0,0,,直接把图像当成一个个原始像素块来预测
+Dialogue: 0,0:01:46.76,0:01:47.94,Default,,0,0,0,,省掉整个环节
+Dialogue: 0,0:01:47.94,0:01:53.80,Default,,0,0,0,,过去这条路误差大、越滚越歪
+Dialogue: 0,0:01:53.80,0:01:55.88,Default,,0,0,0,,这篇论文用先猜一个粗略中间态
+Dialogue: 0,0:01:55.88,0:01:57.66,Default,,0,0,0,,再慢慢细化的办法压住了误差
+Dialogue: 0,0:01:57.66,0:01:59.92,Default,,0,0,0,,让这种省事画法的质量一点点追上主流
+Dialogue: 0,0:01:59.92,0:02:02.30,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:02:02.30,0:02:02.96,Default,,0,0,0,,我们明天见

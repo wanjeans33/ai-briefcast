@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0716-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月16日 · AI Briefcast
+        count: 5
+        hook: OpenAI硬件<br><em>会自己动</em>
+        toc: [OpenAI音箱会动会看, Claude重写百万行翻车, DeepMind呼吁装刹车, 世界模型学会搬家, 视频超分进小盒子]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 硬件
+        icon: 🔊
+        title: OpenAI第一件硬件，会动
+        body: 彭博社曝光，**无屏智能音箱**带摄像头传感器，机械部件自己动像活物；管家电回消息，还**读你的邮件**越用越懂你。年内亮相，定价**200-300美元**
+        punch: 想住进你家，先答谁在看着你
+      - kind: explainer
+        grad: c1
+        icon: 🛠️
+        rel: 头条01
+        title: 操刀的是谁
+        body: 前苹果**iPhone/Mac**工程师组成的io团队，OpenAI花**65亿美元**收购；苹果上周刚为"偷机密"把他们和OpenAI一起告了
+      - kind: explainer
+        grad: c1
+        icon: 📹
+        rel: 头条01
+        title: 没屏幕图什么
+        body: 屏幕让你低头，它想用**耳朵加摄像头**替你看世界，交互全靠说话。代价是一台带摄像头的联网设备住进客厅，隐私绕不开
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 社区
+        icon: 🤡
+        title: AI重写百万行，人没审过
+        body: Bun作者用并行Claude **11天**把几百万行Zig代码重写成Rust，Anthropic当大捷宣传；Zig作者开炮**没人审查**，宣传称做过的模糊测试**团队承认没做**
+        punch: 口水战背后，是AI代码谁负责
+      - kind: explainer
+        grad: c3
+        icon: ⚙️
+        rel: 头条02
+        title: Bun和Zig是什么
+        body: Bun是当红的**JavaScript运行时**，网站后端的引擎；Zig是它原来的**底层语言**，靠社区捐助养项目，被"抛弃"格外扎心
+      - kind: explainer
+        grad: c3
+        icon: 🎭
+        rel: 头条02
+        title: 口头禅为什么惹毛人
+        body: Claude爱说**你说得完全对**，错了也这么说，显得敷衍；有人写脚本自动替换成**我是个彻头彻尾的小丑**，改不了毛病，先把它变好笑
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 治理
+        icon: 🛑
+        title: 给AI装刹车，美国来踩
+        body: DeepMind老板主张美国牵头建监管机构，**行业出钱专家坐镇**，前沿模型发布前送测危险能力，失控可**直接叫停**；他警告**一年半**内开源模型或失去约束
+        punch: 管别人容易，管自己难
+      - kind: explainer
+        grad: c4
+        icon: 🏦
+        rel: 头条03
+        title: FINRA模式是什么
+        body: 华尔街的**行业自律组织**，券商出钱养专家盯自己，政府在上面督着。Hassabis想照抄给AI，比立法快，独立性也常被质疑
+      - kind: explainer
+        grad: c4
+        icon: 📂
+        rel: 头条03
+        title: 另一边政府在干嘛
+        body: 美国住房部门被指用AI**改政策文件**，公益组织申请信息公开**一年多不回**，已被告上法庭。呼吁监管和自己透明是两回事
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 系统
+        icon: 🧳
+        title: 世界模型，把GPU钉死了
+        body: 交互式AI世界运行状态**好几个GB**常驻显卡，压缩走样、重算来不及。哈佛的WorldMove**整块搬走**逐比特一致，同机**不到20毫秒**，比存盘重载**快100倍**
+        punch: 模型能搬家，机房才像云
+      - kind: explainer
+        grad: c5
+        icon: ☁️
+        rel: 论文01
+        title: 弹性调度是什么
+        body: 云机房的看家本领，忙时加机器闲时收，前提是任务**随时能挪**。被钉死的GPU等于包月专车，空转也烧钱
+      - kind: explainer
+        grad: c5
+        icon: 🗄️
+        rel: 论文01
+        title: 运行状态是什么
+        body: 模型边跑边攒的**记忆现场**，AI世界里就是这一局的全部状态，丢了断片、近似了变样，所以搬家必须**一个比特不差**
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 端侧
+        icon: 📺
+        title: 视频变清晰，塞进小盒子
+        body: 主流视频超分靠大模型堆画质，端侧跑不动；NanoVSR砍掉笨重组件只留**普通卷积**，**64万参数**在**25瓦**小板上实时跑
+        punch: 画质让一小步，落地进一大步
+      - kind: explainer
+        grad: c2
+        icon: 🎞️
+        rel: 论文02
+        title: 什么是视频超分
+        body: 把**模糊低清**视频算成高清，老片修复、监控放大、直播省带宽全靠它。难在前后帧要对齐，不然画面抖
+      - kind: explainer
+        grad: c2
+        icon: 🔋
+        rel: 论文02
+        title: 25瓦意味着什么
+        body: 一个**路由器级**的功耗，装在摄像头旁、车机里就能跑，不用回传云端。省流量省钱，隐私也不出门
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月16日 · 1分钟追上AI圈
+  big: OpenAI硬件<br><em>会自己动</em>
+  rows:
+    - "OpenAI首款硬件 **会动的音箱**"
+    - "Claude重写百万行 **没人审查**"
+    - "DeepMind **呼吁给AI装刹车**"
+    - "世界模型 **学会搬家**"
+    - "**64万参数** 视频实时变清晰"
+  date: "@AI Briefcast · 7/16"

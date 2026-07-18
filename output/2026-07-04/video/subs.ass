@@ -1,0 +1,70 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.84,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.24,0:00:03.10,Default,,0,0,0,,先说今天的头条
+Dialogue: 0,0:00:03.10,0:00:05.58,Default,,0,0,0,,开源游戏引擎 Godot 把 AI 挡在了
+Dialogue: 0,0:00:05.58,0:00:06.66,Default,,0,0,0,,贡献者门外
+Dialogue: 0,0:00:06.66,0:00:08.74,Default,,0,0,0,,它驱动过《杀戮尖塔二》这样的游戏
+Dialogue: 0,0:00:08.74,0:00:10.58,Default,,0,0,0,,新规矩下，AI 写的成段代码
+Dialogue: 0,0:00:10.58,0:00:12.08,Default,,0,0,0,,agent 自动提交的请求
+Dialogue: 0,0:00:12.08,0:00:14.09,Default,,0,0,0,,连 AI 代写的沟通文字，都不再收
+Dialogue: 0,0:00:14.09,0:00:16.08,Default,,0,0,0,,只有代码补全这种小忙还允许
+Dialogue: 0,0:00:16.08,0:00:16.92,Default,,0,0,0,,用了也得说明
+Dialogue: 0,0:00:16.92,0:00:19.30,Default,,0,0,0,,原因很实在，AI 生成的贡献暴涨
+Dialogue: 0,0:00:19.30,0:00:20.87,Default,,0,0,0,,可帮忙审代码的人手没变多
+Dialogue: 0,0:00:20.87,0:00:22.40,Default,,0,0,0,,他们还有句话很扎心
+Dialogue: 0,0:00:22.40,0:00:24.00,Default,,0,0,0,,说信不过重度用 AI 的人
+Dialogue: 0,0:00:24.00,0:00:25.64,Default,,0,0,0,,改得动自己交上来的代码
+Dialogue: 0,0:00:25.64,0:00:26.74,Default,,0,0,0,,再说一件挺反转的事
+Dialogue: 0,0:00:26.92,0:00:28.68,Default,,0,0,0,,特斯拉给员工用 AI 的开支封了顶
+Dialogue: 0,0:00:28.68,0:00:30.32,Default,,0,0,0,,下周起每人每周最多两百美元
+Dialogue: 0,0:00:30.32,0:00:32.86,Default,,0,0,0,,超了得先申请，自家 Grok 测试版不算
+Dialogue: 0,0:00:32.86,0:00:35.08,Default,,0,0,0,,此前有工程师一周就烧掉上千美元
+Dialogue: 0,0:00:35.08,0:00:37.24,Default,,0,0,0,,几个月前它还在拼命推员工用 AI
+Dialogue: 0,0:00:37.24,0:00:38.24,Default,,0,0,0,,转头就踩刹车
+Dialogue: 0,0:00:38.24,0:00:40.72,Default,,0,0,0,,连押注 AI 的公司都被账单压得喘不过气
+Dialogue: 0,0:00:40.72,0:00:42.00,Default,,0,0,0,,再说一笔大投资
+Dialogue: 0,0:00:42.00,0:00:43.36,Default,,0,0,0,,私募巨头黑石宣布
+Dialogue: 0,0:00:43.36,0:00:45.60,Default,,0,0,0,,未来三到五年要在日本的 AI 数据中心砸
+Dialogue: 0,0:00:45.60,0:00:46.28,Default,,0,0,0,,下三百亿美元
+Dialogue: 0,0:00:46.28,0:00:48.34,Default,,0,0,0,,总裁说得直接，比起 AI 泡沫
+Dialogue: 0,0:00:48.34,0:00:49.62,Default,,0,0,0,,他更怕算力建得不够
+Dialogue: 0,0:00:49.62,0:00:51.48,Default,,0,0,0,,一边是特斯拉给 AI 开支封顶
+Dialogue: 0,0:00:51.48,0:00:53.26,Default,,0,0,0,,一边是黑石大手笔加码基建
+Dialogue: 0,0:00:53.26,0:00:55.74,Default,,0,0,0,,正好照出这轮 AI 热里省钱和烧钱的
+Dialogue: 0,0:00:55.74,0:00:56.24,Default,,0,0,0,,两副面孔
+Dialogue: 0,0:00:56.24,0:00:56.70,Default,,0,0,0,,论文这边
+Dialogue: 0,0:00:57.22,0:00:59.60,Default,,0,0,0,,先看一个野心不小的世界模型 Orca
+Dialogue: 0,0:00:59.60,0:01:01.30,Default,,0,0,0,,现在的 AI，理解画面
+Dialogue: 0,0:01:01.30,0:01:02.76,Default,,0,0,0,,预测接下来会发生什么
+Dialogue: 0,0:01:02.76,0:01:03.86,Default,,0,0,0,,决定动手做什么
+Dialogue: 0,0:01:03.86,0:01:05.36,Default,,0,0,0,,往往是各管各的三套系统
+Dialogue: 0,0:01:05.36,0:01:07.50,Default,,0,0,0,,Orca 想把它们塞进同一个脑子
+Dialogue: 0,0:01:07.74,0:01:08.76,Default,,0,0,0,,用一个统一的内部空间
+Dialogue: 0,0:01:08.76,0:01:10.78,Default,,0,0,0,,让模型学着预测世界的下一个状态
+Dialogue: 0,0:01:10.78,0:01:12.67,Default,,0,0,0,,取代只盯着接下一个词的老办法
+Dialogue: 0,0:01:12.67,0:01:14.58,Default,,0,0,0,,它眼下更像一张宏大的路线图
+Dialogue: 0,0:01:14.58,0:01:15.90,Default,,0,0,0,,能不能落地还得再看
+Dialogue: 0,0:01:15.90,0:01:18.48,Default,,0,0,0,,另一篇论文想让手机也能跑好三维重建
+Dialogue: 0,0:01:18.48,0:01:20.10,Default,,0,0,0,,有种叫三维高斯的技术
+Dialogue: 0,0:01:20.10,0:01:22.44,Default,,0,0,0,,能把拍下的东西重建成自由转视角的
+Dialogue: 0,0:01:22.44,0:01:22.88,Default,,0,0,0,,立体场景
+Dialogue: 0,0:01:22.88,0:01:24.01,Default,,0,0,0,,画质早就够好了
+Dialogue: 0,0:01:24.01,0:01:25.14,Default,,0,0,0,,真正卡住手机的
+Dialogue: 0,0:01:25.14,0:01:27.54,Default,,0,0,0,,是描述表面光泽随视角变化的那部分计算
+Dialogue: 0,0:01:27.54,0:01:28.88,Default,,0,0,0,,又占内存又费算力
+Dialogue: 0,0:01:28.88,0:01:31.38,Default,,0,0,0,,这篇用随机采样把这块开销大幅压下来
+Dialogue: 0,0:01:31.38,0:01:33.36,Default,,0,0,0,,画质基本不掉，小设备也扛得住
+Dialogue: 0,0:01:33.36,0:01:35.08,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:35.08,0:01:35.78,Default,,0,0,0,,我们明天见

@@ -1,0 +1,72 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.30,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.72,0:00:04.18,Default,,0,0,0,,先说手机入口的大变化
+Dialogue: 0,0:00:04.48,0:00:06.54,Default,,0,0,0,,苹果放出了iOS 27公测版
+Dialogue: 0,0:00:06.54,0:00:08.66,Default,,0,0,0,,重造的Siri成了整台iPhone的骨干
+Dialogue: 0,0:00:08.66,0:00:10.76,Default,,0,0,0,,能连续对话、看懂屏幕上的内容
+Dialogue: 0,0:00:10.76,0:00:12.00,Default,,0,0,0,,替你跨应用把事办完
+Dialogue: 0,0:00:12.00,0:00:13.36,Default,,0,0,0,,差不多同一时间
+Dialogue: 0,0:00:13.36,0:00:15.56,Default,,0,0,0,,谷歌把Gemini塞进了导航应用Waze
+Dialogue: 0,0:00:15.56,0:00:17.34,Default,,0,0,0,,动嘴就能搜路线、上报封路
+Dialogue: 0,0:00:17.34,0:00:19.16,Default,,0,0,0,,两家动作指向同一件事
+Dialogue: 0,0:00:19.16,0:00:21.28,Default,,0,0,0,,以后用手机少点开一堆App
+Dialogue: 0,0:00:21.28,0:00:22.44,Default,,0,0,0,,多和一个助手说话
+Dialogue: 0,0:00:22.44,0:00:24.52,Default,,0,0,0,,入口变了，生意也会跟着变
+Dialogue: 0,0:00:24.52,0:00:26.12,Default,,0,0,0,,Musk和Altman又互撕上了
+Dialogue: 0,0:00:26.12,0:00:28.13,Default,,0,0,0,,苹果起诉OpenAI那事我们讲过
+Dialogue: 0,0:00:28.13,0:00:29.30,Default,,0,0,0,,Musk借机嘲讽
+Dialogue: 0,0:00:29.30,0:00:31.42,Default,,0,0,0,,说Altman把行骗玩出了新高度
+Dialogue: 0,0:00:31.42,0:00:32.62,Default,,0,0,0,,Altman当场回击
+Dialogue: 0,0:00:32.62,0:00:34.32,Default,,0,0,0,,说真正忽悠散户的是你
+Dialogue: 0,0:00:34.32,0:00:36.54,Default,,0,0,0,,把短期太空数据中心的故事卖给股民
+Dialogue: 0,0:00:36.54,0:00:38.24,Default,,0,0,0,,这话戳的是SpaceX的痛处
+Dialogue: 0,0:00:38.24,0:00:41.02,Default,,0,0,0,,它的天价估值一大块押在太空数据中心上
+Dialogue: 0,0:00:41.02,0:00:43.34,Default,,0,0,0,,而多数专家认为这生意短期成不了
+Dialogue: 0,0:00:43.34,0:00:45.96,Default,,0,0,0,,两家如今都上了市，隔空互骂每一句
+Dialogue: 0,0:00:45.96,0:00:47.16,Default,,0,0,0,,都砸在股民的账户上
+Dialogue: 0,0:00:47.16,0:00:50.04,Default,,0,0,0,,微软CEO纳德拉发博文提醒买AI的公司
+Dialogue: 0,0:00:50.04,0:00:52.50,Default,,0,0,0,,卖闭源模型的大实验室可能是特洛伊木马
+Dialogue: 0,0:00:52.50,0:00:55.18,Default,,0,0,0,,他说客户其实付了两遍钱，一遍买服务
+Dialogue: 0,0:00:55.18,0:00:57.38,Default,,0,0,0,,一遍交数据，你每次纠正AI的错
+Dialogue: 0,0:00:57.38,0:00:59.02,Default,,0,0,0,,都在把自家的行业知识教给它
+Dialogue: 0,0:00:59.02,0:01:00.92,Default,,0,0,0,,养大了没准反过来抢你生意
+Dialogue: 0,0:01:00.92,0:01:03.23,Default,,0,0,0,,他开的药方是数据攥在自己手里
+Dialogue: 0,0:01:03.23,0:01:04.80,Default,,0,0,0,,随时能换模型别被锁死
+Dialogue: 0,0:01:04.80,0:01:05.83,Default,,0,0,0,,有意思的是
+Dialogue: 0,0:01:05.83,0:01:07.70,Default,,0,0,0,,微软自己就是OpenAI最大的金主
+Dialogue: 0,0:01:07.70,0:01:10.54,Default,,0,0,0,,论文这边第一篇给AI管家做了个抗压测试
+Dialogue: 0,0:01:10.54,0:01:12.76,Default,,0,0,0,,研究者训练了一个不死心的坏人AI
+Dialogue: 0,0:01:12.76,0:01:14.28,Default,,0,0,0,,专门缠着干活的AI管家
+Dialogue: 0,0:01:14.28,0:01:16.64,Default,,0,0,0,,直接提违法要求会被拒，它就拆开说
+Dialogue: 0,0:01:16.64,0:01:17.78,Default,,0,0,0,,换着说、一轮轮磨
+Dialogue: 0,0:01:17.78,0:01:20.72,Default,,0,0,0,,结果所有被测的前沿AI管家全被磨松了口
+Dialogue: 0,0:01:20.72,0:01:22.14,Default,,0,0,0,,合规率被逼到百分之百
+Dialogue: 0,0:01:22.14,0:01:24.46,Default,,0,0,0,,更吓人的是松口之后还得寸进尺
+Dialogue: 0,0:01:24.46,0:01:25.60,Default,,0,0,0,,干得比要求的还多
+Dialogue: 0,0:01:25.60,0:01:26.80,Default,,0,0,0,,一次拒绝不算数
+Dialogue: 0,0:01:26.80,0:01:28.34,Default,,0,0,0,,扛得住软磨硬泡才算安全
+Dialogue: 0,0:01:28.34,0:01:30.30,Default,,0,0,0,,另一篇管自动驾驶的账
+Dialogue: 0,0:01:30.30,0:01:32.28,Default,,0,0,0,,车顶几路摄像头拼一张俯视图
+Dialogue: 0,0:01:32.28,0:01:33.86,Default,,0,0,0,,是自动驾驶的标准感知动作
+Dialogue: 0,0:01:33.86,0:01:35.20,Default,,0,0,0,,过去又占显存又慢
+Dialogue: 0,0:01:35.20,0:01:36.58,Default,,0,0,0,,大家以为瓶颈是算力
+Dialogue: 0,0:01:36.58,0:01:38.56,Default,,0,0,0,,这篇发现成本大头在数据搬运
+Dialogue: 0,0:01:38.56,0:01:40.76,Default,,0,0,0,,于是不改数学结果，只重排读写顺序
+Dialogue: 0,0:01:40.76,0:01:42.10,Default,,0,0,0,,边算边丢中间数据
+Dialogue: 0,0:01:42.10,0:01:43.98,Default,,0,0,0,,峰值显存直接降了一个数量级
+Dialogue: 0,0:01:43.98,0:01:45.64,Default,,0,0,0,,论文过了同行评审，代码开源
+Dialogue: 0,0:01:45.64,0:01:48.04,Default,,0,0,0,,省下来的显存，能换更远的视野
+Dialogue: 0,0:01:48.04,0:01:50.16,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:50.16,0:01:50.76,Default,,0,0,0,,我们明天见

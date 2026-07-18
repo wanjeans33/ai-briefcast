@@ -1,0 +1,74 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.36,0:00:02.14,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.72,0:00:03.72,Default,,0,0,0,,先说今天的头条
+Dialogue: 0,0:00:03.72,0:00:05.94,Default,,0,0,0,,OpenAI 的新模型 GPT-5.6 上线了
+Dialogue: 0,0:00:06.26,0:00:07.16,Default,,0,0,0,,一口气出了三款
+Dialogue: 0,0:00:07.42,0:00:08.98,Default,,0,0,0,,按强到弱命名为 Sol 太阳 Terra 地
+Dialogue: 0,0:00:09.32,0:00:10.10,Default,,0,0,0,,球 和 Luna 月球
+Dialogue: 0,0:00:10.10,0:00:11.30,Default,,0,0,0,,最强的 Sol
+Dialogue: 0,0:00:11.30,0:00:13.56,Default,,0,0,0,,据说追平了之前被禁用的 Claude Mythos
+Dialogue: 0,0:00:13.56,0:00:13.96,Default,,0,0,0,,5
+Dialogue: 0,0:00:13.96,0:00:15.94,Default,,0,0,0,,可这三颗星球并不平等地属于所有人
+Dialogue: 0,0:00:15.94,0:00:17.10,Default,,0,0,0,,白宫以安全为由
+Dialogue: 0,0:00:17.10,0:00:19.58,Default,,0,0,0,,要它先只给大约二十家政府批准的机构用
+Dialogue: 0,0:00:19.58,0:00:21.63,Default,,0,0,0,,往后谁能用还得美国政府一个个审
+Dialogue: 0,0:00:21.63,0:00:23.84,Default,,0,0,0,,OpenAI 照办了，只小声说了句
+Dialogue: 0,0:00:23.84,0:00:25.92,Default,,0,0,0,,这种审批模式不该成为以后的常态
+Dialogue: 0,0:00:25.92,0:00:27.50,Default,,0,0,0,,再说一桩案子
+Dialogue: 0,0:00:27.50,0:00:29.26,Default,,0,0,0,,Anthropic 公开指控阿里巴巴
+Dialogue: 0,0:00:29.26,0:00:31.38,Default,,0,0,0,,说对方动用了将近两万五千个假账号
+Dialogue: 0,0:00:31.38,0:00:33.50,Default,,0,0,0,,跟 Claude 聊了足足两千八百多万次
+Dialogue: 0,0:00:33.50,0:00:35.42,Default,,0,0,0,,把 Claude 的本事偷偷"蒸馏"走
+Dialogue: 0,0:00:35.42,0:00:37.48,Default,,0,0,0,,也就是拿 Claude 的回答去训练自己的
+Dialogue: 0,0:00:37.48,0:00:37.88,Default,,0,0,0,,模型
+Dialogue: 0,0:00:37.88,0:00:40.06,Default,,0,0,0,,Anthropic 说这是它碰到过规模最大的
+Dialogue: 0,0:00:40.06,0:00:40.46,Default,,0,0,0,,一次
+Dialogue: 0,0:00:40.46,0:00:41.80,Default,,0,0,0,,比之前几家加起来还多
+Dialogue: 0,0:00:41.80,0:00:44.28,Default,,0,0,0,,不过这些都是 Anthropic 单方面的说法
+Dialogue: 0,0:00:44.28,0:00:45.38,Default,,0,0,0,,阿里那边否认了
+Dialogue: 0,0:00:45.38,0:00:48.26,Default,,0,0,0,,硬件这边，苹果有个少见的决定
+Dialogue: 0,0:00:48.26,0:00:50.54,Default,,0,0,0,,它这回头一次不出 M6 芯片的高端版
+Dialogue: 0,0:00:50.54,0:00:52.63,Default,,0,0,0,,打算把高端这一档直接跳到下一代
+Dialogue: 0,0:00:52.63,0:00:53.80,Default,,0,0,0,,主打 AI 的 M7 上
+Dialogue: 0,0:00:53.80,0:00:55.32,Default,,0,0,0,,普通的 M6 还照常出
+Dialogue: 0,0:00:55.32,0:00:57.92,Default,,0,0,0,,但更强的 M6 Pro、M6 Max 直接砍掉
+Dialogue: 0,0:00:57.92,0:00:59.82,Default,,0,0,0,,换成 M7 Pro、Max、Ultra
+Dialogue: 0,0:00:59.82,0:01:01.94,Default,,0,0,0,,专门加强电脑本机跑 AI 的能力
+Dialogue: 0,0:01:01.94,0:01:03.30,Default,,0,0,0,,只是得等到二零二七年
+Dialogue: 0,0:01:03.30,0:01:05.64,Default,,0,0,0,,论文这边，先看一个挺酷的
+Dialogue: 0,0:01:05.64,0:01:08.06,Default,,0,0,0,,给 AI 一张照片让它生成一个 3D 场景
+Dialogue: 0,0:01:08.06,0:01:10.16,Default,,0,0,0,,过去这种场景往往只能看、不能用
+Dialogue: 0,0:01:10.16,0:01:10.95,Default,,0,0,0,,塞不进游戏
+Dialogue: 0,0:01:10.95,0:01:13.10,Default,,0,0,0,,这篇叫 FLAT 的论文做成了一件新事
+Dialogue: 0,0:01:13.10,0:01:15.36,Default,,0,0,0,,它把照片直接变成带表面的三角面片
+Dialogue: 0,0:01:15.36,0:01:16.66,Default,,0,0,0,,再配一道轻量精修
+Dialogue: 0,0:01:16.66,0:01:19.20,Default,,0,0,0,,就能让生成的 3D 场景直接拖进游戏引擎
+Dialogue: 0,0:01:19.20,0:01:20.16,Default,,0,0,0,,实时跑起来
+Dialogue: 0,0:01:20.16,0:01:21.64,Default,,0,0,0,,单张照片生成的 3D
+Dialogue: 0,0:01:21.64,0:01:23.20,Default,,0,0,0,,头一回真正接上了做游戏
+Dialogue: 0,0:01:23.20,0:01:24.66,Default,,0,0,0,,做仿真那条标准流水线
+Dialogue: 0,0:01:25.24,0:01:26.82,Default,,0,0,0,,另一篇论文给行业泼了盆冷水
+Dialogue: 0,0:01:27.16,0:01:28.70,Default,,0,0,0,,这些年做文生图的扩散模型
+Dialogue: 0,0:01:28.98,0:01:30.38,Default,,0,0,0,,大家都盯着同一张榜单刷分
+Dialogue: 0,0:01:30.38,0:01:32.08,Default,,0,0,0,,比的是在 ImageNet 上生成图片的
+Dialogue: 0,0:01:32.08,0:01:32.48,Default,,0,0,0,,一个指标
+Dialogue: 0,0:01:32.48,0:01:33.64,Default,,0,0,0,,可这篇论文发现
+Dialogue: 0,0:01:33.64,0:01:35.58,Default,,0,0,0,,在这张老榜上排名更靠前的方法
+Dialogue: 0,0:01:35.58,0:01:37.92,Default,,0,0,0,,换到真正的文生图任务上效果反而更差
+Dialogue: 0,0:01:37.92,0:01:39.52,Default,,0,0,0,,两者的排名居然是负相关
+Dialogue: 0,0:01:39.52,0:01:41.52,Default,,0,0,0,,说白了，刷了好几年的这张榜
+Dialogue: 0,0:01:41.52,0:01:43.44,Default,,0,0,0,,很可能一直在把大家往错的方向带
+Dialogue: 0,0:01:43.44,0:01:45.32,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:45.32,0:01:46.06,Default,,0,0,0,,我们明天见

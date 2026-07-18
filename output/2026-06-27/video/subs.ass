@@ -1,0 +1,75 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.88,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.32,0:00:03.54,Default,,0,0,0,,先说今天的头条
+Dialogue: 0,0:00:03.54,0:00:05.68,Default,,0,0,0,,Anthropic 给 Claude 安排了个新身份
+Dialogue: 0,0:00:05.68,0:00:07.52,Default,,0,0,0,,它推出一个叫 Claude Tag 的功能
+Dialogue: 0,0:00:07.52,0:00:09.66,Default,,0,0,0,,让 Claude 像同事一样住进公司的
+Dialogue: 0,0:00:09.66,0:00:10.10,Default,,0,0,0,,Slack 群
+Dialogue: 0,0:00:10.10,0:00:11.50,Default,,0,0,0,,有自己的名字和记忆
+Dialogue: 0,0:00:11.50,0:00:13.32,Default,,0,0,0,,群里谁有活，直接 @ 它把任务丢过去
+Dialogue: 0,0:00:13.32,0:00:15.48,Default,,0,0,0,,它就自己分几步做、边做边汇报进度
+Dialogue: 0,0:00:15.48,0:00:16.68,Default,,0,0,0,,最有意思的是
+Dialogue: 0,0:00:16.68,0:00:18.68,Default,,0,0,0,,Anthropic 自家团队用内部版写出了
+Dialogue: 0,0:00:18.68,0:00:19.32,Default,,0,0,0,,65% 的代码
+Dialogue: 0,0:00:19.32,0:00:21.80,Default,,0,0,0,,连 Claude Tag 自己也大半是它写的
+Dialogue: 0,0:00:21.80,0:00:23.32,Default,,0,0,0,,再说一件少见的事
+Dialogue: 0,0:00:23.32,0:00:25.78,Default,,0,0,0,,OpenAI 的下一代旗舰 GPT-5.6 要发布
+Dialogue: 0,0:00:25.78,0:00:27.76,Default,,0,0,0,,可这回得先过白宫这一关
+Dialogue: 0,0:00:27.76,0:00:29.28,Default,,0,0,0,,特朗普政府以安全为由
+Dialogue: 0,0:00:29.28,0:00:31.76,Default,,0,0,0,,要它先只开放给一小撮经过政府批准的
+Dialogue: 0,0:00:31.76,0:00:32.16,Default,,0,0,0,,合作方
+Dialogue: 0,0:00:32.16,0:00:33.64,Default,,0,0,0,,一个客户一个客户地放行
+Dialogue: 0,0:00:33.64,0:00:35.24,Default,,0,0,0,,过阵子再考虑大范围开放
+Dialogue: 0,0:00:35.24,0:00:37.56,Default,,0,0,0,,这是美国政府头一回在模型发布前
+Dialogue: 0,0:00:37.56,0:00:39.46,Default,,0,0,0,,就主动出手限制一家本国 AI 公司
+Dialogue: 0,0:00:39.46,0:00:40.90,Default,,0,0,0,,Altman 也跟员工说
+Dialogue: 0,0:00:40.90,0:00:42.68,Default,,0,0,0,,这种安排长久看并不可持续
+Dialogue: 0,0:00:42.68,0:00:45.00,Default,,0,0,0,,工具这边有个挺有意思的转变
+Dialogue: 0,0:00:45.00,0:00:46.82,Default,,0,0,0,,Notion 把自己做的邮箱应用关掉了
+Dialogue: 0,0:00:46.82,0:00:47.64,Default,,0,0,0,,原因有点反常
+Dialogue: 0,0:00:47.64,0:00:50.28,Default,,0,0,0,,它发现一多半用户压根不打开收件箱
+Dialogue: 0,0:00:50.28,0:00:52.04,Default,,0,0,0,,全靠 AI 替自己收发邮件
+Dialogue: 0,0:00:52.04,0:00:54.34,Default,,0,0,0,,既然大家都把邮箱交给 agent 了
+Dialogue: 0,0:00:54.34,0:00:55.18,Default,,0,0,0,,Notion 干脆顺势而为
+Dialogue: 0,0:00:55.18,0:00:56.94,Default,,0,0,0,,说要全押在 agent 上
+Dialogue: 0,0:00:56.94,0:00:58.74,Default,,0,0,0,,你的邮件还好好待在 Gmail 里
+Dialogue: 0,0:00:58.74,0:01:01.00,Default,,0,0,0,,只是那个收件箱界面，越来越没人看了
+Dialogue: 0,0:01:01.00,0:01:03.68,Default,,0,0,0,,论文这边，先看一个反直觉的发现
+Dialogue: 0,0:01:03.68,0:01:05.50,Default,,0,0,0,,大模型答题时一层层往下算
+Dialogue: 0,0:01:05.50,0:01:07.09,Default,,0,0,0,,本以为越到最后越靠谱
+Dialogue: 0,0:01:07.09,0:01:08.38,Default,,0,0,0,,可这篇论文发现
+Dialogue: 0,0:01:08.38,0:01:09.92,Default,,0,0,0,,最后那几层有个坏习惯
+Dialogue: 0,0:01:09.92,0:01:11.74,Default,,0,0,0,,为了把话说得更通顺、更合规矩
+Dialogue: 0,0:01:11.74,0:01:13.76,Default,,0,0,0,,会把本来算对的答案悄悄改错
+Dialogue: 0,0:01:13.76,0:01:15.36,Default,,0,0,0,,研究者管这叫"对齐税"
+Dialogue: 0,0:01:15.36,0:01:17.48,Default,,0,0,0,,办法也简单，模型快到末尾
+Dialogue: 0,0:01:17.48,0:01:18.82,Default,,0,0,0,,某一层已经很有把握时
+Dialogue: 0,0:01:18.82,0:01:20.36,Default,,0,0,0,,就直接从那一层取答案
+Dialogue: 0,0:01:20.36,0:01:22.64,Default,,0,0,0,,绕开最后几层的捣乱，不用重训就能用
+Dialogue: 0,0:01:22.64,0:01:25.16,Default,,0,0,0,,另一篇论文聊怎么训 AI 用命令行
+Dialogue: 0,0:01:25.16,0:01:27.68,Default,,0,0,0,,现在很多 AI 助手都得敲命令行干活
+Dialogue: 0,0:01:27.68,0:01:30.08,Default,,0,0,0,,可学术上研究怎么训它的却出奇地少
+Dialogue: 0,0:01:30.08,0:01:31.20,Default,,0,0,0,,这篇论文点出
+Dialogue: 0,0:01:31.20,0:01:33.24,Default,,0,0,0,,真正卡人的是没有好题库和数据
+Dialogue: 0,0:01:33.24,0:01:34.62,Default,,0,0,0,,算法反倒不是难点
+Dialogue: 0,0:01:34.62,0:01:36.18,Default,,0,0,0,,于是作者用一套便宜法子
+Dialogue: 0,0:01:36.18,0:01:38.34,Default,,0,0,0,,批量造出大量能真跑的命令行环境
+Dialogue: 0,0:01:38.34,0:01:39.82,Default,,0,0,0,,再用最朴素的方式去练
+Dialogue: 0,0:01:39.82,0:01:41.86,Default,,0,0,0,,结果一个九十亿参数的小模型反超了
+Dialogue: 0,0:01:41.86,0:01:42.40,Default,,0,0,0,,更大的
+Dialogue: 0,0:01:42.40,0:01:44.28,Default,,0,0,0,,说到底，这赛道正从拼模型
+Dialogue: 0,0:01:44.28,0:01:45.90,Default,,0,0,0,,转向拼谁能造好训练题
+Dialogue: 0,0:01:45.90,0:01:48.56,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:48.56,0:01:49.28,Default,,0,0,0,,我们明天见

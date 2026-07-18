@@ -1,0 +1,76 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.32,0:00:02.18,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.62,0:00:04.38,Default,,0,0,0,,先说Musk家的新模型
+Dialogue: 0,0:00:04.38,0:00:06.58,Default,,0,0,0,,xAI发布了Grok 4.5，主打写代码
+Dialogue: 0,0:00:06.58,0:00:08.74,Default,,0,0,0,,训练时用了旗下编程工具Cursor的
+Dialogue: 0,0:00:08.74,0:00:09.62,Default,,0,0,0,,真实开发数据
+Dialogue: 0,0:00:09.62,0:00:11.10,Default,,0,0,0,,程序员怎么调试、怎么改错
+Dialogue: 0,0:00:11.10,0:00:11.84,Default,,0,0,0,,它都学了去
+Dialogue: 0,0:00:11.84,0:00:14.54,Default,,0,0,0,,自家跑分里它在几项编程测试上赢了
+Dialogue: 0,0:00:14.54,0:00:16.42,Default,,0,0,0,,Claude的Opus 4.8
+Dialogue: 0,0:00:16.42,0:00:18.82,Default,,0,0,0,,干同样的活只用对方四分之一的token
+Dialogue: 0,0:00:18.82,0:00:20.42,Default,,0,0,0,,价格也便宜一大截
+Dialogue: 0,0:00:20.42,0:00:21.36,Default,,0,0,0,,可风头正劲时
+Dialogue: 0,0:00:21.36,0:00:23.88,Default,,0,0,0,,安全研究员抓包发现它的编程助手悄悄把
+Dialogue: 0,0:00:23.88,0:00:26.06,Default,,0,0,0,,用户整个代码库传回xAI服务器
+Dialogue: 0,0:00:26.06,0:00:28.14,Default,,0,0,0,,连没碰过的文件和密钥都一起打包
+Dialogue: 0,0:00:28.14,0:00:29.78,Default,,0,0,0,,隐私开关关了也照传
+Dialogue: 0,0:00:29.78,0:00:31.70,Default,,0,0,0,,曝光后再测，上传悄悄停了
+Dialogue: 0,0:00:31.70,0:00:33.22,Default,,0,0,0,,xAI没有公开说法
+Dialogue: 0,0:00:33.22,0:00:35.10,Default,,0,0,0,,能力端上了桌，信任掉在了地上
+Dialogue: 0,0:00:35.10,0:00:37.46,Default,,0,0,0,,编程工具这边还有一桩账单疑案
+Dialogue: 0,0:00:37.46,0:00:39.09,Default,,0,0,0,,有团队抓包实测，你还没提问
+Dialogue: 0,0:00:39.09,0:00:40.90,Default,,0,0,0,,Claude Code就先给模型塞了
+Dialogue: 0,0:00:40.90,0:00:42.00,Default,,0,0,0,,三万三千个字块
+Dialogue: 0,0:00:42.00,0:00:43.78,Default,,0,0,0,,全是系统提示和工具说明
+Dialogue: 0,0:00:43.78,0:00:45.82,Default,,0,0,0,,同类工具OpenCode只用七千
+Dialogue: 0,0:00:45.82,0:00:47.78,Default,,0,0,0,,会话中途它还反复重写缓存
+Dialogue: 0,0:00:47.78,0:00:49.72,Default,,0,0,0,,同一个任务写进的缓存量最多是对方的
+Dialogue: 0,0:00:49.72,0:00:50.52,Default,,0,0,0,,五十四倍
+Dialogue: 0,0:00:50.52,0:00:52.20,Default,,0,0,0,,而缓存写入要加价收费
+Dialogue: 0,0:00:52.20,0:00:53.44,Default,,0,0,0,,用量账单怎么爬上去的
+Dialogue: 0,0:00:53.44,0:00:55.14,Default,,0,0,0,,抓包一看全明白了
+Dialogue: 0,0:00:55.14,0:00:57.14,Default,,0,0,0,,知名黑客geohot这时候泼了盆冷水
+Dialogue: 0,0:00:57.14,0:00:58.93,Default,,0,0,0,,他说自己也曾迷信智能至上
+Dialogue: 0,0:00:58.93,0:01:01.00,Default,,0,0,0,,相信AI会自我改进一飞冲天
+Dialogue: 0,0:01:01.00,0:01:02.52,Default,,0,0,0,,直到亲手造硬件才醒过来
+Dialogue: 0,0:01:02.52,0:01:04.20,Default,,0,0,0,,现实里全是琐碎的细节
+Dialogue: 0,0:01:04.20,0:01:05.20,Default,,0,0,0,,他讲得很直白
+Dialogue: 0,0:01:05.20,0:01:06.30,Default,,0,0,0,,再聪明的聊天机器人也
+Dialogue: 0,0:01:06.30,0:01:07.88,Default,,0,0,0,,换不好一条自行车内胎
+Dialogue: 0,0:01:07.88,0:01:09.35,Default,,0,0,0,,智能只是眼下的瓶颈之一
+Dialogue: 0,0:01:09.35,0:01:11.18,Default,,0,0,0,,可不是点石成金的魔法
+Dialogue: 0,0:01:11.18,0:01:13.78,Default,,0,0,0,,论文这边第一篇给AI助手出了张新考卷
+Dialogue: 0,0:01:13.78,0:01:15.36,Default,,0,0,0,,以前的评测问一句答一句
+Dialogue: 0,0:01:15.36,0:01:16.94,Default,,0,0,0,,这篇考它会不会主动干活
+Dialogue: 0,0:01:16.94,0:01:18.32,Default,,0,0,0,,自己判断什么时候该出手帮人
+Dialogue: 0,0:01:18.64,0:01:20.08,Default,,0,0,0,,四百个任务放进真实环境里跑
+Dialogue: 0,0:01:20.08,0:01:22.14,Default,,0,0,0,,还安排一个装作用户的AI来回追问
+Dialogue: 0,0:01:22.14,0:01:23.58,Default,,0,0,0,,评分标准藏着不给看
+Dialogue: 0,0:01:23.58,0:01:24.88,Default,,0,0,0,,防止它靠猜规则拿分
+Dialogue: 0,0:01:24.88,0:01:27.24,Default,,0,0,0,,主动帮你和被问才答，是两种本事
+Dialogue: 0,0:01:27.24,0:01:29.86,Default,,0,0,0,,另一篇考AI能不能读懂科研的来龙去脉
+Dialogue: 0,0:01:29.86,0:01:31.72,Default,,0,0,0,,AI一分钟能憋出一堆新点子
+Dialogue: 0,0:01:31.72,0:01:33.52,Default,,0,0,0,,可科研讲究站在前人肩膀上
+Dialogue: 0,0:01:33.52,0:01:35.16,Default,,0,0,0,,这篇给AI一个研究想法
+Dialogue: 0,0:01:35.16,0:01:37.04,Default,,0,0,0,,考它能不能说清这个想法沿用了
+Dialogue: 0,0:01:37.04,0:01:37.94,Default,,0,0,0,,哪篇前作的方法
+Dialogue: 0,0:01:37.94,0:01:39.10,Default,,0,0,0,,修补了前人哪个缺陷
+Dialogue: 0,0:01:39.10,0:01:40.30,Default,,0,0,0,,和已有方案差在哪
+Dialogue: 0,0:01:40.30,0:01:42.30,Default,,0,0,0,,十四个AI科学家里最强的那个
+Dialogue: 0,0:01:42.30,0:01:44.52,Default,,0,0,0,,也只有百分之二十七能完全说对
+Dialogue: 0,0:01:44.52,0:01:46.00,Default,,0,0,0,,点子一大堆，来路说不清
+Dialogue: 0,0:01:46.00,0:01:47.98,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:47.98,0:01:48.72,Default,,0,0,0,,我们明天见

@@ -38,9 +38,9 @@ def _sections(md: str) -> list[tuple[str, str]]:
 
 
 def parse_caption(md: str) -> dict:
-    """从 caption.md 抽出 title / body / tags。"""
+    """从 caption.md 抽出 title / body / tags / chapters。"""
     secs = _sections(md)
-    title, body, tags = "", "", []
+    title, body, tags, chapters = "", "", [], []
     for header, content in secs:
         if header.startswith("标题") and not header.startswith("备选"):
             # 取第一行非空内容作为标题
@@ -49,7 +49,13 @@ def parse_caption(md: str) -> dict:
             body = content.strip()
         elif "标签" in header and "备选" not in header:
             tags = re.findall(r"#[^\s#]+", content)
-    return {"title": title, "body": body, "tags": tags}
+        elif header.startswith("章节"):
+            # 每行 "MM:SS 标题"，平台章节栏可逐行粘贴
+            for line in content.splitlines():
+                m = re.match(r"\s*((?:\d{1,2}:)?\d{1,2}:\d{2})\s+(.+)", line)
+                if m:
+                    chapters.append({"time": m.group(1), "title": m.group(2).strip()})
+    return {"title": title, "body": body, "tags": tags, "chapters": chapters}
 
 
 def _abspath(p: Path) -> str:
@@ -71,11 +77,14 @@ def build_publish(date: str, visibility: str, schedule_at: str | None) -> dict:
         raise SystemExit(f"找不到视频：{day/'video'}/*-sub.mp4")
     video = vids[0]
 
-    # 封面：3:4 PNG
-    covers = sorted((day / "cover").glob("*.png"))
+    # 封面：小红书用 3:4 竖版（排除抖音的 -4x3 横版，否则字符序会让它排在前面被选中）
+    covers = sorted(p for p in (day / "cover").glob("*.png") if not p.stem.endswith("-4x3"))
     if not covers:
-        raise SystemExit(f"找不到封面：{day/'cover'}/*.png")
+        raise SystemExit(f"找不到 3:4 封面：{day/'cover'}/cover-{date}.png")
     cover = covers[0]
+    # 抖音横版封面（可选）
+    land = day / "cover" / f"cover-{date}-4x3.png"
+    cover_landscape = _abspath(land) if land.exists() else None
 
     content = parsed["body"]
     if parsed["tags"]:
@@ -88,8 +97,10 @@ def build_publish(date: str, visibility: str, schedule_at: str | None) -> dict:
         "body": parsed["body"],
         "tags": parsed["tags"],
         "content": content,            # 正文 + 标签，可直接粘进正文框
+        "chapters": parsed["chapters"],  # [{time, title}]，小红书/抖音章节栏用
         "video": _abspath(video),
-        "cover": _abspath(cover),
+        "cover": _abspath(cover),                  # 3:4 竖版（小红书）
+        "cover_landscape": cover_landscape,        # 4:3 横版（抖音），无则 None
         "visibility": visibility,      # self=仅自己可见 / friends / public
         "schedule_at": schedule_at,    # None=不定时；"YYYY-MM-DD HH:MM"
     }
@@ -113,7 +124,12 @@ def main() -> int:
     if data["title_len"] > XHS_TITLE_MAX:
         print(f"  ⚠ 标题超过小红书 {XHS_TITLE_MAX} 字上限，投稿时需精简")
     print(f"  视频：{data['video']}")
-    print(f"  封面：{data['cover']}")
+    print(f"  封面 3:4：{data['cover']}")
+    if data.get("cover_landscape"):
+        print(f"  封面 4:3：{data['cover_landscape']}")
+    if data["chapters"]:
+        print(f"  章节 {len(data['chapters'])} 个：" +
+              " / ".join(f"{c['time']} {c['title']}" for c in data["chapters"]))
     print(f"  可见性：{data['visibility']}  定时：{data['schedule_at'] or '否'}")
     print(f"  标签 {len(data['tags'])} 个：{' '.join(data['tags'])}")
     return 0

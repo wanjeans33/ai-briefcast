@@ -1,0 +1,46 @@
+{
+  "date": "2026-07-17",
+  "title": "国产最大模型，Kimi K3来了",
+  "title_len": 16,
+  "body": "今天AI圈5件事，1分钟看完\n\n月之暗面发布Kimi K3，2.8万亿参数官方称最大开源模型\n苹果AI终于入华，底层接的是阿里通义千问\n只问了句咖啡，Claude就把姓名雇主泄给了攻击者\nAI科学家进医院防火墙，28.6万人数据找出高血压位点\n便宜机器臂为啥总跑偏，MIT让模型直接学电机脾气\n\n论文传送门\nNVAITC AI Scientist：arxiv.org/abs/2607.11084\nNeuralActuator：arxiv.org/abs/2607.11734\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans",
+  "tags": [
+    "#人工智能",
+    "#AI",
+    "#AI日报",
+    "#每日AI",
+    "#AI资讯",
+    "#Kimi",
+    "#国产大模型",
+    "#苹果",
+    "#柿子树下的猫",
+    "#通勤干货"
+  ],
+  "content": "今天AI圈5件事，1分钟看完\n\n月之暗面发布Kimi K3，2.8万亿参数官方称最大开源模型\n苹果AI终于入华，底层接的是阿里通义千问\n只问了句咖啡，Claude就把姓名雇主泄给了攻击者\nAI科学家进医院防火墙，28.6万人数据找出高血压位点\n便宜机器臂为啥总跑偏，MIT让模型直接学电机脾气\n\n论文传送门\nNVAITC AI Scientist：arxiv.org/abs/2607.11084\nNeuralActuator：arxiv.org/abs/2607.11734\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans\n\n#人工智能 #AI #AI日报 #每日AI #AI资讯 #Kimi #国产大模型 #苹果 #柿子树下的猫 #通勤干货",
+  "chapters": [
+    {
+      "time": "00:00",
+      "title": "Kimi K3，国产最大模型"
+    },
+    {
+      "time": "00:22",
+      "title": "苹果AI入华，靠阿里千问"
+    },
+    {
+      "time": "00:37",
+      "title": "问句咖啡，Claude泄了隐私"
+    },
+    {
+      "time": "00:57",
+      "title": "AI科学家，进了医院防火墙"
+    },
+    {
+      "time": "01:17",
+      "title": "便宜机器臂，为啥总跑偏"
+    }
+  ],
+  "video": "E:\\Github_project\\ai-briefcast\\output\\2026-07-17\\video\\xhs-2026-07-17-spacex-sub.mp4",
+  "cover": "E:\\Github_project\\ai-briefcast\\output\\2026-07-17\\cover\\cover-2026-07-17.png",
+  "cover_landscape": "E:\\Github_project\\ai-briefcast\\output\\2026-07-17\\cover\\cover-2026-07-17-4x3.png",
+  "visibility": "self",
+  "schedule_at": null
+}

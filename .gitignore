@@ -23,3 +23,7 @@ logs/
 # Python
 __pycache__/
 *.pyc
+
+# 会话备份与片头媒体（本地保留，不入库）
+session-history/
+片头/

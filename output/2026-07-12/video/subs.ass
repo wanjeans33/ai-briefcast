@@ -1,0 +1,68 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.10,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.46,0:00:04.32,Default,,0,0,0,,先说苹果把OpenAI告上法庭
+Dialogue: 0,0:00:04.32,0:00:06.92,Default,,0,0,0,,连Jony Ive的硬件公司也一起告
+Dialogue: 0,0:00:06.92,0:00:09.20,Default,,0,0,0,,指控他们系统性偷苹果的硬件机密
+Dialogue: 0,0:00:09.20,0:00:11.20,Default,,0,0,0,,诉状点名OpenAI的首席硬件官
+Dialogue: 0,0:00:11.20,0:00:12.76,Default,,0,0,0,,他在苹果干了二十四年
+Dialogue: 0,0:00:12.76,0:00:14.62,Default,,0,0,0,,苹果说他招人时用机密项目代号
+Dialogue: 0,0:00:14.62,0:00:15.96,Default,,0,0,0,,让面试者带苹果零件
+Dialogue: 0,0:00:15.96,0:00:17.30,Default,,0,0,0,,还教离职员工绕安检
+Dialogue: 0,0:00:17.30,0:00:19.04,Default,,0,0,0,,另一位前工程师离职不还电脑
+Dialogue: 0,0:00:19.04,0:00:20.23,Default,,0,0,0,,还用它下载机密文件
+Dialogue: 0,0:00:20.23,0:00:22.52,Default,,0,0,0,,OpenAI回应对别家机密没兴趣
+Dialogue: 0,0:00:22.52,0:00:24.79,Default,,0,0,0,,两家曾经同台合作，如今对簿公堂
+Dialogue: 0,0:00:24.79,0:00:26.04,Default,,0,0,0,,Musk这边罕见示好
+Dialogue: 0,0:00:26.04,0:00:28.22,Default,,0,0,0,,Anthropic把模型托管在他的数据中心
+Dialogue: 0,0:00:28.22,0:00:29.72,Default,,0,0,0,,每月付十二点五亿美元
+Dialogue: 0,0:00:29.72,0:00:30.86,Default,,0,0,0,,整份合同值四百亿
+Dialogue: 0,0:00:30.86,0:00:32.95,Default,,0,0,0,,有网友担心他哪天翻脸断供掐死对手
+Dialogue: 0,0:00:32.95,0:00:35.12,Default,,0,0,0,,Musk亲自回复，说自己以前看走了眼
+Dialogue: 0,0:00:35.12,0:00:37.02,Default,,0,0,0,,Anthropic现在明显是AI领头羊
+Dialogue: 0,0:00:37.02,0:00:38.68,Default,,0,0,0,,绝不会用断供狠狠伤害对方
+Dialogue: 0,0:00:38.68,0:00:39.80,Default,,0,0,0,,这不是他的风格
+Dialogue: 0,0:00:39.80,0:00:41.44,Default,,0,0,0,,去年他还断言Anthropic不可能赢
+Dialogue: 0,0:00:41.44,0:00:43.80,Default,,0,0,0,,四百亿的生意面前，嘴是会软的
+Dialogue: 0,0:00:43.80,0:00:44.94,Default,,0,0,0,,华尔街又刷新纪录
+Dialogue: 0,0:00:44.94,0:00:47.02,Default,,0,0,0,,韩国存储芯片厂SK海力士在纳斯达克挂牌
+Dialogue: 0,0:00:47.02,0:00:48.62,Default,,0,0,0,,募了两百六十五亿美元
+Dialogue: 0,0:00:48.62,0:00:50.48,Default,,0,0,0,,成为美国史上最大外国公司上市
+Dialogue: 0,0:00:50.48,0:00:52.48,Default,,0,0,0,,把阿里巴巴保持了十二年的纪录挤下去
+Dialogue: 0,0:00:52.48,0:00:53.96,Default,,0,0,0,,订单多到募资额的近七倍
+Dialogue: 0,0:00:53.96,0:00:56.30,Default,,0,0,0,,首日又涨了一成多，钱拿回韩国建新厂
+Dialogue: 0,0:00:56.30,0:00:58.36,Default,,0,0,0,,它家造的高带宽内存是AI芯片的标配
+Dialogue: 0,0:00:58.36,0:01:00.38,Default,,0,0,0,,AI的钱潮从算力烧到了内存
+Dialogue: 0,0:01:00.38,0:01:02.62,Default,,0,0,0,,论文这边第一篇给机器人重造视频底座
+Dialogue: 0,0:01:02.62,0:01:04.44,Default,,0,0,0,,现在流行拿视频生成模型当机器人的
+Dialogue: 0,0:01:04.44,0:01:05.16,Default,,0,0,0,,世界模型
+Dialogue: 0,0:01:05.16,0:01:06.26,Default,,0,0,0,,预演动作的后果
+Dialogue: 0,0:01:06.26,0:01:07.94,Default,,0,0,0,,可这些模型本来是做创意视频的
+Dialogue: 0,0:01:07.94,0:01:09.62,Default,,0,0,0,,画面漂亮，物理常常不合理
+Dialogue: 0,0:01:09.62,0:01:11.22,Default,,0,0,0,,LingBot-Video干脆从零重训
+Dialogue: 0,0:01:11.22,0:01:13.12,Default,,0,0,0,,训练时专门奖励符合物理规律的画面
+Dialogue: 0,0:01:13.12,0:01:15.14,Default,,0,0,0,,还掺了七万多小时机器人视角的数据
+Dialogue: 0,0:01:15.14,0:01:16.84,Default,,0,0,0,,作者称物理合理性测到开源第一
+Dialogue: 0,0:01:16.84,0:01:18.22,Default,,0,0,0,,模型代码全放了出来
+Dialogue: 0,0:01:18.22,0:01:19.60,Default,,0,0,0,,另一篇管机器人的记性
+Dialogue: 0,0:01:19.60,0:01:21.02,Default,,0,0,0,,干长活的机器人容易忘事
+Dialogue: 0,0:01:21.02,0:01:23.12,Default,,0,0,0,,主流做法是外挂记忆库，用时翻一翻
+Dialogue: 0,0:01:23.12,0:01:24.44,Default,,0,0,0,,可翻出来的内容进不了模型脑子的
+Dialogue: 0,0:01:24.44,0:01:24.84,Default,,0,0,0,,思考过程
+Dialogue: 0,0:01:24.84,0:01:26.52,Default,,0,0,0,,这篇把历史经验压成记忆小块
+Dialogue: 0,0:01:26.52,0:01:28.72,Default,,0,0,0,,直接塞进模型内部，和眼前画面一起想
+Dialogue: 0,0:01:28.72,0:01:31.02,Default,,0,0,0,,两个仿真测试成绩都超过之前的记忆方案
+Dialogue: 0,0:01:31.02,0:01:32.42,Default,,0,0,0,,记性好不好，先看记在哪
+Dialogue: 0,0:01:32.42,0:01:34.18,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:34.18,0:01:34.86,Default,,0,0,0,,我们明天见

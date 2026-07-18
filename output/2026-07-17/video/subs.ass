@@ -1,0 +1,74 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.30,0:00:02.16,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.66,0:00:04.18,Default,,0,0,0,,先说国产大模型放大招
+Dialogue: 0,0:00:04.50,0:00:07.17,Default,,0,0,0,,月之暗面发布了新旗舰Kimi K3
+Dialogue: 0,0:00:07.17,0:00:07.92,Default,,0,0,0,,两万八千亿参数
+Dialogue: 0,0:00:08.24,0:00:09.90,Default,,0,0,0,,官方说这是迄今最大的开源模型
+Dialogue: 0,0:00:09.90,0:00:11.33,Default,,0,0,0,,能一口气读一百万token
+Dialogue: 0,0:00:11.33,0:00:12.60,Default,,0,0,0,,约等于一整套长篇小说
+Dialogue: 0,0:00:12.60,0:00:13.98,Default,,0,0,0,,官方自家跑分里
+Dialogue: 0,0:00:13.98,0:00:16.44,Default,,0,0,0,,它整体只输给Claude和OpenAI最强的
+Dialogue: 0,0:00:16.44,0:00:16.84,Default,,0,0,0,,模型一点
+Dialogue: 0,0:00:16.84,0:00:18.92,Default,,0,0,0,,部分编程测试还超过了GPT-5.5
+Dialogue: 0,0:00:19.02,0:00:20.18,Default,,0,0,0,,价格便宜得扎眼
+Dialogue: 0,0:00:20.18,0:00:21.70,Default,,0,0,0,,输出每百万token十五美元
+Dialogue: 0,0:00:21.70,0:00:22.70,Default,,0,0,0,,只有对手的零头
+Dialogue: 0,0:00:22.70,0:00:24.44,Default,,0,0,0,,苹果的AI终于要进中国了
+Dialogue: 0,0:00:24.44,0:00:26.28,Default,,0,0,0,,网信办批了Apple Intelligence上线
+Dialogue: 0,0:00:26.28,0:00:28.12,Default,,0,0,0,,底层模型接的是阿里的通义千问
+Dialogue: 0,0:00:28.12,0:00:30.10,Default,,0,0,0,,苹果手机、平板、电脑都会用上
+Dialogue: 0,0:00:30.10,0:00:31.22,Default,,0,0,0,,这事传了快一年
+Dialogue: 0,0:00:31.22,0:00:33.18,Default,,0,0,0,,中国用户比别处晚了近两年才等到
+Dialogue: 0,0:00:33.18,0:00:34.16,Default,,0,0,0,,想进这个市场
+Dialogue: 0,0:00:34.16,0:00:35.98,Default,,0,0,0,,最讲究自研的苹果也得找本地伙伴
+Dialogue: 0,0:00:35.98,0:00:37.24,Default,,0,0,0,,把模型交给别人来做
+Dialogue: 0,0:00:37.24,0:00:39.40,Default,,0,0,0,,Claude的记忆功能被研究者撬开了
+Dialogue: 0,0:00:39.40,0:00:40.31,Default,,0,0,0,,他演示了一次
+Dialogue: 0,0:00:40.31,0:00:41.77,Default,,0,0,0,,用户只是问了个咖啡的问题
+Dialogue: 0,0:00:41.77,0:00:44.00,Default,,0,0,0,,助手就把姓名、雇主，连推断出的家乡
+Dialogue: 0,0:00:44.00,0:00:46.08,Default,,0,0,0,,一个字符一个字符发到了攻击者的服务器
+Dialogue: 0,0:00:46.08,0:00:47.26,Default,,0,0,0,,界面什么都没提示
+Dialogue: 0,0:00:47.26,0:00:49.16,Default,,0,0,0,,窍门是把记忆和上网两件事串起来
+Dialogue: 0,0:00:49.16,0:00:51.56,Default,,0,0,0,,攻击者用网页内容遥控助手该去访问哪个
+Dialogue: 0,0:00:51.56,0:00:51.96,Default,,0,0,0,,链接
+Dialogue: 0,0:00:51.96,0:00:52.90,Default,,0,0,0,,Anthropic已经修了
+Dialogue: 0,0:00:52.90,0:00:54.50,Default,,0,0,0,,不许它再跟着外部网页里的链接跑
+Dialogue: 0,0:00:54.50,0:00:56.30,Default,,0,0,0,,你越掏心窝子，助手记得越全
+Dialogue: 0,0:00:56.66,0:00:57.22,Default,,0,0,0,,泄起来也越狠
+Dialogue: 0,0:00:57.54,0:00:59.56,Default,,0,0,0,,论文这边第一篇让AI科学家进了医院
+Dialogue: 0,0:00:59.82,0:01:01.82,Default,,0,0,0,,真难题在于病人数据不能出医院大门
+Dialogue: 0,0:01:02.26,0:01:04.28,Default,,0,0,0,,英伟达这套系统给AI配上权限管理和
+Dialogue: 0,0:01:04.28,0:01:04.76,Default,,0,0,0,,全程留痕
+Dialogue: 0,0:01:04.76,0:01:05.88,Default,,0,0,0,,只让汇总结果出门
+Dialogue: 0,0:01:05.88,0:01:07.80,Default,,0,0,0,,在医院防火墙里跑了二十八万多人的
+Dialogue: 0,0:01:07.80,0:01:08.20,Default,,0,0,0,,基因数据
+Dialogue: 0,0:01:08.20,0:01:09.82,Default,,0,0,0,,找出了高血压的已知基因位点
+Dialogue: 0,0:01:09.82,0:01:11.30,Default,,0,0,0,,有意思的是第一版结果不对
+Dialogue: 0,0:01:11.30,0:01:13.64,Default,,0,0,0,,人类专家审出病情判定标准有偏差
+Dialogue: 0,0:01:13.64,0:01:14.42,Default,,0,0,0,,改完才对
+Dialogue: 0,0:01:14.42,0:01:15.70,Default,,0,0,0,,能不能进医院，靠的是规矩
+Dialogue: 0,0:01:15.70,0:01:17.22,Default,,0,0,0,,不是模型更聪明
+Dialogue: 0,0:01:17.22,0:01:18.84,Default,,0,0,0,,另一篇管便宜机器人的老毛病
+Dialogue: 0,0:01:18.84,0:01:20.86,Default,,0,0,0,,教科书说电机的力矩和电流成正比
+Dialogue: 0,0:01:20.86,0:01:22.54,Default,,0,0,0,,机械臂却总在仿真里对得好好的
+Dialogue: 0,0:01:22.54,0:01:24.80,Default,,0,0,0,,一到真机快速变向就跑偏，摩擦、发热
+Dialogue: 0,0:01:24.80,0:01:26.06,Default,,0,0,0,,齿轮间隙全在捣乱
+Dialogue: 0,0:01:26.06,0:01:27.24,Default,,0,0,0,,麻省理工这篇干脆不用公式
+Dialogue: 0,0:01:27.24,0:01:28.82,Default,,0,0,0,,让模型直接学电机的真实脾气
+Dialogue: 0,0:01:28.82,0:01:30.42,Default,,0,0,0,,五百美元的玩具臂到三万美元的
+Dialogue: 0,0:01:30.42,0:01:31.04,Default,,0,0,0,,工业臂都验过
+Dialogue: 0,0:01:31.04,0:01:32.62,Default,,0,0,0,,还能不装传感器就感知外力
+Dialogue: 0,0:01:32.62,0:01:34.32,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:34.32,0:01:35.00,Default,,0,0,0,,我们明天见

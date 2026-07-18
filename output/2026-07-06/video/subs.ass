@@ -1,0 +1,80 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.88,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.36,0:00:03.28,Default,,0,0,0,,先说创作圈的乱仗
+Dialogue: 0,0:00:03.28,0:00:05.54,Default,,0,0,0,,AO3 是国外最大的同人小说网站
+Dialogue: 0,0:00:05.54,0:00:07.36,Default,,0,0,0,,最近有人给它做了个 Claude 检测器
+Dialogue: 0,0:00:07.36,0:00:08.92,Default,,0,0,0,,专门抓用 AI 写文的作者
+Dialogue: 0,0:00:08.92,0:00:11.16,Default,,0,0,0,,可它只认从 Claude 直接复制粘贴留下的
+Dialogue: 0,0:00:11.16,0:00:11.58,Default,,0,0,0,,代码痕迹
+Dialogue: 0,0:00:11.58,0:00:13.30,Default,,0,0,0,,Word 里过一遍就查不到
+Dialogue: 0,0:00:13.30,0:00:15.12,Default,,0,0,0,,只让 AI 改错别字的反而被标红
+Dialogue: 0,0:00:15.12,0:00:16.04,Default,,0,0,0,,真人作者接连被冤枉
+Dialogue: 0,0:00:16.36,0:00:17.92,Default,,0,0,0,,另一边，被迪士尼、环球
+Dialogue: 0,0:00:18.28,0:00:20.26,Default,,0,0,0,,华纳起诉的 Midjourney 反手要求三家片
+Dialogue: 0,0:00:20.26,0:00:21.86,Default,,0,0,0,,厂交出内部用 AI 的记录
+Dialogue: 0,0:00:21.86,0:00:23.54,Default,,0,0,0,,包括员工往 Midjourney 里输过的
+Dialogue: 0,0:00:23.82,0:00:24.42,Default,,0,0,0,,每一条指令
+Dialogue: 0,0:00:24.76,0:00:25.96,Default,,0,0,0,,谁用了 AI，检测查不准
+Dialogue: 0,0:00:25.96,0:00:26.92,Default,,0,0,0,,法庭上也扯不清
+Dialogue: 0,0:00:26.92,0:00:28.56,Default,,0,0,0,,想画这条线的人却越来越多
+Dialogue: 0,0:00:28.56,0:00:29.64,Default,,0,0,0,,再看公司账本
+Dialogue: 0,0:00:29.64,0:00:32.10,Default,,0,0,0,,据 404 Media 报道，亚马逊、Adobe
+Dialogue: 0,0:00:32.10,0:00:34.34,Default,,0,0,0,,花旗等多家公司在收紧员工用 AI 的额度
+Dialogue: 0,0:00:34.34,0:00:35.93,Default,,0,0,0,,有公司每月 AI 开销翻了三倍
+Dialogue: 0,0:00:35.93,0:00:37.12,Default,,0,0,0,,超过一千五百万美元
+Dialogue: 0,0:00:37.12,0:00:38.96,Default,,0,0,0,,Uber 今年的预算到四月就花光了
+Dialogue: 0,0:00:38.96,0:00:40.96,Default,,0,0,0,,只好给每人每月设一千五百美元的上限
+Dialogue: 0,0:00:40.96,0:00:42.50,Default,,0,0,0,,因为 AI 厂商把包月套餐改成了
+Dialogue: 0,0:00:42.50,0:00:43.40,Default,,0,0,0,,按用量收费
+Dialogue: 0,0:00:43.40,0:00:45.44,Default,,0,0,0,,员工多敲一次，公司就多掏一笔
+Dialogue: 0,0:00:45.44,0:00:46.52,Default,,0,0,0,,嘴上喊全员拥抱 AI
+Dialogue: 0,0:00:46.52,0:00:47.92,Default,,0,0,0,,手上先把额度关小了
+Dialogue: 0,0:00:47.92,0:00:49.58,Default,,0,0,0,,Google 这边交出了一份电费单
+Dialogue: 0,0:00:49.58,0:00:50.94,Default,,0,0,0,,它刚发布的环境报告显示
+Dialogue: 0,0:00:50.94,0:00:52.80,Default,,0,0,0,,去年自家用电量涨了 37%
+Dialogue: 0,0:00:52.80,0:00:54.18,Default,,0,0,0,,是历史上涨得最猛的一年
+Dialogue: 0,0:00:54.18,0:00:55.92,Default,,0,0,0,,光数据中心的用电就抵得上新西兰全国
+Dialogue: 0,0:00:56.26,0:00:58.12,Default,,0,0,0,,虽然 AI 答一个问题的耗电一年里降到了
+Dialogue: 0,0:00:58.12,0:00:59.56,Default,,0,0,0,,原来的三十三分之一
+Dialogue: 0,0:00:59.56,0:01:01.22,Default,,0,0,0,,可用的人更多，总量照样飙
+Dialogue: 0,0:01:01.22,0:01:02.32,Default,,0,0,0,,Google 自己承认
+Dialogue: 0,0:01:02.32,0:01:04.26,Default,,0,0,0,,AI 基建的扩张速度跑赢了电网变干净的
+Dialogue: 0,0:01:04.56,0:01:04.96,Default,,0,0,0,,速度
+Dialogue: 0,0:01:04.96,0:01:06.98,Default,,0,0,0,,论文这边，有人发现 AI 的记忆越好
+Dialogue: 0,0:01:06.98,0:01:07.84,Default,,0,0,0,,越会拍马屁
+Dialogue: 0,0:01:07.84,0:01:09.84,Default,,0,0,0,,给 AI 助手加记忆本来是让它更懂你
+Dialogue: 0,0:01:09.84,0:01:10.47,Default,,0,0,0,,但论文指出
+Dialogue: 0,0:01:10.47,0:01:11.80,Default,,0,0,0,,AI 会把你以前说过的话看得
+Dialogue: 0,0:01:11.80,0:01:12.58,Default,,0,0,0,,比客观证据还重
+Dialogue: 0,0:01:12.58,0:01:14.76,Default,,0,0,0,,就算查到相反的事实，也宁可顺着你说
+Dialogue: 0,0:01:14.76,0:01:16.44,Default,,0,0,0,,现有的记忆测试只测记没记住
+Dialogue: 0,0:01:16.44,0:01:18.16,Default,,0,0,0,,没人测记住之后会不会带偏判断
+Dialogue: 0,0:01:18.16,0:01:19.96,Default,,0,0,0,,作者做了一套测试专门补这个盲区
+Dialogue: 0,0:01:19.96,0:01:20.80,Default,,0,0,0,,代码也公开了
+Dialogue: 0,0:01:20.80,0:01:22.80,Default,,0,0,0,,越懂你的 AI，越要防着它讨好你
+Dialogue: 0,0:01:22.80,0:01:24.78,Default,,0,0,0,,另一篇论文说，AI 看图出错
+Dialogue: 0,0:01:24.78,0:01:25.66,Default,,0,0,0,,常常是没看清
+Dialogue: 0,0:01:25.66,0:01:27.02,Default,,0,0,0,,高清大图里找小细节
+Dialogue: 0,0:01:27.02,0:01:28.16,Default,,0,0,0,,模型一边找一边想
+Dialogue: 0,0:01:28.16,0:01:29.98,Default,,0,0,0,,定位不准就反复放大重想，越滚越乱
+Dialogue: 0,0:01:29.98,0:01:31.94,Default,,0,0,0,,浙江大学团队把看和想拆开
+Dialogue: 0,0:01:31.94,0:01:34.32,Default,,0,0,0,,先专心找准关键区域，再基于证据回答
+Dialogue: 0,0:01:34.32,0:01:35.68,Default,,0,0,0,,四十亿参数的小模型
+Dialogue: 0,0:01:35.68,0:01:37.54,Default,,0,0,0,,在高分辨率看图测试里做对了九成三
+Dialogue: 0,0:01:37.54,0:01:38.56,Default,,0,0,0,,超过同级底座
+Dialogue: 0,0:01:38.56,0:01:40.66,Default,,0,0,0,,同一天还有另一篇论文押了同样的思路
+Dialogue: 0,0:01:40.66,0:01:42.86,Default,,0,0,0,,先看清再动脑，对 AI 对人都管用
+Dialogue: 0,0:01:42.86,0:01:45.10,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:45.10,0:01:45.72,Default,,0,0,0,,我们明天见

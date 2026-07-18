@@ -1,0 +1,77 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.78,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:01.78,0:00:02.62,Default,,0,0,0,,先说今天的头条
+Dialogue: 0,0:00:02.62,0:00:04.82,Default,,0,0,0,,有人扒出 Claude Code 偷偷给请求打隐
+Dialogue: 0,0:00:04.82,0:00:05.22,Default,,0,0,0,,形标记
+Dialogue: 0,0:00:05.22,0:00:07.14,Default,,0,0,0,,一名安全研究员逆向了它的程序
+Dialogue: 0,0:00:07.14,0:00:09.36,Default,,0,0,0,,发现平时用官方入口它什么都不做
+Dialogue: 0,0:00:09.36,0:00:11.90,Default,,0,0,0,,可一旦你把接口地址改指向某些非官方的
+Dialogue: 0,0:00:11.90,0:00:12.30,Default,,0,0,0,,中国域名
+Dialogue: 0,0:00:12.30,0:00:14.04,Default,,0,0,0,,电脑时区又在上海或乌鲁木齐
+Dialogue: 0,0:00:14.04,0:00:16.26,Default,,0,0,0,,它就把上传消息日期中的撇号和分隔符
+Dialogue: 0,0:00:16.26,0:00:17.94,Default,,0,0,0,,换成肉眼几乎看不出的特殊符号
+Dialogue: 0,0:00:17.94,0:00:19.74,Default,,0,0,0,,给这条请求打上一个隐形标记
+Dialogue: 0,0:00:19.74,0:00:21.12,Default,,0,0,0,,并依此大面积封号
+Dialogue: 0,0:00:21.12,0:00:23.88,Default,,0,0,0,,帖子冲上了 Hacker News 热搜
+Dialogue: 0,0:00:23.88,0:00:26.56,Default,,0,0,0,,Anthropic 很快发新版把这段代码去掉
+Dialogue: 0,0:00:26.56,0:00:28.16,Default,,0,0,0,,更新日志里却只字没提
+Dialogue: 0,0:00:28.16,0:00:31.02,Default,,0,0,0,,再说 Anthropic 最能打的公开模型
+Dialogue: 0,0:00:31.02,0:00:31.64,Default,,0,0,0,,Fable 5
+Dialogue: 0,0:00:31.64,0:00:32.07,Default,,0,0,0,,它回归了
+Dialogue: 0,0:00:32.07,0:00:34.04,Default,,0,0,0,,上个月它和姊妹模型 Mythos 5 一起被
+Dialogue: 0,0:00:34.04,0:00:36.82,Default,,0,0,0,,美国商务部以网络安全风险为由摁下了线
+Dialogue: 0,0:00:36.82,0:00:38.40,Default,,0,0,0,,今天，商务部终于解除了管制
+Dialogue: 0,0:00:38.74,0:00:39.82,Default,,0,0,0,,这两个模型又重新上线
+Dialogue: 0,0:00:39.82,0:00:41.76,Default,,0,0,0,,回归的是一个加了固的版本
+Dialogue: 0,0:00:41.76,0:00:42.48,Default,,0,0,0,,安全护栏更强
+Dialogue: 0,0:00:42.48,0:00:44.78,Default,,0,0,0,,也更会主动中止有风险的网络安全任务
+Dialogue: 0,0:00:44.78,0:00:47.24,Default,,0,0,0,,过去大家默认，模型越大、参数越多
+Dialogue: 0,0:00:47.24,0:00:47.64,Default,,0,0,0,,能力就越强
+Dialogue: 0,0:00:47.64,0:00:49.52,Default,,0,0,0,,可最近有个叫 Agents-A1 的模型
+Dialogue: 0,0:00:49.52,0:00:50.80,Default,,0,0,0,,参数只有三百五十亿
+Dialogue: 0,0:00:50.80,0:00:52.20,Default,,0,0,0,,是万亿级旗舰的零头
+Dialogue: 0,0:00:52.20,0:00:53.90,Default,,0,0,0,,表现却追到了万亿参数的水平
+Dialogue: 0,0:00:53.90,0:00:56.30,Default,,0,0,0,,它走的是另一条路，靠拉长任务链
+Dialogue: 0,0:00:56.30,0:00:58.42,Default,,0,0,0,,让小模型反复行动、自我纠错
+Dialogue: 0,0:00:58.42,0:01:00.42,Default,,0,0,0,,跑得够久，单次任务平均走上四十五步
+Dialogue: 0,0:01:00.42,0:01:02.76,Default,,0,0,0,,就能换来过去只有大模型才有的本事
+Dialogue: 0,0:01:02.76,0:01:04.44,Default,,0,0,0,,说不定未来接近旗舰的 agent 能力
+Dialogue: 0,0:01:04.44,0:01:06.36,Default,,0,0,0,,未必还得付旗舰的价钱
+Dialogue: 0,0:01:06.36,0:01:06.76,Default,,0,0,0,,论文这边
+Dialogue: 0,0:01:06.76,0:01:08.72,Default,,0,0,0,,先看一个给电脑操作 AI 出的难题
+Dialogue: 0,0:01:08.72,0:01:10.67,Default,,0,0,0,,现在很多 agent 号称能替你操作电脑
+Dialogue: 0,0:01:10.67,0:01:12.94,Default,,0,0,0,,一篇叫 OSWorld 2.0 的新基准
+Dialogue: 0,0:01:12.94,0:01:14.74,Default,,0,0,0,,就找来一批真实的复杂活儿考它们
+Dialogue: 0,0:01:14.74,0:01:16.00,Default,,0,0,0,,这些活儿连人类做完
+Dialogue: 0,0:01:16.00,0:01:17.54,Default,,0,0,0,,中位数也要花上一个半小时
+Dialogue: 0,0:01:17.54,0:01:18.88,Default,,0,0,0,,平均点三百多次鼠标
+Dialogue: 0,0:01:18.88,0:01:21.46,Default,,0,0,0,,结果最能打的 Claude Opus 4.8
+Dialogue: 0,0:01:21.46,0:01:22.28,Default,,0,0,0,,也只做完了两成
+Dialogue: 0,0:01:22.28,0:01:24.24,Default,,0,0,0,,这说明真到了又长又绕的真实任务上
+Dialogue: 0,0:01:24.24,0:01:26.16,Default,,0,0,0,,今天的 AI 离顶替人还差得远
+Dialogue: 0,0:01:26.16,0:01:27.78,Default,,0,0,0,,另一篇论文提了个常被忽略的问题
+Dialogue: 0,0:01:27.78,0:01:29.70,Default,,0,0,0,,好的 agent 得知道什么时候停手
+Dialogue: 0,0:01:29.70,0:01:31.84,Default,,0,0,0,,大家都在比 agent 多能干，能搜索
+Dialogue: 0,0:01:31.84,0:01:32.86,Default,,0,0,0,,能点击、能跑命令
+Dialogue: 0,0:01:32.86,0:01:34.38,Default,,0,0,0,,可很少有人衡量另一种情况
+Dialogue: 0,0:01:34.38,0:01:35.70,Default,,0,0,0,,就是目标本身没说清
+Dialogue: 0,0:01:35.70,0:01:37.54,Default,,0,0,0,,或者这事在当前环境里压根办不到
+Dialogue: 0,0:01:37.54,0:01:39.88,Default,,0,0,0,,这时候硬撑着一直试，只会白费力气
+Dialogue: 0,0:01:39.88,0:01:41.49,Default,,0,0,0,,可靠的做法是认出再折腾也没用
+Dialogue: 0,0:01:41.49,0:01:42.22,Default,,0,0,0,,然后主动停下
+Dialogue: 0,0:01:42.56,0:01:44.46,Default,,0,0,0,,这篇论文把这种知道何时收手的本事
+Dialogue: 0,0:01:44.46,0:01:46.66,Default,,0,0,0,,头一回单拎出来当成一项该考核的能力
+Dialogue: 0,0:01:46.96,0:01:48.16,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:48.16,0:01:48.92,Default,,0,0,0,,我们明天见

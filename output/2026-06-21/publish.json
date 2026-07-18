@@ -1,0 +1,23 @@
+{
+  "date": "2026-06-21",
+  "title": "OpenAI 人事大变动，高管来去匆匆",
+  "title_len": 19,
+  "body": "今天 AI 圈 5 件大事，1 分钟看完。\n\n一、OpenAI 人事变动不小，Barret Zoph 一月回归、五个月又离开，Transformer 作者 Noam Shazeer 从 Google 跳槽加盟，连想拍 Altman 下台又复职的电影，投资方亚马逊也退出了。\n二、都说 AI 让写代码变简单，一线工程师却说正相反，纪律只多不少，code review 和流程更得绷紧，先扛不住的往往不是质量而是账单。\n三、一个团队用两亿参数做出过去一百亿参数才有的修图效果，另一家声称解开了卡住大模型十年的数学难题，都在想办法拆掉算力成本这堵墙。\n四、OmniAgent 让模型自己决定看长视频的哪几段，七十亿参数的小模型反超了大它十倍的七百二十亿大模型。\n五、Turing-RL 用图灵测试式的奖励训练用户模拟器，目标从“像那句标准答案”变成“像一个真人”。\n\n每天一分钟，AI 新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans",
+  "tags": [
+    "#人工智能",
+    "#AI",
+    "#AI日报",
+    "#每日AI",
+    "#AI资讯",
+    "#OpenAI",
+    "#大模型",
+    "#AI编程",
+    "#柿子树下的猫",
+    "#通勤干货"
+  ],
+  "content": "今天 AI 圈 5 件大事，1 分钟看完。\n\n一、OpenAI 人事变动不小，Barret Zoph 一月回归、五个月又离开，Transformer 作者 Noam Shazeer 从 Google 跳槽加盟，连想拍 Altman 下台又复职的电影，投资方亚马逊也退出了。\n二、都说 AI 让写代码变简单，一线工程师却说正相反，纪律只多不少，code review 和流程更得绷紧，先扛不住的往往不是质量而是账单。\n三、一个团队用两亿参数做出过去一百亿参数才有的修图效果，另一家声称解开了卡住大模型十年的数学难题，都在想办法拆掉算力成本这堵墙。\n四、OmniAgent 让模型自己决定看长视频的哪几段，七十亿参数的小模型反超了大它十倍的七百二十亿大模型。\n五、Turing-RL 用图灵测试式的奖励训练用户模拟器，目标从“像那句标准答案”变成“像一个真人”。\n\n每天一分钟，AI 新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans\n\n#人工智能 #AI #AI日报 #每日AI #AI资讯 #OpenAI #大模型 #AI编程 #柿子树下的猫 #通勤干货",
+  "video": "E:\\Github_project\\ai-briefcast\\output\\2026-06-21\\video\\xhs-2026-06-21-spacex-sub.mp4",
+  "cover": "E:\\Github_project\\ai-briefcast\\output\\2026-06-21\\cover\\cover-2026-06-21-spacex.png",
+  "visibility": "self",
+  "schedule_at": null
+}

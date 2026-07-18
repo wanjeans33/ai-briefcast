@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0713-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月13日 · AI Briefcast
+        count: 5
+        hook: 最强Claude<br><em>不敢收钱了</em>
+        toc: [Claude收费一推再推, Meta新功能三天下架, GPT自称证了50年猜想, AI做科学连算带讲, 智谱GLM背后的训练法]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 定价
+        icon: 💸
+        title: 最强Claude，不敢收钱了
+        body: Fable 5改按用量收费，每百万字块**输入10刀、输出50刀**，是旗舰Opus的**2倍**、史上最贵。可收费日期**一推再推**，最新又延免费一周
+        punch: 对手当红，涨价的手不敢落
+      - kind: explainer
+        grad: c1
+        icon: 👑
+        rel: 头条01
+        title: Fable 5什么来头
+        body: Anthropic新一代**5系列**首发旗舰，档位排在Opus之上，连Musk都公开夸它**市面最好**。能力顶级，价格也顶级
+      - kind: explainer
+        grad: c1
+        icon: 🧾
+        rel: 头条01
+        title: 订阅和按量差在哪
+        body: 订阅像**自助餐**，交月费随便吃；按量像**点菜**，用多少算多少。厂商把最贵的菜挪出自助区，重度用户账单要起飞
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 隐私
+        icon: 📸
+        title: 三天，Meta就认栽了
+        body: Instagram新功能@任何**公开账号**就能拿其照片生成AI图，本人**不收通知**、默认开启。用户和汤姆汉克斯的经纪公司齐抗议，Meta三天下线，承认没做到位
+        punch: 你的脸被用了，你最后一个知道
+      - kind: explainer
+        grad: c3
+        icon: ✅
+        rel: 头条02
+        title: opt-out和opt-in差在哪
+        body: opt-in是**先问你**同不同意，opt-out是**先用了**等你自己去关。Meta这次选了后者，公开照片默认就能被拿去生成
+      - kind: explainer
+        grad: c3
+        icon: 🎭
+        rel: 头条02
+        title: 经纪公司为什么急
+        body: 明星的**脸和形象**就是生意，AI随便生成等于免费挪用。代理汤姆汉克斯的巨头CAA和演员工会都要求**先同意再使用**
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 科研
+        icon: 📐
+        title: AI自称证了50年悬案
+        body: OpenAI公布GPT-5.6用**64个并行分身**、不到**1小时**证出图论50年猜想。数学家初评短小漂亮，但批评**零引用**、未同行评审
+        punch: 是突破还是乌龙，数学界说了算
+      - kind: explainer
+        grad: c4
+        icon: 🔁
+        rel: 头条03
+        title: 这个猜想说的啥
+        body: 一张网络图里能不能挑出一组环路，让**每条边恰好被盖两次**。上世纪70年代提出，人人能听懂，50年没人证出来
+      - kind: explainer
+        grad: c4
+        icon: 🔍
+        rel: 头条03
+        title: 为什么还不能算数
+        body: 数学证明要**同行评审**，多位专家逐行核。这猜想历史上出过**好几个**后来被发现有洞的"证明"，所以先别急着庆祝
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 科学
+        icon: 🧪
+        title: 算得准，还要讲得明
+        body: AI做科学的老毛病，准的说不清、清的算不动。SciReasoner让模型沿**物理约束**一步步推，86项测试**67项第一**，专家双盲**98%**认可其推理
+        punch: 把结构变成能引用的证据
+      - kind: explainer
+        grad: c5
+        icon: 🙈
+        rel: 论文01
+        title: 双盲评审是什么
+        body: 评的人**不知道**答案出自谁，被评的也不知道谁在评，和新药试验同款防偏心设计。所以98%这个认可率比自夸硬
+      - kind: explainer
+        grad: c5
+        icon: ⚗️
+        rel: 论文01
+        title: 逆合成是什么
+        body: 给一个目标分子，倒推**用什么原料、怎么一步步合成**，是药物研发的日常难题。这篇把单步准确率从0.63提到**0.72**
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 训练
+        icon: 🚄
+        title: 提速容易，训稳才难
+        body: 强化学习训练改异步能提速却易翻车。SAO每道题只跑**一次尝试**、更新幅度两头卡死，稳训**1000步**超主流方法，已用于智谱**GLM-5.2**训练
+        punch: 快容易，稳才是真本事
+      - kind: explainer
+        grad: c2
+        icon: 🍬
+        rel: 论文02
+        title: 什么是强化学习
+        body: 让模型自己试错，**做对给糖、做错扣分**，靠奖励把能力磨出来。大模型的推理和干活能力，后期主要靠它拔高
+      - kind: explainer
+        grad: c2
+        icon: 🏮
+        rel: 论文02
+        title: GLM-5.2是什么
+        body: 智谱的开源旗舰，总参数**7500亿**，干活时只激活**400亿**，是国产开源模型的第一梯队
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月13日 · 1分钟追上AI圈
+  big: 最强Claude<br><em>不敢收钱了</em>
+  rows:
+    - "最强Claude收费 **一推再推**"
+    - "Meta新功能 **三天下架**"
+    - "GPT-5.6自称 **证了50年猜想**"
+    - "AI做科学 **算得准讲得明**"
+    - "智谱GLM **训练法曝光**"
+  date: "@AI Briefcast · 7/13"

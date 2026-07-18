@@ -1,0 +1,46 @@
+{
+  "date": "2026-07-18",
+  "title": "AI能替你登录一切了",
+  "title_len": 10,
+  "body": "今天AI圈5件事，1分钟看完\n\n1Password给Claude做集成，AI能替你登录还看不到密码\n欧盟连发两令，逼谷歌把安卓和搜索入口向对手开放\n0.8B开源小模型端到端啃文档解析，还在老牌榜单登顶\n腾讯具身模型只激活3B参数，追平上代激活32B的老模型\nAI选择题评分被答案长度悄悄扭曲，贝叶斯先验来纠偏\n\n论文传送门\n腾讯Hy-Embodied-VLM：arxiv.org/abs/2607.12894\n贝叶斯准确率(ICML)：arxiv.org/abs/2607.12767\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans",
+  "tags": [
+    "#人工智能",
+    "#AI",
+    "#AI日报",
+    "#每日AI",
+    "#AI资讯",
+    "#Claude",
+    "#谷歌",
+    "#腾讯",
+    "#柿子树下的猫",
+    "#通勤干货"
+  ],
+  "content": "今天AI圈5件事，1分钟看完\n\n1Password给Claude做集成，AI能替你登录还看不到密码\n欧盟连发两令，逼谷歌把安卓和搜索入口向对手开放\n0.8B开源小模型端到端啃文档解析，还在老牌榜单登顶\n腾讯具身模型只激活3B参数，追平上代激活32B的老模型\nAI选择题评分被答案长度悄悄扭曲，贝叶斯先验来纠偏\n\n论文传送门\n腾讯Hy-Embodied-VLM：arxiv.org/abs/2607.12894\n贝叶斯准确率(ICML)：arxiv.org/abs/2607.12767\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans\n\n#人工智能 #AI #AI日报 #每日AI #AI资讯 #Claude #谷歌 #腾讯 #柿子树下的猫 #通勤干货",
+  "chapters": [
+    {
+      "time": "00:00",
+      "title": "AI替你登录，还看不到密码"
+    },
+    {
+      "time": "00:20",
+      "title": "欧盟撬开谷歌的地盘"
+    },
+    {
+      "time": "00:38",
+      "title": "0.8B小模型啃下文档解析"
+    },
+    {
+      "time": "00:54",
+      "title": "腾讯具身模型，3B追平32B"
+    },
+    {
+      "time": "01:17",
+      "title": "AI评测，被答案长度骗了"
+    }
+  ],
+  "video": "E:\\Github_project\\ai-briefcast\\output\\2026-07-18\\video\\xhs-2026-07-18-spacex-sub.mp4",
+  "cover": "E:\\Github_project\\ai-briefcast\\output\\2026-07-18\\cover\\cover-2026-07-18.png",
+  "cover_landscape": "E:\\Github_project\\ai-briefcast\\output\\2026-07-18\\cover\\cover-2026-07-18-4x3.png",
+  "visibility": "self",
+  "schedule_at": null
+}

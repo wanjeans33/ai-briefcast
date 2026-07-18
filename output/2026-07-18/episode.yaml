@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0718-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月18日 · AI Briefcast
+        count: 5
+        hook: AI能替你<br><em>登录一切了</em>
+        toc: [AI助手能替你登录, 欧盟强开谷歌入口, 0.8B小模型啃文档, 腾讯具身又省又强, AI评测被答案骗]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 安全
+        icon: 🔑
+        title: AI替你登录，还看不到密码
+        body: 1Password给Claude做集成，授权后它能替你**登录订票管账户**，全程手不碰密码。关键是Claude**看不到密码**，指纹确认后由1Password直接把凭据填进网页
+        punch: 能替你登录的助手，得先信得过
+      - kind: explainer
+        grad: c1
+        icon: 🙈
+        rel: 头条01
+        title: 看不到密码怎么替你登录
+        body: 密码不进AI，由1Password在**浏览器里直接注入**网页，AI只负责点按操作。就像代驾能开车，却拿不到你家钥匙
+      - kind: explainer
+        grad: c1
+        icon: ⚠️
+        rel: 头条01
+        title: 为什么风险跟着抬
+        body: 以前泄露的顶多是几句对话，现在助手一旦被恶意网页**骗着操作**，动的是你所有已登录账户。授权前先想清它能碰到啥
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 监管
+        icon: ⚖️
+        title: 欧盟撬开谷歌的地盘
+        body: 欧盟连发两令，逼谷歌把**安卓和搜索**的入口向对手AI助手开放，还要按公式定价**共享搜索数据**。谷歌回应称这会危及用户隐私
+        punch: 入口该归谁，两家答案正相反
+      - kind: explainer
+        grad: c3
+        icon: 📜
+        rel: 头条02
+        title: 什么是数字市场法
+        body: 欧盟专治**超大平台**的法规，把安卓、谷歌搜索这类定成守门人，强制它们开放接口、别拿地位卡对手。罚起来按全球营收算
+      - kind: explainer
+        grad: c3
+        icon: 🔓
+        rel: 头条02
+        title: 开放入口对手能得到啥
+        body: 对手AI助手能像Gemini一样**设成默认、语音唤醒、进App代操作**，还拿得到谷歌攒多年的搜索数据。第一次站到同一起跑线
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 模型
+        icon: 📄
+        title: 0.8B小模型，啃下文档解析
+        body: 一个**不到10亿参数**的开源模型，端到端把文档图变成排好版Markdown，公式表格图区全按人眼顺序摆好，还在老牌榜单**登了顶**
+        punch: 拉开差距的不是字多，是版面复杂
+      - kind: explainer
+        grad: c4
+        icon: 🖨️
+        rel: 头条03
+        title: 文档解析难在哪
+        body: 不光认字，还得**还原版面**——哪是标题、哪是表格、双栏怎么读。人一眼看懂，机器要把顺序、公式、图表全排对
+      - kind: explainer
+        grad: c4
+        icon: 📐
+        rel: 头条03
+        title: 端到端是什么意思
+        body: 一个模型**从图直接出结果**，不用切成检测、识别、排版好几段拼起来。少了中间环节，错误不层层累加，也更好部署
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 具身
+        icon: 🤖
+        title: 3B参数，追平上一代32B
+        body: 腾讯的物理世界机器人模型靠**混合专家**，每次只激活**30亿参数**，追平上代激活**320亿**的老模型，38个具身测试19项同尺寸最优
+        punch: 省参数是真，能不能上机看全文
+      - kind: explainer
+        grad: c5
+        icon: 🧩
+        rel: 论文01
+        title: 什么是混合专家MoE
+        body: 模型养一大群**专家**，每次只叫醒几个干活。总量很大但每次只用一小部分，等于既有大模型的本事，又只花小模型的算力
+      - kind: explainer
+        grad: c5
+        icon: 🦿
+        rel: 论文01
+        title: 什么是具身智能
+        body: 让AI**长在身体里**，能看能动手，机器人、机械臂都算。难点是从屏幕上的对话，变成在真实世界里稳稳干活
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 评测
+        icon: 📏
+        title: AI考试分，被答案长短骗了
+        body: 给AI做选择题按答案概率打分，可分是**逐字累加**的，答案越长越吃亏。业界按长度拉平又矫枉过正，这篇用贝叶斯先验消掉偏差，**已中ICML**
+        punch: 你算的准确率，可能一直是歪的
+      - kind: explainer
+        grad: c2
+        icon: 🔢
+        rel: 论文02
+        title: 为什么长答案吃亏
+        body: 打分是把每个字的概率**连乘**，字越多，概率越低。哪怕长答案更对，也因为长被扣分，短答案白捡便宜
+      - kind: explainer
+        grad: c2
+        icon: 🎓
+        rel: 论文02
+        title: 中了ICML说明啥
+        body: 机器学习**顶级会议**，投稿命中率低、评审严。中了说明方法被同行认可，比厂商自评的分量重
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月18日 · 1分钟追上AI圈
+  big: AI能替你<br><em>登录一切了</em>
+  rows:
+    - "AI助手替你登录 **却看不到密码**"
+    - "欧盟 **撬开谷歌安卓入口**"
+    - "0.8B小模型 **啃下文档解析**"
+    - "腾讯具身模型 **3B追平32B**"
+    - "AI评测 **被答案长度骗了**"
+  date: "@AI Briefcast · 7/18"

@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0712-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月12日 · AI Briefcast
+        count: 5
+        hook: 苹果动手<br><em>告了OpenAI</em>
+        toc: [苹果告OpenAI偷机密, Musk承诺不断供Claude, 史上最大外企IPO诞生, 机器人视频底座全开源, 机器人记忆塞进脑内]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 法律
+        icon: 🍎
+        title: 偷机密，偷到了决策层
+        body: 苹果指控OpenAI**首席硬件官**授意窃密，此人在苹果干了**24年**，招聘用机密代号、让面试者带苹果零件。OpenAI回应对别家机密没兴趣
+        punch: 曾经同台合作，如今对簿公堂
+      - kind: explainer
+        grad: c1
+        icon: 🔐
+        rel: 头条01
+        title: 商业机密和专利有啥不一样
+        body: 专利公开换保护，商业机密靠**保密**活着，泄露就**收不回**。所以苹果的诉求是禁用加归还，不只是赔钱
+      - kind: explainer
+        grad: c1
+        icon: 📱
+        rel: 头条01
+        title: io是什么来头
+        body: 前苹果**首席设计师**Jony Ive创办的硬件公司，被OpenAI以**65亿美元**收购，正在造第一款AI硬件。挖的多是苹果老部下，才有这场官司
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 商业
+        icon: 🤝
+        title: 四百亿面前，Musk服软了
+        body: Anthropic把模型托管在Musk的数据中心，月付**12.5亿美元**、合同总值**400亿**。网友担心他翻脸拔电源，Musk回复我看走了眼，Anthropic是**领头羊**，绝不断供
+        punch: 去年他还说Anthropic不可能赢
+      - kind: explainer
+        grad: c3
+        icon: ⚡
+        rel: 头条02
+        title: 对手为什么租对手的算力
+        body: AI算力全球短缺，自建数据中心**买电买地**要排队好几年。Musk手里有现成的**30万千瓦**机房，Anthropic租它等于花钱买时间
+      - kind: explainer
+        grad: c3
+        icon: 🔌
+        rel: 头条02
+        title: 断供为什么吓人
+        body: 模型跑在谁的机房，命门就在谁手里，托管方一断电服务全下线。云时代**基础设施**就是筹码，所以这句承诺值400亿
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 市场
+        icon: 💰
+        title: 265亿美元，砸破阿里纪录
+        body: SK海力士纳斯达克挂牌募**265亿美元**，超越阿里保持12年的纪录，订单达募资额**近7倍**，首日再涨一成多。钱拿回韩国建新厂
+        punch: AI的钱潮，从算力烧到内存
+      - kind: explainer
+        grad: c4
+        icon: 🧱
+        rel: 头条03
+        title: HBM为什么是AI标配
+        body: 高带宽内存把芯片**层层堆叠**，紧贴GPU喂数据，训练大模型缺它不行。SK海力士握全球**过半**份额，是英伟达最大供应商
+      - kind: explainer
+        grad: c4
+        icon: 🎫
+        rel: 头条03
+        title: 都上市了怎么还能IPO
+        body: SK海力士早在韩国上市，这次发的是**存托凭证**，把股票打包到美股交易，方便美元资金直接买。外国公司登美股基本走这条路
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 具身
+        icon: 🎬
+        title: 宁牺牲创意，也要守物理
+        body: 视频模型给机器人当**世界模型**，物理必须靠谱。LingBot-Video从零重训，掺**7万小时**机器人视角数据、专门奖励守物理的画面，作者称物理合理性**开源第一**
+        punch: 画面漂亮没用，杯子不能穿桌
+      - kind: explainer
+        grad: c5
+        icon: 🔮
+        rel: 论文01
+        title: 世界模型是机器人的沙盘
+        body: 机器人动手前先在**脑内视频**里预演，推杯子会怎样、走这步撞不撞墙。预演越符合物理，真机越少闯祸
+      - kind: explainer
+        grad: c5
+        icon: 🧠
+        rel: 论文01
+        title: 什么是混合专家MoE
+        body: 模型里养一群**专家**，每次只叫醒几个干活。LingBot总参数**30B**、每次只激活**3B**，容量大跑得快，推理省约**3倍**
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 具身
+        icon: 💾
+        title: 记性好不好，先看记在哪
+        body: 主流做法外挂记忆库，翻出来的内容进不了模型的思考过程。LaMem-VLA把历史经验压成**记忆token**塞进模型内部，LIBERO测试成功率**97.6%**，超此前记忆方案
+        punch: 记忆要进脑子，不能放抽屉
+      - kind: explainer
+        grad: c2
+        icon: 🤖
+        rel: 论文02
+        title: VLA是机器人的大脑
+        body: 视觉语言动作模型，一个模型**看画面、听指令、出动作**，是当下机器人操作的主流路线
+      - kind: explainer
+        grad: c2
+        icon: 🧩
+        rel: 论文02
+        title: token是模型的思考单元
+        body: 模型把看到听到的都切成**小块**处理，这些小块叫token。把记忆也做成token，等于和眼前画面用**同一种语言**思考
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月12日 · 1分钟追上AI圈
+  big: 苹果动手<br><em>告了OpenAI</em>
+  rows:
+    - "苹果指控 **OpenAI高层** 偷机密"
+    - "Musk服软 承诺 **不断供Claude**"
+    - "**265亿美元** 史上最大外企IPO"
+    - "机器人视频底座 **全开源**"
+    - "机器人记忆 **塞进模型脑内**"
+  date: "@AI Briefcast · 7/12"

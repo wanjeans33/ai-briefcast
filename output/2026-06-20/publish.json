@@ -1,0 +1,23 @@
+{
+  "date": "2026-06-20",
+  "title": "白宫下令，切断最强Claude的韩国客户",
+  "title_len": 20,
+  "body": "今天 AI 圈 5 件大事，1 分钟看完。\n\n一、Anthropic 刚在首尔挂牌扩张，白宫同周就令它撤销韩国电信巨头 SK Telecom 对最强模型 Claude Mythos 的访问权，理由涉华，形式是出口管制令。\n二、中国的 Z.ai 用最宽松的 MIT 许可开源了 GLM-5.2，七千五百三十亿参数，被指可能是目前最强的纯文本开源权重模型。\n三、Adobe 把对话式 AI 助手装进 Photoshop、Premiere 等全线产品，一句话就能替你改图，对话框正在变成创意软件的默认入口。\n四、LoopCoder-v2 发现，循环架构加深计算只能加两层，循环两次编程能力大涨，三次以上反而退化。\n五、ZPPO 把老师放进提示而非梯度来教小模型，四个规模都超过蒸馏，模型越小收益越大。\n\n每天一分钟，AI 新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans",
+  "tags": [
+    "#人工智能",
+    "#AI",
+    "#AI日报",
+    "#每日AI",
+    "#AI资讯",
+    "#Anthropic",
+    "#Claude",
+    "#开源大模型",
+    "#柿子树下的猫",
+    "#通勤干货"
+  ],
+  "content": "今天 AI 圈 5 件大事，1 分钟看完。\n\n一、Anthropic 刚在首尔挂牌扩张，白宫同周就令它撤销韩国电信巨头 SK Telecom 对最强模型 Claude Mythos 的访问权，理由涉华，形式是出口管制令。\n二、中国的 Z.ai 用最宽松的 MIT 许可开源了 GLM-5.2，七千五百三十亿参数，被指可能是目前最强的纯文本开源权重模型。\n三、Adobe 把对话式 AI 助手装进 Photoshop、Premiere 等全线产品，一句话就能替你改图，对话框正在变成创意软件的默认入口。\n四、LoopCoder-v2 发现，循环架构加深计算只能加两层，循环两次编程能力大涨，三次以上反而退化。\n五、ZPPO 把老师放进提示而非梯度来教小模型，四个规模都超过蒸馏，模型越小收益越大。\n\n每天一分钟，AI 新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans\n\n#人工智能 #AI #AI日报 #每日AI #AI资讯 #Anthropic #Claude #开源大模型 #柿子树下的猫 #通勤干货",
+  "video": "E:\\Github_project\\ai-briefcast\\output\\2026-06-20\\video\\xhs-2026-06-20-spacex-sub.mp4",
+  "cover": "E:\\Github_project\\ai-briefcast\\output\\2026-06-20\\cover\\cover-2026-06-20-spacex.png",
+  "visibility": "self",
+  "schedule_at": null
+}
