@@ -156,7 +156,7 @@ def main():
         os.environ["VOLC_SPEECH_RATE"] = str(ep.get("rate", 36))
         spk = os.getenv("VOLC_SPEAKER2") or os.getenv("VOLC_SPEAKER")
         log = rd.Logger(REPO / "logs" / f"run-{DATE}-episode.log")
-        seg_durs = rd.synth_single_synced(segs, str(AUDIO), log, spk)
+        seg_durs = rd.synth_single_synced(segs, AUDIO, log, spk)
         log.close()
         if not seg_durs:
             die("TTS 合成失败")

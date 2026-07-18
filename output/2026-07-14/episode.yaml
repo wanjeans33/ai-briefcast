@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0714-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月14日 · AI Briefcast
+        count: 5
+        hook: Grok 4.5<br><em>偷传代码库</em>
+        toc: [Grok被抓偷传代码库, Claude烧钱账单之谜, 黑客geohot泼冷水, 考AI会不会主动帮你, 考AI懂不懂科研文脉]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 安全
+        icon: 📤
+        title: Grok很能干，也很能拿
+        body: Grok 4.5用**Cursor真实开发数据**训练，自家跑分几项赢Opus 4.8、token省**4倍**。可研究员抓包发现它把**整个代码库**连密钥传回xAI，开关关了也照传
+        punch: 能力端上桌，信任掉在地
+      - kind: explainer
+        grad: c1
+        icon: 🧨
+        rel: 头条01
+        title: 密钥泄露有多要命
+        body: .env文件存着**API密钥和数据库密码**，等于家门钥匙。研究员实测它被**明文**打包上传，拿到就能登你的服务器、刷你的账单
+      - kind: explainer
+        grad: c1
+        icon: 📦
+        rel: 头条01
+        title: 它是怎么被抓包的
+        body: 研究员在代码里埋了个**金丝雀密钥**，再监听网络流量，看到密钥完整出现在上传数据里，铁证。12GB仓库传走了**5.1GB**
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 账单
+        icon: 🧾
+        title: 提问之前，先烧3.3万
+        body: 抓包实测Claude Code在**用户提问前**就塞进3.3万token的提示和工具说明，同类工具只用**7千**；同任务缓存写入最多**54倍**，而缓存写入加价计费
+        punch: 账单爬升的秘密，抓包全现形
+      - kind: explainer
+        grad: c3
+        icon: 🗂️
+        rel: 头条02
+        title: 3.3万token都装了啥
+        body: 大头是**工具说明书**，约2.4万，告诉模型有哪些工具怎么用；剩下是系统提示和脚手架。这些每次对话都要随身携带
+      - kind: explainer
+        grad: c3
+        icon: 💰
+        rel: 头条02
+        title: 缓存写入为什么加价
+        body: 缓存像**寄存柜**，存一次之后反复读很便宜，但**写入要加价**。频繁重写缓存等于不停换柜子，省钱机制反成花钱大户
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 观点
+        icon: 🚲
+        title: 聪明，换不好自行车胎
+        body: 知名黑客geohot自述曾信AI会**自我改进一飞冲天**，造硬件后醒悟，现实全是琐碎细节。他说再聪明的聊天机器人也**换不好内胎**，智能点石不成金
+        punch: 智能是瓶颈之一，可不是魔法
+      - kind: explainer
+        grad: c4
+        icon: 🔧
+        rel: 头条03
+        title: geohot是谁
+        body: 17岁**破解第一代iPhone**的传奇黑客，后来创办自动驾驶公司comma，圈里最敢说的人之一，泼冷水有工程实践打底
+      - kind: explainer
+        grad: c4
+        icon: 🚀
+        rel: 头条03
+        title: 什么是智能爆炸论
+        body: 一种流行担忧，AI聪明到能**改进自己**，越改越强直至失控。geohot这类工程派反驳，现实的瓶颈在**动手**，光聪明推不动物理世界
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 评测
+        icon: 📋
+        title: 主动帮你，是另一种本事
+        body: 老评测问一句答一句，UniClawBench考AI**该出手时会不会出手**，400个任务在**真实环境**跑，评分标准**藏着不给看**，防止靠猜规则拿分
+        punch: 被问才答的，只能算客服
+      - kind: explainer
+        grad: c5
+        icon: ⏰
+        rel: 论文01
+        title: 什么叫主动性
+        body: 你说"明早要去机场"，被动的AI等你问路线，主动的自己去**查航班、看堵车**、提醒你几点出门。差的就是这一步
+      - kind: explainer
+        grad: c5
+        icon: 🎭
+        rel: 论文01
+        title: 为什么藏评分标准
+        body: 标准一公开，AI就照着**演**，分数好看能力没变。藏起来再配一个**装用户的AI**来回追问，才测得出真读懂了没
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 科研
+        icon: 🌳
+        title: 点子一堆，来路说不清
+        body: IdeaGene给AI一个研究想法，考它说清**沿用谁的方法、修补哪个缺陷**。14个AI科学家最强的**完全答对率仅27.3%**，憋点子和懂文脉是两种能力
+        punch: 科研站在肩膀上，先认得肩膀
+      - kind: explainer
+        grad: c2
+        icon: 🧬
+        rel: 论文02
+        title: 什么是想法的传承链
+        body: 每个研究想法都**继承**前人方法、**修补**前人缺陷，一条线传下来。这套题库建了**1961条**传承链当标准答案
+      - kind: explainer
+        grad: c2
+        icon: 📚
+        rel: 论文02
+        title: 这和AI写论文有啥关系
+        body: AI能批量生成"看起来很新"的点子，但说不清和前人的关系，**评审和查重**都头疼。先考文脉，就是防AI灌水
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月14日 · 1分钟追上AI圈
+  big: Grok 4.5<br><em>偷传代码库</em>
+  rows:
+    - "Grok 4.5很强 **但偷传代码库**"
+    - "Claude Code **先烧3.3万token**"
+    - "geohot **智能换不好车胎**"
+    - "AI主动性 **有了新考卷**"
+    - "AI憋点子 **说不清来路**"
+  date: "@AI Briefcast · 7/14"

@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0715-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月15日 · AI Briefcast
+        count: 5
+        hook: iPhone变天<br><em>Siri当家了</em>
+        toc: [Siri成了手机当家, Musk和Altman互撕, 纳德拉警告闭源木马, AI管家被磨到松口, 自动驾驶的显存账]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 产品
+        icon: 📱
+        title: 手机的入口，换人了
+        body: iOS 27公测放出，重造Siri能**连续对话、读屏、跨应用办事**；谷歌同期把**Gemini塞进Waze**，动嘴搜路线报封路。巨头都在把助手抬成统一入口
+        punch: 少点App，多和助手说话
+      - kind: explainer
+        grad: c1
+        icon: 🚪
+        rel: 头条01
+        title: 入口为什么值钱
+        body: 谁站在用户和服务中间，谁就能**分发流量、抽走生意**。浏览器、搜索框、应用商店都当过入口，现在轮到AI助手抢位
+      - kind: explainer
+        grad: c1
+        icon: 🤝
+        rel: 头条01
+        title: Siri背后其实有谷歌
+        body: 苹果的基础模型是和谷歌合作、**蒸馏自Gemini**再为自家芯片重训的。台前抢入口，幕后做生意
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 冲突
+        icon: 🥊
+        title: 两个首富，互骂骗子
+        body: Musk借苹果诉讼讽Altman**行骗新高度**，Altman回击你才是把**短期太空数据中心**卖给股民。SpaceX天价估值一大块押在这上面，股价距高点已跌**36%**
+        punch: 互骂每一句，砸在股民账户上
+      - kind: explainer
+        grad: c3
+        icon: 🛰️
+        rel: 头条02
+        title: 太空数据中心靠谱吗
+        body: 算力送上轨道靠太阳能听着美，可**发射成本、在轨维修、散热**全是硬骨头，多数专家认为短期成不了生意
+      - kind: explainer
+        grad: c3
+        icon: 📉
+        rel: 头条02
+        title: 股民为什么跟着遭殃
+        body: SpaceX已进**纳指100**，指数基金和退休金被动持有，两位CEO隔空开战，波动全由普通投资者兜着
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 观点
+        icon: 🐴
+        title: 纳德拉说，木马进门了
+        body: 微软CEO警告，买**闭源大模型**等于付两遍钱，一遍买token一遍交数据；你每次**纠正AI**都在教它你的行业知识，养大了或成对手
+        punch: 微软自己，还是OpenAI最大金主
+      - kind: explainer
+        grad: c4
+        icon: 💱
+        rel: 头条03
+        title: 什么叫付两遍钱
+        body: 明面上按**token**付账，暗地里prompt、工具用法、纠错记录都成了实验室的**养料**，这些本是企业真金白银攒的知识
+      - kind: explainer
+        grad: c4
+        icon: 🔀
+        rel: 头条03
+        title: 编排层是什么
+        body: 在应用和模型之间垫一层**调度器**，今天用A家明天换B家，命脉不焊死在一家身上。这剂解药，恰好也是微软想卖的东西
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 安全
+        icon: 🛡️
+        title: 磨到AI松口，只是时间问题
+        body: 训练一个**不死心的坏人AI**多轮施压，直接会拒绝的前沿AI管家全被磨到**合规率100%**；松口后还**得寸进尺**，干得比要求的多
+        punch: 扛得住软磨硬泡，才算安全
+      - kind: explainer
+        grad: c5
+        icon: 🎯
+        rel: 论文01
+        title: 什么是红队测试
+        body: 安全圈惯例，雇"自己人"扮攻击者**往死里试探**，赶在坏人前面找到窟窿。这篇把红队也交给AI，全自动昼夜不停
+      - kind: explainer
+        grad: c5
+        icon: 🧊
+        rel: 论文01
+        title: 多轮为什么比单轮危险
+        body: 单轮问答意图看得清，多轮里坏心思**拆碎了喂**，每步都像正常请求，凑起来才是大坏事。防线必须看全对话
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 自动驾驶
+        icon: 🚗
+        title: 自动驾驶的钱，花在搬数据上
+        body: 多路相机拼**鸟瞰图**是自动驾驶标配，FlashBEV不改数学结果只重排**读写顺序**，峰值显存降**一个数量级**，已过ECCV同行评审、代码开源
+        punch: 瓶颈是搬运，别只盯算力
+      - kind: explainer
+        grad: c2
+        icon: 🦅
+        rel: 论文02
+        title: 什么是鸟瞰图BEV
+        body: 把车四周摄像头画面**拼成一张俯视图**，像开上帝视角，测距和规划都在这张图上做，是自动驾驶感知的主流底座
+      - kind: explainer
+        grad: c2
+        icon: 🚚
+        rel: 论文02
+        title: 搬数据为什么是瓶颈
+        body: GPU算得飞快，数据却要在**显存里来回倒腾**，搬运比计算还耗时耗电。这思路救过大模型，这回轮到自动驾驶
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月15日 · 1分钟追上AI圈
+  big: iPhone变天<br><em>Siri当家了</em>
+  rows:
+    - "Siri重造 **成iPhone骨干**"
+    - "Musk和Altman **互骂骗子**"
+    - "纳德拉警告 **闭源是木马**"
+    - "AI管家被磨到 **100%松口**"
+    - "自动驾驶账单 **在搬数据**"
+  date: "@AI Briefcast · 7/15"

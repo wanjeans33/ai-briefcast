@@ -1,0 +1,74 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.26,0:00:01.84,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.28,0:00:03.98,Default,,0,0,0,,先说OpenAI的第一件硬件曝光了
+Dialogue: 0,0:00:03.98,0:00:04.86,Default,,0,0,0,,彭博社报道
+Dialogue: 0,0:00:04.86,0:00:06.42,Default,,0,0,0,,它是一台没有屏幕的智能音箱
+Dialogue: 0,0:00:06.42,0:00:08.32,Default,,0,0,0,,带摄像头和传感器感知环境
+Dialogue: 0,0:00:08.32,0:00:10.22,Default,,0,0,0,,机械部件还能自己动，显得像个活物
+Dialogue: 0,0:00:10.22,0:00:12.58,Default,,0,0,0,,它管智能家电、放音乐、替你回消息
+Dialogue: 0,0:00:12.58,0:00:14.38,Default,,0,0,0,,还会读你的邮件，越用越懂你
+Dialogue: 0,0:00:14.38,0:00:16.16,Default,,0,0,0,,操刀的正是那批前苹果工程师
+Dialogue: 0,0:00:16.16,0:00:18.04,Default,,0,0,0,,苹果为这事刚把OpenAI告上法庭
+Dialogue: 0,0:00:18.04,0:00:19.70,Default,,0,0,0,,预计先亮相，明年开卖
+Dialogue: 0,0:00:19.70,0:00:20.80,Default,,0,0,0,,定价两三百美元
+Dialogue: 0,0:00:20.80,0:00:22.96,Default,,0,0,0,,它想住进你家，先得回答谁在看着你
+Dialogue: 0,0:00:22.96,0:00:25.08,Default,,0,0,0,,Claude这边惹恼了一群程序员
+Dialogue: 0,0:00:25.08,0:00:27.76,Default,,0,0,0,,明星工具Bun的作者用一批并行的Claude
+Dialogue: 0,0:00:27.76,0:00:29.66,Default,,0,0,0,,十一天把几百万行代码从Zig语言重写成
+Dialogue: 0,0:00:29.66,0:00:30.16,Default,,0,0,0,,Rust
+Dialogue: 0,0:00:30.16,0:00:31.68,Default,,0,0,0,,Anthropic当成大捷宣传
+Dialogue: 0,0:00:31.68,0:00:32.98,Default,,0,0,0,,Zig的作者发文开炮
+Dialogue: 0,0:00:32.98,0:00:34.46,Default,,0,0,0,,说这堆代码没经过人审查
+Dialogue: 0,0:00:34.46,0:00:35.86,Default,,0,0,0,,宣传里讲做了模糊测试
+Dialogue: 0,0:00:35.86,0:00:37.48,Default,,0,0,0,,团队自己在会上承认没做
+Dialogue: 0,0:00:37.48,0:00:38.66,Default,,0,0,0,,风波把积怨点着了
+Dialogue: 0,0:00:38.66,0:00:40.44,Default,,0,0,0,,有开发者受不了它满嘴口头禅
+Dialogue: 0,0:00:40.44,0:00:41.90,Default,,0,0,0,,写脚本把那句你说得完全对
+Dialogue: 0,0:00:41.90,0:00:43.70,Default,,0,0,0,,自动换成我是个彻头彻尾的小丑
+Dialogue: 0,0:00:43.70,0:00:44.90,Default,,0,0,0,,教程也冲上热榜
+Dialogue: 0,0:00:44.90,0:00:47.28,Default,,0,0,0,,谷歌DeepMind的老板Hassabis呼吁给AI装
+Dialogue: 0,0:00:47.28,0:00:47.86,Default,,0,0,0,,刹车
+Dialogue: 0,0:00:47.86,0:00:49.74,Default,,0,0,0,,他主张美国牵头建全球监管机构
+Dialogue: 0,0:00:49.74,0:00:51.14,Default,,0,0,0,,行业出钱、专家坐镇
+Dialogue: 0,0:00:51.14,0:00:53.10,Default,,0,0,0,,前沿模型发布前先送测网络攻击
+Dialogue: 0,0:00:53.10,0:00:55.52,Default,,0,0,0,,生物滥用这些危险能力，真危险就叫停
+Dialogue: 0,0:00:55.52,0:00:56.68,Default,,0,0,0,,他警告再过一年半
+Dialogue: 0,0:00:56.68,0:00:58.24,Default,,0,0,0,,开源模型可能带上更危险的能力
+Dialogue: 0,0:00:58.24,0:00:59.20,Default,,0,0,0,,谁都管不住
+Dialogue: 0,0:00:59.20,0:00:59.92,Default,,0,0,0,,讽刺的是
+Dialogue: 0,0:00:59.92,0:01:01.74,Default,,0,0,0,,美国政府部门自己用AI改政策
+Dialogue: 0,0:01:01.74,0:01:04.14,Default,,0,0,0,,信息公开申请拖一年多不回，吃了官司
+Dialogue: 0,0:01:04.14,0:01:05.76,Default,,0,0,0,,管别人容易，管自己难
+Dialogue: 0,0:01:05.76,0:01:07.62,Default,,0,0,0,,论文这边第一篇给世界模型搬家
+Dialogue: 0,0:01:07.62,0:01:08.98,Default,,0,0,0,,能实时交互的AI世界
+Dialogue: 0,0:01:08.98,0:01:11.36,Default,,0,0,0,,运行状态好几个GB，常驻一张GPU
+Dialogue: 0,0:01:11.36,0:01:13.42,Default,,0,0,0,,每步几乎全量重写，压缩会走样
+Dialogue: 0,0:01:13.42,0:01:15.44,Default,,0,0,0,,重算来不及，这张卡就被钉死了
+Dialogue: 0,0:01:15.44,0:01:16.48,Default,,0,0,0,,哈佛这篇不压缩不重算
+Dialogue: 0,0:01:16.62,0:01:18.74,Default,,0,0,0,,把状态整块搬走，保证每个比特都一样
+Dialogue: 0,0:01:19.02,0:01:20.32,Default,,0,0,0,,同机搬一次不到二十毫秒
+Dialogue: 0,0:01:20.58,0:01:21.52,Default,,0,0,0,,比存盘再加载快一百倍
+Dialogue: 0,0:01:21.52,0:01:23.98,Default,,0,0,0,,模型能搬家，机房才能像云一样弹性用
+Dialogue: 0,0:01:23.98,0:01:26.22,Default,,0,0,0,,另一篇把视频变清晰塞进了小盒子
+Dialogue: 0,0:01:26.22,0:01:28.20,Default,,0,0,0,,主流的视频超分靠大模型堆画质
+Dialogue: 0,0:01:28.20,0:01:29.14,Default,,0,0,0,,小设备跑不动
+Dialogue: 0,0:01:29.14,0:01:30.96,Default,,0,0,0,,这篇反着来，砍掉笨重组件
+Dialogue: 0,0:01:30.96,0:01:32.28,Default,,0,0,0,,只留最普通的卷积结构
+Dialogue: 0,0:01:32.28,0:01:33.86,Default,,0,0,0,,训练时让它自己学会对齐画面
+Dialogue: 0,0:01:33.86,0:01:34.88,Default,,0,0,0,,六十多万个参数
+Dialogue: 0,0:01:34.88,0:01:36.86,Default,,0,0,0,,在二十五瓦的巴掌大小板上实时跑
+Dialogue: 0,0:01:36.86,0:01:39.10,Default,,0,0,0,,画质让一小步，监控和直播真能用上
+Dialogue: 0,0:01:39.10,0:01:41.10,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:41.10,0:01:41.88,Default,,0,0,0,,我们明天见

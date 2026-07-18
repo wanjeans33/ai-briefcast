@@ -1,0 +1,135 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0717-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月17日 · AI Briefcast
+        count: 5
+        hook: 国产最大模型<br><em>Kimi K3来了</em>
+        toc: [Kimi K3最大开源模型, 苹果AI入华接千问, Claude记忆被撬开, AI科学家进了医院, 便宜机器人的老毛病]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 模型
+        icon: 🚀
+        title: Kimi K3，最大的那个
+        body: 月之暗面新旗舰**2.8万亿参数**，官方称迄今最大开源模型，一口气读**100万token**；自家跑分整体只输给Claude和OpenAI最强的一点，输出每百万**15美元**只要对手零头
+        punch: 参数最大的那个，价格只要零头
+      - kind: explainer
+        grad: c1
+        icon: 🌙
+        rel: 头条01
+        title: 月之暗面什么来头
+        body: 中国大模型创业公司，产品叫**Kimi**，主打长文本。上一代K2开源后口碑好，新一轮融资估值传**315亿美元**
+      - kind: explainer
+        grad: c1
+        icon: 🔓
+        rel: 头条01
+        title: 开源模型意味着什么
+        body: 权重公开，谁都能下载下来自己部署、按需改。数据不必交给厂商，也不怕对方涨价断供，这是开源最实在的价值
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 市场
+        icon: 🍎
+        title: 苹果AI入华，靠阿里
+        body: 网信办批准Apple Intelligence上线，底层接**阿里通义千问**，手机平板电脑通吃。这事传了快一年，中国用户比别处**晚了近两年**
+        punch: 最爱自研的苹果，也得找本地伙伴
+      - kind: explainer
+        grad: c3
+        icon: 🛃
+        rel: 头条02
+        title: 为什么必须找本地伙伴
+        body: 中国要求生成式AI服务**备案过审**，数据存境内、内容合规。海外模型难独立满足，接本地大厂是通行做法
+      - kind: explainer
+        grad: c3
+        icon: 🏆
+        rel: 头条02
+        title: 千问凭什么被选中
+        body: 阿里的**开源**大模型家族，中文和合规都为本地打磨过，全球下载量常年居开源前列。苹果是第7家拿到端侧AI批文的
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 安全
+        icon: 🕵️
+        title: 问句咖啡，隐私就飞了
+        body: 研究者演示，用户只问了个**咖啡问题**，Claude就把姓名雇主连**推断出的家乡**逐字符发给攻击者，界面无提示。Anthropic**已修复**，禁止跟随外部页面链接
+        punch: 越掏心窝，泄起来越狠
+      - kind: explainer
+        grad: c4
+        icon: 🧠
+        rel: 头条03
+        title: Claude的记忆存了啥
+        body: 把你的历史对话**每日浓缩**成个人画像，新会话自动带上。工作机密、私人烦恼日积月累，密度堪比密码管理器
+      - kind: explainer
+        grad: c4
+        icon: 🎣
+        rel: 头条03
+        title: 攻击者怎么遥控它
+        body: 把指令**藏在网页里**，助手读到就照办，用访问哪个链接当暗号，一次一个字符把秘密拼出来。已被封的正是这条路
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 科研
+        icon: 🏥
+        title: AI科学家，进得了医院吗
+        body: 难点是病人数据**不能出门**。英伟达这套配上权限和全程留痕，只放汇总结果出去，在防火墙内跑**28.6万人**基因数据，找出高血压已知位点
+        punch: 靠规矩进门，不靠更聪明
+      - kind: explainer
+        grad: c5
+        icon: 🧬
+        rel: 论文01
+        title: GWAS是什么
+        body: 拿几十万人的**基因和病历**对照着找，哪段基因和高血压之类的病相关。样本越多越准，所以数据出不了门就没法做
+      - kind: explainer
+        grad: c5
+        icon: 🙋
+        rel: 论文01
+        title: 第一版为什么错了
+        body: AI把**高血压的判定标准**定偏了，人类专家审出来、改完才复现出公认位点。全自动的科研闭环，仍卡在人这一环
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 机器人
+        icon: 🦾
+        title: 便宜机器臂，为啥总跑偏
+        body: 教科书说力矩和电流成正比，真机一**快速变向**就失灵，摩擦发热齿轮间隙全捣乱。MIT不用公式，让模型直接学电机脾气，**500美元**到**3万美元**的臂都验过
+        punch: 真机的脾气，公式写不全
+      - kind: explainer
+        grad: c2
+        icon: 🔌
+        rel: 论文02
+        title: 舵机是机器人的关节
+        body: 让机械臂动起来的**电机**，几百块到几万块都有。便宜的误差大，仿真里练得好、真机就翻车，这道坎叫仿真到现实
+      - kind: explainer
+        grad: c2
+        icon: 🤲
+        rel: 论文02
+        title: 不装传感器也知道碰到啥
+        body: 靠电机**吃力的变化**反推外面挡了什么，省掉昂贵的力传感器。便宜机械臂想安全干活，这招很实在
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月17日 · 1分钟追上AI圈
+  big: 国产最大模型<br><em>Kimi K3来了</em>
+  rows:
+    - "Kimi K3 **2.8万亿参数**"
+    - "苹果AI入华 **接阿里千问**"
+    - "问句咖啡 **Claude泄了隐私**"
+    - "AI科学家 **进了医院防火墙**"
+    - "便宜机器臂 **为啥总跑偏**"
+  date: "@AI Briefcast · 7/17"

@@ -1,0 +1,74 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.68,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:01.68,0:00:03.50,Default,,0,0,0,,先说AI助手开始能替你登录了
+Dialogue: 0,0:00:03.50,0:00:05.36,Default,,0,0,0,,1Password给Claude做了个集成
+Dialogue: 0,0:00:05.36,0:00:06.98,Default,,0,0,0,,你授权之后，它就能替你登录网站
+Dialogue: 0,0:00:06.98,0:00:08.92,Default,,0,0,0,,订机票、管账户，中途不用手动输密码
+Dialogue: 0,0:00:08.92,0:00:11.24,Default,,0,0,0,,要紧的是Claude自始至终看不到你的密码
+Dialogue: 0,0:00:11.24,0:00:13.19,Default,,0,0,0,,指纹确认后由1Password直接把
+Dialogue: 0,0:00:13.19,0:00:13.59,Default,,0,0,0,,凭据填进网页
+Dialogue: 0,0:00:13.59,0:00:15.18,Default,,0,0,0,,密码不进模型也不进它的记忆
+Dialogue: 0,0:00:15.18,0:00:17.02,Default,,0,0,0,,谷歌也在搜索里放了个类似口子
+Dialogue: 0,0:00:17.02,0:00:17.76,Default,,0,0,0,,助手从只会答话
+Dialogue: 0,0:00:17.76,0:00:19.26,Default,,0,0,0,,变成能拿你的身份动账户
+Dialogue: 0,0:00:19.26,0:00:20.24,Default,,0,0,0,,方便和风险一起抬高了
+Dialogue: 0,0:00:20.24,0:00:21.60,Default,,0,0,0,,欧盟对谷歌下了狠手
+Dialogue: 0,0:00:21.60,0:00:22.82,Default,,0,0,0,,它连发两道命令
+Dialogue: 0,0:00:22.82,0:00:24.84,Default,,0,0,0,,逼谷歌把安卓和搜索的关键入口向对手的
+Dialogue: 0,0:00:24.84,0:00:25.58,Default,,0,0,0,,AI助手开放
+Dialogue: 0,0:00:25.58,0:00:26.28,Default,,0,0,0,,还要共享搜索数据
+Dialogue: 0,0:00:26.28,0:00:27.78,Default,,0,0,0,,以前对手想在安卓上触达用户
+Dialogue: 0,0:00:27.78,0:00:29.68,Default,,0,0,0,,绕不开谷歌预装的入口，想让答案更准
+Dialogue: 0,0:00:29.68,0:00:31.12,Default,,0,0,0,,又缺谷歌攒了多年的搜索数据
+Dialogue: 0,0:00:31.12,0:00:32.38,Default,,0,0,0,,这两道坎一开就松了
+Dialogue: 0,0:00:32.38,0:00:33.62,Default,,0,0,0,,谷歌的回应不谈竞争谈安全
+Dialogue: 0,0:00:33.62,0:00:35.10,Default,,0,0,0,,说这些改动会危及用户隐私
+Dialogue: 0,0:00:35.10,0:00:35.88,Default,,0,0,0,,同一批数据
+Dialogue: 0,0:00:35.88,0:00:37.24,Default,,0,0,0,,欧盟看是被垄断的公共资源
+Dialogue: 0,0:00:37.24,0:00:38.18,Default,,0,0,0,,谷歌看是该守的防线
+Dialogue: 0,0:00:38.18,0:00:39.88,Default,,0,0,0,,一个不到十亿参数的小模型
+Dialogue: 0,0:00:39.88,0:00:40.96,Default,,0,0,0,,正面啃起了文档解析
+Dialogue: 0,0:00:40.96,0:00:43.70,Default,,0,0,0,,把一页文档图直接变成排好版的Markdown
+Dialogue: 0,0:00:43.70,0:00:45.76,Default,,0,0,0,,文字公式表格图区全按人眼阅读顺序摆好
+Dialogue: 0,0:00:45.76,0:00:47.28,Default,,0,0,0,,这活儿一向归庞大的视觉模型管
+Dialogue: 0,0:00:47.46,0:00:49.42,Default,,0,0,0,,这个开源小模型端到端拿下
+Dialogue: 0,0:00:49.42,0:00:50.86,Default,,0,0,0,,还在一个老牌榜单上登了顶
+Dialogue: 0,0:00:50.86,0:00:52.56,Default,,0,0,0,,它敢硬碰，是因为真实文档确实难
+Dialogue: 0,0:00:52.56,0:00:54.20,Default,,0,0,0,,真正拉开差距的往往不是字多字少
+Dialogue: 0,0:00:54.20,0:00:54.74,Default,,0,0,0,,是版面复杂
+Dialogue: 0,0:00:54.74,0:00:56.84,Default,,0,0,0,,论文这边第一篇讲怎么让机器人模型又
+Dialogue: 0,0:00:56.84,0:00:57.26,Default,,0,0,0,,省又强
+Dialogue: 0,0:00:57.26,0:00:59.26,Default,,0,0,0,,腾讯放出一个面向物理世界的基础模型
+Dialogue: 0,0:00:59.26,0:01:00.49,Default,,0,0,0,,靠混合专家架构
+Dialogue: 0,0:01:00.49,0:01:01.44,Default,,0,0,0,,每次只激活三十亿参数
+Dialogue: 0,0:01:01.44,0:01:03.76,Default,,0,0,0,,就追平了上一代激活三百二十亿的老模型
+Dialogue: 0,0:01:03.76,0:01:05.62,Default,,0,0,0,,三十八个具身测试里十九个拿到
+Dialogue: 0,0:01:05.62,0:01:06.50,Default,,0,0,0,,同尺寸最好成绩
+Dialogue: 0,0:01:06.50,0:01:14.74,Default,,0,0,0,,省参数是省了
+Dialogue: 0,0:01:14.74,0:01:16.08,Default,,0,0,0,,可到底能不能装进机器人实时跑
+Dialogue: 0,0:01:16.08,0:01:17.92,Default,,0,0,0,,延迟吞吐这些硬指标还得翻全文看
+Dialogue: 0,0:01:17.92,0:01:20.18,Default,,0,0,0,,另一篇戳破了AI评测里一个藏得很深的
+Dialogue: 0,0:01:20.18,0:01:20.58,Default,,0,0,0,,偏差
+Dialogue: 0,0:01:20.58,0:01:21.66,Default,,0,0,0,,给AI做选择题常按答案的
+Dialogue: 0,0:01:21.66,0:01:23.92,Default,,0,0,0,,概率打分,可这个分逐字累加,答案越长扣
+Dialogue: 0,0:01:23.92,0:01:25.26,Default,,0,0,0,,得越狠,长答案天生吃亏
+Dialogue: 0,0:01:25.26,0:01:27.44,Default,,0,0,0,,业界通行的补救是按长度拉平,这篇却发
+Dialogue: 0,0:01:27.44,0:01:29.28,Default,,0,0,0,,现经常矫枉过正,反倒偏向长答案
+Dialogue: 0,0:01:29.28,0:01:30.94,Default,,0,0,0,,作者改用一个带长度先验的算法把
+Dialogue: 0,0:01:30.94,0:01:33.41,Default,,0,0,0,,偏差消掉,还不用额外计算,已被顶会接收
+Dialogue: 0,0:01:33.41,0:01:34.84,Default,,0,0,0,,你算出来的准确率,可能一直被
+Dialogue: 0,0:01:34.84,0:01:36.02,Default,,0,0,0,,答案长短悄悄扭着
+Dialogue: 0,0:01:36.02,0:01:37.46,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:37.46,0:01:38.00,Default,,0,0,0,,我们明天见

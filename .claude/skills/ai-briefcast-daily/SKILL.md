@@ -1,8 +1,8 @@
 ---
 name: ai-briefcast-daily
 description: >
-  在 ai-briefcast 仓库里生成"每日 AI 速览"的小红书成品：竖屏卡点视频（4K，可带片头或无片头+片尾猫图）+
-  3:4 封面 + 标题/话题标签。覆盖抓取(可跨日期混合：某天新闻+另一天论文)→选稿(可出多版让用户挑)→
+  在 ai-briefcast 仓库里生成"每日 AI 速览"的小红书+抖音成品：竖屏卡点视频（4K，可带片头或无片头+片尾猫图）+
+  3:4 竖版封面 + 抖音 4:3 横版封面 + 标题/话题标签 + 章节信息。覆盖抓取(可跨日期混合：某天新闻+另一天论文)→选稿(可出多版让用户挑)→
   固定开场白→分段豆包TTS(克隆音色)→内容卡(标题+加厚正文+金句)+联网查证的科普「信息补充」卡
   (按新闻同色分组)→逐卡精确卡点+片头/片尾→字幕(脚本原文强制对齐烧录)→make_cover 封面→标题/正文/话题标签。
   只要用户提到"做今天/某天/某几天的（AI）播报/视频/小红书/封面/卡片/briefcast/速览/精选"、
@@ -33,6 +33,15 @@ description: >
 - **★ 核查到源头**：每条入选新闻必须 WebFetch 到**原始出处页面**（当事人博客/原报道/研究方页面），
   不许只凭搜索摘要写稿。历次事实事故（$149.25"实付"实为折算、GLM"个人在家自建"、Discord 200 实为 8000+、
   "OpenAI 未回应"已过时）全靠这一步拦下。数字要归因到估算人；对方已回应的指控必须带上回应。
+- **★★ liziran 只当线索源，稿子全部自写（2026-07-17 用户点名，永久）**：liziran 的 digest/brief 只用来
+  发现"今天有什么"，**绝不在它的稿子上改**——它的行文乱且屡出事实错。已抓获的错误：把 HN 评论文标题
+  "Anthropic 放烟雾"安到 Zig 作者头上（7/16）；把 1Password 零暴露架构写反成"Claude 能读取密码"（7/18，
+  官方明确 Claude 全程看不到密码）；Claude 记忆泄露漏写"Anthropic 已修复"（7/17）；"不存在的特权"细节
+  查无实据（7/16）；Kimi K3 参数/开源状态与官方口径打架（7/17）。做法：每条新闻独立 WebSearch+WebFetch
+  拉原始出处，按源头事实自写；纠了聚合站什么错记进当天 CHANGELOG 和文稿 header。
+- **★ 选题先查重（聚合站比我们慢约一天）**：我们做过的新闻常在次日出现在 liziran 头条（Grok 偷传 7/14
+  我们先做、7/15 才上它头条；SK 海力士、苹果诉讼续报同理）。选题前 `grep output/ 主角关键词`，
+  讲过的事件/连续剧一律跳过或只做全新进展；用户说"好像讲过"时先查证再答。
 - **★ 交互收敛为每期 3 次**（2026-07-12 起）：①选题一轮（新闻+论文合并一组 AskUserQuestion）→
   ②审稿 → ③终审（稿子过审后，卡片文案由 Claude 按用户历史偏好直接定稿——内容卡多用观点/悬念驱动、
   数字版只在数字本身是爆点时用；补充卡按"每条 1-2 张、科普不复述"自选——一次性给全套让用户看，改哪张说哪张）。
@@ -65,7 +74,20 @@ description: >
   9. **禁用"不是 X 而是 Y / 而是"句式**（2026-07 起用户反复否掉）：想表达转折/递进就正着说，别用"不是…而是…"绕。
   10. **不报硬日期**（2026-07 起）：未来时间用软说法（"下周""九月中""三到五年"），过去发生的关键日期能省则省，别念一串"某月某日"。
   11. 用户要 3 新闻 + 2 论文就别偷偷扩成 4；选题**逐条核发布日期**（聚合站爱把旧闻当"持续报道"混进当日榜，旧的一律踢）。
-  - 长度：语速 1.25×（rate 36）时，**内容完整清楚优先**，通常落在 ~85–100s；别为压时长把句子砍残（用户接受过 ~99s 的完整版）。
+  12. **★★ 归因一次就够，禁止追加怀疑句（2026-07-17 用户点名，永久生效）**：
+      写了"官方说 / 官方自家跑分 / 据某公司称"就已经把证据等级交代完了，
+      **绝不再补"要提醒的是，跑分都是自家测的，还没人独立复现，权重说了要放也还没放"这类句子**——
+      重复、说教、把稿子拖长。卡片同理：不写"跑分皆自家测"这种重复标注，
+      **不做"为什么说还没人复现"这类专门证伪卡**，金句也不写"要等复现"。
+  13. **★★ 怀疑必须一碗水端平（2026-07-17 用户当场抓出偏见，永久生效）**：
+      同为 E1 厂商自评，对 Kimi/GLM/Qwen 等国产模型和对 Claude/GPT/Gemini **必须用同一套措辞**。
+      **历史事故**：7/17 给 Kimi K3 配了整张「为什么说还没人复现」证伪卡＋正文提醒句＋"第三名要等复现"金句，
+      而 7/13 给 Anthropic 的 Fable 5 配的是「连 Musk 都公开夸它市面最好」吹捧卡、7/11 对 GPT-5.6 的
+      自测数字"省一半的字"一句怀疑没加。**同一件事（厂商自评跑分）不许区别对待**。
+      自查法：把稿里的公司名换成 Anthropic/OpenAI 再读一遍，如果这句话你不会对它们写，就删掉。
+      补充卡也别写成软文——转述名人吹捧（"连某某都夸它最好"）同样禁止，卡片只做中立科普。
+  14. **说 "token" 不说 "字块/字"**（2026-07-14 用户纠正）：稿件和卡片一律用 token 原词。
+  - 长度：语速 1.25×（rate 36）时，**内容完整清楚优先**，通常落在 ~85–110s；别为压时长把句子砍残（用户接受过 ~110s 的完整版）。
 - **交互式选稿/选卡一律走 `AskUserQuestion`（像 plan 的 ask 一样弹选项，别让用户打 "22231" 字符串）**：
   稿子可出 2 版让用户选；内容卡文案「3 选 1」逐卡一个 question；
   **补充卡按新闻逐条给候选池**——每条头条/论文各一个 `multiSelect` question，每条 2–3 个候选，别用一个全局池混选。
@@ -92,6 +114,16 @@ description: >
 - **音色优先：整段一次合成**。分段独立调用克隆音色会在段间（尤其 intro/收尾这种短段）**音色漂移**。
   默认用 `run_daily.synth_single_synced`：整段一次合成（音色全程统一）+ 逐段临时测时等比缩放卡点
   （见步骤 3）。silencedetect 找段落边界在快语速下不可靠，已弃用。
+- **★★ 卡点必须做 whisper 边界校正（2026-07-12 起每期固定步骤）**：分段测时对含较多英文词/数字的段
+  会低估 2~4.4s，导致卡片整体提前、音画错位（7/12 曾提前 4 秒）。make_episode 首跑后**必做**：
+  从 `video/subs.ass`（whisper 强制对齐产物）提取**各段首句 Dialogue 的开始时刻**当真实边界，反推 durs
+  写回 `audio/durs.json`（加 note 字段），再跑一遍 `make_episode.py --date <date>`（复用音频，只重排卡点）。
+  偏差 ≤0.5s 可跳过；校正后抽帧应看到换卡渐变正压在段落起点上。核对/写回模板：
+  ```python
+  # 真实边界 = subs.ass 里各段首句（如 '先说','苹果','论文这边','另一篇','我是柿子树下'）的 Dialogue 开始时刻
+  bounds = [0.0, t1, t2, ..., t6, total]   # total = rd._audio_seconds(mp3)
+  durs = [round(bounds[i+1]-bounds[i],3) for i in range(7)]  # 覆写 durs.json['durs'] + note
+  ```
 - **输出结构**：每天产物归到 **`output/<日期>/{scripts,audio,video,cover,cards}/`**，并写
   **`output/<日期>/CHANGELOG.md`** 记录当天每次调整、MD 版本演化、踩坑与决策（经验沉淀，别只堆 `audio_output`）。
 - **先音频后视频**：用户常要先听音频确认，再出视频——分步做，别一口气跑完。
@@ -139,9 +171,11 @@ open("samples/source-mix.md","w",encoding="utf-8").write(gb.build_source_text(di
 **b. 写稿**（2026-06-23 起：不再 A/B 两版，**直接按上面「★ 文风铁律」写一版定稿**，范本＝`output/2026-06-23/scripts/broadcast-0623-B-changed.md`）。
 写之前**正式走 `ai-news-podcast` 技能的完整流程**（2026-07-09 用户点名要求，敷衍"参照纪律"被否过）：
 读全其 4 份 references、建事实卡、按 `evidence-levels.md` 定 E1-E5 等级、按 `quality-checklist.md` 验收。
-**★ 核查到源头**：每条入选新闻 WebFetch 原始出处页面，不许只凭搜索摘要写稿（见关键约定）。
+**★ 核查到源头 + liziran 只当线索源**：每条入选新闻 WebFetch 原始出处页面按源头自写，不在 liziran
+稿上改、不凭搜索摘要写（见关键约定★★，含历史纠错案例）；多源数字打架时取当事方官方口径并在 header 记录取舍。
 **只借这套事实核验和证据分级，不套用它的输出模板、时间戳或"换句话说"式口播腔**——语言仍按本技能的
-★文风铁律写（大白话、正常语序、禁数数过场、去冒号）。
+★文风铁律写（大白话、正常语序、禁数数过场、去冒号；铁律 12/13：归因一次就够、怀疑一碗水端平，
+交稿前做"换公司名"自查）。
 存成 `output/<date>/scripts/broadcast-<date>-B-changed.md`，**写完立刻数字数（≤820），超了先删**，
 再给用户审、按批注改到满意（用户常会亲自改这份，它就是唯一源，别覆盖）。每段一空行分隔（= 一个音频段 = 一组卡）。
 开场固定 `一分钟带你了解AI圈的新鲜事。`，收尾只留 `我是柿子树下的猫wanjeans，我们明天见。`。
@@ -169,7 +203,14 @@ PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_episode.py --date <date>
 `--force-audio` 才重合成)→渲染→出片(+XFADE 逐卡补偿、猫头片尾 circle_photo(photo,760)+center=(1080,0.24H))→
 字幕(whisper 强制对齐)→ffprobe 断言(2160×3840、时长=旁白+1s±0.8)→抽 5 帧到 `video/qa/`→卡片归档→
 3:4 封面→publish.json。**QA 断言任一失败即中止，不会产出坏片**。
-- 跑完读 `video/qa/` 抽帧确认画面（封面钩子、高亮块、字幕落位、CTA 猫头），再交付用户。
+- **首跑后固定两步（2026-07-12 起）**：① whisper 边界校正卡点后重跑（见关键约定★★，复用音频很快）；
+  ② 读 `video/qa/` 抽帧确认画面（封面钩子、高亮块、字幕与卡片同组、CTA 猫头）。
+- **抽帧还要专查折行**：封面 toc、3:4/4:3 封面 rows 里英文词（iPhone/Claude Code/OpenAI首款硬件）占宽
+  是中文近 2 倍，容易折成两行很丑——发现就缩短该行文案重跑（音频复用，1 分钟内出片）。历史修例：
+  "Claude Code天价开销"→"Claude烧钱账单之谜"、"Siri成了iPhone当家"→"Siri成了手机当家"。
+- **重出片后清理 `video/qa/` 里旧时长的残留抽帧**（时长变了帧文件名不同，旧帧会混在一起误导复核）。
+- **用户改稿后的重做流程**：稿改了→`--force-audio` 重配音重出片→whisper 校正再出→caption/章节/publish
+  同步更新；**卡片不动**（用户明说"卡带用原来的"时更是只重卡点）。
 - 音频想单独先给用户听：先跑一次（会合成音频），把 mp3 给用户，确认后不动音频继续。
 - 旧手工路径（逐步骤 `_tmp_*` 脚本）已废弃，仅当 make_episode.py 不能覆盖的特殊需求（如带片头）才回退；
   片头路径见 `references/card-design.md` 与 `build_xhs_video(intro_path=...)`。
@@ -183,6 +224,15 @@ PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_episode.py --date <date>
   `SUB_FONT/SUB_FONTSIZE/SUB_MARGINV`（微软雅黑 82 / MarginV=820），烧录用 cwd 相对路径避开盘符冒号。
 - 3:4 封面＝episode.yaml 的 `cover3x4`（BIG 要爆点钩子，别用"今日N件大事"；ROWS 5 行速览，`**…**` 标红）。
 - 全自动兜底（无补充卡、同日期）：`python scripts/run_daily.py --date <date> --modes concise --video`。
+
+### 6b) 抖音 4:3 横版封面（2026-07-16 起，投抖音必做）
+```
+PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_cover_43.py --date <date>
+```
+读同一份 `episode.yaml` 的 `cover3x4` 数据排成横版双栏（左=品牌+kicker+大字+日期，右=5 行速览），
+出 `cover/cover-<date>-4x3.png`（2880×2160）。左栏大字 96px 约容 5.3em（"OpenAI硬件"级别），
+更长的 hook 会难看地折行——横版可用比竖版更短的措辞。出图后必看一眼：**左栏大字 ≤2 行、右栏 5 行全单行**。
+只改封面文案时不必重跑视频：单独重跑 make_cover_43 + 内联调 make_cover 重出 3:4 即可。
 
 ### 7) 标题 + 正文 + 话题标签
 **标题**（≤20 字，前 8 字定生死，数字+情绪+悬念取二，口语像爆料）。给 2~3 个选项让用户挑。
@@ -204,6 +254,15 @@ PYTHONUTF8=1 PYTHONIOENCODING=utf-8 python scripts/make_episode.py --date <date>
 官方仓库/项目页；查不到编号就给仓库链接，**绝不硬编编号**，也不再用"搜标题可达"兜底。
 ⚠️ caption.md 的 `## 标题` 节首行就是标题本体，别写"- A（选用）：…"选项列表（make_publish 会整行当标题）；
 备选标题放文末单独一节。
+**章节信息（2026-07-17 起，小红书/抖音章节栏用）**：caption.md 末尾加 `## 章节` 节，每行 `MM:SS 标题`
+（标题≈内容卡标题）。时间点取 **whisper 对齐后的真实段起点**（subs.ass 各段首句 Dialogue 时刻，
+和卡点校正用同一组数），不许拍脑袋估。开场白（~2-3s）并入第 1 章——首章必须 00:00 起、相邻章 ≥10s
+是平台规则。`make_publish.py` 会解析该节进 publish.json 的 `chapters` 字段。示例：
+```
+## 章节
+00:00 Kimi K3，国产最大模型
+00:22 苹果AI入华，靠阿里千问
+```
 
 ### 8) 投稿（半自动 · Route B = Claude-in-Chrome 驱动创作者后台）
 **只有浏览器自动化能传自定义 3:4 封面**：社区 `xiaohongshu-mcp` 的 publish 没有封面参数（会用视频首帧，
@@ -218,14 +277,21 @@ python scripts/make_publish.py --date <date>                       # 默认 visi
 python scripts/make_publish.py --date <date> --visibility public
 python scripts/make_publish.py --date <date> --schedule "YYYY-MM-DD HH:MM"
 ```
-出 `output/<date>/publish.json`：`title / body / tags / content（正文+标签）/ video（-sub.mp4 绝对路径）/
-cover（3:4 png 绝对路径）/ visibility / schedule_at`。**标题 >20 字会告警**，投稿前先精简到 ≤20。
+出 `output/<date>/publish.json`：`title / body / tags / content（正文+标签）/ chapters（[{time,title}]）/
+video（-sub.mp4 绝对路径）/ cover（3:4 竖版，已排除 -4x3）/ cover_landscape（4:3 横版，无则 null）/
+visibility / schedule_at`。**标题 >20 字会告警**，投稿前先精简到 ≤20。
+⚠️ 历史 bug（已修勿回退）：曾用 `sorted(glob('*.png'))[0]` 取封面，'-'<'.' 使 `-4x3.png` 排到竖版前面，
+小红书封面被错配成横版——现在竖版/横版分字段，别再改回单字段。
 
 **b. Claude-in-Chrome 填表**（读 publish.json）：导航到 `https://creator.xiaohongshu.com/publish/publish?from=menu`
 → 选「上传视频」传 `video` → 等转码完成 → **设置自定义封面、上传 `cover`**（别用自动截帧）→ 填 `title`（≤20 字）
 → 把 `content` 粘进正文（标签以 `#` 随正文带）→ 设可见性（`self`=仅自己可见 / 或按 `schedule_at` 定时）。
 
 **c. 停在发布键前**：**绝不自动点「发布」**，最终确认交给用户逐条过。
+
+**抖音（2026-07-16 起可选）**：物料齐备——竖屏视频直接可用、封面用 `cover_landscape`（4:3 横版）、
+章节用 `chapters`、话题上限更宽标签可全带。用户要投时同样用 Claude-in-Chrome 驱动
+`creator.douyin.com` 填表，规则同上（先问用户手动还是代填；发布键永远留给用户）。
 
 **约束（已与用户敲定）**：主号 @柿子树下的猫wanjeans；**首条用「仅自己可见」或定时**；
 非官方自动化有封号风险，**低频（一天最多 1 条）、人工过内容**；每次发布动作必须用户确认。
@@ -235,15 +301,18 @@ cover（3:4 png 绝对路径）/ visibility / schedule_at`。**标题 >20 字会
 - `audio/broadcast-<date>-spacex.mp3`（克隆音色，整段合成）+ `audio/durs.json`（每段卡点时长）
 - `video/xhs-<date>-spacex.mp4`（4K 卡点 + 片头/片尾，无字幕基底）
 - `video/xhs-<date>-spacex-sub.mp4`（**带字幕，发布用**）+ `video/subs.ass`（字幕源）
-- `cover/cover-<date>.png`（3:4 封面）
-- `CHANGELOG.md`（当天调整 / MD 版本 / 踩坑 / 决策）
-- `caption.md`（标题 + 正文 + 标签）
-- `publish.json`（投稿数据源：标题/正文/标签 + 视频&封面绝对路径 + 可见性，`make_publish.py` 生成）
+- `cover/cover-<date>.png`（3:4 竖版封面，小红书）+ `cover/cover-<date>-4x3.png`（4:3 横版，抖音）
+- `CHANGELOG.md`（当天调整 / MD 版本 / 纠了聚合站什么错 / 踩坑 / 决策）
+- `caption.md`（标题 + 正文 + 标签 + `## 章节`）
+- `publish.json`（投稿数据源：标题/正文/标签/章节 + 视频&双封面绝对路径 + 可见性，`make_publish.py` 生成）
 
 ## 排错速记
 - **卡片 icon 渲染成空框**：emoji 码位 ≥U+1FA70（Unicode 12+，如 🫥🫓）渲染字体不支持——
   make_episode.py 已内置拦截；手工路径时 icon 只用老码位常见 emoji（💔🍞📮⚖️🎮 这类）。
 - 视频比音频短 ≈ 每卡少 ~1s、收尾被截：裸 `composite()` 的时长忘了逐卡 `+xhs.XFADE`（见步骤 5 ⚠️）。
+- **卡片比声音快几秒 / 音画错位**：分段测时对含英文词的段低估所致（必现级），按★★关键约定用
+  subs.ass whisper 边界修正 durs.json 后复用音频重跑；总时长 QA 过了≠段内对齐没问题。
+- 封面/横版某行折成两行：英文占宽近中文 2 倍，缩短该行文案重出（只重封面不用重视频，见 6b）。
 - DeepSeek 401：先核对 `DEEPSEEK_API_KEY` 尾号（易多打字符）；pi 与 api 后端都受同一 key 影响。
 - 豆包 `NO AUDIO RECEIVED` / 403：偶发或限流，`synth_segmented` 已自动重试；仍失败就等额度恢复。
 - 末字/段末字被吞（快语速更明显）：根因是该字落在句末终止音前被匆匆收尾。修法是让**末字后接逗号**
