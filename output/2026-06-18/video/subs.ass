@@ -1,0 +1,58 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,78,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.04,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.40,0:00:03.30,Default,,0,0,0,,先说一桩豪赌
+Dialogue: 0,0:00:03.30,0:00:04.72,Default,,0,0,0,,上周刚 IPO 套现
+Dialogue: 0,0:00:04.72,0:00:06.46,Default,,0,0,0,,SpaceX 转头就要花六百亿美元
+Dialogue: 0,0:00:06.46,0:00:08.38,Default,,0,0,0,,全用股票买下编程工具 Cursor
+Dialogue: 0,0:00:08.38,0:00:10.33,Default,,0,0,0,,造火箭的为什么要个写代码的 IDE
+Dialogue: 0,0:00:10.33,0:00:12.28,Default,,0,0,0,,官方说是救自家掉队的 AI 部门
+Dialogue: 0,0:00:12.28,0:00:14.72,Default,,0,0,0,,要抢的正是 Cursor 手握的大批企业开发者
+Dialogue: 0,0:00:14.72,0:00:17.58,Default,,0,0,0,,它的账很简单：面对二十六万亿美元的市场
+Dialogue: 0,0:00:17.58,0:00:18.72,Default,,0,0,0,,六百亿只是入场筹码
+Dialogue: 0,0:00:18.72,0:00:19.84,Default,,0,0,0,,格局也在松动
+Dialogue: 0,0:00:19.84,0:00:20.78,Default,,0,0,0,,最新统计里
+Dialogue: 0,0:00:20.78,0:00:23.30,Default,,0,0,0,,ChatGPT 的全球市场份额第一次跌破一半——月活
+Dialogue: 0,0:00:23.30,0:00:24.28,Default,,0,0,0,,仍有十一亿
+Dialogue: 0,0:00:24.28,0:00:27.42,Default,,0,0,0,,稳坐第一，但身后 Gemini 已追到六点六二亿
+Dialogue: 0,0:00:27.42,0:00:29.10,Default,,0,0,0,,Claude 也有两点四五亿
+Dialogue: 0,0:00:29.10,0:00:31.22,Default,,0,0,0,,老大没掉队，可一家独大的局面
+Dialogue: 0,0:00:31.22,0:00:32.70,Default,,0,0,0,,正被两个紧追的对手稀释
+Dialogue: 0,0:00:32.70,0:00:34.50,Default,,0,0,0,,AI 还在渗进最严肃的流程
+Dialogue: 0,0:00:34.50,0:00:35.96,Default,,0,0,0,,美国国防部公开承认
+Dialogue: 0,0:00:35.96,0:00:37.76,Default,,0,0,0,,用生成式 AI 给国会写法定报告
+Dialogue: 0,0:00:37.76,0:00:39.92,Default,,0,0,0,,内部已有一百五十万人在用这类工具
+Dialogue: 0,0:00:39.92,0:00:41.18,Default,,0,0,0,,问题不在能不能写
+Dialogue: 0,0:00:41.18,0:00:44.14,Default,,0,0,0,,而在这份要向国会问责的报告由 AI 起草算谁负责
+Dialogue: 0,0:00:44.14,0:00:46.10,Default,,0,0,0,,——可靠和追责的边界还没人划清
+Dialogue: 0,0:00:46.10,0:00:47.52,Default,,0,0,0,,论文这边有个反差
+Dialogue: 0,0:00:47.52,0:00:50.10,Default,,0,0,0,,牛津把事件预测改造成可强化学习的目标
+Dialogue: 0,0:00:50.10,0:00:52.94,Default,,0,0,0,,给模型配上能查维基修订和新闻摘要的工具
+Dialogue: 0,0:00:52.94,0:00:55.64,Default,,0,0,0,,用 GRPO 微调，把一个十五亿参数的小模型
+Dialogue: 0,0:00:55.64,0:00:58.96,Default,,0,0,0,,训到事件预测超过 Claude Sonnet 3.5
+Dialogue: 0,0:00:58.96,0:01:00.64,Default,,0,0,0,,大模型不一定赢，会用工具
+Dialogue: 0,0:01:00.64,0:01:02.70,Default,,0,0,0,,被对的目标训过的小模型也能反超
+Dialogue: 0,0:01:02.70,0:01:04.36,Default,,0,0,0,,另一篇把矛头指向架构
+Dialogue: 0,0:01:04.36,0:01:07.24,Default,,0,0,0,,MIT 发现 agent 会忘错东西，根因不在 prompt
+Dialogue: 0,0:01:07.24,0:01:09.08,Default,,0,0,0,,而在负责改写、清除记忆的环节里
+Dialogue: 0,0:01:09.08,0:01:10.54,Default,,0,0,0,,大模型被放在哪个位置
+Dialogue: 0,0:01:10.54,0:01:12.32,Default,,0,0,0,,放召回端、写入端各有盲区
+Dialogue: 0,0:01:12.32,0:01:14.10,Default,,0,0,0,,只有挂在记忆真正改动的那一刻
+Dialogue: 0,0:01:14.10,0:01:15.82,Default,,0,0,0,,整体准确率才拉到九成以上
+Dialogue: 0,0:01:15.82,0:01:17.72,Default,,0,0,0,,代价是每次多约两秒延迟
+Dialogue: 0,0:01:17.72,0:01:20.66,Default,,0,0,0,,所以今天几条都在松动一个旧假设：越大、越贵
+Dialogue: 0,0:01:20.66,0:01:21.35,Default,,0,0,0,,就越赢
+Dialogue: 0,0:01:21.35,0:01:24.04,Default,,0,0,0,,六百亿豪赌、跌破一半的份额、逆袭的小模型
+Dialogue: 0,0:01:24.04,0:01:26.48,Default,,0,0,0,,都在说，位置和打法有时比体量更要紧
+Dialogue: 0,0:01:26.48,0:01:28.28,Default,,0,0,0,,我是柿子树下的猫wanjeans，我们明天见
