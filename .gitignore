@@ -20,6 +20,9 @@ key.txt
 # 运行日志
 logs/
 
+# Codex / Superpowers 隔离工作树
+.worktrees/
+
 # Python
 __pycache__/
 *.pyc
