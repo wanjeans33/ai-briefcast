@@ -1,0 +1,71 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.30,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.74,0:00:04.70,Default,,0,0,0,,先说Kimi把自己卖到限购了
+Dialogue: 0,0:00:04.70,0:00:07.08,Default,,0,0,0,,月之暗面的新旗舰K3上线才几天
+Dialogue: 0,0:00:07.08,0:00:08.88,Default,,0,0,0,,用户请求量大幅超出预估
+Dialogue: 0,0:00:08.88,0:00:10.66,Default,,0,0,0,,逼近服务器集群的承载极限
+Dialogue: 0,0:00:10.66,0:00:13.10,Default,,0,0,0,,官方干脆宣布暂停C端新用户订阅
+Dialogue: 0,0:00:13.10,0:00:15.06,Default,,0,0,0,,现有算力全部留给已订阅用户
+Dialogue: 0,0:00:15.06,0:00:16.68,Default,,0,0,0,,等扩容到位再逐步放号
+Dialogue: 0,0:00:16.68,0:00:18.30,Default,,0,0,0,,国产模型上一次挤成这样
+Dialogue: 0,0:00:18.30,0:00:20.38,Default,,0,0,0,,还是DeepSeek爆火那阵
+Dialogue: 0,0:00:20.38,0:00:22.28,Default,,0,0,0,,别人发愁没人用，它发愁人太多
+Dialogue: 0,0:00:22.28,0:00:23.64,Default,,0,0,0,,这是种高级的烦恼
+Dialogue: 0,0:00:23.64,0:00:25.92,Default,,0,0,0,,美国医疗巨头凯撒被自家护士曝光
+Dialogue: 0,0:00:25.92,0:00:27.40,Default,,0,0,0,,用AI管人管过了头
+Dialogue: 0,0:00:27.40,0:00:28.30,Default,,0,0,0,,七名护士向媒体爆料
+Dialogue: 0,0:00:28.30,0:00:30.30,Default,,0,0,0,,接病人电话超过十五分钟就可能被
+Dialogue: 0,0:00:30.30,0:00:30.92,Default,,0,0,0,,叫去谈话
+Dialogue: 0,0:00:30.92,0:00:32.34,Default,,0,0,0,,通话时长算进每月绩效
+Dialogue: 0,0:00:32.34,0:00:34.24,Default,,0,0,0,,还有软件按天预测他们有没有偷懒
+Dialogue: 0,0:00:34.50,0:00:36.82,Default,,0,0,0,,更早还试点过给护士共情和语气打分的AI
+Dialogue: 0,0:00:36.82,0:00:38.92,Default,,0,0,0,,前年底停了，工会担心它随时回来
+Dialogue: 0,0:00:38.92,0:00:40.58,Default,,0,0,0,,正替两万五千名护士谈新合同
+Dialogue: 0,0:00:40.58,0:00:41.48,Default,,0,0,0,,AI就是焦点
+Dialogue: 0,0:00:41.48,0:00:43.46,Default,,0,0,0,,凯撒否认拿通话时长考核护士
+Dialogue: 0,0:00:43.46,0:00:44.86,Default,,0,0,0,,电话那头是惊慌的病人
+Dialogue: 0,0:00:44.86,0:00:46.02,Default,,0,0,0,,护士却得盯着秒表说话
+Dialogue: 0,0:00:46.02,0:00:47.51,Default,,0,0,0,,黑客开始用AI干活
+Dialogue: 0,0:00:47.51,0:00:49.08,Default,,0,0,0,,安全公司想出一招以毒攻毒
+Dialogue: 0,0:00:49.08,0:00:51.52,Default,,0,0,0,,攻击型AI闯进系统会到处翻文件找钥匙
+Dialogue: 0,0:00:51.52,0:00:53.78,Default,,0,0,0,,防守方就在诱饵文件里藏一段特制文字
+Dialogue: 0,0:00:53.78,0:00:55.92,Default,,0,0,0,,AI一读到，自己的安全护栏被触发
+Dialogue: 0,0:00:55.92,0:00:57.76,Default,,0,0,0,,当场拒绝继续，攻击断在半路
+Dialogue: 0,0:00:57.76,0:00:59.11,Default,,0,0,0,,安全公司Tracebit实测
+Dialogue: 0,0:00:59.11,0:01:00.54,Default,,0,0,0,,这招把Claude旗舰驱动的
+Dialogue: 0,0:01:00.54,0:01:01.48,Default,,0,0,0,,攻击成功率砍掉九成
+Dialogue: 0,0:01:01.48,0:01:03.50,Default,,0,0,0,,给AI下套，成了新的防御学问
+Dialogue: 0,0:01:03.50,0:01:05.50,Default,,0,0,0,,论文这边先看AI怎么练长活儿
+Dialogue: 0,0:01:05.50,0:01:08.14,Default,,0,0,0,,现在模型读上下文能到百万token
+Dialogue: 0,0:01:08.14,0:01:10.06,Default,,0,0,0,,可强化学习训练大多停在二十几万
+Dialogue: 0,0:01:10.06,0:01:11.34,Default,,0,0,0,,等于平时看的是长卷子
+Dialogue: 0,0:01:11.34,0:01:12.34,Default,,0,0,0,,练习却只做短题
+Dialogue: 0,0:01:12.34,0:01:13.42,Default,,0,0,0,,LongStraw不加卡
+Dialogue: 0,0:01:13.42,0:01:16.10,Default,,0,0,0,,固定GPU预算就把训练推到两百万token以
+Dialogue: 0,0:01:16.10,0:01:16.56,Default,,0,0,0,,上
+Dialogue: 0,0:01:16.56,0:01:18.84,Default,,0,0,0,,做长任务的AI中间每步都要记住工具返回
+Dialogue: 0,0:01:18.84,0:01:19.36,Default,,0,0,0,,了什么
+Dialogue: 0,0:01:19.36,0:01:21.68,Default,,0,0,0,,这条路补上了训练和使用之间的落差
+Dialogue: 0,0:01:21.68,0:01:23.72,Default,,0,0,0,,另一篇把看视频的AI整套开源了
+Dialogue: 0,0:01:23.72,0:01:25.52,Default,,0,0,0,,VideoChat3只有四十亿参数
+Dialogue: 0,0:01:25.52,0:01:27.34,Default,,0,0,0,,短视频长视频直播流都能理解
+Dialogue: 0,0:01:27.34,0:01:29.16,Default,,0,0,0,,团队说多个测试里赢过了参数更大的
+Dialogue: 0,0:01:29.16,0:01:29.94,Default,,0,0,0,,开源前辈
+Dialogue: 0,0:01:29.94,0:01:31.54,Default,,0,0,0,,更难得的是代码、训练数据
+Dialogue: 0,0:01:31.54,0:01:33.88,Default,,0,0,0,,权重全公开，别人能照着从头复现
+Dialogue: 0,0:01:33.88,0:01:35.68,Default,,0,0,0,,视频理解一直是开源落后闭源最多的地方
+Dialogue: 0,0:01:35.68,0:01:37.02,Default,,0,0,0,,这次差距又被抹掉一块
+Dialogue: 0,0:01:37.40,0:01:38.74,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:38.74,0:01:39.40,Default,,0,0,0,,我们明天见

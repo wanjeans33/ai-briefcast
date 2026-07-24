@@ -1,0 +1,129 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0719-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月19日 · AI Briefcast
+        count: 5
+        hook: 1880亿巨头<br><em>站台国产AI</em>
+        toc: [硅谷巨头实测智谱模型, 脱衣App限期28天下架, 给AI100美元自己拍MV, 注意力压缩看菜下饭, 分割一切塞进手机]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 融资
+        icon: 💰
+        title: 硅谷巨头，站台国产AI
+        body: Databricks新融资估值冲到**1880亿美元**，同时公开说内部实测**智谱GLM 5.2**连写码最难的任务都扛得住，总成本比Anthropic和OpenAI的闭源模型低
+        punch: 便宜够用，就是最硬的投票
+      - kind: explainer
+        grad: c1
+        icon: 📦
+        rel: 头条01
+        title: 什么是开放权重
+        body: 模型权重公开、谁都能下载部署。GLM 5.2用**MIT协议**放出，总参**7530亿**、每次只激活约400亿，HuggingFace上能直接下
+      - kind: explainer
+        grad: c1
+        icon: 🏢
+        rel: 头条01
+        title: Databricks是谁
+        body: 帮大企业管数据和AI的平台公司。这轮约**30亿美元**、Coatue领投，估值几个月从**1340亿**涨到1880亿
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 监管
+        icon: ⚖️
+        title: 一键脱衣App，收到最后通牒
+        body: 旧金山市检察长点名**13款**AI脱衣应用，挂换脸名义上架，限苹果谷歌**28天**答复否则民事处罚。苹果已删3款封号，谷歌称5款全下架
+        punch: 抽成的钱好赚，平台的责任也得认
+      - kind: explainer
+        grad: c3
+        icon: 🎭
+        rel: 头条02
+        title: 什么是Deepfake
+        body: AI把真人脸和身体合成进假照片假视频。加州立法**明知协助**制作非自愿色情深伪即违法，受害者还能直接**民事索赔**
+      - kind: explainer
+        grad: c3
+        icon: 📜
+        rel: 头条02
+        title: 检察长这封函有多大威力
+        body: 它不是判决，是"限期整改否则起诉"的正式警告。不理会就升级成诉讼和法院禁令，大公司一般不硬扛
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 实验
+        icon: 🎬
+        title: 给AI一百美元，自己拍MV
+        body: Claude和GPT各拿一首歌、**6个工具**、花完即停的预算，自己查模型、生成、回看、剪辑，**4轮全部交片**。成片一换镜头就变脸，还踩不上节拍
+        punch: 能交活了，离交好活还有距离
+      - kind: explainer
+        grad: c4
+        icon: 🤖
+        rel: 头条03
+        title: 什么是Agent智能体
+        body: 给大模型配上工具和目标，让它自己规划、执行、检查的一套壳。这次的壳只有6个工具加一条"钱花完就停"，整套代码已**开源**
+      - kind: explainer
+        grad: c4
+        icon: 💸
+        rel: 头条03
+        title: 这支MV花了多少钱
+        body: 表现最好那版，生成画面花**48.6美元**，算上模型自己思考的token，总成本**73.65美元**，人只出了一首歌
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 架构
+        icon: 🔍
+        title: 注意力太贵，学会看菜下饭
+        body: 内容越长注意力开销平方级涨。AVQ只给**被盯得多的**位置配精细表示，冷门位置粗略处理，开销从平方级压到线性级，已被**ECCV 2026**接收
+        punch: 省钱的关键，是知道哪里不能省
+      - kind: explainer
+        grad: c5
+        icon: 📚
+        rel: 论文01
+        title: 什么是向量量化
+        body: 用一小本"代表字典"近似海量数据，像用色卡代替千万种颜色。AVQ的新意是**重要区域多给码**，不重要的少给
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 端侧
+        icon: 📱
+        title: 分割一切，塞进手机
+        body: SAM2圈谁都行但手机跑不动。MobileSAM2用**超图蒸馏**把大模型看视频的经验教给小模型，端侧能跑，同样**ECCV 2026**接收
+        punch: 大模型的本事，正在往口袋里搬
+      - kind: explainer
+        grad: c2
+        icon: 🎓
+        rel: 论文02
+        title: 什么是知识蒸馏
+        body: 大模型当老师、小模型当学生，学生学老师的判断方式，不用从头苦练，模型小几倍还保住大部分本事
+      - kind: explainer
+        grad: c2
+        icon: ✂️
+        rel: 论文02
+        title: SAM是什么
+        body: Meta开源的"分割一切"模型，点一下就把物体抠出来。SAM2扩到**视频**，训练用了约**5.1万条**真实视频
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月19日 · 1分钟追上AI圈
+  big: 1880亿巨头<br><em>站台国产AI</em>
+  rows:
+    - "**1880亿**巨头 实测智谱"
+    - "脱衣App 被令 **28天下架**"
+    - "给AI **100美元** 自己拍MV"
+    - "注意力压缩 学会**看菜下饭**"
+    - "**分割一切** 塞进手机"
+  date: "@AI Briefcast · 7/19"

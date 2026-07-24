@@ -1,0 +1,123 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0720-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月20日 · AI Briefcast
+        count: 5
+        hook: Kimi被买爆<br><em>停售了</em>
+        toc: [Kimi请求爆表暂停订阅, AI给护士掐表打分, 一段文字放倒黑客AI, RL练到200万token, 看视频的AI全套开源]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 国产
+        icon: 🔥
+        title: Kimi被买爆，停售了
+        body: K3上线才几天，请求量**大幅超预估**逼近集群承载极限，官方宣布**暂停C端新订阅**，算力全留给已订阅用户，扩容后再逐步放号
+        punch: 发愁人太多，是种高级的烦恼
+      - kind: explainer
+        grad: c1
+        icon: 🌙
+        rel: 头条01
+        title: Kimi K3是什么
+        body: 月之暗面新旗舰，官方称**2.8万亿**参数史上最大开源模型，上下文100万token，上线几天就把服务器买爆
+      - kind: explainer
+        grad: c1
+        icon: 🐋
+        rel: 头条01
+        title: 上次挤成这样是DeepSeek
+        body: 爆火那阵服务器整天繁忙，还挨了大规模网络攻击，一度**暂停API充值**保老用户，和Kimi这次是同款操作
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 职场
+        icon: ⏱️
+        title: AI盯上了护士的秒表
+        body: 接电话超**15分钟**就可能被约谈，时长算进月度绩效，还有软件按天预测偷懒。给共情语气打分的AI试点已停，工会正替**2.5万**护士谈判
+        punch: 病人要的是耐心，系统要的是快
+      - kind: explainer
+        grad: c3
+        icon: 📞
+        rel: 头条02
+        title: 什么是分诊护士
+        body: 在电话里判断病情轻重缓急、决定要不要跑医院的护士。多聊几分钟可能就是在救命，掐表恰恰掐在刀刃上
+      - kind: explainer
+        grad: c3
+        icon: 📊
+        rel: 头条02
+        title: 什么是算法管理
+        body: 用软件给员工打分排名的管理方式，从外卖骑手到客服再到护士。争议在**指标代替人**做判断，误伤了没处申诉
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 安全
+        icon: 💣
+        title: 一段文字，放倒黑客AI
+        body: 防守方在诱饵文件里藏**特制文字**，攻击型AI读到就触发自身安全护栏，当场罢工。Tracebit实测把Claude旗舰驱动的攻击成功率**砍掉九成**
+        punch: 给AI下套，成了新的防御学问
+      - kind: explainer
+        grad: c4
+        icon: 💉
+        rel: 头条03
+        title: 什么是提示注入
+        body: 把指令藏进AI会读的内容里，AI分不清是谁说的，读到就照办。以前是黑客的攻击手段，这次被反过来当武器
+      - kind: explainer
+        grad: c4
+        icon: 🍯
+        rel: 头条03
+        title: 什么是蜜罐诱饵
+        body: 安全团队故意摆的假钥匙假文件，正常人碰不到，谁碰谁暴露。这次升级了，碰了还会让攻击的AI自己停机
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 训练
+        icon: 📏
+        title: AI练长活，卷子终于够长
+        body: 模型推理能读百万token，强化学习训练却大多停在**25.6万**。LongStraw固定GPU预算把训练推到**200万token以上**，8张H20就能跑
+        punch: 平时看长卷，练习别只做短题
+      - kind: explainer
+        grad: c5
+        icon: 🎴
+        rel: 论文01
+        title: H20是什么
+        body: 英伟达专给中国市场的合规版GPU，核心比旗舰H100少四成。这篇论文用**8张**H20把训练推到210万token，穷配置也能干大活
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 开源
+        icon: 🎥
+        title: 看视频的AI，全套开源
+        body: "**4B**参数通吃短视频、长视频、直播流，团队称多项测试赢过参数更大的开源前辈，代码数据权重**全公开**可复现"
+        punch: 开源和闭源的差距，又抹掉一块
+      - kind: explainer
+        grad: c2
+        icon: 📖
+        rel: 论文02
+        title: 全开源和开源差在哪
+        body: 很多模型只放权重，像只给熟菜不给菜谱。全开源是**代码+数据+权重**三件套都给，别人能从头复现和改进
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月20日 · 1分钟追上AI圈
+  big: Kimi被买爆<br><em>停售了</em>
+  rows:
+    - "**Kimi** 请求爆表 暂停订阅"
+    - "AI给护士 **掐表打分**"
+    - "一段文字 **放倒** 黑客AI"
+    - "RL练到 **200万** token"
+    - "看视频AI **全套开源**"
+  date: "@AI Briefcast · 7/20"

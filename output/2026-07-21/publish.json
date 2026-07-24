@@ -1,0 +1,46 @@
+{
+  "date": "2026-07-21",
+  "title": "Claude服软了，最强模型进套餐",
+  "title_len": 17,
+  "body": "今天AI圈5件事，1分钟看完\n\n一、Anthropic服软了，最强模型Fable 5不撤了，直接进所有Max套餐，Pro只补100美元\n二、Anthropic研究员用Fable 5找到87年悬案雅可比猜想的反例，人人可验算，待数学界核验\n三、AI抢内存，印度最便宜的手机出货暴跌45%，涨价的账单离AI最远的人先付\n四、SEED让AI考完试自己整理错题本，家务模拟成功率最多高45.9个百分点\n五、AI做民调直接问会跑偏，把人群拆细分别问再拼回来反而更准\n\n论文传送门\nSEED：arxiv.org/abs/2607.14777\n宏观谬误：arxiv.org/abs/2607.15277\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans",
+  "tags": [
+    "#人工智能",
+    "#AI",
+    "#AI日报",
+    "#每日AI",
+    "#AI资讯",
+    "#Claude",
+    "#Anthropic",
+    "#大模型",
+    "#柿子树下的猫",
+    "#通勤干货"
+  ],
+  "content": "今天AI圈5件事，1分钟看完\n\n一、Anthropic服软了，最强模型Fable 5不撤了，直接进所有Max套餐，Pro只补100美元\n二、Anthropic研究员用Fable 5找到87年悬案雅可比猜想的反例，人人可验算，待数学界核验\n三、AI抢内存，印度最便宜的手机出货暴跌45%，涨价的账单离AI最远的人先付\n四、SEED让AI考完试自己整理错题本，家务模拟成功率最多高45.9个百分点\n五、AI做民调直接问会跑偏，把人群拆细分别问再拼回来反而更准\n\n论文传送门\nSEED：arxiv.org/abs/2607.14777\n宏观谬误：arxiv.org/abs/2607.15277\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans\n\n#人工智能 #AI #AI日报 #每日AI #AI资讯 #Claude #Anthropic #大模型 #柿子树下的猫 #通勤干货",
+  "chapters": [
+    {
+      "time": "00:00",
+      "title": "Anthropic服软了"
+    },
+    {
+      "time": "00:24",
+      "title": "AI破87年数学悬案"
+    },
+    {
+      "time": "00:47",
+      "title": "AI抢内存手机涨价"
+    },
+    {
+      "time": "01:04",
+      "title": "AI自己整理错题本"
+    },
+    {
+      "time": "01:25",
+      "title": "AI做民调拆开问才准"
+    }
+  ],
+  "video": "E:\\Github_project\\ai-briefcast\\output\\2026-07-21\\video\\xhs-2026-07-21-spacex-sub.mp4",
+  "cover": "E:\\Github_project\\ai-briefcast\\output\\2026-07-21\\cover\\cover-2026-07-21.png",
+  "cover_landscape": "E:\\Github_project\\ai-briefcast\\output\\2026-07-21\\cover\\cover-2026-07-21-4x3.png",
+  "visibility": "self",
+  "schedule_at": null
+}

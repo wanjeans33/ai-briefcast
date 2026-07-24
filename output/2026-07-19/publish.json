@@ -1,0 +1,46 @@
+{
+  "date": "2026-07-19",
+  "title": "1880亿巨头，站台国产AI",
+  "title_len": 14,
+  "body": "今天AI圈5件事，1分钟看完\n\nDatabricks估值冲上1880亿美元，实测智谱GLM写码够用还便宜\n旧金山点名13款一键脱衣App，限苹果谷歌28天内处理\n给Claude和GPT各100美元，AI自己查模型剪片子拍出完整MV\n注意力压缩学会看菜下饭，重要位置精细、冷门位置从粗\n分割一切的SAM2被蒸馏进手机，两篇论文都上了ECCV\n\n论文传送门\nAVQ-Attention：arxiv.org/abs/2607.12789\nMobileSAM2：arxiv.org/abs/2607.12297\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans",
+  "tags": [
+    "#人工智能",
+    "#AI",
+    "#AI日报",
+    "#每日AI",
+    "#AI资讯",
+    "#智谱",
+    "#国产大模型",
+    "#苹果",
+    "#柿子树下的猫",
+    "#通勤干货"
+  ],
+  "content": "今天AI圈5件事，1分钟看完\n\nDatabricks估值冲上1880亿美元，实测智谱GLM写码够用还便宜\n旧金山点名13款一键脱衣App，限苹果谷歌28天内处理\n给Claude和GPT各100美元，AI自己查模型剪片子拍出完整MV\n注意力压缩学会看菜下饭，重要位置精细、冷门位置从粗\n分割一切的SAM2被蒸馏进手机，两篇论文都上了ECCV\n\n论文传送门\nAVQ-Attention：arxiv.org/abs/2607.12789\nMobileSAM2：arxiv.org/abs/2607.12297\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans\n\n#人工智能 #AI #AI日报 #每日AI #AI资讯 #智谱 #国产大模型 #苹果 #柿子树下的猫 #通勤干货",
+  "chapters": [
+    {
+      "time": "00:00",
+      "title": "硅谷巨头，站台国产AI"
+    },
+    {
+      "time": "00:23",
+      "title": "一键脱衣App，最后通牒"
+    },
+    {
+      "time": "00:43",
+      "title": "给AI一百美元，自己拍MV"
+    },
+    {
+      "time": "01:03",
+      "title": "注意力压缩，看菜下饭"
+    },
+    {
+      "time": "01:23",
+      "title": "分割一切，塞进手机"
+    }
+  ],
+  "video": "E:\\Github_project\\ai-briefcast\\output\\2026-07-19\\video\\xhs-2026-07-19-spacex-sub.mp4",
+  "cover": "E:\\Github_project\\ai-briefcast\\output\\2026-07-19\\cover\\cover-2026-07-19.png",
+  "cover_landscape": "E:\\Github_project\\ai-briefcast\\output\\2026-07-19\\cover\\cover-2026-07-19-4x3.png",
+  "visibility": "self",
+  "schedule_at": null
+}

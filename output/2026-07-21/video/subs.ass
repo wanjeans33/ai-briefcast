@@ -1,0 +1,75 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.36,0:00:02.16,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.62,0:00:04.08,Default,,0,0,0,,先说Anthropic服软了
+Dialogue: 0,0:00:04.08,0:00:06.10,Default,,0,0,0,,最强模型Fable 5刚亮相就被
+Dialogue: 0,0:00:06.10,0:00:06.96,Default,,0,0,0,,政府按下暂停键
+Dialogue: 0,0:00:06.96,0:00:09.52,Default,,0,0,0,,回归后又要撤出订阅改按用量卖
+Dialogue: 0,0:00:09.52,0:00:10.84,Default,,0,0,0,,免费期一推再推
+Dialogue: 0,0:00:10.84,0:00:13.34,Default,,0,0,0,,现在改口，Fable 5进所有Max套餐
+Dialogue: 0,0:00:13.34,0:00:14.38,Default,,0,0,0,,能用常规额度的一半
+Dialogue: 0,0:00:14.38,0:00:16.10,Default,,0,0,0,,一百和二百美元的月档直接包含
+Dialogue: 0,0:00:16.10,0:00:17.96,Default,,0,0,0,,二十美元的Pro只补一次性一百美元
+Dialogue: 0,0:00:17.96,0:00:20.30,Default,,0,0,0,,逼它让步的是GPT-5.6和Kimi 3
+Dialogue: 0,0:00:20.30,0:00:21.28,Default,,0,0,0,,有开发者早就问
+Dialogue: 0,0:00:21.28,0:00:23.06,Default,,0,0,0,,套餐连自家最强模型都没有
+Dialogue: 0,0:00:23.06,0:00:24.58,Default,,0,0,0,,凭什么每月收一两百美元
+Dialogue: 0,0:00:24.58,0:00:25.84,Default,,0,0,0,,服软归服软
+Dialogue: 0,0:00:25.84,0:00:27.74,Default,,0,0,0,,Fable 5转头在数学圈立了功
+Dialogue: 0,0:00:27.74,0:00:30.00,Default,,0,0,0,,Anthropic一位研究员是普林斯顿数学博
+Dialogue: 0,0:00:30.00,0:00:30.40,Default,,0,0,0,,士
+Dialogue: 0,0:00:30.40,0:00:32.20,Default,,0,0,0,,用Fable 5找到了悬了八十七年的
+Dialogue: 0,0:00:32.20,0:00:33.12,Default,,0,0,0,,雅可比猜想反例
+Dialogue: 0,0:00:33.12,0:00:36.00,Default,,0,0,0,,猜想说一类多项式变换只要满足某个条件
+Dialogue: 0,0:00:36.00,0:00:37.38,Default,,0,0,0,,就一定能完美还原回去
+Dialogue: 0,0:00:37.38,0:00:39.18,Default,,0,0,0,,Fable 5给出的变换满足条件
+Dialogue: 0,0:00:39.18,0:00:41.02,Default,,0,0,0,,却把三个不同的点变到同一个点
+Dialogue: 0,0:00:41.02,0:00:41.98,Default,,0,0,0,,还原无从谈起
+Dialogue: 0,0:00:41.98,0:00:44.34,Default,,0,0,0,,关键是反例谁都能代入公式手工验算
+Dialogue: 0,0:00:44.34,0:00:45.84,Default,,0,0,0,,懂行网友算过说成立
+Dialogue: 0,0:00:45.84,0:00:47.46,Default,,0,0,0,,正式结论等数学界核验
+Dialogue: 0,0:00:47.46,0:00:48.46,Default,,0,0,0,,AI抽走了内存
+Dialogue: 0,0:00:48.46,0:00:50.08,Default,,0,0,0,,最先疼的是买便宜手机的人
+Dialogue: 0,0:00:50.08,0:00:52.16,Default,,0,0,0,,印度上季度手机出货同比跌一成
+Dialogue: 0,0:00:52.16,0:00:53.38,Default,,0,0,0,,六年最差的二季度
+Dialogue: 0,0:00:53.38,0:00:54.94,Default,,0,0,0,,最便宜的入门档跌了四成五
+Dialogue: 0,0:00:54.94,0:00:57.14,Default,,0,0,0,,供应商把内存优先卖给AI数据中心
+Dialogue: 0,0:00:57.14,0:00:59.38,Default,,0,0,0,,手机厂轮番涨价，平均涨了一成半
+Dialogue: 0,0:00:59.38,0:01:01.54,Default,,0,0,0,,研究机构Counterpoint预计缺货持续到
+Dialogue: 0,0:01:01.54,0:01:01.94,Default,,0,0,0,,明年
+Dialogue: 0,0:01:01.94,0:01:04.01,Default,,0,0,0,,AI的账单，离它最远的人先付
+Dialogue: 0,0:01:04.01,0:01:06.44,Default,,0,0,0,,论文这边先看AI自己当老师
+Dialogue: 0,0:01:06.44,0:01:08.60,Default,,0,0,0,,用强化学习练AI有个老毛病
+Dialogue: 0,0:01:08.60,0:01:10.61,Default,,0,0,0,,一趟任务跑完只在最后给一个总分
+Dialogue: 0,0:01:10.61,0:01:12.40,Default,,0,0,0,,中间几十步谁对谁错没人讲
+Dialogue: 0,0:01:12.40,0:01:15.18,Default,,0,0,0,,SEED让模型跑完回头读自己的轨迹
+Dialogue: 0,0:01:15.18,0:01:17.30,Default,,0,0,0,,总结哪步最关键、哪种失败要避开
+Dialogue: 0,0:01:17.30,0:01:18.68,Default,,0,0,0,,再拿经验给每一步打分
+Dialogue: 0,0:01:18.68,0:01:20.74,Default,,0,0,0,,老师不比学生强，只是知道结局
+Dialogue: 0,0:01:20.74,0:01:22.16,Default,,0,0,0,,像考完试整理错题本
+Dialogue: 0,0:01:22.16,0:01:25.04,Default,,0,0,0,,论文报告家务模拟测试里成功率最多高出
+Dialogue: 0,0:01:25.04,0:01:25.74,Default,,0,0,0,,四十多个百分点
+Dialogue: 0,0:01:25.74,0:01:28.12,Default,,0,0,0,,另一篇给用AI做民调的人提个醒
+Dialogue: 0,0:01:28.12,0:01:29.68,Default,,0,0,0,,想知道一群人怎么看一件事
+Dialogue: 0,0:01:29.68,0:01:31.54,Default,,0,0,0,,直接问模型总体答案常常跑偏
+Dialogue: 0,0:01:31.54,0:01:33.36,Default,,0,0,0,,论文把人群一层层切细
+Dialogue: 0,0:01:33.36,0:01:34.90,Default,,0,0,0,,分别问完再按比例拼回来
+Dialogue: 0,0:01:34.90,0:01:36.66,Default,,0,0,0,,结果反而更贴近真实调查数据
+Dialogue: 0,0:01:36.66,0:01:38.02,Default,,0,0,0,,作者管这叫宏观谬误
+Dialogue: 0,0:01:38.02,0:01:39.82,Default,,0,0,0,,照理两种问法答案该一样
+Dialogue: 0,0:01:39.82,0:01:41.50,Default,,0,0,0,,实测主流模型普遍对不上
+Dialogue: 0,0:01:41.50,0:01:43.78,Default,,0,0,0,,自检也简单，换两种切法各拼一次
+Dialogue: 0,0:01:43.78,0:01:44.60,Default,,0,0,0,,对不上就别信
+Dialogue: 0,0:01:44.60,0:01:46.66,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:46.66,0:01:47.40,Default,,0,0,0,,我们明天见

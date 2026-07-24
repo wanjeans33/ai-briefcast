@@ -1,0 +1,46 @@
+{
+  "date": "2026-07-20",
+  "title": "Kimi被买爆，停售了",
+  "title_len": 11,
+  "body": "今天AI圈5件事，1分钟看完\n\nKimi K3请求爆表逼近集群极限，官方暂停C端新用户订阅\n凯撒护士爆料被AI掐表打分，接电话超15分钟可能被约谈\n安全公司在诱饵里藏特制文字，黑客AI读到当场自己停机\nLongStraw把强化学习训练推到200万token，8张H20能跑\nVideoChat3只有4B参数，代码数据权重全套开源可复现\n\n论文传送门\nLongStraw：arxiv.org/abs/2607.14952\nVideoChat3：arxiv.org/abs/2607.14935\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans",
+  "tags": [
+    "#人工智能",
+    "#AI",
+    "#AI日报",
+    "#每日AI",
+    "#AI资讯",
+    "#Kimi",
+    "#国产大模型",
+    "#Claude",
+    "#柿子树下的猫",
+    "#宝宝辅食"
+  ],
+  "content": "今天AI圈5件事，1分钟看完\n\nKimi K3请求爆表逼近集群极限，官方暂停C端新用户订阅\n凯撒护士爆料被AI掐表打分，接电话超15分钟可能被约谈\n安全公司在诱饵里藏特制文字，黑客AI读到当场自己停机\nLongStraw把强化学习训练推到200万token，8张H20能跑\nVideoChat3只有4B参数，代码数据权重全套开源可复现\n\n论文传送门\nLongStraw：arxiv.org/abs/2607.14952\nVideoChat3：arxiv.org/abs/2607.14935\n\n每天一分钟，AI新鲜事不错过，点赞收藏关注 @柿子树下的猫wanjeans\n\n#人工智能 #AI #AI日报 #每日AI #AI资讯 #Kimi #国产大模型 #Claude #柿子树下的猫 #宝宝辅食",
+  "chapters": [
+    {
+      "time": "00:00",
+      "title": "Kimi被买爆，停售了"
+    },
+    {
+      "time": "00:23",
+      "title": "AI盯上了护士的秒表"
+    },
+    {
+      "time": "00:46",
+      "title": "一段文字，放倒黑客AI"
+    },
+    {
+      "time": "01:03",
+      "title": "AI练长活，卷子够长"
+    },
+    {
+      "time": "01:21",
+      "title": "看视频的AI，全套开源"
+    }
+  ],
+  "video": "E:\\Github_project\\ai-briefcast\\output\\2026-07-20\\video\\xhs-2026-07-20-spacex-sub.mp4",
+  "cover": "E:\\Github_project\\ai-briefcast\\output\\2026-07-20\\cover\\cover-2026-07-20.png",
+  "cover_landscape": "E:\\Github_project\\ai-briefcast\\output\\2026-07-20\\cover\\cover-2026-07-20-4x3.png",
+  "visibility": "self",
+  "schedule_at": null
+}

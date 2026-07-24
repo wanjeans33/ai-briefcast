@@ -1,0 +1,117 @@
+# 每日成品数据（make_episode.py 的唯一输入）
+# 组结构：第 1 组=封面卡、中间每组=1 内容卡+N 补充卡（同 grad）、最后一组=CTA。组数必须=文稿段数。
+script: broadcast-0721-B-changed.md
+rate: 36
+
+groups:
+  - cards:
+      - kind: cover
+        badge: 建议收藏 · 每日AI速览
+        subtitle: 7月21日 · AI Briefcast
+        count: 5
+        hook: Claude<br><em>服软了</em>
+        toc: [最强Claude服软进套餐, AI破解87年数学悬案, AI抢内存手机涨价, AI自己当自己的老师, AI做民调拆开问才准]
+
+  - cards:
+      - kind: point
+        grad: c1
+        tag: 头条 01 · 巨头
+        icon: 🏳️
+        title: Anthropic服软了
+        body: 原要把最强Fable 5撤出订阅按用量卖，免费期一推再推，现在改口进**所有Max套餐**，能用常规额度**一半**，20美元的Pro只补一次性100美元
+        punch: 对手追得紧，涨价的刀落不下去
+      - kind: explainer
+        grad: c1
+        icon: 💳
+        rel: 头条01
+        title: Claude会员分几档
+        body: 20美元Pro、100和200美元Max，越贵限额越高。这次Fable 5只进**Max**，是给高价档的独家福利
+      - kind: explainer
+        grad: c1
+        icon: 🚧
+        rel: 头条01
+        title: Fable 5为什么被下架过
+        body: 上月它刚发布就撞上**出口管制**，官方没法实时核验用户国籍，干脆全球暂停，三周后才解禁回归
+
+  - cards:
+      - kind: point
+        grad: c3
+        tag: 头条 02 · 数学
+        icon: 🧮
+        title: AI破了87年数学悬案
+        body: Anthropic研究员用Fable 5找到**1939年**雅可比猜想的反例，三个不同的点变到同一点，谁都能代入公式**手工验算**，正式结论等数学界核验
+        punch: 不晒跑分，晒一道人人能验的算式
+      - kind: explainer
+        grad: c3
+        icon: 📐
+        rel: 头条02
+        title: 雅可比猜想是什么
+        body: 1939年提出，说一类多项式变换只要满足某个判定条件就能完美还原。数学家攻了**87年**，没证出，也一直没找到反例
+      - kind: explainer
+        grad: c3
+        icon: 🎯
+        rel: 头条02
+        title: 一个反例就能终结猜想
+        body: 猜想说"全都如此"，找到一个例外就整体推翻。1966年计算机也这样推翻过欧拉的猜想，论文正文只有**两句话**
+
+  - cards:
+      - kind: point
+        grad: c4
+        tag: 头条 03 · 产业
+        icon: 📱
+        title: AI抢内存，手机先涨价
+        body: 印度上季度手机出货跌**10%**，最便宜档暴跌**45%**，平均涨价一成半，只因大厂把内存产能挪去喂AI数据中心
+        punch: AI的账单，离它最远的人先付
+      - kind: explainer
+        grad: c4
+        icon: 🍰
+        rel: 头条03
+        title: AI为什么抢内存
+        body: AI芯片配的高带宽内存HBM，同样容量要吃**3到4倍**晶圆产能，卖价还高出好几倍，内存大厂当然优先做它
+
+  - cards:
+      - kind: point
+        grad: c5
+        tag: 论文 01 · 训练
+        icon: 📝
+        title: AI考完试，自己整理错题本
+        body: SEED让模型跑完任务回读自己的轨迹，总结经验再给每一步打分，家务模拟测试成功率最多高出**45.9**个百分点，代码**已开源**
+        punch: 老师不比学生强，只是知道结局
+      - kind: explainer
+        grad: c5
+        icon: 🏁
+        rel: 论文01
+        title: 什么是结果奖励
+        body: 强化学习常用的打分法，一整趟任务只在最后给一个总分，像考试只发总分不讲错题，中间哪步错了没人告诉你
+
+  - cards:
+      - kind: point
+        grad: c2
+        tag: 论文 02 · 评测
+        icon: 🗳️
+        title: AI做民调，拆开问才准
+        body: 直接问模型一群人的总体看法常跑偏，把人群**一层层切细**分别问再加权拼回，反而更贴近真实调查数据，作者称之为**宏观谬误**
+        punch: AI懂每类人，只是一口气说不出总体
+      - kind: explainer
+        grad: c2
+        icon: 👥
+        rel: 论文02
+        title: 谁在用AI做民调
+        body: 训练数据里藏着各类人群的说话方式，研究者让AI扮演不同人回答问卷，省钱又快，可靠性正是争议所在
+
+  - cards:
+      - kind: cta
+        title: 明天见
+        subtitle: 每天一分钟，AI新鲜事不错过
+        tags: [关注, 收藏, 分享]
+
+cover3x4:
+  kicker: 7月21日 · 1分钟追上AI圈
+  big: Claude<br><em>服软了</em>
+  rows:
+    - "**Fable 5** 进Max 不撤了"
+    - "AI破解 **87年** 数学悬案"
+    - "AI抢内存 手机 **涨价**"
+    - "AI考完试 **自整错题本**"
+    - "AI做民调 **拆开问** 才准"
+  date: "@AI Briefcast · 7/21"

@@ -1,0 +1,74 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 2160
+PlayResY: 3840
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H8C000000,1,0,0,0,100,100,0,0,3,8,0,2,150,150,820,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.34,0:00:02.18,Default,,0,0,0,,一分钟带你了解AI圈的新鲜事
+Dialogue: 0,0:00:02.68,0:00:03.42,Default,,0,0,0,,先说一笔大钱
+Dialogue: 0,0:00:03.76,0:00:06.26,Default,,0,0,0,,AI数据公司Databricks拿到新一轮融资
+Dialogue: 0,0:00:06.26,0:00:08.06,Default,,0,0,0,,估值冲到1880亿美元
+Dialogue: 0,0:00:08.06,0:00:09.92,Default,,0,0,0,,几个月前还是1340亿
+Dialogue: 0,0:00:09.92,0:00:11.78,Default,,0,0,0,,比钱更值得看的是它同时给中国开源模型
+Dialogue: 0,0:00:11.78,0:00:12.42,Default,,0,0,0,,站了台
+Dialogue: 0,0:00:12.42,0:00:13.54,Default,,0,0,0,,说自家内部测下来
+Dialogue: 0,0:00:13.54,0:00:15.64,Default,,0,0,0,,智谱的GLM 5.2连写代码里最难的
+Dialogue: 0,0:00:15.64,0:00:16.56,Default,,0,0,0,,任务都扛得住
+Dialogue: 0,0:00:16.56,0:00:18.08,Default,,0,0,0,,总成本还比Anthropic和OpenAI的
+Dialogue: 0,0:00:18.08,0:00:18.66,Default,,0,0,0,,闭源模型低
+Dialogue: 0,0:00:19.04,0:00:20.84,Default,,0,0,0,,硅谷明星公司公开选便宜够用的
+Dialogue: 0,0:00:20.84,0:00:21.56,Default,,0,0,0,,国产开源模型
+Dialogue: 0,0:00:21.56,0:00:23.24,Default,,0,0,0,,这笔账会有更多企业跟着算
+Dialogue: 0,0:00:23.60,0:00:25.56,Default,,0,0,0,,旧金山对苹果和谷歌下了最后通牒
+Dialogue: 0,0:00:25.56,0:00:28.29,Default,,0,0,0,,市检察长发函点名13款AI一键脱衣应用
+Dialogue: 0,0:00:28.29,0:00:29.82,Default,,0,0,0,,它们挂着换脸的名义上架
+Dialogue: 0,0:00:29.82,0:00:31.06,Default,,0,0,0,,实际能把普通照片变成裸照
+Dialogue: 0,0:00:31.06,0:00:33.58,Default,,0,0,0,,限两家28天内答复，不然要吃民事处罚
+Dialogue: 0,0:00:33.58,0:00:35.48,Default,,0,0,0,,他还估算两家从这类应用抽成了
+Dialogue: 0,0:00:35.48,0:00:36.00,Default,,0,0,0,,几百万美元
+Dialogue: 0,0:00:36.00,0:00:37.48,Default,,0,0,0,,苹果回应已经删了3款
+Dialogue: 0,0:00:37.48,0:00:38.62,Default,,0,0,0,,正在封开发者账号
+Dialogue: 0,0:00:38.62,0:00:40.48,Default,,0,0,0,,谷歌说被点名的5款全部下架了
+Dialogue: 0,0:00:40.48,0:00:42.52,Default,,0,0,0,,监管开始追问应用商店抽成背后的
+Dialogue: 0,0:00:42.52,0:00:43.08,Default,,0,0,0,,平台责任了
+Dialogue: 0,0:00:43.42,0:00:44.16,Default,,0,0,0,,有人做了个实验
+Dialogue: 0,0:00:44.16,0:00:46.00,Default,,0,0,0,,看AI拿着钱包能不能独立干活
+Dialogue: 0,0:00:46.00,0:00:48.00,Default,,0,0,0,,他丢给Claude和GPT一首歌
+Dialogue: 0,0:00:48.00,0:00:49.52,Default,,0,0,0,,一笔花完就停的预算、六个工具
+Dialogue: 0,0:00:49.52,0:00:50.34,Default,,0,0,0,,人就走开了
+Dialogue: 0,0:00:50.34,0:00:52.30,Default,,0,0,0,,两个模型自己上网查视频生成模型
+Dialogue: 0,0:00:52.30,0:00:54.38,Default,,0,0,0,,生成片段、回看画面、动手剪辑
+Dialogue: 0,0:00:54.38,0:00:56.22,Default,,0,0,0,,四轮全部拼出完整MV交了片
+Dialogue: 0,0:00:56.22,0:00:57.70,Default,,0,0,0,,不过成片没一部算好看
+Dialogue: 0,0:00:57.70,0:00:59.04,Default,,0,0,0,,人物一换镜头就变脸
+Dialogue: 0,0:00:59.04,0:01:00.10,Default,,0,0,0,,画面也踩不上节拍
+Dialogue: 0,0:01:00.10,0:01:01.58,Default,,0,0,0,,钱花完能交活是真的
+Dialogue: 0,0:01:01.58,0:01:03.00,Default,,0,0,0,,活好不好看是另一回事
+Dialogue: 0,0:01:03.00,0:01:04.90,Default,,0,0,0,,论文这边先看怎么给注意力省算力
+Dialogue: 0,0:01:04.90,0:01:07.30,Default,,0,0,0,,注意力是模型读内容时决定盯哪里的机制
+Dialogue: 0,0:01:07.30,0:01:08.66,Default,,0,0,0,,开销随内容变长飞涨
+Dialogue: 0,0:01:08.66,0:01:10.88,Default,,0,0,0,,老办法用少量代表向量近似全部内容
+Dialogue: 0,0:01:10.88,0:01:12.88,Default,,0,0,0,,可它对重要和不重要的位置一视同仁
+Dialogue: 0,0:01:12.88,0:01:15.44,Default,,0,0,0,,这篇被视觉顶会接收的论文改成看菜下饭
+Dialogue: 0,0:01:15.44,0:01:17.51,Default,,0,0,0,,被盯得多的关键位置用更精细的表示
+Dialogue: 0,0:01:17.51,0:01:18.84,Default,,0,0,0,,没人看的地方就粗一点
+Dialogue: 0,0:01:18.84,0:01:21.28,Default,,0,0,0,,像地图App市区配高清、荒野配低清
+Dialogue: 0,0:01:21.28,0:01:23.32,Default,,0,0,0,,算力花在刀刃上，压缩才不冤枉
+Dialogue: 0,0:01:23.32,0:01:26.06,Default,,0,0,0,,另一篇想把能分割一切的大模型塞进手机
+Dialogue: 0,0:01:26.06,0:01:28.10,Default,,0,0,0,,视频分割模型SAM2圈谁都行
+Dialogue: 0,0:01:28.10,0:01:29.50,Default,,0,0,0,,可手机和笔记本跑不动它
+Dialogue: 0,0:01:29.50,0:01:31.72,Default,,0,0,0,,这篇同样上了顶会的论文用师傅带徒弟的
+Dialogue: 0,0:01:31.72,0:01:32.12,Default,,0,0,0,,思路
+Dialogue: 0,0:01:32.12,0:01:33.28,Default,,0,0,0,,把大模型看视频攒下的
+Dialogue: 0,0:01:33.28,0:01:34.48,Default,,0,0,0,,经验整理成一张知识网络
+Dialogue: 0,0:01:34.48,0:01:35.68,Default,,0,0,0,,再教给轻量的小模型
+Dialogue: 0,0:01:35.68,0:01:36.80,Default,,0,0,0,,让手机也能干这活
+Dialogue: 0,0:01:36.80,0:01:38.82,Default,,0,0,0,,我是柿子树下的猫wanjeans
+Dialogue: 0,0:01:38.82,0:01:39.44,Default,,0,0,0,,我们明天见
